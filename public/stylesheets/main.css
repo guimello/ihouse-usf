@@ -1,0 +1,453 @@
+body
+{
+	font: normal 12px arial,helvetica,sans-serif;
+	margin: 20px
+}
+
+h1
+{
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+h2
+{
+	font-size: 16px;
+}
+
+h3
+{
+	font-size: 13px;
+}
+
+
+p 
+{
+	line-height: 16px;
+	margin-bottom: 10px;
+}
+
+hr
+{
+	height: 1px; 
+	color: #dadcdc; 
+	background-color: #dadcdc; 
+	border: none;
+}
+
+small
+{
+	font-size: 11px;
+}
+
+.small
+{
+	font-size: 11px;
+}
+
+
+#container
+{
+	-moz-box-shadow: 8px 8px 8px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+	
+	border-top-left-radius: 10px; 
+	border-top-right-radius: 10px;
+	border-bottom-left-radius: 10px; 
+	border-bottom-right-radius: 10px;
+	
+	-moz-border-radius-topleft: 10px; 
+	-moz-border-radius-topright: 10px;
+	-moz-border-radius-bottomleft: 10px; 
+	-moz-border-radius-bottomright: 10px;
+	
+	-webkit-border-top-left-radius: 10px; 
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-bottom-left-radius: 10px; 
+	-webkit-border-bottom-right-radius: 10px;
+	
+	background-color: #ffffff;
+}
+
+#header
+{
+	position: relative; 
+	height: 100px; 
+	
+	border-top-left-radius: 10px; 
+	border-top-right-radius: 10px;
+	
+	-moz-border-radius-topleft: 10px; 
+	-moz-border-radius-topright: 10px;
+	
+	-webkit-border-top-left-radius: 10px; 
+	-webkit-border-top-right-radius: 10px;
+}
+
+#header .ibm-logo
+{
+	position:absolute;
+	left:50%;	
+}
+
+#title
+{
+	position: absolute; 
+	top: 20px; 
+	margin-left: 30px;
+	z-index: 999;
+}
+
+#title h1
+{
+	font-size: 26px;
+	display: inline;
+	line-height:26px
+}
+
+#application_title
+{
+	float:left;
+}
+
+
+#project_title
+{
+	float:left;
+	padding: 0px 20px 10px 5px;
+	margin-left:10px;
+}
+
+#project_selection
+{
+	font-size: 18px;
+	background-repeat: no-repeat;
+	padding-left: 20px;
+	background-position: right center;	
+	padding-right: 20px;
+	text-decoration: none	
+}
+
+#project_title ul
+{
+	margin-top:10px
+}
+
+#project_title ul li
+{
+	font-size: 13px;
+}
+
+#current_user_header
+{
+	position: absolute; 
+	top: 12px;
+	right: 20px;
+	text-align: right;
+	font-size: 11px;
+}
+
+#current_user_header p
+{
+	margin-bottom: 5px;
+}
+
+.fluid
+{
+	width: 100%;
+}
+
+.left
+{
+	text-align: left !important;
+}
+
+.right
+{
+	text-align: right !important;
+}
+
+.center
+{
+	text-align: center !important;
+}
+
+.float-left
+{
+	float: left;
+}
+
+.float-right
+{
+	float: right;
+}
+
+.clear
+{
+	clear: both;
+}
+
+.bold
+{
+	font-weight: bold;
+}
+
+.font-red
+{
+	color: #ff0000;
+}
+
+.title
+{
+	display: block;
+	padding: 6px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-weight: bold;
+}
+
+h1.title
+{
+	padding: 0px;
+	margin-bottom: 0px;
+}
+
+.top-left-rounded-8
+{
+	border-top-left-radius: 8px; 
+	-moz-border-radius-topleft: 8px; 
+	-webkit-border-top-left-radius: 8px;
+}
+
+.top-right-rounded-8
+{
+	border-top-right-radius: 8px; 
+	-moz-border-radius-topright: 8px; 
+	-webkit-border-top-right-radius: 8px;
+}
+
+.bottom-left-rounded-8
+{
+	border-bottom-left-radius: 8px;
+	-moz-border-radius-bottomleft: 8px; 
+	-webkit-border-bottom-left-radius: 8px; 
+}
+
+.bottom-right-rounded-8
+{
+	border-bottom-right-radius: 8px;
+	-moz-border-radius-bottomright: 8px; 
+	-webkit-border-bottom-right-radius: 8px; 
+}
+
+.bottom-left-rounded-10
+{
+	border-bottom-left-radius: 10px;
+	-moz-border-radius-bottomleft: 10px; 
+	-webkit-border-bottom-left-radius: 10px; 
+}	
+
+.rounded-4
+{
+	border-radius: 4px!important; 
+	-moz-border-radius: 4px!important; 
+	-webkit-border-radius: 4px!important;
+}
+
+.rounded-5
+{
+	border-radius: 5px!important; 
+	-moz-border-radius: 5px!important; 
+	-webkit-border-radius: 5px!important;
+}
+
+.rounded-6
+{
+	border-radius: 6px!important; 
+	-moz-border-radius: 6px!important; 
+	-webkit-border-radius: 6px!important;
+}
+
+.rounded-8
+{
+	border-radius: 8px!important; 
+	-moz-border-radius: 8px!important; 
+	-webkit-border-radius: 8px!important;
+}
+
+.rounded-10
+{
+	border-radius: 10px!important; 
+	-moz-border-radius: 10px!important; 
+	-webkit-border-radius: 10px !important;
+}
+
+.rounded-12
+{
+	border-radius: 12px!important; 
+	-moz-border-radius: 12px!important; 
+	-webkit-border-radius: 12px !important;
+}
+
+.rounded-20
+{
+	border-radius: 20px!important; 
+	-moz-border-radius: 20px!important; 
+	-webkit-border-radius: 20px !important;
+}
+
+.shadow-low
+{
+	-moz-box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+}
+
+.shadow-normal
+{
+	-moz-box-shadow: 3px 8px 10px rgba(0,0,0,0.6);
+	-webkit-box-shadow: 5px 10px 7px rgba(0,0,0,0.6);
+}
+
+.transparent-50 {
+	filter:alpha(opacity=50);
+	-moz-opacity:0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+}
+
+.transparent-60 {
+	filter:alpha(opacity=60);
+	-moz-opacity:0.6;
+	-khtml-opacity: 0.6;
+	opacity: 0.6;
+}
+
+.transparent-65 {
+	filter:alpha(opacity=65);
+	-moz-opacity:0.65;
+	-khtml-opacity: 0.65;
+	opacity: 0.65;
+}
+
+.transparent-75 {
+	filter:alpha(opacity=75);
+	-moz-opacity:0.75;
+	-khtml-opacity: 0.75;
+	opacity: 0.75;
+}
+
+.transparent-80 {
+	filter:alpha(opacity=80);
+	-moz-opacity:0.8;
+	-khtml-opacity: 0.8;
+	opacity: 0.8;
+}
+
+.transparent-85 {
+	filter:alpha(opacity=85);
+	-moz-opacity:0.85;
+	-khtml-opacity: 0.85;
+	opacity: 0.85;
+}
+
+.transparent-90 {
+	filter:alpha(opacity=90);
+	-moz-opacity:0.90;
+	-khtml-opacity: 0.90;
+	opacity: 0.90;
+}
+
+.transparent-95 {
+	filter:alpha(opacity=95);
+	-moz-opacity:0.95;
+	-khtml-opacity: 0.95;
+	opacity: 0.95;
+}
+
+.indented-5
+{
+	margin-left: 5px;
+}
+
+.indented-10
+{
+	margin-left: 10px;
+}
+
+.indented-20
+{
+	margin-left: 20px;
+}
+
+.indented-30
+{
+	margin-left: 30px;
+}
+
+.indented-50
+{
+	margin-left: 50px;
+}
+
+.indented-60
+{
+	margin-left: 60px;
+}
+
+.indented-70
+{
+	margin-left: 70px;
+}
+
+.indented-80
+{
+	margin-left: 80px;
+}
+
+.indented-100
+{
+	margin-left: 100px;
+}
+
+.indented-120
+{
+	margin-left: 120px;
+}
+
+
+.font-dark-gray
+{
+	color: #707070
+}
+
+.font-light-gray
+{
+	color: #D0D0D0
+}
+
+.back-blue
+{
+	background-color:#AAD3FF
+}
+
+.font-medium
+{
+	font-size: 14px;
+}
+
+img.picture-frame
+{
+    padding: 5px;
+    background-color: #ffffff;
+    border: 1px solid #D0D0D0;
+}
+
+.inhousetools-logo-out
+{
+	color: black;
+}
+
+.inhousetools-logo-in
+{
+	color: #269254;
+}

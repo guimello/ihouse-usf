@@ -1,0 +1,47 @@
+.basic-list li
+{
+	background-image: url(../images/icons/silk/bullet_black.gif);
+	background-repeat: no-repeat;
+	background-position: left 2px;
+	
+	padding-left: 20px;
+	line-height: 20px;
+	
+	margin-bottom: 3px;
+}
+
+.basic-list.iconless li
+{
+	padding-left: 0px;
+	background: none;
+}
+
+.icon-list dt
+{
+	margin-top: 15px;	
+}
+
+.icon-list dt a
+{
+	font-weight: bold;
+}
+
+.icon-list dd
+{
+	margin-left: 20px;
+	color: #a4a4a4;
+	font-size: 11px;
+}
+
+ul.inline-list
+{
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+}
+
+.inline-list li
+{
+	display: block;
+	float: left;
+}

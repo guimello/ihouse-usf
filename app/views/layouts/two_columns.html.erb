@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+	
+	<%= render :partial => 'layouts/head' %>
+
+	<body>
+		<div id="container" class="shadow-low">
+			<%= render :partial => 'layouts/header' %>
+			<div id="content-wrapper">
+				<%= render :partial => 'layouts/flash', :locals => {:flash => flash} %>
+				<div id="content-container">
+					<div id="left-column" class="gradient-division">
+						<div id="left-column-content" class="gradient-division">
+							<%= yield %>
+						</div>
+						<div id="left-column-content-bottom" class="gradient-division"></div>
+					</div>
+				</div>
+				<div id="right-column">
+					<%= yield :sidebar %>
+				</div>
+				<div style="clear: both"></div>
+			</div>
+		</div>
+	</body>
+</html>

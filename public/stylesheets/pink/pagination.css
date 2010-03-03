@@ -1,0 +1,26 @@
+.pagination a:link, .pagination a:visited
+{
+	border: 1px solid #EBEBEB;
+	background-color: #F5F5F5;
+	color: #BC0095;
+}
+
+.pagination a:hover 
+{
+	background-color: #FFDDFD;
+	border: 1px solid #FEBBFF;
+	color: #BC0095;	
+}
+
+.pagination .current 
+{
+	border: 1px solid #FEBBFF;
+	background-color: #FFDDFD;
+	color: #BC0095;
+}
+
+.pagination .disabled {
+	border: 1px solid #EBEBEB;
+	background-color: #F5F5F5;
+	color: #D7D7D7;
+}

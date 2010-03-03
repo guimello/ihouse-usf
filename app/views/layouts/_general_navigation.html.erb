@@ -1,0 +1,6 @@
+<ul id="left-tabs" class="tabs">
+	<li <%= "class='selected'" if controller.controller_name == "projects" and controller.action_name == "index" %>>
+		<%= link_to t(:dashboard, :scope => [:navigation, :general]), projects_url %>
+	</li>
+	<%= yield %>
+</ul>

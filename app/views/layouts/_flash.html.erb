@@ -1,0 +1,25 @@
+<div id="flash">
+<% if flash[:warning] %>
+	<%= render :partial => 'layouts/flash_alert', :locals => {:title => t(:warning, :scope => :alerts), 
+															 :div_class => "alert attention red rounded-8", 
+															 :message => flash[:warning]} %>
+<% end %>
+
+<% if flash[:success] %>
+	<%= render :partial => 'layouts/flash_alert', :locals => {:title => t(:success, :scope => :alerts), 
+															 :div_class => "alert success green rounded-8", 
+															 :message => flash[:success]} %>
+<% end %>
+
+<% if flash[:notice] %>
+	<%= render :partial => 'layouts/flash_alert', :locals => {:title => t(:notice, :scope => :alerts), 
+															 :div_class => "alert attention yellow rounded-8", 
+															 :message => flash[:notice]} %>	
+<% end %>
+
+<% if flash[:error] %>
+	<%= render :partial => 'layouts/flash_alert', :locals => {:title => t(:error, :scope => :alerts), 
+															 :div_class => "alert error red rounded-8", 
+															 :message => flash[:error]} %>
+<% end %>
+</div>

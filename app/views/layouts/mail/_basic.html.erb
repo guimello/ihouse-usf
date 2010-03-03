@@ -1,0 +1,9 @@
+<html>
+	<head>
+		<%= render "layouts/mail/head" %>
+	</head>
+	<body>
+		<%= yield %>
+		<p><small><%= t :footer, :scope => :mail, :application_title => t(:title, :scope => :application) %></small></p>
+    </body>
+</html>

@@ -1,0 +1,2846 @@
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-02-25 10:26:34) [GET]
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+Completed in 81ms (View: 8, DB: 1) | 200 OK [http://localhost/rails/info/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (392.7ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (439.9ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (106.6ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255) NOT NULL, `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateRoles (20100225125315)
+  [4;35;1mSQL (89.7ms)[0m   [0mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225125315')[0m
+Migrating to CreateRights (20100225125357)
+  [4;35;1mSQL (97.6ms)[0m   [0mCREATE TABLE `rights` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `controller` varchar(255), `action` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225125357')[0m
+Migrating to CreateRightsRoles (20100225125454)
+  [4;35;1mSQL (97.6ms)[0m   [0mCREATE TABLE `rights_roles` (`role_id` int(11), `right_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (269.8ms)[0m   [0;1mALTER TABLE `rights_roles` ADD PRIMARY KEY (`role_id` , `right_id`)[0m
+  [4;35;1mSQL (41.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225125454')[0m
+Migrating to CreateProjects (20100225130028)
+  [4;36;1mSQL (89.2ms)[0m   [0;1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (41.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225130028')[0m
+Migrating to CreatePermissions (20100225130116)
+  [4;36;1mSQL (89.1ms)[0m   [0;1mCREATE TABLE `permissions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `project_id` int(11) NOT NULL, `role_id` int(11) NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (73.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225130116')[0m
+Migrating to CreateLogs (20100225131233)
+  [4;36;1mSQL (106.0ms)[0m   [0;1mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11) NOT NULL, `user_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Device', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (41.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225131233')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `logs`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `logs`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `logs`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `permissions`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `permissions`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `permissions`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `projects`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `projects`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW KEYS FROM `projects`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `rights`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `rights`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `rights`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `rights_roles`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `rights_roles`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `rights_roles`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `roles`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `roles`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-02-25 10:27:13) [GET]
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Completed in 16ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/info/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (126.6ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (244.0ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (103.0ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255) NOT NULL, `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (66.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateRoles (20100225125315)
+  [4;35;1mSQL (139.1ms)[0m   [0mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (100.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225125315')[0m
+Migrating to CreateRights (20100225125357)
+  [4;35;1mSQL (155.8ms)[0m   [0mCREATE TABLE `rights` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `controller` varchar(255), `action` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (74.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225125357')[0m
+Migrating to CreateRightsRoles (20100225125454)
+DEPRECATION WARNING: :foreign_key option is deprecated inside create_table. to add a foreign key, use add_foreign_key. (called from up_without_benchmarks at ./db/migrate//20100225125454_create_rights_roles.rb:4)
+DEPRECATION WARNING: :foreign_key option is deprecated inside create_table. to add a foreign key, use add_foreign_key. (called from up_without_benchmarks at ./db/migrate//20100225125454_create_rights_roles.rb:5)
+  [4;35;1mSQL (156.3ms)[0m   [0mCREATE TABLE `rights_roles` (`role_id` int(11), `right_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (319.1ms)[0m   [0;1mALTER TABLE `rights_roles` ADD PRIMARY KEY (`role_id` , `right_id`)[0m
+  [4;35;1mSQL (67.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225125454')[0m
+Migrating to CreateProjects (20100225130028)
+  [4;36;1mSQL (148.1ms)[0m   [0;1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (41.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225130028')[0m
+Migrating to CreatePermissions (20100225130116)
+DEPRECATION WARNING: :foreign_key option is deprecated inside create_table. to add a foreign key, use add_foreign_key. (called from up_without_benchmarks at ./db/migrate//20100225130116_create_permissions.rb:4)
+DEPRECATION WARNING: :foreign_key option is deprecated inside create_table. to add a foreign key, use add_foreign_key. (called from up_without_benchmarks at ./db/migrate//20100225130116_create_permissions.rb:5)
+DEPRECATION WARNING: :foreign_key option is deprecated inside create_table. to add a foreign key, use add_foreign_key. (called from up_without_benchmarks at ./db/migrate//20100225130116_create_permissions.rb:6)
+  [4;36;1mSQL (147.0ms)[0m   [0;1mCREATE TABLE `permissions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `project_id` int(11) NOT NULL, `role_id` int(11) NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (49.9ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225130116')[0m
+Migrating to CreateLogs (20100225131233)
+DEPRECATION WARNING: :foreign_key option is deprecated inside create_table. to add a foreign key, use add_foreign_key. (called from up_without_benchmarks at ./db/migrate//20100225131233_create_logs.rb:4)
+DEPRECATION WARNING: :foreign_key option is deprecated inside create_table. to add a foreign key, use add_foreign_key. (called from up_without_benchmarks at ./db/migrate//20100225131233_create_logs.rb:5)
+  [4;36;1mSQL (138.8ms)[0m   [0;1mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11) NOT NULL, `user_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Device', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (41.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225131233')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `logs`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `logs`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `logs`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `permissions`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `permissions`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `permissions`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `projects`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `projects`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `projects`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `rights`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `rights`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `rights`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `rights_roles`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `rights_roles`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `rights_roles`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `roles`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `roles`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'logs'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `logs`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'permissions'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `permissions`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'projects'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `projects`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'rights'
+ [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW CREATE TABLE `rights`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'rights_roles'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `rights_roles`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'roles'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `roles`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'schema_migrations'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `schema_migrations`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'users'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `users`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (100.7ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (285.7ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (140.9ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255) NOT NULL, `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (85.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateRoles (20100225125315)
+  [4;35;1mSQL (203.8ms)[0m   [0mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225125315')[0m
+Migrating to CreateRights (20100225125357)
+  [4;35;1mSQL (139.3ms)[0m   [0mCREATE TABLE `rights` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `controller` varchar(255), `action` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225125357')[0m
+Migrating to CreateRightsRoles (20100225125454)
+DEPRECATION WARNING: :foreign_key option is deprecated inside create_table. to add a foreign key, use add_foreign_key. (called from up_without_benchmarks at ./db/migrate//20100225125454_create_rights_roles.rb:4)
+DEPRECATION WARNING: :foreign_key option is deprecated inside create_table. to add a foreign key, use add_foreign_key. (called from up_without_benchmarks at ./db/migrate//20100225125454_create_rights_roles.rb:5)
+  [4;35;1mSQL (148.1ms)[0m   [0mCREATE TABLE `rights_roles` (`role_id` int(11), `right_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (252.5ms)[0m   [0;1mALTER TABLE `rights_roles` ADD PRIMARY KEY (`role_id` , `right_id`)[0m
+  [4;35;1mSQL (41.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225125454')[0m
+Migrating to CreateProjects (20100225130028)
+  [4;36;1mSQL (156.1ms)[0m   [0;1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (41.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225130028')[0m
+Migrating to CreatePermissions (20100225130116)
+DEPRECATION WARNING: :foreign_key option is deprecated inside create_table. to add a foreign key, use add_foreign_key. (called from up_without_benchmarks at ./db/migrate//20100225130116_create_permissions.rb:4)
+DEPRECATION WARNING: :foreign_key option is deprecated inside create_table. to add a foreign key, use add_foreign_key. (called from up_without_benchmarks at ./db/migrate//20100225130116_create_permissions.rb:5)
+DEPRECATION WARNING: :foreign_key option is deprecated inside create_table. to add a foreign key, use add_foreign_key. (called from up_without_benchmarks at ./db/migrate//20100225130116_create_permissions.rb:6)
+  [4;36;1mSQL (139.3ms)[0m   [0;1mCREATE TABLE `permissions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `project_id` int(11) NOT NULL, `role_id` int(11) NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (41.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225130116')[0m
+Migrating to CreateLogs (20100225131233)
+DEPRECATION WARNING: :foreign_key option is deprecated inside create_table. to add a foreign key, use add_foreign_key. (called from up_without_benchmarks at ./db/migrate//20100225131233_create_logs.rb:4)
+DEPRECATION WARNING: :foreign_key option is deprecated inside create_table. to add a foreign key, use add_foreign_key. (called from up_without_benchmarks at ./db/migrate//20100225131233_create_logs.rb:5)
+  [4;36;1mSQL (139.3ms)[0m   [0;1mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11) NOT NULL, `user_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Device', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (49.8ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225131233')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `logs`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `logs`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `logs`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `permissions`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mdescribe `permissions`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `permissions`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `projects`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `projects`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `projects`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `rights`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `rights`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `rights`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `rights_roles`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `rights_roles`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `rights_roles`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `roles`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `roles`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'logs'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `logs`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'permissions'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `permissions`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'projects'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `projects`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'rights'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `rights`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'rights_roles'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `rights_roles`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'roles'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `roles`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'schema_migrations'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `schema_migrations`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'users'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (121.5ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (302.3ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (119.8ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255) NOT NULL, `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (66.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateRoles (20100225125315)
+  [4;35;1mSQL (140.3ms)[0m   [0mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (66.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225125315')[0m
+Migrating to CreateRights (20100225125357)
+  [4;35;1mSQL (147.8ms)[0m   [0mCREATE TABLE `rights` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `controller` varchar(255), `action` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (66.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225125357')[0m
+Migrating to CreateRightsRoles (20100225125454)
+DEPRECATION WARNING: :foreign_key option is deprecated inside create_table. to add a foreign key, use add_foreign_key. (called from up_without_benchmarks at ./db/migrate//20100225125454_create_rights_roles.rb:4)
+DEPRECATION WARNING: :foreign_key option is deprecated inside create_table. to add a foreign key, use add_foreign_key. (called from up_without_benchmarks at ./db/migrate//20100225125454_create_rights_roles.rb:5)
+  [4;35;1mSQL (147.7ms)[0m   [0mCREATE TABLE `rights_roles` (`role_id` int(11), `right_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (269.1ms)[0m   [0;1mALTER TABLE `rights_roles` ADD PRIMARY KEY (`role_id` , `right_id`)[0m
+  [4;35;1mSQL (66.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225125454')[0m
+Migrating to CreateProjects (20100225130028)
+  [4;36;1mSQL (131.9ms)[0m   [0;1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (66.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225130028')[0m
+Migrating to CreatePermissions (20100225130116)
+DEPRECATION WARNING: :foreign_key option is deprecated inside create_table. to add a foreign key, use add_foreign_key. (called from up_without_benchmarks at ./db/migrate//20100225130116_create_permissions.rb:4)
+DEPRECATION WARNING: :foreign_key option is deprecated inside create_table. to add a foreign key, use add_foreign_key. (called from up_without_benchmarks at ./db/migrate//20100225130116_create_permissions.rb:5)
+DEPRECATION WARNING: :foreign_key option is deprecated inside create_table. to add a foreign key, use add_foreign_key. (called from up_without_benchmarks at ./db/migrate//20100225130116_create_permissions.rb:6)
+  [4;36;1mSQL (147.1ms)[0m   [0;1mCREATE TABLE `permissions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `project_id` int(11) NOT NULL, `role_id` int(11) NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (49.9ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225130116')[0m
+Migrating to CreateLogs (20100225131233)
+DEPRECATION WARNING: :foreign_key option is deprecated inside create_table. to add a foreign key, use add_foreign_key. (called from up_without_benchmarks at ./db/migrate//20100225131233_create_logs.rb:4)
+DEPRECATION WARNING: :foreign_key option is deprecated inside create_table. to add a foreign key, use add_foreign_key. (called from up_without_benchmarks at ./db/migrate//20100225131233_create_logs.rb:5)
+  [4;36;1mSQL (228.0ms)[0m   [0;1mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11) NOT NULL, `user_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Device', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (52.9ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225131233')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW FIELDS FROM `logs`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `logs`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `logs`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `permissions`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `permissions`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `permissions`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `projects`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `projects`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `projects`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `rights`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `rights`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `rights`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `rights_roles`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `rights_roles`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `rights_roles`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `roles`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `roles`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'logs'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `logs`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'permissions'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `permissions`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'projects'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `projects`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'rights'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `rights`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'rights_roles'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `rights_roles`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'roles'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `roles`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'schema_migrations'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `schema_migrations`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'users'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (132.3ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (243.9ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (149.0ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255) NOT NULL, `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (66.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateRoles (20100225125315)
+  [4;35;1mSQL (164.3ms)[0m   [0mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (66.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225125315')[0m
+Migrating to CreateRights (20100225125357)
+  [4;35;1mSQL (172.0ms)[0m   [0mCREATE TABLE `rights` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `controller` varchar(255), `action` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (87.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225125357')[0m
+Migrating to CreateRightsRoles (20100225125454)
+  [4;35;1mSQL (278.4ms)[0m   [0mCREATE TABLE `rights_roles` (`role_id` int(11), `right_id` int(11), FOREIGN KEY (`role_id`) REFERENCES `roles`(id) ON DELETE CASCADE, FOREIGN KEY (`right_id`) REFERENCES `rights`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (276.1ms)[0m   [0;1mALTER TABLE `rights_roles` ADD PRIMARY KEY (`role_id` , `right_id`)[0m
+  [4;35;1mSQL (41.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225125454')[0m
+Migrating to CreateProjects (20100225130028)
+  [4;36;1mSQL (740.1ms)[0m   [0;1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (66.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225130028')[0m
+Migrating to CreatePermissions (20100225130116)
+  [4;36;1mSQL (230.9ms)[0m   [0;1mCREATE TABLE `permissions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `project_id` int(11) NOT NULL, `role_id` int(11) NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users`(id) ON DELETE CASCADE, FOREIGN KEY (`project_id`) REFERENCES `projects`(id) ON DELETE CASCADE, FOREIGN KEY (`role_id`) REFERENCES `roles`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;35;1mSQL (75.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225130116')[0m
+Migrating to CreateLogs (20100225131233)
+  [4;36;1mSQL (197.5ms)[0m   [0;1mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11) NOT NULL, `user_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Device', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL, FOREIGN KEY (`project_id`) REFERENCES `projects`(id) ON DELETE CASCADE, FOREIGN KEY (`user_id`) REFERENCES `users`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;35;1mSQL (66.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225131233')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW FIELDS FROM `logs`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `logs`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `logs`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW FIELDS FROM `permissions`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `permissions`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `permissions`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `projects`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `projects`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `projects`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `rights`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `rights`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `rights`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `rights_roles`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `rights_roles`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `rights_roles`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `roles`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `roles`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'logs'
+ [0m
+  [4;36;1mSQL (19.3ms)[0m   [0;1mSHOW CREATE TABLE `logs`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'permissions'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `permissions`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'projects'
+ [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW CREATE TABLE `projects`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'rights'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `rights`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'rights_roles'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `rights_roles`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'roles'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `roles`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'schema_migrations'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `schema_migrations`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'users'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `users`[0m
+  [4;36;1mSQL (38.6ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (20.7ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#index (for 127.0.0.1 at 2010-02-25 12:27:01) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/prototype.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (4.6ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#index (for 127.0.0.1 at 2010-02-25 12:27:01) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#index (for 127.0.0.1 at 2010-02-25 12:27:01) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-02-25 12:27:31) [GET]
+  [4;36;1mSQL (110.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (30.8ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Completed in 253ms (View: 50, DB: 141) | 200 OK [http://localhost/rails/info/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-02-25 12:27:39) [GET]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Completed in 15ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/info/properties]
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#index (for 127.0.0.1 at 2010-02-25 12:32:58) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/prototype.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#index (for 127.0.0.1 at 2010-02-25 12:32:58) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#index (for 127.0.0.1 at 2010-02-25 12:32:58) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#index (for 127.0.0.1 at 2010-02-25 12:34:08) [GET]
+
+ActionController::RoutingError (No route matches "/ihouse" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#index (for 127.0.0.1 at 2010-02-25 12:42:27) [GET]
+
+ActionController::RoutingError (No route matches "/ihouse" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#index (for 127.0.0.1 at 2010-02-25 12:42:31) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/prototype.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#index (for 127.0.0.1 at 2010-02-25 12:42:31) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-02-25 12:42:34) [GET]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Completed in 20ms (View: 2, DB: 1) | 200 OK [http://localhost/rails/info/properties]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#index (for 127.0.0.1 at 2010-02-25 12:43:14) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/prototype.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#index (for 127.0.0.1 at 2010-02-25 12:43:14) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (102.1ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (235.6ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (775.1ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255) NOT NULL, `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (108.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateRoles (20100225125315)
+  [4;35;1mSQL (151.7ms)[0m   [0mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (100.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225125315')[0m
+Migrating to CreateRights (20100225125357)
+  [4;35;1mSQL (148.4ms)[0m   [0mCREATE TABLE `rights` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `controller` varchar(255), `action` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (66.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225125357')[0m
+Migrating to CreateRightsRoles (20100225125454)
+  [4;35;1mSQL (231.3ms)[0m   [0mCREATE TABLE `rights_roles` (`role_id` int(11), `right_id` int(11), FOREIGN KEY (`role_id`) REFERENCES `roles`(id) ON DELETE CASCADE, FOREIGN KEY (`right_id`) REFERENCES `rights`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (269.0ms)[0m   [0;1mALTER TABLE `rights_roles` ADD PRIMARY KEY (`role_id` , `right_id`)[0m
+  [4;35;1mSQL (66.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225125454')[0m
+Migrating to CreateProjects (20100225130028)
+  [4;36;1mSQL (164.5ms)[0m   [0;1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (58.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225130028')[0m
+Migrating to CreatePermissions (20100225130116)
+  [4;36;1mSQL (229.0ms)[0m   [0;1mCREATE TABLE `permissions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `project_id` int(11) NOT NULL, `role_id` int(11) NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users`(id) ON DELETE CASCADE, FOREIGN KEY (`project_id`) REFERENCES `projects`(id) ON DELETE CASCADE, FOREIGN KEY (`role_id`) REFERENCES `roles`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;35;1mSQL (66.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225130116')[0m
+Migrating to CreateLogs (20100225131233)
+  [4;36;1mSQL (201.3ms)[0m   [0;1mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11) NOT NULL, `user_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Device', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL, FOREIGN KEY (`project_id`) REFERENCES `projects`(id) ON DELETE CASCADE, FOREIGN KEY (`user_id`) REFERENCES `users`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;35;1mSQL (62.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100225131233')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (64.3ms)[0m   [0mSHOW FIELDS FROM `logs`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `logs`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `logs`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `permissions`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mdescribe `permissions`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `permissions`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `projects`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `projects`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `projects`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `rights`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mdescribe `rights`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW KEYS FROM `rights`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `rights_roles`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `rights_roles`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `rights_roles`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `roles`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `roles`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (11.5ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'logs'
+ [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW CREATE TABLE `logs`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'permissions'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `permissions`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'projects'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `projects`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'rights'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `rights`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'rights_roles'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `rights_roles`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'roles'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `roles`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'schema_migrations'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `schema_migrations`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'users'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#index (for 127.0.0.1 at 2010-02-25 12:46:12) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/prototype.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#index (for 127.0.0.1 at 2010-02-25 12:46:12) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#index (for 127.0.0.1 at 2010-02-25 12:46:31) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/prototype.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#index (for 127.0.0.1 at 2010-02-25 12:46:31) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#index (for 127.0.0.1 at 2010-02-25 12:47:02) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/prototype.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#index (for 127.0.0.1 at 2010-02-25 12:47:02) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#index (for 127.0.0.1 at 2010-02-25 12:47:02) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#index (for 127.0.0.1 at 2010-02-25 12:49:16) [GET]
+
+NameError (uninitialized constant ApplicationController::WillPaginate):
+  app/controllers/application_controller.rb:14
+  app/controllers/projects_controller.rb:1
+
+Rendered rescues/_trace (43.2ms)
+Rendered rescues/_request_and_response (13.8ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#new (for 127.0.0.1 at 2010-02-25 12:49:49) [GET]
+
+NameError (uninitialized constant ApplicationController::WillPaginate):
+  app/controllers/application_controller.rb:14
+  app/controllers/sessions_controller.rb:1
+
+Rendered rescues/_trace (39.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ActionController::Base#new (for 127.0.0.1 at 2010-02-25 12:50:28) [GET]
+
+NameError (uninitialized constant ApplicationController::WillPaginate):
+  app/controllers/application_controller.rb:14
+  app/controllers/sessions_controller.rb:1
+
+Rendered rescues/_trace (38.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-02-25 12:50:40) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+
+NameError (uninitialized constant Session::AuthorizationHelpers::Right):
+  lib/session.rb:32:in `build_permissions'
+
+Rendered rescues/_trace (88.9ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-02-25 12:52:46) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;36;1mRight Load (23.6ms)[0m   [0;1mSELECT * FROM `rights` [0m
+
+ActionView::MissingTemplate (Missing template sessions/new.erb in view path app/views):
+  app/controllers/sessions_controller.rb:9:in `new'
+
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-02-25 12:53:28) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;35;1mRight Load (0.1ms)[0m   [0mSELECT * FROM `rights` [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Rendered layouts/_login_footer (2.1ms)
+Completed in 50ms (View: 37, DB: 0) | 200 OK [http://localhost/login]
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-25 12:54:09) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/prototype.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-25 12:54:10) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-25 12:54:10) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-25 12:54:24) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/prototype.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-25 12:54:24) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-25 12:54:24) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProjectsController#index (for 127.0.0.1 at 2010-02-25 12:57:55) [GET]
+  Parameters: {"action"=>"index", "controller"=>"projects"}
+  [4;36;1mRight Load (0.1ms)[0m   [0;1mSELECT * FROM `rights` [0m
+
+NameError (uninitialized constant Mime::XLS):
+  lib/session.rb:65:in `check_user_logged'
+  lib/session.rb:50:in `check_user_logged'
+
+Rendered rescues/_trace (42.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (2.8ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProjectsController#index (for 127.0.0.1 at 2010-02-25 14:03:47) [GET]
+  Parameters: {"action"=>"index", "controller"=>"projects"}
+  [4;35;1mRight Load (0.2ms)[0m   [0mSELECT * FROM `rights` [0m
+
+NameError (uninitialized constant Mime::XLS):
+  lib/session.rb:65:in `check_user_logged'
+  lib/session.rb:50:in `check_user_logged'
+
+Rendered rescues/_trace (38.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProjectsController#index (for 127.0.0.1 at 2010-02-25 14:05:17) [GET]
+  Parameters: {"action"=>"index", "controller"=>"projects"}
+  [4;36;1mRight Load (0.1ms)[0m   [0;1mSELECT * FROM `rights` [0m
+Redirected to http://localhost:3002/login
+Filter chain halted as [:check_user_logged] rendered_or_redirected.
+Completed in 73ms (DB: 0) | 302 Found [http://localhost/projects]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-02-25 14:05:17) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;35;1mRight Load (0.1ms)[0m   [0mSELECT * FROM `rights` [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Rendered layouts/_flash_alert (16.7ms)
+Rendered layouts/_login_footer (1.0ms)
+Completed in 40ms (View: 28, DB: 0) | 200 OK [http://localhost/login]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProjectsController#index (for 127.0.0.1 at 2010-02-25 14:05:24) [GET]
+  Parameters: {"action"=>"index", "controller"=>"projects"}
+  [4;36;1mRight Load (0.1ms)[0m   [0;1mSELECT * FROM `rights` [0m
+Redirected to http://localhost:3002/login
+Filter chain halted as [:check_user_logged] rendered_or_redirected.
+Completed in 10ms (DB: 0) | 302 Found [http://localhost/projects]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-02-25 14:05:24) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;35;1mRight Load (0.1ms)[0m   [0mSELECT * FROM `rights` [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Rendered layouts/_flash_alert (0.1ms)
+Rendered layouts/_login_footer (1.0ms)
+Completed in 19ms (View: 8, DB: 0) | 200 OK [http://localhost/login]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-25 14:05:30) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/prototype.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-25 14:05:30) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProjectsController#index (for 127.0.0.1 at 2010-02-25 14:05:35) [GET]
+  Parameters: {"action"=>"index", "controller"=>"projects"}
+  [4;36;1mRight Load (0.1ms)[0m   [0;1mSELECT * FROM `rights` [0m
+Redirected to http://localhost:3002/login
+Filter chain halted as [:check_user_logged] rendered_or_redirected.
+Completed in 10ms (DB: 0) | 302 Found [http://localhost/projects]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-02-25 14:05:35) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;35;1mRight Load (0.1ms)[0m   [0mSELECT * FROM `rights` [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Rendered layouts/_flash_alert (0.1ms)
+Rendered layouts/_login_footer (1.0ms)
+Completed in 21ms (View: 8, DB: 0) | 200 OK [http://localhost/login]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-02-25 15:03:09) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;36;1mRight Load (0.1ms)[0m   [0;1mSELECT * FROM `rights` [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Rendered layouts/_login_footer (0.9ms)
+Completed in 19ms (View: 7, DB: 0) | 200 OK [http://localhost/login]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-25 15:03:09) [GET]
+
+ActionController::RoutingError (No route matches "/images/ibm-logo-mini.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-02-25 15:06:22) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;35;1mRight Load (0.1ms)[0m   [0mSELECT * FROM `rights` [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Rendered layouts/_login_footer (1.6ms)
+Completed in 27ms (View: 15, DB: 0) | 200 OK [http://localhost/login]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-25 15:06:23) [GET]
+
+ActionController::RoutingError (No route matches "/images/logo-mini.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-02-25 15:06:48) [GET]
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;36;1mRight Load (0.1ms)[0m   [0;1mSELECT * FROM `rights` [0m
+Rendering template within layouts/login
+Rendering sessions/new
+Rendered layouts/_login_footer (1.0ms)
+Completed in 24ms (View: 12, DB: 0) | 200 OK [http://localhost/login]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-25 15:06:48) [GET]
+
+ActionController::RoutingError (No route matches "/images/logo-mini.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (23.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (224.3ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (303.2ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (128.4ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255) NOT NULL, `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateLogs (20100225131233)
+  [4;35;1mSQL (0.0ms)[0m   [0mMysql::Error: Can't create table 'ihouse_development.logs' (errno: 150): CREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11) NOT NULL, `user_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Device', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL, FOREIGN KEY (`project_id`) REFERENCES `projects`(id) ON DELETE CASCADE, FOREIGN KEY (`user_id`) REFERENCES `users`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (165.0ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (289.8ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (140.8ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255) NOT NULL, `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (74.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateLogs (20100225131233)
+  [4;35;1mSQL (0.0ms)[0m   [0mMysql::Error: Can't create table 'ihouse_development.logs' (errno: 150): CREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Action', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (114.2ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (244.0ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (145.1ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255) NOT NULL, `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (75.7ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateHouses (20100302181245)
+  [4;35;1mSQL (148.1ms)[0m   [0mCREATE TABLE `houses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (74.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302181245')[0m
+Migrating to CreateDevices (20100302185850)
+  [4;35;1mSQL (114.8ms)[0m   [0mCREATE TABLE `devices` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `code` int(11) NOT NULL, `custom_name` varchar(255), `query_code` int(11) NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.7ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302185850')[0m
+Migrating to CreateActions (20100302191143)
+  [4;35;1mSQL (131.0ms)[0m   [0mCREATE TABLE `actions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `code` int(11) NOT NULL, `type` int(11) NOT NULL, `range_down` int(11), `range_up` int(11), `custom_name` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302191143')[0m
+Migrating to CreateLogs (20100303173928)
+  [4;35;1mSQL (122.7ms)[0m   [0mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Action', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303173928')[0m
+Migrating to CreateVoiceCommands (20100303174057)
+  [4;35;1mSQL (131.6ms)[0m   [0mCREATE TABLE `voice_commands` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `speak` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (50.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303174057')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (44.7ms)[0m   [0;1mSHOW FIELDS FROM `actions`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `actions`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `actions`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `devices`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `devices`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `devices`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `houses`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `houses`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `houses`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `logs`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `logs`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `logs`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `voice_commands`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `voice_commands`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `voice_commands`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (34.6ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'actions'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `actions`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'devices'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `devices`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'houses'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `houses`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'logs'
+ [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW CREATE TABLE `logs`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'schema_migrations'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `schema_migrations`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'users'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `users`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'voice_commands'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `voice_commands`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Create (0.5ms)[0m   [0;1mINSERT INTO `users` (`name`, `username`, `locale`, `time_zone`, `password`, `email`, `active`, `style`) VALUES('Guilherme', 'guimello', 'en', 'Brasilia', '666', 'guimello@br.ibm.com', 1, 'blue')[0m
+  [4;35;1mSQL (98.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mUser Load (1.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`username` = 'guimello') LIMIT 1[0m
+  [4;35;1mHouse Load (0.0ms)[0m   [0mMysql::Error: Unknown column 'houses.user_id' in 'where clause': SELECT * FROM `houses` WHERE (`houses`.user_id = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (126.8ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (252.4ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (164.9ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255) NOT NULL, `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (74.8ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateHouses (20100302181245)
+  [4;35;1mSQL (182.2ms)[0m   [0mCREATE TABLE `houses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (74.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302181245')[0m
+Migrating to CreateDevices (20100302185850)
+  [4;35;1mSQL (155.8ms)[0m   [0mCREATE TABLE `devices` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `code` int(11) NOT NULL, `room` varchar(255) NOT NULL, `custom_name` varchar(255), `query_code` int(11) NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302185850')[0m
+Migrating to CreateActions (20100302191143)
+  [4;35;1mSQL (0.0ms)[0m   [0mMysql::Error: Can't create table 'ihouse_development.actions' (errno: 150): CREATE TABLE `actions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `device_id` int(11) NOT NULL, `voice_command_id` int(11), `code` int(11) NOT NULL, `type` int(11) NOT NULL, `range_down` int(11), `range_up` int(11), `custom_name` varchar(255), FOREIGN KEY (`device_id`) REFERENCES `devices`(id) ON DELETE CASCADE, FOREIGN KEY (`voice_command_id`) REFERENCES `voice_commands`(id)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (146.0ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (253.0ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (110.2ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255) NOT NULL, `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateHouses (20100302181245)
+  [4;35;1mSQL (131.0ms)[0m   [0mCREATE TABLE `houses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (52.8ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302181245')[0m
+Migrating to CreateDevices (20100302185850)
+  [4;35;1mSQL (144.9ms)[0m   [0mCREATE TABLE `devices` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `code` int(11) NOT NULL, `room` varchar(255) NOT NULL, `custom_name` varchar(255), `query_code` int(11) NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302185850')[0m
+Migrating to CreateActions (20100302191143)
+  [4;35;1mSQL (0.0ms)[0m   [0mMysql::Error: Can't create table 'ihouse_development.actions' (errno: 150): CREATE TABLE `actions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `device_id` int(11) NOT NULL, `voice_command_id` int(11), `code` int(11) NOT NULL, `type` int(11) NOT NULL, `range_down` int(11), `range_up` int(11), `custom_name` varchar(255), FOREIGN KEY (`device_id`) REFERENCES `devices`(id) ON DELETE CASCADE, FOREIGN KEY (`voice_command_id`) REFERENCES `voice_commands`(id)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (124.1ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (252.4ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (150.9ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255) NOT NULL, `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (88.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateHouses (20100302181245)
+  [4;35;1mSQL (201.7ms)[0m   [0mCREATE TABLE `houses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (66.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302181245')[0m
+Migrating to CreateDevices (20100302185850)
+  [4;35;1mSQL (180.7ms)[0m   [0mCREATE TABLE `devices` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `code` int(11) NOT NULL, `room` varchar(255) NOT NULL, `custom_name` varchar(255), `query_code` int(11) NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (74.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302185850')[0m
+Migrating to CreateLogs (20100303173928)
+  [4;35;1mSQL (155.4ms)[0m   [0mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Action', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (74.8ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303173928')[0m
+Migrating to CreateVoiceCommands (20100303174057)
+  [4;35;1mSQL (168.2ms)[0m   [0mCREATE TABLE `voice_commands` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `speak` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (70.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303174057')[0m
+Migrating to CreateActions (20100303181442)
+  [4;35;1mSQL (213.9ms)[0m   [0mCREATE TABLE `actions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `device_id` int(11) NOT NULL, `voice_command_id` int(11), `code` int(11) NOT NULL, `type` int(11) NOT NULL, `range_down` int(11), `range_up` int(11), `custom_name` varchar(255), FOREIGN KEY (`device_id`) REFERENCES `devices`(id) ON DELETE CASCADE, FOREIGN KEY (`voice_command_id`) REFERENCES `voice_commands`(id)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (64.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303181442')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (18.7ms)[0m   [0;1mSHOW FIELDS FROM `actions`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `actions`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `actions`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `devices`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `devices`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `devices`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `houses`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `houses`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `houses`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `logs`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `logs`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `logs`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `voice_commands`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `voice_commands`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `voice_commands`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'actions'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `actions`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'devices'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `devices`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'houses'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `houses`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'logs'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `logs`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'schema_migrations'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `schema_migrations`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'users'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `users`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'voice_commands'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `voice_commands`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (112.2ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (236.5ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (133.5ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255) NOT NULL, `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.7ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateHouses (20100302181245)
+  [4;35;1mSQL (164.4ms)[0m   [0mCREATE TABLE `houses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (49.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302181245')[0m
+Migrating to CreateDevices (20100302185850)
+  [4;35;1mSQL (156.3ms)[0m   [0mCREATE TABLE `devices` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `code` int(11) NOT NULL, `room` varchar(255) NOT NULL, `custom_name` varchar(255), `query_code` int(11) NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302185850')[0m
+Migrating to CreateLogs (20100303173928)
+  [4;35;1mSQL (172.4ms)[0m   [0mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Action', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303173928')[0m
+Migrating to CreateVoiceCommands (20100303174057)
+  [4;35;1mSQL (165.2ms)[0m   [0mCREATE TABLE `voice_commands` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `speak` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303174057')[0m
+Migrating to CreateActions (20100303181442)
+  [4;35;1mSQL (189.1ms)[0m   [0mCREATE TABLE `actions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `device_id` int(11) NOT NULL, `voice_command_id` int(11), `code` int(11) NOT NULL, `type` int(11) NOT NULL, `range_down` int(11), `range_up` int(11), `custom_name` varchar(255), FOREIGN KEY (`device_id`) REFERENCES `devices`(id) ON DELETE CASCADE, FOREIGN KEY (`voice_command_id`) REFERENCES `voice_commands`(id) ON DELETE SET NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (49.8ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303181442')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `actions`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `actions`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `actions`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `devices`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `devices`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `devices`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `houses`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `houses`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `houses`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `logs`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `logs`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `logs`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `voice_commands`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `voice_commands`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `voice_commands`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'actions'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `actions`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'devices'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `devices`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'houses'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `houses`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'logs'
+ [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW CREATE TABLE `logs`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'schema_migrations'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `schema_migrations`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'users'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `users`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'voice_commands'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `voice_commands`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (114.3ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (315.0ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (159.0ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255), `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (75.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateHouses (20100302181245)
+  [4;35;1mSQL (130.3ms)[0m   [0mCREATE TABLE `houses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302181245')[0m
+Migrating to CreateDevices (20100302185850)
+  [4;35;1mSQL (156.1ms)[0m   [0mCREATE TABLE `devices` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `code` int(11) NOT NULL, `room` varchar(255) NOT NULL, `custom_name` varchar(255), `query_code` int(11) NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302185850')[0m
+Migrating to CreateLogs (20100303173928)
+  [4;35;1mSQL (155.7ms)[0m   [0mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Action', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (47.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303173928')[0m
+Migrating to CreateVoiceCommands (20100303174057)
+  [4;35;1mSQL (211.7ms)[0m   [0mCREATE TABLE `voice_commands` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `speak` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (44.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303174057')[0m
+Migrating to CreateActions (20100303181442)
+  [4;35;1mSQL (212.5ms)[0m   [0mCREATE TABLE `actions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `device_id` int(11) NOT NULL, `voice_command_id` int(11), `code` int(11) NOT NULL, `type` int(11) NOT NULL, `range_down` int(11), `range_up` int(11), `custom_name` varchar(255), FOREIGN KEY (`device_id`) REFERENCES `devices`(id) ON DELETE CASCADE, FOREIGN KEY (`voice_command_id`) REFERENCES `voice_commands`(id) ON DELETE SET NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (50.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303181442')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `actions`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `actions`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `actions`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `devices`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `devices`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `devices`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `houses`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `houses`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `houses`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `logs`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `logs`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `logs`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `voice_commands`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `voice_commands`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `voice_commands`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'actions'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `actions`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'devices'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `devices`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'houses'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `houses`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'logs'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `logs`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'schema_migrations'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `schema_migrations`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'users'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `users`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'voice_commands'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `voice_commands`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (122.3ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (244.9ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (174.5ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255), `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (74.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateHouses (20100302181245)
+  [4;35;1mSQL (172.7ms)[0m   [0mCREATE TABLE `houses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302181245')[0m
+Migrating to CreateDevices (20100302185850)
+  [4;35;1mSQL (181.0ms)[0m   [0mCREATE TABLE `devices` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `code` int(11) NOT NULL, `room` varchar(255) NOT NULL, `custom_name` varchar(255), `query_code` int(11) NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302185850')[0m
+Migrating to CreateLogs (20100303173928)
+  [4;35;1mSQL (131.2ms)[0m   [0mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Action', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303173928')[0m
+Migrating to CreateVoiceCommands (20100303174057)
+  [4;35;1mSQL (130.4ms)[0m   [0mCREATE TABLE `voice_commands` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `speak` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (49.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303174057')[0m
+Migrating to CreateActions (20100303181442)
+  [4;35;1mSQL (188.4ms)[0m   [0mCREATE TABLE `actions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `device_id` int(11) NOT NULL, `voice_command_id` int(11), `code` int(11) NOT NULL, `type` int(11) NOT NULL, `range_down` int(11), `range_up` int(11), `custom_name` varchar(255), FOREIGN KEY (`device_id`) REFERENCES `devices`(id) ON DELETE CASCADE, FOREIGN KEY (`voice_command_id`) REFERENCES `voice_commands`(id) ON DELETE SET NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303181442')[0m
+Migrating to InsertDemo (20100303182641)
+  [4;35;1mUser Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (3.5ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Create (1.8ms)[0m   [0mINSERT INTO `users` (`name`, `username`, `locale`, `time_zone`, `password`, `email`, `active`, `style`) VALUES(NULL, 'guimello', 'en', 'Brasilia', '666', 'guilhermesilvamello@gmail.com', 1, 'blue')[0m
+  [4;36;1mSQL (57.3ms)[0m   [0;1mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (122.8ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (303.9ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (164.6ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255), `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (66.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateHouses (20100302181245)
+  [4;35;1mSQL (155.3ms)[0m   [0mCREATE TABLE `houses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (49.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302181245')[0m
+Migrating to CreateDevices (20100302185850)
+  [4;35;1mSQL (156.4ms)[0m   [0mCREATE TABLE `devices` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `code` int(11) NOT NULL, `room` varchar(255) NOT NULL, `custom_name` varchar(255), `query_code` int(11) NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302185850')[0m
+Migrating to CreateLogs (20100303173928)
+  [4;35;1mSQL (164.2ms)[0m   [0mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Action', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303173928')[0m
+Migrating to CreateVoiceCommands (20100303174057)
+  [4;35;1mSQL (158.4ms)[0m   [0mCREATE TABLE `voice_commands` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `speak` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303174057')[0m
+Migrating to CreateActions (20100303181442)
+  [4;35;1mSQL (197.2ms)[0m   [0mCREATE TABLE `actions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `device_id` int(11) NOT NULL, `voice_command_id` int(11), `code` int(11) NOT NULL, `type` int(11) NOT NULL, `range_down` int(11), `range_up` int(11), `custom_name` varchar(255), FOREIGN KEY (`device_id`) REFERENCES `devices`(id) ON DELETE CASCADE, FOREIGN KEY (`voice_command_id`) REFERENCES `voice_commands`(id) ON DELETE SET NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303181442')[0m
+Migrating to InsertDemo (20100303182641)
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Create (3.6ms)[0m   [0mINSERT INTO `users` (`name`, `username`, `locale`, `time_zone`, `password`, `email`, `active`, `style`) VALUES(NULL, 'guimello', 'en', 'Brasilia', '666', 'guilhermesilvamello@gmail.com', 1, 'blue')[0m
+  [4;36;1mSQL (57.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mHouse Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `houses`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mHouse Create (0.2ms)[0m   [0mINSERT INTO `houses` (`name`, `created_at`, `updated_at`, `user_id`, `description`) VALUES('My house (Jundiaí)', '2010-03-03 18:31:17', '2010-03-03 18:31:17', 1, 'i live there tks')[0m
+  [4;36;1mSQL (48.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (48.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100303182641')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `actions`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `actions`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `actions`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `devices`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `devices`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `devices`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW FIELDS FROM `houses`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `houses`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `houses`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `logs`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `logs`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `logs`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `voice_commands`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `voice_commands`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `voice_commands`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'actions'
+ [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW CREATE TABLE `actions`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'devices'
+ [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW CREATE TABLE `devices`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'houses'
+ [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW CREATE TABLE `houses`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'logs'
+ [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW CREATE TABLE `logs`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'schema_migrations'
+ [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW CREATE TABLE `schema_migrations`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'users'
+ [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW CREATE TABLE `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'voice_commands'
+ [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW CREATE TABLE `voice_commands`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (129.6ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (219.4ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (141.7ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255), `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (50.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateHouses (20100302181245)
+  [4;35;1mSQL (152.5ms)[0m   [0mCREATE TABLE `houses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302181245')[0m
+Migrating to CreateDevices (20100302185850)
+  [4;35;1mSQL (156.1ms)[0m   [0mCREATE TABLE `devices` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `code` varchar(255) NOT NULL, `room` varchar(255) NOT NULL, `custom_name` varchar(255), `query_code` varchar(255) NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302185850')[0m
+Migrating to CreateLogs (20100303173928)
+  [4;35;1mSQL (173.2ms)[0m   [0mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Action', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (47.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303173928')[0m
+Migrating to CreateVoiceCommands (20100303174057)
+  [4;35;1mSQL (177.2ms)[0m   [0mCREATE TABLE `voice_commands` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `speak` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303174057')[0m
+Migrating to CreateActions (20100303181442)
+  [4;35;1mSQL (197.3ms)[0m   [0mCREATE TABLE `actions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `device_id` int(11) NOT NULL, `voice_command_id` int(11), `code` varchar(255) NOT NULL, `type` varchar(255) NOT NULL, `range_down` int(11), `range_up` int(11), `custom_name` varchar(255), FOREIGN KEY (`device_id`) REFERENCES `devices`(id) ON DELETE CASCADE, FOREIGN KEY (`voice_command_id`) REFERENCES `voice_commands`(id) ON DELETE SET NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303181442')[0m
+Migrating to InsertDemo (20100303182641)
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Create (2.8ms)[0m   [0mINSERT INTO `users` (`name`, `username`, `locale`, `time_zone`, `password`, `email`, `active`, `style`) VALUES(NULL, 'guimello', 'en', 'Brasilia', '666', 'guilhermesilvamello@gmail.com', 1, 'blue')[0m
+  [4;36;1mSQL (56.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mHouse Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `houses`[0m
+  [4;36;1mDevice Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `devices`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (115.2ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (219.7ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (157.2ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255), `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateHouses (20100302181245)
+  [4;35;1mSQL (164.5ms)[0m   [0mCREATE TABLE `houses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (49.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302181245')[0m
+Migrating to CreateDevices (20100302185850)
+  [4;35;1mSQL (180.8ms)[0m   [0mCREATE TABLE `devices` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `code` varchar(255) NOT NULL, `room` varchar(255) NOT NULL, `custom_name` varchar(255), `query_code` varchar(255) NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302185850')[0m
+Migrating to CreateLogs (20100303173928)
+  [4;35;1mSQL (156.2ms)[0m   [0mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Action', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (42.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303173928')[0m
+Migrating to CreateVoiceCommands (20100303174057)
+  [4;35;1mSQL (149.3ms)[0m   [0mCREATE TABLE `voice_commands` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `speak` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303174057')[0m
+Migrating to CreateActions (20100303181442)
+  [4;35;1mSQL (197.7ms)[0m   [0mCREATE TABLE `actions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `device_id` int(11) NOT NULL, `voice_command_id` int(11), `code` varchar(255) NOT NULL, `type` varchar(255) NOT NULL, `range_down` int(11), `range_up` int(11), `custom_name` varchar(255), FOREIGN KEY (`device_id`) REFERENCES `devices`(id) ON DELETE CASCADE, FOREIGN KEY (`voice_command_id`) REFERENCES `voice_commands`(id) ON DELETE SET NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303181442')[0m
+Migrating to InsertDemo (20100303182641)
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Create (1.6ms)[0m   [0mINSERT INTO `users` (`name`, `username`, `locale`, `time_zone`, `password`, `email`, `active`, `style`) VALUES(NULL, 'guimello', 'en', 'Brasilia', '666', 'guilhermesilvamello@gmail.com', 1, 'blue')[0m
+  [4;36;1mSQL (76.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mHouse Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `houses`[0m
+  [4;36;1mDevice Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `devices`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (95.0ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (219.7ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (139.4ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255), `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (58.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateHouses (20100302181245)
+  [4;35;1mSQL (164.4ms)[0m   [0mCREATE TABLE `houses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (79.7ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302181245')[0m
+Migrating to CreateDevices (20100302185850)
+  [4;35;1mSQL (184.4ms)[0m   [0mCREATE TABLE `devices` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `code` varchar(255) NOT NULL, `room` varchar(255) NOT NULL, `custom_name` varchar(255), `query_code` varchar(255) NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302185850')[0m
+Migrating to CreateLogs (20100303173928)
+  [4;35;1mSQL (155.7ms)[0m   [0mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Action', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303173928')[0m
+Migrating to CreateVoiceCommands (20100303174057)
+  [4;35;1mSQL (186.4ms)[0m   [0mCREATE TABLE `voice_commands` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `speak` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303174057')[0m
+Migrating to CreateActions (20100303181442)
+  [4;35;1mSQL (180.6ms)[0m   [0mCREATE TABLE `actions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `device_id` int(11) NOT NULL, `voice_command_id` int(11), `code` varchar(255) NOT NULL, `type` varchar(255) NOT NULL, `range_down` int(11), `range_up` int(11), `custom_name` varchar(255), FOREIGN KEY (`device_id`) REFERENCES `devices`(id) ON DELETE CASCADE, FOREIGN KEY (`voice_command_id`) REFERENCES `voice_commands`(id) ON DELETE SET NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (49.8ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303181442')[0m
+Migrating to InsertDemo (20100303182641)
+  [4;35;1mUser Columns (7.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Create (0.3ms)[0m   [0mINSERT INTO `users` (`name`, `username`, `locale`, `time_zone`, `password`, `email`, `active`, `style`) VALUES(NULL, 'guimello', 'en', 'Brasilia', '666', 'guilhermesilvamello@gmail.com', 1, 'blue')[0m
+  [4;36;1mSQL (37.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mHouse Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `houses`[0m
+  [4;36;1mDevice Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `devices`[0m
+  [4;35;1mVoiceCommand Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `voice_commands`[0m
+  [4;36;1mAction Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `actions`[0m
+WARNING: Can't mass-assign these protected attributes: type
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (127.6ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (318.6ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (115.3ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255), `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (66.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateHouses (20100302181245)
+  [4;35;1mSQL (163.6ms)[0m   [0mCREATE TABLE `houses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (66.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302181245')[0m
+Migrating to CreateDevices (20100302185850)
+  [4;35;1mSQL (201.0ms)[0m   [0mCREATE TABLE `devices` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `code` varchar(255) NOT NULL, `room` varchar(255) NOT NULL, `custom_name` varchar(255), `query_code` varchar(255) NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (72.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302185850')[0m
+Migrating to CreateLogs (20100303173928)
+  [4;35;1mSQL (163.5ms)[0m   [0mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Action', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (75.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303173928')[0m
+Migrating to CreateVoiceCommands (20100303174057)
+  [4;35;1mSQL (158.6ms)[0m   [0mCREATE TABLE `voice_commands` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `speak` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (66.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303174057')[0m
+Migrating to CreateActions (20100303181442)
+  [4;35;1mSQL (222.8ms)[0m   [0mCREATE TABLE `actions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `device_id` int(11) NOT NULL, `voice_command_id` int(11), `code` varchar(255) NOT NULL, `type` varchar(255) NOT NULL, `range_down` int(11), `range_up` int(11), `custom_name` varchar(255), FOREIGN KEY (`device_id`) REFERENCES `devices`(id) ON DELETE CASCADE, FOREIGN KEY (`voice_command_id`) REFERENCES `voice_commands`(id) ON DELETE SET NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (66.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303181442')[0m
+Migrating to InsertDemo (20100303182641)
+  [4;35;1mUser Columns (3.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Create (0.4ms)[0m   [0mINSERT INTO `users` (`name`, `username`, `locale`, `time_zone`, `password`, `email`, `active`, `style`) VALUES(NULL, 'guimello', 'en', 'Brasilia', '666', 'guilhermesilvamello@gmail.com', 1, 'blue')[0m
+  [4;36;1mSQL (83.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mHouse Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `houses`[0m
+  [4;36;1mDevice Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `devices`[0m
+  [4;35;1mVoiceCommand Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `voice_commands`[0m
+  [4;36;1mAction Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `actions`[0m
+WARNING: Can't mass-assign these protected attributes: type
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mHouse Create (0.2ms)[0m   [0;1mINSERT INTO `houses` (`name`, `created_at`, `updated_at`, `user_id`, `description`) VALUES('My house (Jundiaí)', '2010-03-03 18:41:18', '2010-03-03 18:41:18', 1, 'i live there tks')[0m
+  [4;35;1mDevice Create (0.1ms)[0m   [0mINSERT INTO `devices` (`created_at`, `code`, `custom_name`, `updated_at`, `house_id`, `query_code`, `room`) VALUES('2010-03-03 18:41:18', '001', NULL, '2010-03-03 18:41:18', 1, '606', 'my bedroom')[0m
+  [4;36;1mVoiceCommand Create (0.6ms)[0m   [0;1mINSERT INTO `voice_commands` (`speak`) VALUES('turn the lights on plz')[0m
+  [4;35;1mAction Create (0.0ms)[0m   [0mMysql::Error: Column 'type' cannot be null: INSERT INTO `actions` (`code`, `custom_name`, `device_id`, `type`, `range_down`, `range_up`, `voice_command_id`) VALUES('555', NULL, 1, NULL, NULL, NULL, 1)[0m
+  [4;36;1mSQL (59.2ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (147.5ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (285.5ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (123.0ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255), `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (66.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateHouses (20100302181245)
+  [4;35;1mSQL (155.8ms)[0m   [0mCREATE TABLE `houses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (66.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302181245')[0m
+Migrating to CreateDevices (20100302185850)
+  [4;35;1mSQL (182.2ms)[0m   [0mCREATE TABLE `devices` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `code` varchar(255) NOT NULL, `room` varchar(255) NOT NULL, `custom_name` varchar(255), `query_code` varchar(255) NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (88.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302185850')[0m
+Migrating to CreateLogs (20100303173928)
+  [4;35;1mSQL (166.2ms)[0m   [0mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Action', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (80.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303173928')[0m
+Migrating to CreateVoiceCommands (20100303174057)
+  [4;35;1mSQL (155.2ms)[0m   [0mCREATE TABLE `voice_commands` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `speak` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (49.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303174057')[0m
+Migrating to CreateActions (20100303181442)
+  [4;35;1mSQL (180.7ms)[0m   [0mCREATE TABLE `actions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `device_id` int(11) NOT NULL, `voice_command_id` int(11), `code` varchar(255) NOT NULL, `type` varchar(255) NOT NULL, `range_down` int(11), `range_up` int(11), `custom_name` varchar(255), FOREIGN KEY (`device_id`) REFERENCES `devices`(id) ON DELETE CASCADE, FOREIGN KEY (`voice_command_id`) REFERENCES `voice_commands`(id) ON DELETE SET NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (42.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303181442')[0m
+Migrating to InsertDemo (20100303182641)
+  [4;35;1mUser Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Create (0.2ms)[0m   [0mINSERT INTO `users` (`name`, `username`, `locale`, `time_zone`, `password`, `email`, `active`, `style`) VALUES(NULL, 'guimello', 'en', 'Brasilia', '666', 'guilhermesilvamello@gmail.com', 1, 'blue')[0m
+  [4;36;1mSQL (52.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mHouse Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `houses`[0m
+  [4;36;1mDevice Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `devices`[0m
+  [4;35;1mVoiceCommand Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `voice_commands`[0m
+  [4;36;1mAction Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `actions`[0m
+WARNING: Can't mass-assign these protected attributes: type
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mHouse Create (0.2ms)[0m   [0;1mINSERT INTO `houses` (`name`, `created_at`, `updated_at`, `user_id`, `description`) VALUES('My house (Jundiaí)', '2010-03-03 18:42:12', '2010-03-03 18:42:12', 1, 'i live there tks')[0m
+  [4;35;1mDevice Create (0.7ms)[0m   [0mINSERT INTO `devices` (`created_at`, `code`, `custom_name`, `updated_at`, `house_id`, `query_code`, `room`) VALUES('2010-03-03 18:42:12', '001', NULL, '2010-03-03 18:42:12', 1, '606', 'my bedroom')[0m
+  [4;36;1mVoiceCommand Create (0.1ms)[0m   [0;1mINSERT INTO `voice_commands` (`speak`) VALUES('turn the lights on plz')[0m
+  [4;35;1mAction Create (0.0ms)[0m   [0mMysql::Error: Column 'type' cannot be null: INSERT INTO `actions` (`code`, `custom_name`, `device_id`, `type`, `range_down`, `range_up`, `voice_command_id`) VALUES('555', NULL, 1, NULL, NULL, NULL, 1)[0m
+  [4;36;1mSQL (45.1ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (149.1ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (264.8ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (172.8ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255), `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (66.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateHouses (20100302181245)
+  [4;35;1mSQL (164.2ms)[0m   [0mCREATE TABLE `houses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (49.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302181245')[0m
+Migrating to CreateDevices (20100302185850)
+  [4;35;1mSQL (164.5ms)[0m   [0mCREATE TABLE `devices` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `code` varchar(255) NOT NULL, `room` varchar(255) NOT NULL, `custom_name` varchar(255), `query_code` varchar(255) NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (49.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302185850')[0m
+Migrating to CreateLogs (20100303173928)
+  [4;35;1mSQL (131.1ms)[0m   [0mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Action', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303173928')[0m
+Migrating to CreateVoiceCommands (20100303174057)
+  [4;35;1mSQL (149.8ms)[0m   [0mCREATE TABLE `voice_commands` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `speak` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303174057')[0m
+Migrating to CreateActions (20100303181442)
+  [4;35;1mSQL (198.4ms)[0m   [0mCREATE TABLE `actions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `device_id` int(11) NOT NULL, `voice_command_id` int(11), `code` varchar(255) NOT NULL, `action_type` varchar(255) NOT NULL, `range_down` int(11), `range_up` int(11), `custom_name` varchar(255), FOREIGN KEY (`device_id`) REFERENCES `devices`(id) ON DELETE CASCADE, FOREIGN KEY (`voice_command_id`) REFERENCES `voice_commands`(id) ON DELETE SET NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303181442')[0m
+Migrating to InsertDemo (20100303182641)
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Create (0.2ms)[0m   [0mINSERT INTO `users` (`name`, `username`, `locale`, `time_zone`, `password`, `email`, `active`, `style`) VALUES(NULL, 'guimello', 'en', 'Brasilia', '666', 'guilhermesilvamello@gmail.com', 1, 'blue')[0m
+  [4;36;1mSQL (60.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mHouse Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `houses`[0m
+  [4;36;1mDevice Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `devices`[0m
+  [4;35;1mVoiceCommand Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `voice_commands`[0m
+  [4;36;1mAction Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `actions`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (3.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mHouse Create (0.5ms)[0m   [0;1mINSERT INTO `houses` (`name`, `created_at`, `updated_at`, `user_id`, `description`) VALUES('My house (Jundiaí)', '2010-03-03 18:43:41', '2010-03-03 18:43:41', 1, 'i live there tks')[0m
+  [4;35;1mDevice Create (0.1ms)[0m   [0mINSERT INTO `devices` (`created_at`, `code`, `custom_name`, `updated_at`, `house_id`, `query_code`, `room`) VALUES('2010-03-03 18:43:41', '001', NULL, '2010-03-03 18:43:41', 1, '606', 'my bedroom')[0m
+  [4;36;1mVoiceCommand Create (0.3ms)[0m   [0;1mINSERT INTO `voice_commands` (`speak`) VALUES('turn the lights on plz')[0m
+  [4;35;1mAction Create (0.4ms)[0m   [0mINSERT INTO `actions` (`code`, `custom_name`, `device_id`, `range_down`, `action_type`, `range_up`, `voice_command_id`) VALUES('555', NULL, 1, NULL, '333', NULL, 1)[0m
+  [4;36;1mSQL (56.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (48.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100303182641')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `actions`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `actions`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `actions`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `devices`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `devices`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `devices`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `houses`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `houses`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `houses`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `logs`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `logs`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `logs`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `voice_commands`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `voice_commands`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `voice_commands`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'actions'
+ [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW CREATE TABLE `actions`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'devices'
+ [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW CREATE TABLE `devices`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'houses'
+ [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW CREATE TABLE `houses`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'logs'
+ [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW CREATE TABLE `logs`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'schema_migrations'
+ [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW CREATE TABLE `schema_migrations`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'users'
+ [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW CREATE TABLE `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'voice_commands'
+ [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW CREATE TABLE `voice_commands`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (8.9ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (8.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mHouse Load (1.5ms)[0m   [0;1mSELECT * FROM `houses` WHERE (`houses`.user_id = 1) [0m
+  [4;35;1mHouse Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `houses`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mHouse Load (0.1ms)[0m   [0;1mSELECT * FROM `houses` WHERE (`houses`.user_id = 1) [0m
+  [4;35;1mHouse Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `houses`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mDevice Load (0.4ms)[0m   [0;1mSELECT `devices`.* FROM `devices` INNER JOIN `houses` ON `devices`.house_id = `houses`.id WHERE ((`houses`.user_id = 1)) [0m
+  [4;35;1mDevice Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `devices`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mDevice Load (14.7ms)[0m   [0;1mSELECT `devices`.* FROM `devices` INNER JOIN `houses` ON `devices`.house_id = `houses`.id WHERE ((`houses`.user_id = 1)) [0m
+  [4;35;1mDevice Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `devices`[0m
+  [4;36;1mAction Load (1.3ms)[0m   [0;1mSELECT * FROM `actions` WHERE (`actions`.device_id = 1) [0m
+  [4;35;1mAction Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `actions`[0m
+  [4;36;1mVoiceCommand Load (0.4ms)[0m   [0;1mSELECT `voice_commands`.* FROM `voice_commands` INNER JOIN `actions` ON `voice_commands`.id = `actions`.voice_command_id WHERE ((`actions`.device_id = 1)) [0m
+  [4;35;1mVoiceCommand Columns (14.7ms)[0m   [0mSHOW FIELDS FROM `voice_commands`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Columns (18.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mDevice Load (5.3ms)[0m   [0mSELECT `devices`.* FROM `devices` INNER JOIN `houses` ON `devices`.house_id = `houses`.id WHERE ((`houses`.user_id = 1)) [0m
+  [4;36;1mDevice Columns (7.0ms)[0m   [0;1mSHOW FIELDS FROM `devices`[0m
+  [4;35;1mSchedule Load (0.0ms)[0m   [0mMysql::Error: Table 'ihouse_development.schedules' doesn't exist: SELECT `schedules`.* FROM `schedules` INNER JOIN `actions` ON `schedules`.action_id = `actions`.id WHERE ((`actions`.device_id = 1)) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (14.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mDevice Load (0.3ms)[0m   [0;1mSELECT `devices`.* FROM `devices` INNER JOIN `houses` ON `devices`.house_id = `houses`.id WHERE ((`houses`.user_id = 1)) [0m
+  [4;35;1mDevice Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `devices`[0m
+  [4;36;1mSchedule Load (0.0ms)[0m   [0;1mMysql::Error: Table 'ihouse_development.schedules' doesn't exist: SELECT `schedules`.* FROM `schedules` INNER JOIN `actions` ON `schedules`.action_id = `actions`.id WHERE ((`actions`.device_id = 1)) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (120.3ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (302.6ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (181.4ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255), `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (66.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateHouses (20100302181245)
+  [4;35;1mSQL (197.8ms)[0m   [0mCREATE TABLE `houses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (66.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302181245')[0m
+Migrating to CreateDevices (20100302185850)
+  [4;35;1mSQL (206.2ms)[0m   [0mCREATE TABLE `devices` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `code` varchar(255) NOT NULL, `room` varchar(255) NOT NULL, `custom_name` varchar(255), `query_code` varchar(255) NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (100.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302185850')[0m
+Migrating to CreateLogs (20100303173928)
+  [4;35;1mSQL (189.0ms)[0m   [0mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Action', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (83.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303173928')[0m
+Migrating to CreateVoiceCommands (20100303174057)
+  [4;35;1mSQL (206.1ms)[0m   [0mCREATE TABLE `voice_commands` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `speak` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (60.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303174057')[0m
+Migrating to CreateActions (20100303181442)
+  [4;35;1mSQL (240.2ms)[0m   [0mCREATE TABLE `actions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `device_id` int(11) NOT NULL, `voice_command_id` int(11), `code` varchar(255) NOT NULL, `action_type` varchar(255) NOT NULL, `range_down` int(11), `range_up` int(11), `custom_name` varchar(255), FOREIGN KEY (`device_id`) REFERENCES `devices`(id) ON DELETE CASCADE, FOREIGN KEY (`voice_command_id`) REFERENCES `voice_commands`(id) ON DELETE SET NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (66.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303181442')[0m
+Migrating to InsertDemo (20100303182641)
+  [4;35;1mUser Columns (4.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Create (0.6ms)[0m   [0mINSERT INTO `users` (`name`, `username`, `locale`, `time_zone`, `password`, `email`, `active`, `style`) VALUES(NULL, 'guimello', 'en', 'Brasilia', '666', 'guilhermesilvamello@gmail.com', 1, 'blue')[0m
+  [4;36;1mSQL (73.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mHouse Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `houses`[0m
+  [4;36;1mDevice Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `devices`[0m
+  [4;35;1mVoiceCommand Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `voice_commands`[0m
+  [4;36;1mAction Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `actions`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mHouse Create (0.3ms)[0m   [0;1mINSERT INTO `houses` (`name`, `created_at`, `updated_at`, `user_id`, `description`) VALUES('My house (Jundiaí)', '2010-03-03 19:06:23', '2010-03-03 19:06:23', 1, 'i live there tks')[0m
+  [4;35;1mDevice Create (0.2ms)[0m   [0mINSERT INTO `devices` (`created_at`, `code`, `custom_name`, `updated_at`, `house_id`, `query_code`, `room`) VALUES('2010-03-03 19:06:23', '001', NULL, '2010-03-03 19:06:23', 1, '606', 'my bedroom')[0m
+  [4;36;1mVoiceCommand Create (0.1ms)[0m   [0;1mINSERT INTO `voice_commands` (`speak`) VALUES('turn the lights on plz')[0m
+  [4;35;1mAction Create (0.7ms)[0m   [0mINSERT INTO `actions` (`code`, `custom_name`, `device_id`, `range_down`, `action_type`, `range_up`, `voice_command_id`) VALUES('555', NULL, 1, NULL, '333', NULL, 1)[0m
+  [4;36;1mSQL (76.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (48.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100303182641')[0m
+Migrating to CreateSchedules (20100303185616)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (11.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (116.6ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (253.2ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (207.7ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255), `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (74.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateHouses (20100302181245)
+  [4;35;1mSQL (189.6ms)[0m   [0mCREATE TABLE `houses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (66.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302181245')[0m
+Migrating to CreateDevices (20100302185850)
+  [4;35;1mSQL (189.7ms)[0m   [0mCREATE TABLE `devices` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `code` varchar(255) NOT NULL, `room` varchar(255) NOT NULL, `custom_name` varchar(255), `query_code` varchar(255) NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302185850')[0m
+Migrating to CreateLogs (20100303173928)
+  [4;35;1mSQL (181.0ms)[0m   [0mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Action', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (46.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303173928')[0m
+Migrating to CreateVoiceCommands (20100303174057)
+  [4;35;1mSQL (171.7ms)[0m   [0mCREATE TABLE `voice_commands` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `speak` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303174057')[0m
+Migrating to CreateActions (20100303181442)
+  [4;35;1mSQL (214.1ms)[0m   [0mCREATE TABLE `actions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `device_id` int(11) NOT NULL, `voice_command_id` int(11), `code` varchar(255) NOT NULL, `action_type` varchar(255) NOT NULL, `range_down` int(11), `range_up` int(11), `custom_name` varchar(255), FOREIGN KEY (`device_id`) REFERENCES `devices`(id) ON DELETE CASCADE, FOREIGN KEY (`voice_command_id`) REFERENCES `voice_commands`(id) ON DELETE SET NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (49.8ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303181442')[0m
+Migrating to InsertDemo (20100303182641)
+  [4;35;1mUser Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Create (3.4ms)[0m   [0mINSERT INTO `users` (`name`, `username`, `locale`, `time_zone`, `password`, `email`, `active`, `style`) VALUES(NULL, 'guimello', 'en', 'Brasilia', '666', 'guilhermesilvamello@gmail.com', 1, 'blue')[0m
+  [4;36;1mSQL (47.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mHouse Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `houses`[0m
+  [4;36;1mDevice Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `devices`[0m
+  [4;35;1mVoiceCommand Columns (0.5ms)[0m   [0mSHOW FIELDS FROM `voice_commands`[0m
+  [4;36;1mAction Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `actions`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mHouse Create (0.6ms)[0m   [0;1mINSERT INTO `houses` (`name`, `created_at`, `updated_at`, `user_id`, `description`) VALUES('My house (Jundiaí)', '2010-03-03 19:06:43', '2010-03-03 19:06:43', 1, 'i live there tks')[0m
+  [4;35;1mDevice Create (0.2ms)[0m   [0mINSERT INTO `devices` (`created_at`, `code`, `custom_name`, `updated_at`, `house_id`, `query_code`, `room`) VALUES('2010-03-03 19:06:43', '001', NULL, '2010-03-03 19:06:43', 1, '606', 'my bedroom')[0m
+  [4;36;1mVoiceCommand Create (0.6ms)[0m   [0;1mINSERT INTO `voice_commands` (`speak`) VALUES('turn the lights on plz')[0m
+  [4;35;1mAction Create (0.1ms)[0m   [0mINSERT INTO `actions` (`code`, `custom_name`, `device_id`, `range_down`, `action_type`, `range_up`, `voice_command_id`) VALUES('555', NULL, 1, NULL, '333', NULL, 1)[0m
+  [4;36;1mSQL (44.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (40.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100303182641')[0m
+Migrating to CreateSchedules (20100303185616)
+  [4;36;1mSQL (131.3ms)[0m   [0;1mCREATE TABLE `schedules` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `action_id` int(11) NOT NULL, FOREIGN KEY (`action_id`) REFERENCES `actions`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;35;1mSQL (41.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100303185616')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `actions`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `actions`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `actions`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `devices`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `devices`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `devices`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `houses`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `houses`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `houses`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `logs`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `logs`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `logs`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `schedules`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `schedules`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `voice_commands`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `voice_commands`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `voice_commands`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'actions'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `actions`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'devices'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `devices`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'houses'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `houses`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'logs'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `logs`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'schedules'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `schedules`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'schema_migrations'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `schema_migrations`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'users'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `users`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'voice_commands'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `voice_commands`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUser Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mDevice Load (17.2ms)[0m   [0mSELECT `devices`.* FROM `devices` INNER JOIN `houses` ON `devices`.house_id = `houses`.id WHERE ((`houses`.user_id = 1)) [0m
+  [4;36;1mDevice Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `devices`[0m
+  [4;35;1mSchedule Load (0.4ms)[0m   [0mSELECT `schedules`.* FROM `schedules` INNER JOIN `actions` ON `schedules`.action_id = `actions`.id WHERE ((`actions`.device_id = 1)) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (131.7ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (278.5ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100225124849)
+  [4;35;1mSQL (191.3ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL, `name` varchar(255), `active` tinyint(1) DEFAULT 1 NOT NULL, `locale` varchar(255) DEFAULT 'en' NOT NULL, `time_zone` varchar(255) DEFAULT 'Brasilia' NOT NULL, `style` varchar(255) DEFAULT 'blue' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (66.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100225124849')[0m
+Migrating to CreateHouses (20100302181245)
+  [4;35;1mSQL (221.7ms)[0m   [0mCREATE TABLE `houses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `name` varchar(255) NOT NULL, `description` text, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (76.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302181245')[0m
+Migrating to CreateDevices (20100302185850)
+  [4;35;1mSQL (214.8ms)[0m   [0mCREATE TABLE `devices` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `code` varchar(255) NOT NULL, `room` varchar(255) NOT NULL, `custom_name` varchar(255), `query_code` varchar(255) NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (74.8ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100302185850')[0m
+Migrating to CreateLogs (20100303173928)
+  [4;35;1mSQL (189.0ms)[0m   [0mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `house_id` int(11) NOT NULL, `loggable_id` int(11), `loggable_type` varchar(255) DEFAULT 'Action', `action` varchar(255) NOT NULL, `created_at` datetime NOT NULL, FOREIGN KEY (`house_id`) REFERENCES `houses`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303173928')[0m
+Migrating to CreateVoiceCommands (20100303174057)
+  [4;35;1mSQL (176.3ms)[0m   [0mCREATE TABLE `voice_commands` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `speak` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (41.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303174057')[0m
+Migrating to CreateActions (20100303181442)
+  [4;35;1mSQL (239.4ms)[0m   [0mCREATE TABLE `actions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `device_id` int(11) NOT NULL, `voice_command_id` int(11), `code` varchar(255) NOT NULL, `action_type` varchar(255) NOT NULL, `range_down` int(11), `range_up` int(11), `custom_name` varchar(255), FOREIGN KEY (`device_id`) REFERENCES `devices`(id) ON DELETE CASCADE, FOREIGN KEY (`voice_command_id`) REFERENCES `voice_commands`(id) ON DELETE SET NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (47.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303181442')[0m
+Migrating to CreateSchedules (20100303185616)
+  [4;35;1mSQL (225.5ms)[0m   [0mCREATE TABLE `schedules` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `action_id` int(11) NOT NULL, FOREIGN KEY (`action_id`) REFERENCES `actions`(id) ON DELETE CASCADE) ENGINE=InnoDB[0m
+  [4;36;1mSQL (49.8ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100303185616')[0m
+Migrating to InsertDemo (20100303190927)
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Create (3.4ms)[0m   [0mINSERT INTO `users` (`name`, `username`, `locale`, `time_zone`, `password`, `email`, `active`, `style`) VALUES(NULL, 'guimello', 'en', 'Brasilia', '666', 'guilhermesilvamello@gmail.com', 1, 'blue')[0m
+  [4;36;1mSQL (73.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mHouse Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `houses`[0m
+  [4;36;1mDevice Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `devices`[0m
+  [4;35;1mVoiceCommand Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `voice_commands`[0m
+  [4;36;1mAction Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `actions`[0m
+  [4;35;1mSchedule Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mHouse Create (0.4ms)[0m   [0mINSERT INTO `houses` (`name`, `created_at`, `updated_at`, `user_id`, `description`) VALUES('My house (Jundiaí)', '2010-03-03 19:11:01', '2010-03-03 19:11:01', 1, 'i live there tks')[0m
+  [4;36;1mDevice Create (0.1ms)[0m   [0;1mINSERT INTO `devices` (`created_at`, `code`, `custom_name`, `updated_at`, `house_id`, `query_code`, `room`) VALUES('2010-03-03 19:11:01', '001', NULL, '2010-03-03 19:11:01', 1, '606', 'my bedroom')[0m
+  [4;35;1mVoiceCommand Create (0.6ms)[0m   [0mINSERT INTO `voice_commands` (`speak`) VALUES('turn the lights on plz')[0m
+  [4;36;1mAction Create (0.1ms)[0m   [0;1mINSERT INTO `actions` (`code`, `custom_name`, `device_id`, `range_down`, `action_type`, `range_up`, `voice_command_id`) VALUES('555', NULL, 1, NULL, '333', NULL, 1)[0m
+  [4;35;1mSchedule Create (0.1ms)[0m   [0mINSERT INTO `schedules` (`action_id`) VALUES(1)[0m
+  [4;36;1mSQL (40.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (40.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100303190927')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `actions`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `actions`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `actions`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `devices`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `devices`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `devices`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `houses`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `houses`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `houses`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `logs`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `logs`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `logs`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `schedules`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `schedules`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `voice_commands`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `voice_commands`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `voice_commands`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'actions'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `actions`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'devices'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `devices`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'houses'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `houses`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'logs'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `logs`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'schedules'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `schedules`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'schema_migrations'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `schema_migrations`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'users'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `users`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'ihouse_development'
+ AND fk.table_name = 'voice_commands'
+ [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW CREATE TABLE `voice_commands`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (11.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mDevice Load (17.6ms)[0m   [0;1mSELECT `devices`.* FROM `devices` INNER JOIN `houses` ON `devices`.house_id = `houses`.id WHERE ((`houses`.user_id = 1)) [0m
+  [4;35;1mDevice Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `devices`[0m
+  [4;36;1mSchedule Load (1.1ms)[0m   [0;1mSELECT `schedules`.* FROM `schedules` INNER JOIN `actions` ON `schedules`.action_id = `actions`.id WHERE ((`actions`.device_id = 1)) [0m
+  [4;35;1mSchedule Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+  [4;36;1mAction Columns (8.8ms)[0m   [0;1mSHOW FIELDS FROM `actions`[0m
+  [4;35;1mAction Load (0.2ms)[0m   [0mSELECT * FROM `actions` WHERE (`actions`.`id` = 1) [0m
+  [4;36;1mDevice Load (0.3ms)[0m   [0;1mSELECT `devices`.* FROM `devices` INNER JOIN `actions` ON `devices`.id = `actions`.device_id WHERE ((`actions`.id = 1)) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUser Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mDevice Load (0.6ms)[0m   [0mSELECT `devices`.* FROM `devices` INNER JOIN `houses` ON `devices`.house_id = `houses`.id WHERE ((`houses`.user_id = 1)) [0m
+  [4;36;1mDevice Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `devices`[0m
+  [4;35;1mSchedule Load (0.4ms)[0m   [0mSELECT `schedules`.* FROM `schedules` INNER JOIN `actions` ON `schedules`.action_id = `actions`.id WHERE ((`actions`.device_id = 1)) [0m
+  [4;36;1mSchedule Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+  [4;35;1mAction Load (0.3ms)[0m   [0mSELECT * FROM `actions` WHERE (`actions`.device_id = 1) [0m
+  [4;36;1mAction Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `actions`[0m
+  [4;35;1mVoiceCommand Columns (15.5ms)[0m   [0mSHOW FIELDS FROM `voice_commands`[0m
+  [4;36;1mVoiceCommand Load (0.2ms)[0m   [0;1mSELECT * FROM `voice_commands` WHERE (`voice_commands`.`id` = 1) [0m
+  [4;35;1mVoiceCommand Load (0.4ms)[0m   [0mSELECT `voice_commands`.* FROM `voice_commands` INNER JOIN `actions` ON `voice_commands`.id = `actions`.voice_command_id WHERE ((`actions`.device_id = 1)) [0m

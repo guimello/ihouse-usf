@@ -1,0 +1,821 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  by: "by"
+  on: "on"
+  or: "or"
+  of: "of"
+  title: "Title"
+  edit: "Edit"
+  ago: "ago"
+  none: "none"
+  last_activity: "Last activity" 
+  comments: "Comments"
+  access_and_permissions: "Access and permissions" 
+  logout: "logout"  
+  created_at: "Created on"
+  
+  authentication:
+    logged_as: "logged as {{user}}"
+    logon: "logon"
+    password: "password"
+    forgot_password: "Forgot password?"
+  
+  form:
+    login: "Login"
+    submit: "Submit"
+    save: "Save"
+    update: "Update"
+    edit: "Edit"
+    comma_delimited: "comma delimited"
+    remove: "remove"    
+    add: "add"
+    move: "move"
+    search: "Search"
+    options: "Options"
+    save_as_draft: "Save as draft"
+    comments: "Please enter your comments"
+    approve: "Approve"
+    reject: "Reject"
+    cancel: "cancel"
+    filter: "filter"
+    add_responsible: "Add responsible"
+    import: "Import"
+    show_more: "show more"
+    with_selected: "With selected"
+    all_selected: "All selected"
+    hints:
+      remove: "Are you sure you want to delete this record?\nNote: there is no undo."
+      search: "type here your search"
+
+  application:
+    title: "PDR"
+    title_full: "Documentation Repository"
+    error: "There was an internal error. Please try again later."
+    action_not_allowed: "You can not perform that action!"
+    start_up: "Start now"
+
+  mail:
+    footer: "Att.<br/> {{application_title}}.<br/><br/>This email was sent automatically, please do not reply."
+  
+  update:
+    one: "Update"
+    other: "Updates"
+    approved:
+      deploy: "{{user}} approved the creation of {{title}}"
+      change: "{{user}} approved the change of {{title}}"
+      delete: "{{user}} approved the deletion of {{title}}"
+      suspend: "{{user}} approved the suspension of {{title}}"
+    not_approved:
+      deploy: "{{user}} did not approve the creation of {{title}}"
+      change: "{{user}} did not approve the change of {{title}}"
+      delete: "{{user}} did not approve the deletion of {{title}}"
+      suspend: "{{user}} did not approve the suspension of {{title}}"
+    created:
+      deploy: "{{user}} requested the approval of {{title}}"
+      change: "{{user}} requested the change of {{title}}"
+      delete: "{{user}} requested the deletion of {{title}}"
+      suspend: "{{user}} requested the suspension of {{title}}"
+
+  super_cow:
+    one: "Super cow"
+    other: "Super cows"
+    super_user:
+      one: "Super user"
+      other: "Super users"
+    logon:
+      legend: "List the users that will be {{name}}"
+      label: "{{name}}"
+      hint: "List the email (comma delimited) of the users that will be granted {{name}} permission."
+    hints:
+      definition: "{{name_plural}} have permission to create new projects into PDR. Projects created by a {{name_singular}} are not shared among the other {{name_plural}}, that is, in order to be member of a project, even if the user is a {{name_singular}}, he/she needs to be invited to the project."
+      sure_remove: "Are you sure you want to remove this user?"
+    messages:
+      success:
+        created: "Super cows successfully created!"
+        created_super_user: "Super users successfully created!"
+  
+  role:
+    one: "Role"
+    other: "Roles"
+    admin:
+      one: "Administrator"
+      other: "Administrators"
+      hint: "They have total access to the projects. They can add new members and change their access level."      
+    advanced:
+      one: "Advanced User"
+      other: "Advanced Users"
+      hint: "They can approve or reject requests."
+    user:
+      one: "User"
+      other: "Users"
+      hint: "Lowest access level. Users are allowed to create documents and submit them for approval."    
+    
+  navigation:
+    general:
+      dashboard: "Dashboard"
+  
+  user:
+    one: "User"
+    other: "Users"
+    title:
+      show: "Member {{name}}"
+      edit: "Edit {{name}}"
+    joined_on: "Joined on"
+    this_is_you: "this is you"
+    add: "Add another user"
+    edit_profile: "edit profile"
+    add_members: "Add members"
+    my_profile: "My profile"
+    user_project:
+      one: "{{user_logon}}'s project"
+      other: "{{user_logon}}'s projects"
+    logon:
+      label: "Logon"
+    messages:
+      success:
+        update: "Your profile has been updated!"
+    timezone:
+      legend: "Choose your current timezone"
+      label: "Timezone"
+      hint: "You can change your timezone whenever you need to"
+    locale:
+      legend: "Choose your locale"
+      label: "Locale"
+      hint: "It will reflect on the application's language"
+    hints:
+      add_members: "You can also add new members into your project."
+      no_recent_activities: "You have not performed any activities lately"
+      first_login: "Because it's the first time you login, please set up your profile."  
+    style:
+      legend: "Choose your theme"
+      label: "Theme"
+      hint: "You can change the colors of the application as you like"
+      colors:
+        blue: "Blue"
+        green: "Green"
+        pink: "Pink"
+        black: "Black"
+  
+  project:
+    one: "Project"
+    other: "Projects"
+    overview: "Overview"
+    pending_invites: "Pending invitations"
+    new: "Start a new project"    
+    edit: "Edit Project"
+    leave: "Leave"
+    left: "You left the project <b>{{project}}</b>"
+    is_inviting: "{{user}} is inviting you to join a project titled <b>{{project}}</b>."
+    join: "join"
+    refuse: "refuse"
+    none: "No projects"
+    title:
+      index: "Dashboard"
+      show: "Overview"
+      edit: "Edit {{title}}"
+      new: "Create new project"
+      create: "Create new project"    
+    your_projects: "Your projects"
+    no_documents: "Your project does not have any documents, go ahead and create the first one right away."    
+    recent_activity: "Recent activities on the projects"
+    recent_activity_on_project: "Recent activities on the project"    
+    messages:
+      success:
+        create: "The project has been created!"
+        update: "The project has been updated!"
+        destroy: "The project has been deleted!"
+        left: "You left project {{project}}"
+        joined: "You joined project {{project}}!"
+        refused: "You refused to join the project named {{project}}"
+      error:
+        user_already_in: "({{user}}) is already in this project!"
+      marked_for_deletion: "This project is marked to be deleted on <b>{{date}}</b>"
+    hints:
+      can_edit_project: "These are the members that can edit the project's information"
+      leave: "Are you sure you want to leave this project?\nNote: you will not be able to see the documents of this project anymore."
+      none_super_cow: "You are not associated with any project. Start using {{application_title}} now by creating a new project!"
+      none_users: "You are not member of any project"      
+    name:
+      legend: "Give your project a name"
+      label: "Project title"
+      hint: "This is will be showed on the top of the pages"
+    description:
+      legend: "What is your project about?" 
+      label: "Description"
+      hint: "A short description that will be showed on your project's main page"
+    users_logon:
+      legend: "Which users are going to share documents in your project?"
+      label: "Users"
+      hint: "Enter the users that will be sharing documents. Later, you will be able the set up access levels to each of them."
+    delete:
+      legend: "Mark this project to delete"
+      label: "Delete this project"
+      hint: "If you mark this project for deletion, it will be deleted in a week from now. Note that you (or other administrators) can cancel this action before the week completes, and, once deleted, the project cannot be restored anymore"
+    mail:
+      invitation:
+        subject: "You were invited to join a project on {{application_title}}"
+        title: "Hi {{user}}"
+        body: "The user <b>{{granter}}</b> invited you to join a project named <b>{{project}}</b>. To accept or refuse his invitation, please use the following link: <br /> {{application_link}}"
+      
+  document:
+    one: "Document"
+    other: "Documents"
+    none: "No documents found"
+    new: "Create new document"
+    create: "Create a new one"
+    edit: "Edit document"
+    my_drafts: "My drafts"
+    mail:
+      suspension:
+        subject: "The document {{revision_name}} will expire in {{days}} on {{application_title}}"
+        title: "{{revision_name}}'s suspension notice"
+        body: "The document {{revision_name}} from {{project}} will expire in {{days}}. This is just a notice."
+    title:
+      index: "{{project}}'s documents"
+      show: "Job {{title}}"
+      new: "Create new document"      
+    see_revisions: "See reions"
+    delete: "Delete this document"
+    document_status: "Document Status"
+    revisions:
+      one: "{{title}} revision"
+      other: "{{title}} revisions"    
+    messages:
+      success:
+        update: "Your document has been successfully updated!"
+        create: "Your document has been successfully created!"
+    head_revision_nil: "This document is not in production. Please, check your revisions in order to submit a request or make changes."
+    copy: "Copy this document"
+    not_found: "Document not found"
+    deny:
+      copy: "You can not copy this document"
+      update: "You can not edit this document. If you want to edit, please cancel the request."
+      create_new_revision: "You can not create a new revision of this document"
+    view: "view document"
+    created_at: "Created at"
+    author: "Author"
+    expires: "Expires"
+    never_expires: "Never"
+    hints:
+      none: "You can try to {{new_document_url}}"
+      edit_draft: "This document is currently in draft, you can edit it."
+      copy: "You can copy this document, therefore creating a new one."
+      create_new_revision: "Creates a new revision of this document."
+      set_delete: "Opens a request to set the document status as DELETED."
+      delete: "You can delete this document without submitting a request"
+      request: "Click on the status in order view the request that reviews the document." 
+      expiration: "This document is set to expire. When it's due, the document status will be automatically set to SUSPENDED."
+      suspended_on: "This document has expired {{expiration_date}}."
+      no_documents_found: "No documents found"     
+    status:
+      draft:
+        one: "Draft document"
+        other: "Draft documents"
+        name: "Draft"
+        hint: "This document is currently a draft"
+      pending_approval:
+        one: "Pending document"
+        other: "Pending documents"
+        name: "Pending approval"
+        hint: "This document is currently waiting for being approved."
+      production:
+        one: "Production document"
+        other: "Production documents"
+        name: "Production"
+        hint: "This document is currently in production"
+      refused:
+        one: "Rejected document"
+        other: "Rejected documents"
+        name: "Refused"
+        hint: "This document has been rejected by the project's administrator"
+      suspended:
+        one: "Suspended document"
+        other: "Suspended documents"
+        name: "Suspended"
+        hint: "This document has been suspended"
+      deleted:
+        one: "Deleted document"
+        other: "Deleted documents"
+        name: "Deleted"
+        hint: "This document has been deleted"
+     
+  revision:
+    one: "Revision"
+    other: "Revisions"
+    new: "Create a new revision"
+    new_of: "New {{title}} revision"    
+    title:
+      index: "{{document}} revisions"
+      show: "Job {{title}}"
+      new: "New {{title}} revision"
+      edit: "Edit {{title}}"
+    parent: "Based on"
+    version_control:
+      label: "Version control"
+      hint: "You can see all revisions made for this document"
+    job_information:
+      one: "Job Information"
+      other: "Job Information"      
+      legends:
+        other_job_information: "Other job related information"
+        other_related_information: "Other related information"
+        action_to_be_taken: "Action to be taken"
+        schedule: "Job schedule"
+        hierarchy: "Hierarchy"
+        environment: "Environment information"
+        customer: "Customer related information"
+        tool: "Schedule tool related information"
+      operating_system:
+        label: "Operating system"
+      critical_job:
+        title: "Critical Job"
+        hint: "Immediate action should be taken"
+      comments:
+        legend: "Comments"
+        label: "Comments"
+        hint: "They are optional"
+      job_stream:
+        label: "Job stream"
+      table_name:
+        label: "Table name"
+      group:
+        label: "Group"
+      application_tool:
+        label: "Application"
+        hint: "Application information related to the schedule tool"
+      event:
+        label: "Event name"
+      system_tool:
+        label: "System"
+        hint: "System information related to the schedule tool"
+      job_plan:
+        label: "Job plan"
+      name:
+        label: "Job Name"
+        legend: "Job"
+        hint: "The job name will also identify the document name"
+      description:
+        label: "Description"
+        hint: "Detailed description of the job"
+      expiration_date:
+        label: "Expiration date"
+        hint: "Should this document expire?"
+      market_segment:
+        label: "Market Segment"
+      system_name:
+        label: "System"
+        hint: "System name"
+      application_name:
+        label: "Application"
+      process_name:
+        label: "Process"
+        hint: "Process name"
+      company_developer:
+        label: "Developer"
+      scheduler_status:
+        label: "In Production?"
+        hint: "Scheduler status"
+      responsible_starter:
+        label: "Start Responsible"
+        hint: "Who is responsible for the start of the job?"
+      server:
+        label: "Server"
+      owner:
+        label: "Owner"
+      start_production_date:
+        label: "Start production date"
+      end_production_date:
+        label: "End production date"
+        hint: "Does the job have an end production date?"
+      schedule_tool:
+        label: "Schedule Tool"
+        hint: "Choose the schdule tool in order show only the fields related to it"
+      platform:
+        label: "Platform"      
+      calendar:
+        label: "Calendar"
+      frequency:
+        label: "Frequency"
+      start_time:
+        label: "Start Time"
+      start_time_limit:
+        label: "Start Time Limit"
+      processing_limit:
+        label: "Processing Limit"
+      liberation_event:
+        label: "Liberation Event"
+      predecessors:
+        label: "Predecessors"
+      successors:
+        label: "Successors"
+      contingency_job:
+        label: "Contigency Job"
+      severity:
+        label: "Severity"
+      business_impact:
+        label: "Impact"
+    contact_information:
+      one: "Contact Information"
+      other: "Contact Information"
+      responsible_management:
+        label: "Responsible management"
+      on_cancellation:
+        label: "When the job fails, call..."
+        hint: "If the job fails, when should the team call?"
+      on_problem:
+        label: "When the job fails, what should be done?"
+        hint: "If the job fails, what must be done?"
+      responsible:
+        one: "Responsible"
+        other: "Responsible"
+        messages:
+          error:
+            none: "You must have at least one responsible added to this document"
+            max: "You can add up to three responsibles to this document"
+        name:
+          label: "Name"
+        email:
+          label: "Email"
+        phone:
+          label: "Phone"
+        description:
+          label: "Contact information"
+        position:
+          label: "Call order"
+          hint: "A numeric representation of the order in which they should be called"
+    file_information:
+      one: "File Information"
+      other: "File Information"
+      script:
+        label: "Program / Script"
+      directory_path:
+        label: "Directory Path"
+      batch_folder:
+        label: "Batch Folder"
+      parallel_processes:
+        label: "Parallel Processes"
+      variant:
+        label: "Variant"
+        hint: "Variant data"
+      execution_parameters:
+        label: "Execution Parameters"
+        hint: "Parameters to used when executing"
+      printer:
+        label: "Printer"
+        legend: "Print information"
+      spool_report_title:
+        label: "Spool Report Title"
+      print_procedure:
+        label: "Print Procedure"
+      print_format_number_of_copies:
+        label: "Print Format / Number of Copies"
+      number_of_copies:
+        label: "Number of Copies"
+      file:
+        in_file: "In File"
+        out_file: "Out File"
+        name:
+          label: "Name"
+        nomenclature:
+          label: "Nomenclature"
+        path:
+          label: "Path"
+          hint: "Directory path where the file is read"
+        transfer_process:
+          label: "Transfer Process"
+          hint: "How is the file transferred?"
+        number_of_days_in_hold:
+          label: "Number of Days in Hold"
+          hint: "Number of days the file should be held"
+    messages:
+      success:
+        create: "The revision has been successfully created!"
+        destroy: "You have successfully deleted the revision!"
+      errors:
+        date_must_not_be_in_the_past: "must not be in the past"
+        date_must_not_be_over_this_period: "can't be higher than 1 year"
+    validate:
+      enums:
+        platform: "Invalid platform - possible values are: Mainframe, Midrange or Distributed"
+        schedule_tool: "Invalid schedule tool - possible values are: ASG-Zeke, CA-FAQS, CA ESP, CA SCHEDULER, Control-M, SAP, TWS, TWS ZOS or UC4" 
+        frequency: "Invalid frequency - possible values are: Daily, Fortnightly, Every Three Months, Annually, Cyclic, Weekly, Monthly, Half yearly or Eventually"
+        severity: "Invalid severity - possible values are: low, medium or high"
+        on_cancellation: "Invalid field 'When the job fails, call...' - possible values are: Business Hours, Immediately, Notify Email or Notify Request"
+        scheduler_status: "Invalid scheduler status (In production?) - possible values are: Active or Inactive"
+             
+  report:
+    one: "Custom Report"
+    other: "Custom Reports"
+    hint: "The following documents can be exported to an excel file."
+    add: "Add to custom report"
+    export_all_to_excel: "Export all results"
+    generate: "Generate excel"
+    generate_hint: "Export all this document information to an excel file"
+    custom: "custom"
+  
+  request:
+    one: "Request"
+    other: "Requests"
+    requested: "Requested"
+    delete_request:
+      message: "Document set to be deleted"
+      hint: "This document has a request asking for deletion. Click on the link in order to view the request"
+    title:
+      index: "{{project}}'s requests"
+      show: "View request"
+      new: "Request"
+      edit: "Review {{document}}"
+    new:
+      one: "new request"
+      other: "new requests"
+    create: "Make a request"
+    none: "No requests found"
+    review_document: "Review document"    
+    hints:
+      none: "No requests found"      
+    submit: "Submit request"	
+    requester:
+      one: "Requester"
+      comments:
+        label: "Requester comments"
+        legend: "Comments"
+        default_message: "Please, review this document."
+        hint: "they are optional"
+        by_requester: "These comments were made by the requester when the document was submitted"
+      information:
+        label: "Requester information"   
+    approver:
+      one: "Reviewer"
+      other: "Reviewers"      
+      hints:
+        can_approve: "These are the members that can approve requests in this project"
+      comments:
+        label: "Reviewer comments"
+        default_message: "I have reviewed your document."
+        hint: "they are optional"
+        by_approver: "These comments were made by the reviewer when the document was reviewed"
+      information:
+        label: "Reviewer information"   
+    reviewed:
+      one: "Reviewed"
+      other: "Reviewed"
+    review_this: "Review this request"
+    see_request: "See request"    
+    information: "Request information"       
+    created_at: "Created at"
+    created: "Created"
+    request_type: "Request type"     
+    type:
+      label: "Type"
+      deploy: "Deploy"
+      change: "Change"
+      delete: "Delete"
+      suspend: "Suspend"
+    status:      
+      waiting_approval:
+        one: "Pending Request"
+        other: "Pending Requests"        
+      approved:
+        one: "Approved Requests"
+        other: "Approved Requests"        
+      not_approved:
+        one: "Rejected Request"
+        other: "Rejected Requests"
+    messages:
+      success:
+        create: "Your request has been submitted!"
+        approve: "The request has been approved!"
+        reject: "The request has been rejected!"
+        destroy: "The request has been cancelled!" 
+    mail:
+      request_review:
+        subject: "A request needs your attention on {{application_title}}"
+        title: "New {{type}} Request for {{document}}"
+        body: "A new request has been created by <b>{{requester}}</b> and awaits your approval. To view more details, please follow this link:<br /> {{request_link}}"
+      updated:
+        approved:
+          subject: "Your request was APPROVED on {{application_title}}"
+          title: "Request Approved!"
+          body: "Your request was approved by <b>{{reviewer}}</b>. Please, follow this link in order to view your request:<br /> {{request_link}}"
+        not_approved:
+          subject: "Your request was REJECTED on {{application_title}}"
+          title: "Request Rejected"
+          body: "The user {{reviewer}} rejected your request. Please, follow this link in order to view his comments:<br /> {{request_link}}"
+    
+  alerts:
+    notice: "Notice"
+    success: "Success"
+    error: "Error"
+    information: "Information"
+    warning: "Warning"
+
+  permission:
+    one: "Permission"
+    other: "Permissions"
+    edit: "Edit permissions"
+    title:
+      index: "Access and Permissions"
+    hints:
+      add: "Add or remove users from your project. You can also alter the access level for each of them."
+    messages:
+      success:
+        create: "The user has been added to the project!"
+        update: "Permissions have been successfully updated!"
+        destroy: "The user has been successfully removed from your project!"
+  
+  authorization:
+    login_fail: "Invalid user or password"
+    you_are_not_logged_in: "You must be logged in order to access the requested page. Please login."
+    you_dont_have_permission: "You don't have permission to perform this action!"
+
+  administration:
+    title: "Administration"
+    you_can_execute_the_following_actions: "As an admnistrator, you can execute the following actions:" 
+  
+  pagination:
+    next: "Next"
+    previous: "Previous"
+  
+  attachment:
+    one: "Attachment"
+    other: "Attachments"
+    add: "Add attachment"
+    download: "download"    
+    description:
+      label: "Description"
+    name:
+      label: "File"
+    destroy: "remove"
+    undo_destroy: "undo"
+    messages:
+      success:
+        destroy: "You have successfully removed the attachment!"
+      error:
+        destroy: "The was an error while removing the attachment. Please, try again later."
+
+  locale:
+    portuguese: "Portuguese"
+    english: "English"
+  
+  enums:
+    scheduler_status:
+      active: "Active"
+      inactive: "Inactive"
+    on_cancellation:
+      business_hours: "Business Hours"
+      immediately: "Immediately"
+      notify_email: "Notify Email"
+      notify_request: "Notify Request"
+    platforms:
+      mf: "Mainframe"
+      md: "Midrange"
+      ds: "Distributed"
+    severities:
+      low: "Low"
+      medium: "Medium"
+      high: "High"
+    frequencies:
+      daily: "Daily"
+      fortnightly: "Fortnightly"
+      every_3_months: "Every Three Months"
+      annually: "Annually"
+      cyclic: "Cyclic"
+      weekly: "Weekly"
+      monthly: "Monthly"
+      half_yearly: "Half yearly"
+      eventually: "Eventually"
+    schedule_tools:
+      asg_zeke: "ASG-Zeke"
+      ca_faqs: "CA-FAQS"
+      ca_esp: "CA ESP"
+      ca_scheduler: "CA SCHEDULER"
+      control_m: "Control-M"
+      sap: "SAP"
+      tws: "TWS"
+      tws_zos: "TWS ZOS"
+      uc4: "UC4"
+
+  import:
+    line: "Line"
+    invalid:
+      id: "Invalid id. Did you change it?"      
+      revision: "Invalid document"
+    migration:
+      information: "Migration information"
+      title: "Migrate documents (Lotus Notes)"
+      helper: "Migration helper (Lotus Notes)"
+      hints:       
+        migrate: "By importing the xls which represents the documents, you will bypass the request associated to the document, that is, every document imported will be already approved and its status will be set to PRODUCTION."    
+    edit_documents:
+      information: "Import information"      
+      title: "Update/Create documents by importing"
+      helper: "Update/Create documents import helper"
+      hints:       
+        migrate: "By importing the xls which represents the documents, you will bypass the request associated to the document if you have enough rights or else a request for each document wiil be sent to the project's administrators.<br/><br/>The documents' attachments won't be altered by the update, that is, they will be present on the new document's revision."   
+    title:
+      new: "Import documents"
+    file_to_import:
+      label: "File"
+      legend: "Choose the file to import"
+      hints:
+        xls: "Select the xls file to import the documents"
+    messages:
+      error:
+        import: "Please, correct the errors on line(s) below. Total {{total}} document(s) with error(s):"
+        no_file: "Please, select a .xls file"
+      success:
+        import: "All documents have been successfully added to your project!"
+      
+  # Active Record
+  activerecord:
+    models:      
+      document: "Document"
+      permission: "Permission"
+      project: "Project"
+      request: "Request"
+      responsible: "Responsible" 
+      revision: "Document"
+      user: "User"
+      role: "Role"
+      attachment: "Attachment"
+      attachment_file: "File"     
+    attributes:      
+      revision:
+        name: "Job name"
+        description: "Description"
+        severity: "Severity"
+        system_name: "System"
+        process_name: "Process"
+        frequency: "Frequency"
+        calendar: "Calendar"
+        platform: "Platform"
+        server: "Server"
+        responsible_starter: "Start responsible"
+        company_developer: "Developer"
+        scheduler_status: "Scheduler status (In production?)"
+        market_segment: "Market segment"
+        on_cancellation: "When the job fails call..."
+        on_problem: "When the job fails, what should be done?"
+        in_file_name: "In file - name"
+        in_file_nomenclature: "In file - nomenclature"
+        in_file_path: "In file - path"
+        in_file_transfer_process: "In file - transfer process"
+        in_file_number_of_days_in_hold: "In file - number of days in hold"
+        out_file_name: "Out file - name"
+        out_file_nomenclature: "Out file - nomenclature"
+        out_file_path: "Out file - path"
+        out_file_transfer_process: "Out file - transfer process"
+        out_file_number_of_days_in_hold: "Out file - number of days in hold"
+        script: "Script"                
+        operating_system: "Operating system"
+        comments: "Comments"
+        job_stream: "Job stream"
+        table_name: "Table name"
+        group: "Group"
+        application_tool: "Application schedule tool"        
+        event: "Event"
+        system_tool: "System schedule tool"
+        job_plan: "Job plan"      
+        expiration_date: "Expiration date"
+        application_name: "Application"
+        owner: "Owner"
+        start_production_date: "Start production date"
+        end_production_date: "End production date"
+        schedule_tool: "Schedule Tool"
+        start_time: "Start Time"
+        start_time_limit: "Start Time Limit"
+        processing_limit: "Processing Limit"
+        liberation_event: "Liberation Event"
+        predecessors: "Predecessors"
+        successors: "Successors"
+        contingency_job: "Contigency Job"
+        business_impact: "Impact"
+        responsible_management: "Responsible management"
+        directory_path: "Directory Path"
+        batch_folder: "Batch Folder"
+        parallel_processes: "Parallel Processes"
+        variant: "Variant"
+        execution_parameters: "Execution Parameters"
+        printer: "Printer"
+        spool_report_title: "Spool Report Title"
+        print_procedure: "Print Procedure"
+        print_format_number_of_copies: "Print Format / Number of Copies"                    
+      attachment:
+        attachments_attachment_file: "Attachment file"
+      responsible:
+        responsibles_name: "Responsible name"
+        responsible_description: "Contact information"                
+      project:
+        name: "Project title"
+      permission:
+        permissions_user: "Permission"
+        permissions_role: "Role"
+      user:
+        logon: "User"
+        permissions_user_logon: "User logon"
+
+  time:
+    formats:      
+      medium: "%m/%d/%y %H:%Mh"      

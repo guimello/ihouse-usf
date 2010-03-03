@@ -1,0 +1,39 @@
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+	<title>inHouseTools | 
+		<% if yield :title %>
+			<%= yield :title %>
+		<% else %>
+			<%= t(controller.action_name.to_sym, :scope => [controller.controller_name.singularize.to_sym, :title]) %>
+		<% end %>
+	</title>
+	
+	<% style = (controller.controller_name == "users" and controller.action_name == "show") ? @user.style : current_user.style %>
+	
+	<%= stylesheet_link_tag "reset.css" -%>
+	
+	<%= stylesheet_link_tag "#{style}/alerts.css", :class => "change_style" -%>
+	
+	<%= stylesheet_link_tag "main", "content", "tabs", "alerts", "tables", "forms", "lists", "icons", "pagination", :cache => "basic" -%>
+	
+	<%= stylesheet_link_tag "#{style}/main.css", "#{style}/content", "#{style}/tabs", "#{style}/tables", "#{style}/form", "#{style}/lists", "#{style}/pagination", :cache => "#{style}/colors", :class => "change_style" -%>
+	
+	<!--[if lt IE 8]>
+		<%= stylesheet_link_tag "forms-ie7.css" %>
+		<%= stylesheet_link_tag "#{style}/content-ie.css", :class => "change_style" %>
+	<![endif]-->
+	
+	<!--[if lt IE 7]>
+		<%= stylesheet_link_tag "#{style}/main-ie", "#{style}/tabs-ie", "#{style}/tables-ie", :cache => "#{style}/colors-ie", :class => "change_style" %>
+		<%= stylesheet_link_tag "forms-ie.css", "main-ie.css" %>		
+	<![endif]-->
+	
+	<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+	<%= javascript_include_tag "jquery-1.4.1.js", "jquery-ui-1.7.2.custom.min", "application" %>
+	
+	<% javascript_tag do -%>
+		<%= yield :javascript || "" %>
+	<% end %>
+
+</head>

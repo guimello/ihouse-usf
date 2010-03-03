@@ -1,0 +1,30 @@
+#content-wrapper
+{
+	padding: 20px;
+	padding-bottom: 5px;
+}
+
+#content-container
+{
+	width: 100%;
+	float: left;
+	margin-right: -230px;
+}
+
+#left-column
+{
+	margin-right: 230px;
+}
+
+#right-column
+{
+	width: 220px;
+	padding: 10px;
+	padding-left: 0px;
+	float: right;
+}
+
+#right-column .title
+{
+	margin-top: 30px;
+}

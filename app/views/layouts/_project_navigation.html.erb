@@ -1,0 +1,38 @@
+<ul id="left-tabs" class="tabs">
+	<li>
+		<%= link_to t(:dashboard, :scope => [:navigation, :general]), root_url %>
+	</li>
+	
+	<li class="tab-separator <%= "selected" if (controller.controller_name == "projects" and controller.action_name == "show") %>">
+		<%= link_to t(:overview, :scope => :project), project_url(@project) %>
+	</li>
+	
+	<li class="<%= "selected" if (controller.controller_name == "documents" and controller.action_name != "my_drafts") or controller.controller_name == "spreadsheets" and controller.action_name != "show" %> <%= "has-sub-tabs" if yield :sub_navigation %>">
+		<%= link_to t(:document, :count => 2), project_documents_url(@project) %>
+	</li>
+	
+	<li class="<%= "selected" if controller.controller_name == "requests" %> <%= "has-sub-tabs" if yield :sub_navigation %>">
+		<%= link_to t(:request, :count => 2), project_requests_url(@project) %>
+	</li>	
+	
+	<% if current_user.has_draft_revisions(@project) %>
+		<li class="tab-separator <%= "selected" if (controller.controller_name == "documents" and controller.action_name == "my_drafts") %>">
+			<%= link_to t(:my_drafts, :scope => :document), my_drafts_project_documents_url(@project) %>
+		</li>
+	<% end %>	
+	
+	<%= yield if yield %>
+</ul>
+<ul id="right-tabs" class="tabs">
+	<% if current_user.can_edit_projects? @project %>
+		<li <%= "class='selected'" if controller.controller_name == "projects" and controller.action_name == "edit" %>>
+			<%= link_to t(:edit, :scope => :project), edit_project_url(@project) %>
+		</li>
+	<% end %>
+	
+	<% if current_user.can_view_permissions? @project %>
+		<li <%= "class='selected'" if controller.controller_name == "permissions" %>>
+			<%= link_to t(:permission, :count => 2), project_permissions_url(@project) %>
+		</li>
+	<% end %>	
+</ul>

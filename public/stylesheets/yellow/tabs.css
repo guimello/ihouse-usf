@@ -1,0 +1,51 @@
+.tabs li a
+{
+	background-image: url(../tab-overlay.png);
+	background-color: #C1C1C1;
+	color: #ffffff;
+    text-shadow: 0px 0px 0px !important;
+}
+
+.tabs li a:hover
+{
+	background-color: #969696;
+	color: #ffffff;
+}
+
+.tabs .selected a
+{
+	background-image: url(../tab-overlay-white.png) !important;
+	background-color: #D6D6D6 !important;
+	color: #666666 !important;
+	text-shadow: 0px 0px 0px !important;
+}
+
+.tabs .selected.has-sub-tabs a
+{
+	background-image: url() !important;
+	background-color: #F3F3F3 !important;
+	color: #666666 !important;
+	text-shadow: 0px 0px 0px !important;
+}
+
+#sub-tabs
+{
+	background-color: #F3F3F3;
+
+	border-bottom: 1px solid #E8E8E8;
+}
+
+#sub-tabs a
+{
+	color: #A9A9A9;
+}
+
+#sub-tabs a:hover
+{
+	color: #4B4B4B;
+}
+
+#sub-tabs.selected li
+{
+	color: #595959;
+}

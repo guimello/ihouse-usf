@@ -1,0 +1,153 @@
+.alert
+{
+	padding: 20px;
+	margin-bottom: 16px;
+}
+
+
+
+.alert h1
+{
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+
+.alert.success, .alert.error, .alert.attention, .alert.information, .alert.question, .alert.tag
+{
+	padding-left: 140px;
+	
+	background-position: 50px center;
+	background-repeat: no-repeat;
+}
+
+.alert.success
+{
+	background-image: url('../images/icons/big01/14.png');
+}
+.alert.error
+{
+	background-image: url('../images/icons/big01/5.png');
+}
+.alert.attention
+{
+	background-image: url('../images/icons/big01/21.png');
+}
+.alert.information
+{
+	background-image: url('../images/icons/big01/34.png');
+}
+.alert.question
+{
+	background-image: url('../images/icons/big01/13.png');
+}
+.alert.tag
+{
+	background-image: url('../images/icons/big01/29.png');
+}
+
+
+
+.alert.gray
+{
+	color: #8A8A8A;
+	background-color: #F2F2F2;
+	border: 1px solid #E8E8E8;
+}
+.alert.gray h1
+{
+	color: #8B8B8B;
+}
+.alert.gray a
+{
+	color: #8B8B8B;
+}
+
+
+
+.alert.green
+{
+	color: #778C6C;
+	background-color: #E1FFD1;
+	border: 1px solid #C5F8AC;
+}
+.alert.green h1
+{
+	color: #499524;
+}
+.alert.green a
+{
+	color: #499524;
+}
+
+
+
+.alert.red
+{
+	color: #952424;
+	background-color: #FFD1D1;
+	border: 1px solid #F8ACAC;
+}
+.alert.red h1
+{
+	color: #E63333;
+}
+.alert.red a
+{
+	color: #E63333;
+}
+
+
+
+.alert.yellow
+{
+	color: #959124;
+	background-color: #FEFFD1;
+	border: 1px solid #F8F7AC;
+}
+.alert.yellow h1
+{
+	color: #B3B226;
+}
+
+.alert.yellow a
+{
+	color: #B3B226;
+}
+
+
+.alert.light-gray
+{
+	color: #8A8A8A;
+	background-color: #FBFBFB;
+	border: 1px solid #F2F2F2;
+}
+
+.errorExplanation
+{
+	padding: 20px;
+	margin-bottom: 16px;
+	padding-left: 140px;
+	
+	color: #952424;
+	background-position: 50px center;
+	background-repeat: no-repeat;
+	background-color: #FFD1D1;
+	background-image: url('../images/icons/big01/5.png');
+	border: 1px solid #F8ACAC;
+	
+	border-radius: 8px!important; 
+	-moz-border-radius: 8px!important; 
+	-webkit-border-radius: 8px!important;
+}
+
+.errorExplanation h2
+{
+	font-size: 24px;
+	margin-bottom: 10px;
+	color: #E63333;
+}
+
+.errorExplanation a
+{
+	color: #E63333;
+}
