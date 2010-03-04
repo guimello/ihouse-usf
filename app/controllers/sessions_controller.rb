@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
+
   layout "login"
 
-  skip_before_filter :check_user_logged, :get_project, :check_rights, :set_time_zone, :check_user_configuration
+  skip_before_filter :check_user_logged, :get_user
 
   def new
     redirect_to root_url and return if user_logged?
@@ -12,8 +13,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user =  Session::authenticate params[:username], params[:password]
+    user =  User.authenticate params[:username], params[:password]
+
     if user
+
       session[:user_id] = user.id
       if session[:return_to]
         redirect_to session[:return_to] and return
@@ -31,3 +34,4 @@ class SessionsController < ApplicationController
     redirect_to login_url
   end
 end
+

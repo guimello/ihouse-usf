@@ -8,4 +8,10 @@ class User < ActiveRecord::Base
   def to_s
     username
   end
+
+  def self.authenticate(username, password)
+    user = self.find_by_username_and_password username, password
+
+    return (user.nil?) ? false : user
+  end
 end

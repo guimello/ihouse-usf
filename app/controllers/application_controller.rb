@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   include Locale
 
   layout "two_columns" # The default layout
-  
+
   helper :all
 
   filter_parameter_logging :password
@@ -24,23 +24,20 @@ class ApplicationController < ActionController::Base
       redirect_to root_url
   end
 
-  before_filter :check_user_logged, :set_locale, :get_project, :check_rights, :check_user_configuration
+  before_filter :check_user_logged, :set_locale, :get_user
 
   helper_method :current_path
 
-  def get_project
-    @project = current_user.projects.find(params[:project_id])
-  end  
+  def get_user
+    @user = current_user
+  end
+
+  def get_house
+    @house = current_user.houses.find(params[:house_id])
+  end
 
   def current_path
     root_url.chop + request.path
   end
- 
-
-  def check_user_configuration
-#    if current_user.time_zone.nil? or current_user.locale.nil?
-#      flash[:notice] = I18n.t :first_login, :scope => [:user, :hints]
-#      redirect_to edit_user_url(current_user)
-#    end
-  end 
 end
+

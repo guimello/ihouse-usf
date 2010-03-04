@@ -1,55 +1,56 @@
 <div id="header">
 	<div id="title">
-		<h1>			
+		<h1>
 			<div id="application_title" >
-				<%= link_to t(:title, :scope => :application), projects_url %>
+				<%= link_to t(:title, :scope => :application), users_url %>
 			</div>
 			<% if defined? @project and !@project.id.nil? %>
-						
+
 				<div id="project_title">
-					<% if current_user.projects.size > 1 %>					
-						<a class="icon selection" href="#" id="project_selection">							
-							<span><%= @project.name %></span>										
-						</a>					
-					
-									
+					<% if current_user.projects.size > 1 %>
+						<a class="icon selection" href="#" id="project_selection">
+							<span><%= @project.name %></span>
+						</a>
+
+
 						<ul class="basic-list" style="margin-left:10px;display:none" >
-							<hr style="width:150px"></hr>				
+							<hr style="width:150px"></hr>
 							<% current_user.projects.each_with_index do |project, index| %>
-								<% unless project == @project %>														
-									<li class="icon locale"><%= link_to h(project.name), project_url(project) %></li>								
-								<% end %>						
-							<% end %>							
+								<% unless project == @project %>
+									<li class="icon locale"><%= link_to h(project.name), project_url(project) %></li>
+								<% end %>
+							<% end %>
 						</ul>
 					<% else %>
 						<%= link_to h(@project.name), project_url(@project), :id => "project_selection" %>
 					<% end %>
-				</div>								
-				
-				<div class="clear"></div>					
+				</div>
+
+				<div class="clear"></div>
 			<% else %>
 				<div class="clear"></div>
 			<% end %>
 		</h1>
-	</div>	
-	
-	<%= image_tag "ibm-background-logo-cropped.png", :class => "ibm-logo" %>	
-	
+	</div>
+
+	<%= image_tag "ibm-background-logo-cropped.png", :class => "ibm-logo" %>
+
 	<% if yield :navigation %>
 		<%= yield :navigation %>
 	<% else %>
 		<%= render :layout => "layouts/project_navigation" %>
 	<% end %>
-	
+
 	<% if user_logged? %>
 		<div id="current_user_header">
-			<p><small><%= t :logged_as, :scope => :authentication, :user => link_to(current_user.logon, current_user) %></small></p>
+			<p><small><%= t :logged_as, :scope => :authentication, :user => link_to(current_user.username, current_user) %></small></p>
 			<p>
 				<%= link_to t(:edit_profile, :scope => :user), edit_user_url(current_user), :class => "icon user-edit" %>
 				<%= link_to t(:logout), logout_url, :class => "indented-10 icon logout" %>
 			</p>
 		</div>
-	<% end %>	
+	<% end %>
 </div>
 
 <%= yield :sub_navigation || "" %>
+

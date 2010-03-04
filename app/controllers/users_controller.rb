@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_filter :get_project, :check_rights
-  skip_before_filter :check_user_configuration, :only => [:edit, :update]
+  skip_before_filter :get_user
 
   def show
     @user = User.find(params[:id])
@@ -30,3 +29,4 @@ class UsersController < ApplicationController
     end
   end
 end
+
