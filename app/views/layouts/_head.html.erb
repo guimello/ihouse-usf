@@ -1,7 +1,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
-	<title>inHouseTools |
+	<title>USF |
 		<% if yield :title %>
 			<%= yield :title %>
 		<% else %>
@@ -9,7 +9,7 @@
 		<% end %>
 	</title>
 
-	<% style = (controller.controller_name == "users" and controller.action_name == "show") ? @user.style : current_user.style %>
+	<% style = (controller.controller_name == "users" and controller.action_name == "show") ? @user.style : (current_user) ? current_user.style : "blue" %>
 
 	<%= stylesheet_link_tag "reset.css" -%>
 

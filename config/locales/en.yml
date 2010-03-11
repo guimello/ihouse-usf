@@ -50,7 +50,7 @@ en:
       search: "type here your search"
 
   application:
-    title: "PDR"
+    title: "iHouse"
     title_full: "Documentation Repository"
     error: "There was an internal error. Please try again later."
     action_not_allowed: "You can not perform that action!"

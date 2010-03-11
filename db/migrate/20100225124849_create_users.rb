@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string  :locale,                :null => false, :default => "en"
       t.string  :time_zone,             :null => false, :default => "Brasilia"
       t.string  :style,                 :null => false, :default => "blue"
+      t.timestamps
     end
   end
 

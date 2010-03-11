@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
       redirect_to root_url
   end
 
-  before_filter :check_user_logged, :set_locale, :get_user
+  #before_filter :check_user_logged, :set_locale, :get_user
 
   helper_method :current_path
 
@@ -38,6 +38,10 @@ class ApplicationController < ActionController::Base
 
   def current_path
     root_url.chop + request.path
+  end
+
+  def main
+    
   end
 end
 

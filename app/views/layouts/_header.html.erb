@@ -2,7 +2,7 @@
 	<div id="title">
 		<h1>
 			<div id="application_title" >
-				<%= link_to t(:title, :scope => :application), users_url %>
+				<%= link_to t(:title, :scope => :application), root_url %>
 			</div>
 			<% if defined? @project and !@project.id.nil? %>
 
@@ -33,12 +33,12 @@
 		</h1>
 	</div>
 
-	<%= image_tag "ibm-background-logo-cropped.png", :class => "ibm-logo" %>
+	
 
 	<% if yield :navigation %>
 		<%= yield :navigation %>
 	<% else %>
-		<%= render :layout => "layouts/project_navigation" %>
+		<%= render :layout => "layouts/main_navigation" %>
 	<% end %>
 
 	<% if user_logged? %>
