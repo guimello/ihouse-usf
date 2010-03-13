@@ -10,11 +10,68 @@ pt:
   edit: "Editar"
   ago: "atrás"
   none: "Nenhum"
-  last_activity: "Última atividade"
-  comments: "Observações"
-  access_and_permissions: "Acessos e permissões" 
+  last_activity: "Última atividade"  
   logout: "sair"  
   created_at: "Criado em"
+
+  navigation:
+    home: "Home"
+    sign_in: "Cadastra-se"
+
+  user:
+    new: "Cria sua conta"
+    edit: "Edite seu perfil"
+    legends:
+      account_information: "Informações da conta"
+      profile_information: "Informação do seu perfil"
+    name:
+      label: "Seu nome"
+    username:      
+      label: "Username"
+      hint: "escolha seu nome de usuário"
+    email:
+      label: "e-mail"
+      hint: "entre com um e-mail válido. Ele será usado para notificações dos eventos em sua casa"
+    password:
+      label: "Senha"
+      hint: "entre com uma senha de pelo menos 6 caracteres"
+    password_confirmation:
+      label: "Confirme a senha"
+    one: "Usuário"
+    other: "Usuários"
+    title:
+      show: "Usuário {{name}}"
+      edit: "Editar {{name}}"
+    joined_on: "Integrou-se em"
+    this_is_you: "este é você"
+    edit_profile: "editar perfil"
+    add_members: "Adicionar membros"
+    my_profile: "Meu perfil"
+    messages:
+      success:
+        update: "Seu perfil foi atualizado com sucesso!"
+      error:
+        cant_create_new_user: "Você não pode cadastrar-se novamente, você está logado"
+    timezone:
+      legend: "Escolha seu fuso horário"
+      label: "Fuso horário"
+      hint: "Você pode alterar seu fuso horário sempre que precisar"
+    locale:
+      legend: "Escolha o idioma para a aplicação"
+      label: "Idioma"
+      hint: "Selecione o idioma preferido para a aplicação"
+    hints:
+      no_recent_activities: "Você não fez nenhuma atividade nos projetos recentemente."
+      first_login: "Como é a primeira vez que loga, por favor, configure seu perfil."
+    style:
+      legend: "Escolha seu tema favorito"
+      label: "Tema"
+      hint: "Você pode alterar as cores exibidas na aplicação de acordo com sua preferência"
+      colors:
+        blue: "Azul"
+        green: "Verde"
+        pink: "Rosa"
+        black: "Preto"
   
   authentication:
     logged_as: "logado como {{user}}"
@@ -112,50 +169,8 @@ pt:
       other: "Usuários"
       hint: "Nível mais baixo, onde é permitido apenas criar documentos e submeter requisições de aprovação."   
 
-  navigation:
-    general:
-      dashboard: "Dashboard"
-  user:
-    one: "Usuário"
-    other: "Usuários"
-    title:
-      show: "Membro {{name}}"
-      edit: "Editar {{name}}"
-    joined_on: "Integrou-se em"
-    this_is_you: "este é você"
-    add: "Adicionar outro usuário"
-    edit_profile: "editar perfil"
-    add_members: "Adicionar membros"
-    my_profile: "Meu perfil"
-    user_project:
-      one: "Projeto de {{user_logon}}"
-      other: "Projetos de {{user_logon}}"
-    logon:
-      label: "Logon"
-    messages:
-      success:
-        update: "Seu perfil foi atualizado com sucesso!"
-    timezone:
-      legend: "Escolha seu fuso horário"
-      label: "Fuso horário"
-      hint: "Você pode alterar seu fuso horário sempre que precisar"
-    locale:
-      legend: "Escolha o idioma para a aplicação"
-      label: "Idioma"
-      hint: "Selecione o idioma preferido para a aplicação"
-    hints:
-      add_members: "Você pode também adicionar novos membros em seu projeto."
-      no_recent_activities: "Você não fez nenhuma atividade nos projetos recentemente."
-      first_login: "Como é a primeira vez que loga, por favor, configure seu perfil."
-    style:
-      legend: "Escolha seu tema favorito"
-      label: "Tema"
-      hint: "Você pode alterar as cores exibidas na aplicação de acordo com sua preferência"
-      colors:
-        blue: "Azul"
-        green: "Verde"
-        pink: "Rosa"
-        black: "Preto"
+  
+  
   
   project:
     one: "Projeto"

@@ -10,11 +10,68 @@ en:
   edit: "Edit"
   ago: "ago"
   none: "none"
-  last_activity: "Last activity" 
-  comments: "Comments"
-  access_and_permissions: "Access and permissions" 
+  last_activity: "Last activity"
   logout: "logout"  
   created_at: "Created on"
+
+  navigation:
+    home: "Home"
+    sign_in: "Sign in"
+
+  user:
+    new: "Create your account"
+    edit: "Edit your profile"
+    legends:
+      account_information: "Account Information"
+      profile_information: "Profile information"
+    name:
+      label: "Your name"
+    username:      
+      label: "Username"
+      hint: "choose your username"
+    email:
+      label: "e-mail"
+      hint: "give us a valid e-mail. It'll be used to notify you in case there are events on your house"
+    password:
+      label: "Password"
+      hint: "type a password of at least 6 symbols"
+    password_confirmation:
+      label: "Password confirmation"
+    one: "User"
+    other: "Users"
+    title:
+      show: "User {{name}}"
+      edit: "Edit {{name}}"
+    joined_on: "Joined on"
+    this_is_you: "this is you"    
+    edit_profile: "edit profile"
+    my_profile: "My profile"
+    messages:
+      success:
+        update: "Your profile has been updated!"
+      error:
+        cant_create_new_user: "You can't sign-in again, you are logged in"
+    timezone:
+      legend: "Choose your current timezone"
+      label: "Timezone"
+      hint: "You can change your timezone whenever you need to"
+    locale:
+      legend: "Choose your locale"
+      label: "Locale"
+      hint: "It will reflect on the application's language"
+    hints:
+      no_recent_activities: "You have not performed any activities lately"
+      first_login: "Because it's the first time you login, please set up your profile."
+    style:
+      legend: "Choose your theme"
+      label: "Theme"
+      hint: "You can change the colors of the application as you like"
+      colors:
+        blue: "Blue"
+        green: "Green"
+        pink: "Pink"
+        black: "Black"
+
   
   authentication:
     logged_as: "logged as {{user}}"
@@ -112,51 +169,8 @@ en:
       other: "Users"
       hint: "Lowest access level. Users are allowed to create documents and submit them for approval."    
     
-  navigation:
-    general:
-      dashboard: "Dashboard"
   
-  user:
-    one: "User"
-    other: "Users"
-    title:
-      show: "Member {{name}}"
-      edit: "Edit {{name}}"
-    joined_on: "Joined on"
-    this_is_you: "this is you"
-    add: "Add another user"
-    edit_profile: "edit profile"
-    add_members: "Add members"
-    my_profile: "My profile"
-    user_project:
-      one: "{{user_logon}}'s project"
-      other: "{{user_logon}}'s projects"
-    logon:
-      label: "Logon"
-    messages:
-      success:
-        update: "Your profile has been updated!"
-    timezone:
-      legend: "Choose your current timezone"
-      label: "Timezone"
-      hint: "You can change your timezone whenever you need to"
-    locale:
-      legend: "Choose your locale"
-      label: "Locale"
-      hint: "It will reflect on the application's language"
-    hints:
-      add_members: "You can also add new members into your project."
-      no_recent_activities: "You have not performed any activities lately"
-      first_login: "Because it's the first time you login, please set up your profile."  
-    style:
-      legend: "Choose your theme"
-      label: "Theme"
-      hint: "You can change the colors of the application as you like"
-      colors:
-        blue: "Blue"
-        green: "Green"
-        pink: "Pink"
-        black: "Black"
+  
   
   project:
     one: "Project"

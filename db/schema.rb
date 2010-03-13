@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(:version => 20100303190927) do
   create_table "actions", :force => true do |t|
     t.integer "device_id",        :null => false
     t.integer "voice_command_id"
-    t.string  "code",             :null => false
+    t.string  "command",          :null => false
     t.string  "action_type",      :null => false
     t.integer "range_down"
     t.integer "range_up"
@@ -25,11 +25,11 @@ ActiveRecord::Schema.define(:version => 20100303190927) do
   add_index "actions", ["voice_command_id"], :name => "voice_command_id"
 
   create_table "devices", :force => true do |t|
-    t.integer  "house_id",    :null => false
-    t.string   "code",        :null => false
-    t.string   "room",        :null => false
+    t.integer  "house_id",       :null => false
+    t.string   "identification", :null => false
+    t.string   "room",           :null => false
     t.string   "custom_name"
-    t.string   "query_code",  :null => false
+    t.string   "query_state",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -63,14 +63,16 @@ ActiveRecord::Schema.define(:version => 20100303190927) do
   add_index "schedules", ["action_id"], :name => "action_id"
 
   create_table "users", :force => true do |t|
-    t.string  "email",                             :null => false
-    t.string  "username",                          :null => false
-    t.string  "password",                          :null => false
-    t.string  "name"
-    t.boolean "active",    :default => true,       :null => false
-    t.string  "locale",    :default => "en",       :null => false
-    t.string  "time_zone", :default => "Brasilia", :null => false
-    t.string  "style",     :default => "blue",     :null => false
+    t.string   "email",                              :null => false
+    t.string   "username",                           :null => false
+    t.string   "password",                           :null => false
+    t.string   "name"
+    t.boolean  "active",     :default => true,       :null => false
+    t.string   "locale",     :default => "en",       :null => false
+    t.string   "time_zone",  :default => "Brasilia", :null => false
+    t.string   "style",      :default => "blue",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "voice_commands", :force => true do |t|

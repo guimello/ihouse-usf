@@ -37,9 +37,11 @@
 
 	<% if yield :navigation %>
 		<%= yield :navigation %>
+	<% elsif user_logged? %>
+          <%= render :layout => "layouts/main_navigation" %>
 	<% else %>
-		<%= render :layout => "layouts/main_navigation" %>
-	<% end %>
+          <%= render :layout => "layouts/site_navigation" %>
+        <% end %>
 
 	<% if user_logged? %>
 		<div id="current_user_header">

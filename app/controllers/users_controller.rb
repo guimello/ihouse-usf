@@ -1,9 +1,30 @@
 class UsersController < ApplicationController
-  skip_before_filter :get_user
+  skip_before_filter :get_user, :check_user_logged, :only => [:new, :create]
+  before_filter :can_sign_in, :only => [:new, :create]
+
+  def can_sign_in
+    if user_logged?
+      flash[:error] = I18n.t :cant_create_new_user, :scope => [:user, :messages, :error]
+      redirect_to root_url
+    end
+  end
+
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new params[:user]
+    begin
+      @user.save!
+      session[:user_id] = @user.id
+      redirect_to @user
+    rescue
+      render :new and return
+    end
+  end
 
   def show
-    @user = User.find(params[:id])
-
     respond_to do |format|
       format.html
     end

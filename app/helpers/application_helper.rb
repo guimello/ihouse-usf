@@ -59,7 +59,7 @@ module ApplicationHelper
 
     if model.try(field.to_sym).blank?
       unless form
-        return unless show_if_blank
+          return unless show_if_blank
       end
     end
 
@@ -90,6 +90,12 @@ module ApplicationHelper
         when :text_field
           if form
             html << form.text_field(field.to_sym, field_options)
+          else
+            html << h(model.try(field.to_sym))
+          end
+        when :password
+          if form
+            html << form.password_field(field.to_sym, field_options)
           else
             html << h(model.try(field.to_sym))
           end

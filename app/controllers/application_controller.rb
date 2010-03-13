@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   include Session
   include Locale
 
+  before_filter :check_user_logged, :set_locale, :get_user
+
   layout "two_columns" # The default layout
 
   helper :all
@@ -22,9 +24,7 @@ class ApplicationController < ActionController::Base
       flash[:error] = "ooooops"
       head :internal_server_error
       redirect_to root_url
-  end
-
-  #before_filter :check_user_logged, :set_locale, :get_user
+  end  
 
   helper_method :current_path
 
