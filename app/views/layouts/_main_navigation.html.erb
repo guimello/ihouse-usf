@@ -1,6 +1,13 @@
 <ul id="left-tabs" class="tabs">
-	<li <%= "class='selected'" if controller.controller_name == "application" and controller.action_name == "main" %>>
+	<li <%= "class='selected'" if controller.controller_name == "site" and controller.action_name == "index" %>>
 		<%= link_to t(:home, :scope => [:navigation]), root_url %>
 	</li>        
-	<%= yield %>
+        
+	<%= yield if yield %>
+</ul>
+
+<ul id="right-tabs" class="tabs">
+  <li <%= "class='selected'" if controller.controller_name == "houses" and ["new", "create"].include? controller.action_name %>>
+    <%= link_to t(:new, :scope => :house), new_user_house_url(current_user) %>
+  </li>
 </ul>

@@ -14,9 +14,28 @@ pt:
   logout: "sair"  
   created_at: "Criado em"
 
+  authorization:
+    login_fail: "Usuário ou senha inválidos"
+    you_are_not_logged_in: "Você deve estar logado para acessar a página requisitada. Por favor, proceda para o login."
+    you_dont_have_permission: "Você não tem permissão para efetuar esta ação!"
+
   navigation:
     home: "Home"
-    sign_in: "Cadastra-se"
+    sign_up: "Cadastra-se"
+    login: "Entrar"
+
+  authentication:
+    logged_as: "logado como {{user}}"
+    username: "username"
+    password: "senha"
+    forgot_password: "Esqueceu a senha?"
+
+  application:
+    title: "iHouse"
+    title_full: "Repositórios de Documentos"
+    error: "Houve um error interno. Por favor, tente novamente mais tarde."
+    action_not_allowed: "Você não pode tomar está ação!"
+    start_up: "Comece agora"
 
   user:
     new: "Cria sua conta"
@@ -50,6 +69,7 @@ pt:
     messages:
       success:
         update: "Seu perfil foi atualizado com sucesso!"
+        create: "Você foi cadastrado com successo!"
       error:
         cant_create_new_user: "Você não pode cadastrar-se novamente, você está logado"
     timezone:
@@ -72,12 +92,23 @@ pt:
         green: "Verde"
         pink: "Rosa"
         black: "Preto"
-  
-  authentication:
-    logged_as: "logado como {{user}}"
-    logon: "logon"
-    password: "senha"
-    forgot_password: "Esqueceu a senha?"
+
+  house:
+    new: "Adicione outra casa"
+    one: "Casa"
+    other: "Casas"
+    edit: "Mude as informações desta casa"
+    legends:
+      add_a_new_house: "Identifique sua nova casa"
+    name:
+      label: "Nome"
+      hint: "De a ela um nome para que você a identifique facilmente"
+    description:
+      label: "Descrição"
+      hint: "Qualquer coisa adicional que você queira acrescentar..."
+    messages:
+      success:
+        create: "A casa foi adicionada com successo!"
   
   form:
     login: "Entrar"
@@ -105,13 +136,6 @@ pt:
     hints:
       remove: "Você tem certeza que deseja remover este registro?\nNota: não há opção desfazer."
       search: "entre com a busca"
-
-  application:
-    title: "PDR"
-    title_full: "Repositórios de Documentos"
-    error: "Houve um error interno. Por favor, tente novamente mais tarde."
-    action_not_allowed: "Você não pode tomar está ação!"
-    start_up: "Comece agora"
 
   mail:
     footer: "Att.<br/> {{application_title}}.<br/><br/>Este email foi enviado automaticamente, por favor não o responda."
@@ -639,12 +663,7 @@ pt:
         create: "O usuário foi adicionado com successo!"
         update: "As Permissões foram atualizadas!"
         destroy: "O usuário foi removido do seu projeto com sucesso!"
-
-  authorization:
-    login_fail: "Usuário ou senha inválidos"
-    you_are_not_logged_in: "Você deve estar logado para acessar a página requisitada. Por favor, proceda para o login."
-    you_dont_have_permission: "Você não tem permissão para efetuar esta ação!"
-  
+        
   administration:
     title: "Administração"
     you_can_execute_the_following_actions: "Como administrador, você pode executar as seguintes ações:"

@@ -1,13 +1,25 @@
 class UsersController < ApplicationController
-  skip_before_filter :get_user, :check_user_logged, :only => [:new, :create]
-  before_filter :can_sign_in, :only => [:new, :create]
+  skip_before_filter :get_user, :check_user_logged, :check_user_is_correct, :only => [:new, :create]
+  before_filter :can_sign_in, :only => [:new, :create]	
+
+	def check_user_is_correct
+		return true unless params[:id]
+    unless @user == User.find(params[:id])
+      flash[:error] = I18n.t :you_dont_have_permission, :scope => :authorization
+      redirect_to root_url
+    end
+  end
 
   def can_sign_in
     if user_logged?
       flash[:error] = I18n.t :cant_create_new_user, :scope => [:user, :messages, :error]
-      redirect_to root_url
+      redirect_to my_panel_url
     end
   end
+
+	def my_panel
+		render :show
+	end
 
   def new
     @user = User.new
@@ -18,7 +30,8 @@ class UsersController < ApplicationController
     begin
       @user.save!
       session[:user_id] = @user.id
-      redirect_to @user
+      flash[:success] = I18n.t :create, :scope => [:user, :messages, :success]
+      redirect_to my_panel_url
     rescue
       render :new and return
     end

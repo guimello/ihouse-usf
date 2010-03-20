@@ -1,6 +1,6 @@
 <% form_tag sessions_path, :id => "login-form", :class => "basic-form rounded" do %>
 	<fieldset class="rounded-12">
-		<legend>iHouse</legend>
+		<legend><%= t :title, :scope => :application %></legend>
 
 		<% if flash[:notice] %>
 			<%= render :partial => "layouts/flash_alert", :locals => {:title => t(:notice, :scope => :alerts),
@@ -10,7 +10,7 @@
 
 		<fieldset>
 			<dl>
-				<dt><%= label_tag :logon, t(:logon, :scope => :authentication) %></dt>
+				<dt><%= label_tag :username, t(:username, :scope => :authentication) %></dt>
 				<dd><%= text_field_tag :username, nil, :style => "width: 95%" %></dd>
 
 				<dt><%= label_tag :password, t(:password, :scope => :authentication) %></dt>

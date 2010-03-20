@@ -7,7 +7,11 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users, :only => [:edit, :update, :show, :new]
 
-  map.resources :users
+  map.resources :users do |user|
+    user.resources :houses
+  end
+
+	map.my_panel "/my_panel", :controller => "users", :action => "my_panel", :conditions => {:method => :get}
 
   map.root :controller => :site
   # The priority is based upon order of creation: first created -> highest priority.

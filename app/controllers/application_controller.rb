@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include Session
   include Locale
 
-  before_filter :check_user_logged, :set_locale, :get_user
+  before_filter :check_user_logged, :set_locale, :get_user, :check_user_is_correct
 
   layout "two_columns" # The default layout
 
@@ -30,6 +30,13 @@ class ApplicationController < ActionController::Base
 
   def get_user
     @user = current_user
+  end
+
+  def check_user_is_correct
+    unless @user == User.find(params[:user_id])
+      flash[:error] = I18n.t :you_dont_have_permission, :scope => :authorization
+      redirect_to root_url
+    end
   end
 
   def get_house

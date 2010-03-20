@@ -14,10 +14,29 @@ en:
   logout: "logout"  
   created_at: "Created on"
 
+  authorization:
+    login_fail: "Invalid user or password"
+    you_are_not_logged_in: "You must be logged in order to access the requested page. Please login."
+    you_dont_have_permission: "You don't have permission to perform this action!"
+
   navigation:
     home: "Home"
-    sign_in: "Sign in"
+    sign_up: "Sign up"
+    login: "Sign in"
 
+  authentication:
+    logged_as: "logged as {{user}}"
+    username: "username"
+    password: "password"
+    forgot_password: "Forgot password?"
+
+  application:
+    title: "iHouse"
+    title_full: "Documentation Repository"
+    error: "There was an internal error. Please try again later."
+    action_not_allowed: "You can not perform that action!"
+    start_up: "Start now"
+    
   user:
     new: "Create your account"
     edit: "Edit your profile"
@@ -49,6 +68,7 @@ en:
     messages:
       success:
         update: "Your profile has been updated!"
+        create: "You've successfully created your account!"
       error:
         cant_create_new_user: "You can't sign-in again, you are logged in"
     timezone:
@@ -72,12 +92,22 @@ en:
         pink: "Pink"
         black: "Black"
 
-  
-  authentication:
-    logged_as: "logged as {{user}}"
-    logon: "logon"
-    password: "password"
-    forgot_password: "Forgot password?"
+  house:
+    new: "Add a new house"
+    one: "House"
+    other: "Houses"
+    edit: "Change this house's info"
+    legends:
+      add_a_new_house: "Identify your new house"
+    name:
+      label: "Name"
+      hint: "Give it a name so you can identify it easily"
+    description:
+      label: "Description"
+      hint: "Anything else you want to add..."
+    messages:
+      success:
+        create: "The house has been added successfully!"
   
   form:
     login: "Login"
@@ -105,13 +135,6 @@ en:
     hints:
       remove: "Are you sure you want to delete this record?\nNote: there is no undo."
       search: "type here your search"
-
-  application:
-    title: "iHouse"
-    title_full: "Documentation Repository"
-    error: "There was an internal error. Please try again later."
-    action_not_allowed: "You can not perform that action!"
-    start_up: "Start now"
 
   mail:
     footer: "Att.<br/> {{application_title}}.<br/><br/>This email was sent automatically, please do not reply."
@@ -637,12 +660,7 @@ en:
       success:
         create: "The user has been added to the project!"
         update: "Permissions have been successfully updated!"
-        destroy: "The user has been successfully removed from your project!"
-  
-  authorization:
-    login_fail: "Invalid user or password"
-    you_are_not_logged_in: "You must be logged in order to access the requested page. Please login."
-    you_dont_have_permission: "You don't have permission to perform this action!"
+        destroy: "The user has been successfully removed from your project!"  
 
   administration:
     title: "Administration"

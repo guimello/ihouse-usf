@@ -2,10 +2,10 @@ class SessionsController < ApplicationController
 
   layout "login"
 
-  skip_before_filter :check_user_logged, :get_user
+  skip_before_filter :check_user_logged, :get_user, :check_user_is_correct
 
   def new
-    redirect_to root_url and return if user_logged?
+    redirect_to my_panel_url and return if user_logged?
 
     respond_to do |format|
       format.html
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       if session[:return_to]
         redirect_to session[:return_to] and return
       else
-        redirect_to root_url and return
+        redirect_to my_panel_url and return
       end
     end
 
@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    redirect_to login_url
+    redirect_to root_url
   end
 end
 
