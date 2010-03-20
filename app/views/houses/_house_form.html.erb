@@ -1,0 +1,10 @@
+<fieldset>
+  <legend class="icon text-name"><%= t :add_a_new_house, :scope => [:house, :legends] %></legend>
+
+  <dl class="rounded-4">
+
+    <%= text_field_for f, :name, :show_hint => true, :required => true %>
+    <%= text_area_for f, :description, :show_hint => true %>
+
+  </dl>
+</fieldset>

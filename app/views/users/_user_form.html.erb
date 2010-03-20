@@ -1,0 +1,63 @@
+<fieldset>
+  <legend class="icon text-name"><%= t :account_information, :scope => [:user, :legends] %></legend>
+
+  <dl class="rounded-4">
+
+    <%= text_field_for f, :username, :show_hint => true, :required => true %>
+    <%= text_field_for f, :email, :show_hint => true, :required => true %>
+    <%= password_field_for f, :password, :show_hint => true, :required => true %>
+    <%= password_field_for f, :password_confirmation %>
+    
+  </dl>
+</fieldset>
+
+<fieldset>
+  <legend class="icon text-name"><%= t :profile_information, :scope => [:user, :legends] %></legend>
+
+  <dl class="rounded-4">
+
+    <%= text_field_for f, :name %>
+
+    <dt><%= f.label :locale, t(:label, :scope => [:user, :locale]) %></dt>
+    <dd class="hint"><%= t :hint, :scope => [:user, :locale] %></dd>
+    <dd><%= locale_select f %></dd>
+
+    <dt><%= f.label :time_zone, t(:label, :scope => [:user, :timezone]) %></dt>
+    <dd class="hint"><small><%= t :hint, :scope => [:user, :timezone] %></small></dd>
+    <dd><%= f.time_zone_select :time_zone %></dd>
+
+    
+    <dt><%= f.label :style, t(:label, :scope => [:user, :style]) %></dt>
+    <dd class="hint"><small><%= t :hint, :scope => [:user, :style] %></small></dd>
+    <dd class="theme_select">
+      <div class="float-left center">
+          <%= f.label(:style_blue, image_tag("theme-blue.png", :class => "picture-frame rounded-4")) %><br />
+          <%= f.radio_button(:style, :blue, :class => "user_style") %>
+      </div>
+      <div class="float-left center">
+          <%= f.label(:style_green, image_tag("theme-green.png", :class => "picture-frame rounded-4")) %><br />
+          <%= f.radio_button(:style, :green, :class => "user_style") %>
+      </div>
+      <div class="float-left center">
+          <%= f.label(:style_pink, image_tag("theme-pink.png", :class => "picture-frame rounded-4")) %><br />
+          <%= f.radio_button(:style, :pink, :class => "user_style") %>
+      </div>
+      <div class="float-left center">
+          <%= f.label(:style_red, image_tag("theme-red.png", :class => "picture-frame rounded-4")) %><br />
+          <%= f.radio_button(:style, :red, :class => "user_style") %>
+      </div>
+      <div class="float-left center">
+          <%= f.label(:style_darkred, image_tag("theme-darkred.png", :class => "picture-frame rounded-4")) %><br />
+          <%= f.radio_button(:style, :darkred, :class => "user_style") %>
+      </div>
+      <div class="float-left center">
+          <%= f.label(:style_black, image_tag("theme-black.png", :class => "picture-frame rounded-4")) %><br />
+          <%= f.radio_button(:style, :black, :class => "user_style") %>
+      </div>
+      <div class="float-left center">
+          <%= f.label(:style_white, image_tag("theme-white.png", :class => "picture-frame rounded-4")) %><br />
+          <%= f.radio_button(:style, :white, :class => "user_style") %>
+      </div>
+    </dd>
+  </dl>
+</fieldset>
