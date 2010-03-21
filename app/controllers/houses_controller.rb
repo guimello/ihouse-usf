@@ -1,8 +1,13 @@
 class HousesController < ApplicationController
-  before_filter :get_house, :only => [:show]
+  before_filter :get_house, :only => [:show, :edit, :update]
 
   def get_house
-    @house = @user.houses.find params[:id]
+		begin
+			@house = @user.houses.find params[:id]
+		rescue ActiveRecord::RecordNotFound
+			flash[:error] = I18n.t :you_mistyped_the_house_url, :scope => :application
+			redirect_to my_panel_url and return
+		end
   end
 
   def new
@@ -26,4 +31,16 @@ class HousesController < ApplicationController
   def index
     @houses = @user.houses
   end
+
+	def edit
+
+	end
+
+	def update
+		if @house.update_attributes params[:house]
+			flash[:success] = I18n.t :update, :scope => [:house, :messages, :success]
+			redirect_to user_house_url(@user, @house) and return
+		end
+		render :edit and return
+	end
 end

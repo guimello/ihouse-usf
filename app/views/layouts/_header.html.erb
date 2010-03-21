@@ -2,28 +2,29 @@
 	<div id="title">
 		<h1>
 			<div id="application_title" >
-				<%= link_to t(:title, :scope => :application), root_url %>
+				<%= link_to t(:title, :scope => :application), (user_logged?)? my_panel_url : root_url %>
 			</div>
-			<% if defined? @project and !@project.id.nil? %>
+			<% if user_logged? and !current_user.houses.nil? %>
 
 				<div id="project_title">
-					<% if current_user.projects.size > 1 %>
+					<% if current_user.houses.size > 1 or (current_user.houses.size > 0 and !defined? @house) %>
 						<a class="icon selection" href="#" id="project_selection">
-							<span><%= @project.name %></span>
+							<span><%= (defined? @house) ? @house.name : t(:my_houses, :scope => :house) %></span>
 						</a>
 
 
 						<ul class="basic-list" style="margin-left:10px;display:none" >
 							<hr style="width:150px"></hr>
-							<% current_user.projects.each_with_index do |project, index| %>
-								<% unless project == @project %>
-									<li class="icon locale"><%= link_to h(project.name), project_url(project) %></li>
-								<% end %>
+							<% current_user.houses.each_with_index do |house, index| %>
+								<% next if defined? @house and house == @house %>
+								<li class="icon locale"><%= link_to h(house.name), user_house_url(house.user, house) %></li>								
 							<% end %>
 						</ul>
+					<% elsif defined? @house %>
+						<%= link_to h(@house.name), user_house_url(@house.user, @house), :id => "project_selection" %>
 					<% else %>
-						<%= link_to h(@project.name), project_url(@project), :id => "project_selection" %>
-					<% end %>
+					  <%= link_to t(:my_houses, :scope =>:house), user_houses_url(current_user), :id => "project_selection"  %>
+					<% end  %>
 				</div>
 
 				<div class="clear"></div>

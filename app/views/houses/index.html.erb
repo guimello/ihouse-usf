@@ -1,1 +1,3 @@
-houses
+<% @houses.each do |house| %>
+  <%= link_to house.name, user_house_url(house.user, house) %>
+<% end  %>

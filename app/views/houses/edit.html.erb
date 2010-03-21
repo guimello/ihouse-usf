@@ -1,0 +1,15 @@
+<h1><%= t :edit, :scope => :house %></h1>
+
+<%= title t(:edit, :scope => [:house]) %>
+
+<% form_for [@user,@house], :html => {:class => "basic-form rounded large"} do |f| %>
+
+  <%= error_messages_for :house, :class =>"alert red error rounded-8" %>
+
+<div class="rounded-8">
+  <%= render :partial => "house_form", :locals => {:f => f} %>
+
+  <%= awesome_submit_button t(:save, :scope => :form), :edit %>
+</div>
+
+<% end %>

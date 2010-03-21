@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates_presence_of :password_confirmation, :if => :password_changed?
   validates_confirmation_of :password, :if => :password_changed?
   validates_uniqueness_of :username, :if => :username_changed?
+	validates_uniqueness_of :email, :if => :email_changed?
   validates_presence_of :username
 
   def to_s

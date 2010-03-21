@@ -36,10 +36,12 @@ en:
     error: "There was an internal error. Please try again later."
     action_not_allowed: "You can not perform that action!"
     start_up: "Start now"
+    you_mistyped_the_house_url: "Maybe you mistyped the url?"
     
   user:
     new: "Create your account"
     edit: "Edit your profile"
+    my_panel: "My panel"
     legends:
       account_information: "Account Information"
       profile_information: "Profile information"
@@ -96,6 +98,7 @@ en:
     new: "Add a new house"
     one: "House"
     other: "Houses"
+    my_houses: "My houses"
     edit: "Change this house's info"
     legends:
       add_a_new_house: "Identify your new house"
@@ -107,7 +110,8 @@ en:
       hint: "Anything else you want to add..."
     messages:
       success:
-        create: "The house has been added successfully!"
+        create: "The house's been added successfully!"
+        update: "The house's been successfully updated!"
   
   form:
     login: "Login"

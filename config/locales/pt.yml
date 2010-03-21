@@ -36,10 +36,12 @@ pt:
     error: "Houve um error interno. Por favor, tente novamente mais tarde."
     action_not_allowed: "Você não pode tomar está ação!"
     start_up: "Comece agora"
+    you_mistyped_the_house_url: "Talvez você tenha digitado a url errada?"
 
   user:
     new: "Cria sua conta"
     edit: "Edite seu perfil"
+    my_panel: "Meu painel"
     legends:
       account_information: "Informações da conta"
       profile_information: "Informação do seu perfil"
@@ -97,6 +99,7 @@ pt:
     new: "Adicione outra casa"
     one: "Casa"
     other: "Casas"
+    my_houses: "Minhas casas"
     edit: "Mude as informações desta casa"
     legends:
       add_a_new_house: "Identifique sua nova casa"
@@ -109,6 +112,7 @@ pt:
     messages:
       success:
         create: "A casa foi adicionada com successo!"
+        update: "A casa foi atualizada com successo!"
   
   form:
     login: "Entrar"
