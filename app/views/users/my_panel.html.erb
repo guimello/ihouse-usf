@@ -1,0 +1,26 @@
+<% unless @user.houses.empty? %>
+
+	<div class="fluid">
+	  <h1 class="float-left"><%= t :my_houses, :scope => :house %></h1>
+	</div>
+
+	<%= render :partial => "user_houses", :locals => {:houses => @user.houses} %>
+
+	write here next schedules
+
+	<% content_for :sidebar do %>
+
+		<h2><%= t :recent_activity, :scope => :house %></h2>
+
+		<%= render :partial => "houses/houses_updates", :locals => {:logs => @logs} %>
+
+	<% end %>
+
+<% else %>
+
+	<div class="alert green center rounded-8">
+	  <h1><%= link_to t(:new, :scope => :house), new_user_house_url(@user) %></h1>
+	  <p><%= t :no_house, :scope => [:house, :hints] %></p>
+	</div>
+
+<% end %>

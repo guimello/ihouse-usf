@@ -12,13 +12,15 @@
 ActiveRecord::Schema.define(:version => 20100303190927) do
 
   create_table "actions", :force => true do |t|
-    t.integer "device_id",        :null => false
-    t.integer "voice_command_id"
-    t.string  "command",          :null => false
-    t.string  "action_type",      :null => false
-    t.integer "range_down"
-    t.integer "range_up"
-    t.string  "custom_name"
+    t.integer  "device_id",        :null => false
+    t.integer  "voice_command_id"
+    t.string   "command",          :null => false
+    t.string   "action_type",      :null => false
+    t.integer  "range_down"
+    t.integer  "range_up"
+    t.string   "custom_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "actions", ["device_id"], :name => "device_id"
@@ -57,7 +59,9 @@ ActiveRecord::Schema.define(:version => 20100303190927) do
   add_index "logs", ["house_id"], :name => "house_id"
 
   create_table "schedules", :force => true do |t|
-    t.integer "action_id", :null => false
+    t.integer  "action_id",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "schedules", ["action_id"], :name => "action_id"
@@ -76,7 +80,9 @@ ActiveRecord::Schema.define(:version => 20100303190927) do
   end
 
   create_table "voice_commands", :force => true do |t|
-    t.string "speak", :null => false
+    t.string   "speak",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_foreign_key "actions", "devices", :name => "actions_ibfk_1", :dependent => :delete

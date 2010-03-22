@@ -14,6 +14,25 @@ en:
   logout: "logout"  
   created_at: "Created on"
 
+  update:
+    one: "Update"
+    other: "Updates"
+    approved:
+      deploy: "{{user}} approved the creation of {{title}}"
+      change: "{{user}} approved the change of {{title}}"
+      delete: "{{user}} approved the deletion of {{title}}"
+      suspend: "{{user}} approved the suspension of {{title}}"
+    not_approved:
+      deploy: "{{user}} did not approve the creation of {{title}}"
+      change: "{{user}} did not approve the change of {{title}}"
+      delete: "{{user}} did not approve the deletion of {{title}}"
+      suspend: "{{user}} did not approve the suspension of {{title}}"
+    created:
+      deploy: "{{user}} requested the approval of {{title}}"
+      change: "{{user}} requested the change of {{title}}"
+      delete: "{{user}} requested the deletion of {{title}}"
+      suspend: "{{user}} requested the suspension of {{title}}"
+
   authorization:
     login_fail: "Invalid user or password"
     you_are_not_logged_in: "You must be logged in order to access the requested page. Please login."
@@ -99,6 +118,7 @@ en:
     one: "House"
     other: "Houses"
     my_houses: "My houses"
+    recent_activity: "Recent activities"
     edit: "Change this house's info"
     legends:
       add_a_new_house: "Identify your new house"
@@ -112,6 +132,9 @@ en:
       success:
         create: "The house's been added successfully!"
         update: "The house's been successfully updated!"
+    hints:
+      no_house: "You don't have any house in your account. Add one now!"
+      destroy: "Are you sure you want to remove this house from your account? There is no undo."
   
   form:
     login: "Login"
@@ -141,26 +164,7 @@ en:
       search: "type here your search"
 
   mail:
-    footer: "Att.<br/> {{application_title}}.<br/><br/>This email was sent automatically, please do not reply."
-  
-  update:
-    one: "Update"
-    other: "Updates"
-    approved:
-      deploy: "{{user}} approved the creation of {{title}}"
-      change: "{{user}} approved the change of {{title}}"
-      delete: "{{user}} approved the deletion of {{title}}"
-      suspend: "{{user}} approved the suspension of {{title}}"
-    not_approved:
-      deploy: "{{user}} did not approve the creation of {{title}}"
-      change: "{{user}} did not approve the change of {{title}}"
-      delete: "{{user}} did not approve the deletion of {{title}}"
-      suspend: "{{user}} did not approve the suspension of {{title}}"
-    created:
-      deploy: "{{user}} requested the approval of {{title}}"
-      change: "{{user}} requested the change of {{title}}"
-      delete: "{{user}} requested the deletion of {{title}}"
-      suspend: "{{user}} requested the suspension of {{title}}"
+    footer: "Att.<br/> {{application_title}}.<br/><br/>This email was sent automatically, please do not reply."  
 
   super_cow:
     one: "Super cow"

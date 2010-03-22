@@ -20,7 +20,7 @@
 								<li class="icon locale"><%= link_to h(house.name), user_house_url(house.user, house) %></li>								
 							<% end %>
 						</ul>
-					<% elsif defined? @house %>
+					<% elsif defined? @house and @house.id %>
 						<%= link_to h(@house.name), user_house_url(@house.user, @house), :id => "project_selection" %>
 					<% else %>
 					  <%= link_to t(:my_houses, :scope =>:house), user_houses_url(current_user), :id => "project_selection"  %>

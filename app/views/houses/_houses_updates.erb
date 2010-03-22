@@ -1,0 +1,22 @@
+<table id="requests_table" style="margin-top: 15px; margin-bottom: 40px" class="basic-table fluid clear gray-line">
+	<thead>
+		<tr>
+			<th class="left" style="width: 80px"><%= t :house, :count => 1 %></th>
+			<th class=""><%= t :update, :count => 1 %></th>
+			<th class="" style="width: 150px"></th>
+		</tr>
+	</thead>
+	<tbody>
+	<% for log in logs %>
+		<% unless log.loggable.nil? %>
+		<tr class="<%= cycle("even", "odd") %>">
+			<td class="center"><%= link_to h(log.house.name), log.house.user, log.house %></td>
+			<td class="left">
+				<%= render :partial => "houses/cell_recent_activities", :locals => {:log => log} %>
+			</td>
+			<td><%= distance_of_time_in_words_to_now log.created_at %>&nbsp;<%= t(:ago).downcase %></td>
+		</tr>
+		<% end %>
+	<% end %>
+	</tbody>
+</table>

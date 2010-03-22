@@ -14,6 +14,25 @@ pt:
   logout: "sair"  
   created_at: "Criado em"
 
+  update:
+    one: "Atualização"
+    other: "Atualizações"
+    approved:
+      deploy: "{{user}} criou um novo documento chamado {{title}}"
+      change: "{{user}} alterou o documento {{title}}"
+      delete: "{{user}} excluiu o documento {{title}}"
+      suspend: "{{user}} suspendeu o documento {{title}}"
+    not_approved:
+      deploy: "{{user}} não aprovou a criação de {{title}}"
+      change: "{{user}} não aprovou a mudança de {{title}}"
+      delete: "{{user}} não permitiu a exclusão de {{title}}"
+      suspend: "{{user}} não aprovou a suspenção de {{title}}"
+    created:
+      deploy: "{{user}} requisitou a aprovação de {{title}}"
+      change: "{{user}} requisitou a mudança de {{title}}"
+      delete: "{{user}} requisitou a exclusão de {{title}}"
+      suspend: "{{user}} requisitou a suspensão de {{title}}"
+
   authorization:
     login_fail: "Usuário ou senha inválidos"
     you_are_not_logged_in: "Você deve estar logado para acessar a página requisitada. Por favor, proceda para o login."
@@ -100,6 +119,7 @@ pt:
     one: "Casa"
     other: "Casas"
     my_houses: "Minhas casas"
+    recent_activity: "Atividades recentes"
     edit: "Mude as informações desta casa"
     legends:
       add_a_new_house: "Identifique sua nova casa"
@@ -113,6 +133,9 @@ pt:
       success:
         create: "A casa foi adicionada com successo!"
         update: "A casa foi atualizada com successo!"
+    hints:
+      no_house: "Você não tem nenhuma casa cadastrada em sua conta. Adicione uma agora!"
+      destroy: "Você têm certeza que quer apagar esta casa da sua conta? Não será possível desfazer esta ação."
   
   form:
     login: "Entrar"
@@ -142,26 +165,7 @@ pt:
       search: "entre com a busca"
 
   mail:
-    footer: "Att.<br/> {{application_title}}.<br/><br/>Este email foi enviado automaticamente, por favor não o responda."
-  
-  update:
-    one: "Atualização"
-    other: "Atualizações"
-    approved:
-      deploy: "{{user}} criou um novo documento chamado {{title}}"
-      change: "{{user}} alterou o documento {{title}}"
-      delete: "{{user}} excluiu o documento {{title}}"
-      suspend: "{{user}} suspendeu o documento {{title}}"
-    not_approved:
-      deploy: "{{user}} não aprovou a criação de {{title}}"
-      change: "{{user}} não aprovou a mudança de {{title}}"
-      delete: "{{user}} não permitiu a exclusão de {{title}}"
-      suspend: "{{user}} não aprovou a suspenção de {{title}}"
-    created:
-      deploy: "{{user}} requisitou a aprovação de {{title}}"
-      change: "{{user}} requisitou a mudança de {{title}}"
-      delete: "{{user}} requisitou a exclusão de {{title}}"
-      suspend: "{{user}} requisitou a suspensão de {{title}}"
+    footer: "Att.<br/> {{application_title}}.<br/><br/>Este email foi enviado automaticamente, por favor não o responda." 
 
   super_cow:
     one: "Super vaca"

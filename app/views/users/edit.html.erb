@@ -1,5 +1,7 @@
 <h1><%= t :edit, :scope => :user %></h1>
 
+<%= javascript_include_tag "themes" %>
+
 <%= title t(:edit, :scope => [:user]) %>
 
 <% form_for @user, :html => {:class => "basic-form rounded large"} do |f| %>
