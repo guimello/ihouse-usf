@@ -1,0 +1,24 @@
+<tr id="device_<%= form.object.id %>">
+  <td class="left">
+    <%= form.text_field :identification, :class => "medium" %>
+  </td>
+  <td>
+    <%= form.text_field :room, :class => "medium" %>
+  </td>
+  <td>
+    <%  unless form.object.custom_name.blank? %>
+      <%= form.text_field :custom_name, :class => "medium" %>
+    <% else %>
+	lolwut
+    <% end %>
+  </td>
+  <td>
+    <%= form.text_field :query_state, :class => "medium" %>
+  </td>
+  <td>
+    <%= form.hidden_field :_delete, :class => "remove-device-hidden" %>
+    <a href="#" confirm_message="<%= t :remove, :scope => [:form, :hints] %>" style="padding-top: 3px; padding-bottom: 3px" class="awesome red small <%= (form.object.new_record?) ? "remove-new-device" : "remove-existing-device" %>">
+      <span class="icon cross"><%= t :cancel, :scope => :form %></span>
+    </a>
+  </td>
+</tr>

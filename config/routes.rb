@@ -8,7 +8,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, :only => [:edit, :update, :show, :new]
 
   map.resources :users do |user|
-    user.resources :houses
+    user.resources :houses do |house|
+			house.resources :devices, :collection => {	:discover => :get} do |device|
+				device.resources :actions do |action|
+					action.resources :schedules
+				end
+			end
+		end
   end
 
 	map.my_panel "/my_panel", :controller => "users", :action => "my_panel", :conditions => {:method => :get}

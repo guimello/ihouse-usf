@@ -1,0 +1,51 @@
+<% content_for :navigation do %>
+  <% render :layout => "layouts/main_navigation" do %>
+    <li class="selected tab-separator"><%= link_to t(:add_edit_discover, :scope => [:house, :devices]), new_user_house_device_url(@user, @house) %></li>
+  <% end %>
+<% end %>
+
+
+<%= content_tag :h1, t(:add_edit_discover, :scope => [:house, :devices]) %>
+<%= content_tag :p, t(:add_edit_discover, :scope => [:house, :devices, :hints], :discover_button => "\"#{t(:discover, :scope => :form)}\"") %>
+
+<% form_for @house, :url => user_house_devices_url(@user, @house),
+    :html => {:method => :post, :class => "basic-form rounded large"} do |house_form| %>
+
+    <% content_for :javascript do %>
+      $(".add-house-device").live("click",function(){
+	      <%= "var device='#{generate_template(house_form, :devices, :partial => "devices/devices_rows_form")}'" %>
+
+	      var new_id = new Date().getTime();
+	      $("#devices_table > tbody").append(device.replace(/NEW_RECORD/g, new_id));
+
+	      return false;
+      });
+
+      $(".remove-new-device").live("click", function(){      
+          if(confirm($(this).confirmPlz()))
+	$(this).closest("tr").remove();
+	
+          return false;
+      });
+
+      $(".remove-existing-device").live("click", function(){
+          if(confirm($(this).confirmPlz()))
+          {
+	$(this).closest("tr").find(".remove-device-hidden").val(1);	
+	$(this).closest("tr").hide();
+          }
+
+          return false;
+      });
+    <% end %>
+
+    <%= error_messages_for :house, :associations => :devices, :class => "alert red error rounded-8" %>
+
+    <div id="devices_errors" style="display:none"></div>
+
+    <%= render :partial => "devices_table_form", :locals => {:house => @house,
+							      :devices => @devices,
+							      :house_form => house_form} %>
+
+    <%= awesome_submit_button t(:submit, :scope => :form), :tick %>
+<% end %>

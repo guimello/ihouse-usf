@@ -1,6 +1,7 @@
 <% content_for :navigation do %>
   <% render :layout => "layouts/main_navigation" do %>
     <li class="selected tab-separator" ><%= link_to @house.name, user_house_url(@house.user, @house) %></li>
+    <li class="tab-separator"><%= link_to t(:add_edit_discover, :scope => [:house, :devices]), new_user_house_device_url(@user, @house) %></li>
   <% end %>
 <% end %>
 

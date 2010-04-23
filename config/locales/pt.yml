@@ -121,6 +121,10 @@ pt:
     my_houses: "Minhas casas"
     recent_activity: "Atividades recentes"
     edit: "Mude as informações desta casa"
+    devices:
+      add_edit_discover: "Adicione/Edite e descubra dispositivos"
+      edit:
+        add_edit_discover: "Aqui você pode adicionar/editar dispositivos de sua casa manualmente ou encontrá-los automaticamente clicando em {{discover_button}}."
     legends:
       add_a_new_house: "Identifique sua nova casa"
     name:
@@ -136,6 +140,19 @@ pt:
     hints:
       no_house: "Você não tem nenhuma casa cadastrada em sua conta. Adicione uma agora!"
       destroy: "Você têm certeza que quer apagar esta casa da sua conta? Não será possível desfazer esta ação."
+
+  device:
+    one: "Dispositivo"
+    other: "Dispositivos"
+    add: "Adicionar um novo dispositivo manualmente"
+    identification:
+      label: "Dispositivo"
+    room:
+      label: "Cômodo"
+    name:
+      label: "Nome"
+    query_state:
+      label: "Código de pergunta de estado"
   
   form:
     login: "Entrar"
@@ -160,6 +177,7 @@ pt:
     show_more: "ver mais"
     with_selected: "Com os selecionados"
     all_selected: "Todos os selecionados"
+    discover: "Procurar dispositivos"
     hints:
       remove: "Você tem certeza que deseja remover este registro?\nNota: não há opção desfazer."
       search: "entre com a busca"
