@@ -4,6 +4,8 @@
   <% end %>
 <% end %>
 
+    <%= javascript_include_tag "devices"  %>
+
 
 <%= content_tag :h1, t(:add_edit_discover, :scope => [:house, :devices]) %>
 <%= content_tag :p, t(:add_edit_discover, :scope => [:house, :devices, :hints], :discover_button => "\"#{t(:discover, :scope => :form)}\"") %>
@@ -48,4 +50,8 @@
 							      :house_form => house_form} %>
 
     <%= awesome_submit_button t(:submit, :scope => :form), :tick %>
+<% end %>
+
+<% content_for :sidebar do %>
+    <%= awesome_button t(:discover, :scope => :form), "search-small", :href => discover_user_house_devices_url, :class => "green discover-devices"%>
 <% end %>

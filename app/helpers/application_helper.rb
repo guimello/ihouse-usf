@@ -40,6 +40,17 @@ module ApplicationHelper
     end
   end
 
+	def awesome_button(label, icon, html_options = {})
+		html_options[:class] ||= "green"
+		html_options[:class] = "awesome #{html_options[:class]}"
+		html_options[:href] ||= "#"
+		icon = (icon.blank?) ? :tick : icon
+
+		content_tag(:a, html_options) do
+			content_tag(:span, :class => "icon #{icon}") { label }
+		end
+	end
+
   def permitted_to?(action, controller)
     return current_user.permissions.first(:conditions => {:project_id => @project.id}).role.rights.first(:conditions => {:action => action, :controller => controller})
   end
