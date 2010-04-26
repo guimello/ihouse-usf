@@ -163,4 +163,11 @@ module ApplicationHelper
   def date_select_for(object, category, field, select_options = {}, options = {})
     text_field_for(object, category, field, {:field_type => :date_select, :options_for_select => select_options}.merge(options))
   end
+
+	def icon_for_device(device, tag = :span, options = {})
+		options[:class] ||= ""
+		options[:class] = "icon #{device.display_icon} #{options[:class]}"
+
+		content_tag tag, nil, options
+	end
 end

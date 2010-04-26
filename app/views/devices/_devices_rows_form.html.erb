@@ -1,6 +1,6 @@
 <tr id="device_<%= form.object.id %>">  
   <td class="left">
-      <%= content_tag :span, nil, :class => "icon star" %>
+      <%= icon_for_device form.object %>
       <%= form.text_field :name, :class => "small", :value => (form.object.name.blank?) ? form.object.default_name : form.object.name %>
   </td>
   <td>

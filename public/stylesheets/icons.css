@@ -442,3 +442,13 @@
 {
 	background-image: url(../images/icons/silk/clock_red.png);	
 }
+
+.icon.lights
+{
+	background-image: url(../images/icons/silk/lightbulb.png);
+}
+
+.icon.unkown-device
+{
+	background-image: url(../images/icons/silk/building_error.png);
+}
