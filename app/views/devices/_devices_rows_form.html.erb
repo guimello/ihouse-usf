@@ -1,18 +1,22 @@
-<tr id="device_<%= form.object.id %>">
-  <td class="left">    
-      <%= form.text_field :name, :class => "medium", :value => (form.object.name.blank?) ? form.object.default_name : form.object.name %>
+<tr id="device_<%= form.object.id %>">  
+  <td class="left">
+      <%= content_tag :span, nil, :class => "icon star" %>
+      <%= form.text_field :name, :class => "small", :value => (form.object.name.blank?) ? form.object.default_name : form.object.name %>
   </td>
   <td>
-    <%= form.text_field :room, :class => "medium" %>
+    <%= form.text_field :room, :class => "small" %>
   </td>
   <td>
-    <%= form.text_field :identification, :class => "small" %>
+    <%= text_field_for_device form, :identification, :class => "small enable-disable-advanced" %>
   </td>  
   <td>
-    <%= form.text_field :query_state, :class => "small" %>
+    <%= text_field_for_device form, :query_state, :class => "small enable-disable-advanced" %>
+  </td>
+  <td>
+    <%= awesome_button t(:advanced), "edit", :class => "blue smallest edit-special-fields-on-device" %>
   </td>
   <td>
     <%= form.hidden_field :_delete, :class => "remove-device-hidden" %>
-    <%= awesome_button t(:cancel, :scope => :form), :cross, :confirm_message => t(:remove, :scope => [:form, :hints]), :class => "red small #{(form.object.new_record?) ? 'remove-new-device' : 'remove-existing-device'}" %>    
+    <%= awesome_button t(:remove, :scope => :form), :cross, :confirm_message => t(:remove, :scope => [:form, :hints]), :class => "red smallest #{(form.object.new_record?) ? 'remove-new-device' : 'remove-existing-device'}" %>
   </td>
 </tr>

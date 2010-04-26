@@ -1,11 +1,12 @@
 <table id="devices_table" class="basic-table fluid gray-line">
   <thead>
-    <tr>
-      <th style=""><%=t :label, :scope =>[:device, :name] %></th>
+    <tr>      
+      <th style="width: 20%"><%=t :label, :scope =>[:device, :name] %></th>
       <th style=""><%=t :label, :scope =>[:device, :room] %></th>
-      <th style=""><%=t :label, :scope =>[:device, :identification] %></th>            
-      <th style=""><%=t :label, :scope =>[:device, :query_state] %></th>
-      <th></th>
+      <th style=""><%=t :label, :scope =>[:device, :identification] %> (<%= t(:advanced) %>)</th>
+      <th style=""><%=t :label, :scope =>[:device, :query_state] %> (<%= t(:advanced) %>)</th>
+      <th style="width:25px"></th>
+      <th style="width: 25px"></th>
     </tr>
   </thead>
   <tfoot>

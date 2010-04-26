@@ -3,4 +3,10 @@ $(document).ready(function(){
           $.getScript(this.href);
           return false;
    });
+
+   $(".edit-special-fields-on-device").live("click", function(){	 
+          $(this).closest("tr").find(".enable-disable-advanced").attr("disabled", "");
+          $(this).closest("tr").find(".enable-disable-advanced").first().focus();
+          return false;
+   });
 });

@@ -13,6 +13,7 @@ pt:
   last_activity: "Última atividade"  
   logout: "sair"  
   created_at: "Criado em"
+  advanced: "avançado"
 
   update:
     one: "Atualização"
@@ -123,7 +124,7 @@ pt:
     edit: "Mude as informações desta casa"
     devices:
       add_edit_discover: "Adicione/Edite e descubra dispositivos"
-      edit:
+      hints:
         add_edit_discover: "Aqui você pode adicionar/editar dispositivos de sua casa manualmente ou encontrá-los automaticamente clicando em {{discover_button}}."
     legends:
       add_a_new_house: "Identifique sua nova casa"
@@ -152,7 +153,7 @@ pt:
     name:
       label: "Nome"
     query_state:
-      label: "Código de pergunta de estado"
+      label: "Código de estado"
     known:
       lamp_01:
         name: "Lâmpada"

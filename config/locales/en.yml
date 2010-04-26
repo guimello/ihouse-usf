@@ -13,6 +13,7 @@ en:
   last_activity: "Last activity"
   logout: "logout"  
   created_at: "Created on"
+  advanced: "advanced"
 
   update:
     one: "Update"
@@ -155,6 +156,9 @@ en:
     known:
       lamp_01:
         name: "Lights"
+    advanced_fields_info: "Advanced Options Information"
+    hints:
+      advanced_fields: "Most of the time advanced fields don't need any changes. So when you try to discover devices in your house, only change the advanced options if you find an unkown device. Therefore it will be required for you to fill out these options. Anyway, if you know waht your are doing, ust hit the button with the pencil icon (advanced) when change these settings."
     messages:
       success:
         update: "Devices in your house has been successfully saved!"
