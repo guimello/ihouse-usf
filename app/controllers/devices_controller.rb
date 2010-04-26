@@ -2,6 +2,10 @@ class DevicesController < ApplicationController
 	before_filter :get_house
 	before_filter :get_output_format, :only => :discover
 
+	def index
+		@devices = @house.devices
+	end
+
 	def new
 		@devices = @house.devices		
 	end

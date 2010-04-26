@@ -157,7 +157,7 @@ pt:
     known:
       lamp_01:
         name: "Lâmpada"
-    advanced_fields_info: "Informação - Campos Avançados"
+    advanced_fields_info: "Campos Avançados"
     hints:
       advanced_fields: "Na maioria das vezes, os campos avançados não precisaram ser editados. Quando você procurar por dispositivos em sua casa, somente mude os campos avançados se encontrar um dispositivo desconhecido. Assim, será obrigatório o preenchimento destes campos. De qualquer forma, se você sabe o que está fazendo, clique sobre o botão com o lápis (avançado) e edite esses campos."
     messages:

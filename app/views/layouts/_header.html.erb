@@ -17,11 +17,11 @@
 							<hr style="width:150px"></hr>
 							<% current_user.houses.each_with_index do |house, index| %>
 								<% next if defined? @house and house == @house %>
-								<li class="icon locale"><%= link_to h(house.name), user_house_url(house.user, house) %></li>								
+								<li class="icon house"><%= link_to h(house.name), user_house_url(house.user, house) %></li>
 							<% end %>
 						</ul>
 					<% elsif defined? @house and @house.id %>
-						<%= link_to h(@house.name), user_house_url(@house.user, @house), :id => "project_selection" %>
+						<%= link_to h(@house.name), user_house_url(@house.user, @house), :id => "project_selection", :class => "icon house" %>
 					<% else %>
 					  <%= link_to t(:my_houses, :scope =>:house), user_houses_url(current_user), :id => "project_selection"  %>
 					<% end  %>

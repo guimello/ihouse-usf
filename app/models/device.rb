@@ -17,6 +17,6 @@ class Device < ActiveRecord::Base
 	end
 
 	def to_s
-		name
+		name || default_name
 	end
 end

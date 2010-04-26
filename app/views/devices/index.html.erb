@@ -1,0 +1,18 @@
+<% @devices.each do |device| %>
+  <%= device %>
+<% end %>
+
+<% content_for :navigation do %>
+  <% render :layout => "layouts/main_navigation" do %>
+    <%= render :partial => "layouts/navigation/devices_item", :locals => {:classes => "selected tab-separator"} %>
+  <% end %>
+<% end %>
+
+
+<% content_for :sub_navigation do %>
+  <div id="sub-tabs">
+    <ul>
+      <li class="tab-separator"><%= link_to t(:add_edit_discover, :scope => [:house, :devices]), new_user_house_device_url(@user, @house) %></li>
+    </ul>
+  </div>
+<% end %>
