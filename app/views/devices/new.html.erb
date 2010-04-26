@@ -53,5 +53,5 @@
 <% end %>
 
 <% content_for :sidebar do %>
-    <%= awesome_button t(:discover, :scope => :form), "search-small", :href => discover_user_house_devices_url, :class => "green discover-devices"%>
+    <%= render :partial => "discover_sidebar" %>
 <% end %>

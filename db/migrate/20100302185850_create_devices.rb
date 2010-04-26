@@ -4,7 +4,7 @@ class CreateDevices < ActiveRecord::Migration
       t.references :house,    :null => false, :foreign_key => {:dependent => :delete}
       t.string  :identification,          :null => false
       t.string  :room,          :null => false
-      t.string  :custom_name,   :null => true
+      t.string  :name,   :null => true
       t.string :query_state,    :null => false
       t.timestamps
     end

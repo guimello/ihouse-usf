@@ -8,8 +8,8 @@ class DevicesController < ApplicationController
 
 	def create
 		if @house.update_attributes params[:house]
-			flash[:success] = "yeah!"
-			render :action => :new
+			flash[:success] = I18n.t :update, :scope => [:device, :messages, :success]
+			redirect_to new_user_house_device_url(current_user, @house)
 		else
 			render :action => :new
 		end

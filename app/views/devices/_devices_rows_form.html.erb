@@ -1,19 +1,15 @@
 <tr id="device_<%= form.object.id %>">
-  <td class="left">
-    <%= form.text_field :identification, :class => "medium" %>
+  <td class="left">    
+      <%= form.text_field :name, :class => "medium", :value => (form.object.name.blank?) ? form.object.default_name : form.object.name %>
   </td>
   <td>
     <%= form.text_field :room, :class => "medium" %>
   </td>
   <td>
-    <%  unless form.object.custom_name.blank? %>
-      <%= form.text_field :custom_name, :class => "medium" %>
-    <% else %>
-	lolwut
-    <% end %>
-  </td>
+    <%= form.text_field :identification, :class => "small" %>
+  </td>  
   <td>
-    <%= form.text_field :query_state, :class => "medium" %>
+    <%= form.text_field :query_state, :class => "small" %>
   </td>
   <td>
     <%= form.hidden_field :_delete, :class => "remove-device-hidden" %>

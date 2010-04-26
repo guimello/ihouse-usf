@@ -146,13 +146,19 @@ pt:
     other: "Dispositivos"
     add: "Adicionar um novo dispositivo manualmente"
     identification:
-      label: "Dispositivo"
+      label: "Identificação"
     room:
       label: "Cômodo"
     name:
       label: "Nome"
     query_state:
       label: "Código de pergunta de estado"
+    known:
+      lamp_01:
+        name: "Lâmpada"
+    messages:
+      success:
+        update: "Os dispositivos de sua casa foram salvos com sucesso!"
   
   form:
     login: "Entrar"

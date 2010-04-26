@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100303190927) do
+ActiveRecord::Schema.define(:version => 20100303185616) do
 
   create_table "actions", :force => true do |t|
     t.integer  "device_id",        :null => false
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(:version => 20100303190927) do
     t.string   "action_type",      :null => false
     t.integer  "range_down"
     t.integer  "range_up"
-    t.string   "custom_name"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20100303190927) do
     t.integer  "house_id",       :null => false
     t.string   "identification", :null => false
     t.string   "room",           :null => false
-    t.string   "custom_name"
+    t.string   "name"
     t.string   "query_state",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"

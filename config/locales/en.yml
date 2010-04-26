@@ -145,13 +145,19 @@ en:
     other: "Devices"
     add: "Add new device manually"
     identification:
-      label: "Device"
+      label: "Identification"
     room:
       label: "Room"
     name:
       label: "Name"
     query_state:
       label: "Query state code"
+    known:
+      lamp_01:
+        name: "Lights"
+    messages:
+      success:
+        update: "Devices in your house has been successfully saved!"
   
   form:
     login: "Login"
