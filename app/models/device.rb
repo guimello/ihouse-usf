@@ -4,6 +4,8 @@ class Device < ActiveRecord::Base
   belongs_to :house
   has_one :user, :through => :house
   has_many :actions
+	accepts_nested_attributes_for :actions, :allow_destroy => true
+
   has_many :schedules, :through => :actions
   #has_many :voice_commands, :through => :actions
 

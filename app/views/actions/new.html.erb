@@ -1,0 +1,50 @@
+<% content_for :navigation do %>
+  <% render :layout => "layouts/main_navigation" do %>
+    <%= render :partial => "layouts/navigation/devices_item", :locals => {:classes => "tab-separator", :house => @house, :user => @user} %>
+    <%= render :partial => "layouts/navigation/add_edit_action_item", :locals => {:classes => "selected tab-separator",
+										:house => @house, :user => @user, :device => @device} %>
+  <% end %>
+<% end %>
+
+<%= content_tag :h1, t(:manage_current_device_actions, :scope => :device, :device => @device) %>
+
+
+<% form_for @device, :url => user_house_device_actions_url(@user, @house, @device),
+        :html => {:method => :post, :class => "basic-form rounded large" } do |device_form| %>
+
+        <%= error_messages_for :device, :associations => :actions, :class => "alert red error rounded-8" %>
+
+        <% content_for :javascript do %>
+          $(".add-device-action").live("click", function(){
+	      <%= "var action='#{generate_template(device_form, :actions, :partial => "actions/actions_new_fieldset_form")}'" %>
+
+	      $("#div_clear_actions").before(action.replace(/NEW_RECORD/g, new Date().getTime()));
+
+	      return false;
+          });
+
+          $(".remove-new-action").live("click", function(){
+	  if(confirm($(this).confirmPlz()))
+	    $(this).closest("div").remove();
+
+	  return false;
+          });
+
+          $(".remove-existing-action").live("click", function(){
+	  if(confirm($(this).confirmPlz()))
+	  {
+	    $(this).closest("div").find(".remove-action-hidden").val(1);
+	    $(this).closest("div").hide();
+	  }
+
+	  return false;
+          });
+        <% end %>
+        
+        <%= render :partial => "actions/actions_form", :locals => {:device_form => device_form,
+								        :user => @user,
+								        :house => @house,
+								        :device => @device} %>
+
+        <%= awesome_submit_button t(:submit, :scope => :form), :tick %>
+<% end %>

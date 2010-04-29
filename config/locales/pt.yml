@@ -146,6 +146,8 @@ pt:
     one: "Dispositivo"
     other: "Dispositivos"
     add: "Adicionar um novo dispositivo manualmente"
+    manage_actions: "Gerencie as ações deste dispositivo"
+    manage_current_device_actions: "Gerencie as ações do dispositivo {{device}}"
     identification:
       label: "Identificação"
     room:
@@ -163,6 +165,20 @@ pt:
     messages:
       success:
         update: "Os dispositivos de sua casa foram salvos com sucesso!"
+
+  action:
+    one: "ação"
+    other: "ações"
+    add: "Adicione uma nova ação manualmente"
+    name:
+      label: "Nome"
+      hint: "Escolha um nome para a ação"
+    command:
+      label: "Comando"
+      hint: "Este é o comando que será enviado para o controlador do disposito, talvez você não precise mudá-lo"
+    action_type:
+      label: "Tipo"
+      hint: "Selecione o tipo de ação do comando, talvez você não precise mudá-lo"
   
   form:
     login: "Entrar"

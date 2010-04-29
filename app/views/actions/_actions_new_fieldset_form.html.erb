@@ -1,0 +1,23 @@
+<div  class="indented-30 float-left" style="margin-right: 30px">
+  <%= form.hidden_field :_delete, :class => "remove-action-hidden" %>
+  <fieldset>
+    <legend>
+      <%= awesome_button t(:remove, :scope => :form), :cross, :confirm_message => t(:remove, :scope => [:form, :hints]), :class => "red smallest #{(form.object.new_record?) ? 'remove-new-action' : 'remove-existing-action'}" %>
+    </legend>
+
+    <dl>
+      <dt><%= form.label :name, t(:label, :scope => [:action, :name]) %></dt>
+      <dd class="hint"><%= t :hint, :scope => [:action, :name] %></dd>
+      <dd><%= form.text_field :name %></dd>
+
+      <dt><%= form.label :command, t(:label, :scope => [:action, :command]) %></dt>
+      <dd class="hint"><%= t :hint, :scope => [:action, :command] %></dd>
+      <dd><%= form.text_field :command%></dd>
+
+      <dt><%= form.label :action_type, t(:label, :scope => [:action, :action_type]) %></dt>
+      <dd class="hint"><%= t :hint, :scope => [:action, :action_type] %></dd>
+      <dd><%= form.text_field :action_type %></dd>
+    </dl>
+
+  </fieldset>
+</div>

@@ -1,5 +1,5 @@
 <% @devices.each do |device| %>
-  <%= device %>
+  <%= simple_format "#{device} #{link_to("actions", new_user_house_device_action_url(@user, @house, device))}" %>
 <% end %>
 
 <% content_for :navigation do %>

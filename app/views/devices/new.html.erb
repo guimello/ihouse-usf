@@ -54,6 +54,6 @@
 <% end %>
 
 <% content_for :sidebar do %>
-    <%= render :partial => "discover_sidebar" %>
+    <%= render :partial => "discover_sidebar", :locals =>{:user => @user, :house => @house} %>
     <%= render :partial => "add_edit_discover_help_sidebar" %>
 <% end %>

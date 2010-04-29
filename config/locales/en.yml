@@ -145,6 +145,8 @@ en:
     one: "Device"
     other: "Devices"
     add: "Add new device manually"
+    manage_actions: "Manage this device actions"
+    manage_current_device_actions: "Manage the {{device}}'s actions"
     identification:
       label: "Identification"
     room:
@@ -162,6 +164,20 @@ en:
     messages:
       success:
         update: "Devices in your house has been successfully saved!"
+
+  action:
+    one: "action"
+    other: "actions"
+    add: "Add new action manually"
+    name:
+      label: "Name"
+      hint: "Choose a name for the action"
+    command:
+      label: "Comando"
+      hint: "This is the command that will be sent to the device controller, maybe you don't need to change it"
+    action_type:
+      label: "Type"
+      hint: "Choose the action type, maybe you don't need to change it"
   
   form:
     login: "Login"
