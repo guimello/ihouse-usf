@@ -1,15 +1,16 @@
 <% content_for :navigation do %>
   <% render :layout => "layouts/main_navigation" do %>
-    <li class="selected tab-separator" ><%= link_to @house.name, user_house_url(@house.user, @house) %></li>
-    <li class="tab-separator"><%= link_to t(:device, :count => 2), user_house_devices_url(@user, @house) %></li>
+    <%= render :partial => "layouts/navigation/current_house_item", :locals => {:classes => "selected tab-separator",
+									          :house => @house, :user => @user} %>
+    <%= render :partial => "layouts/navigation/devices_item", :locals => {:classes => "tab-separator", :house => @house, :user => @user} %>
   <% end %>
 <% end %>
 
 
 <% content_for :sub_navigation do %>
-	<div id="sub-tabs">
-		<ul>
-			<li><%= link_to t(:edit, :scope => [:house]), edit_user_house_url(@house.user, @house) %></li>
-		</ul>
-	</div>
+  <div id="sub-tabs">
+    <ul>
+        <%= render :partial => "layouts/navigation/edit_user_house_item", :locals => {:house => @house, :user => @user} %>
+    </ul>
+  </div>
 <% end %>

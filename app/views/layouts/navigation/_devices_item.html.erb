@@ -1,1 +1,1 @@
-<li class="<%= classes %> "><%= link_to t(:device, :count => 2), user_house_devices_url(@user, @house) %></li>
+<li class="<%= classes ||= "" %> "><%= link_to t(:device, :count => 2), user_house_devices_url(user, house) %></li>
