@@ -174,6 +174,8 @@ pt:
     other: "ações"
     add: "Adicione uma nova ação manualmente"
     find_actions: "Procure pelas ações deste dispositivo"
+    hints:
+      find_actions: "Aqui você pode adicionar/alterar ações do seu dispositivo. Você pode adicionar novas ações manualmente ou simplesmente clicar sobre o botão {{find_button}} que o dispositivo será questionado sobre suas possíveis ações."
     name:
       label: "Nome"
       hint: "Escolha um nome para a ação"

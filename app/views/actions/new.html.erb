@@ -7,6 +7,7 @@
 <% end %>
 
 <%= content_tag :h1, t(:manage_current_device_actions, :scope => :device, :device => @device) %>
+<%= content_tag :p, t(:find_actions, :scope => [:action, :hints], :find_button => "\"#{t(:find_actions, :scope => :action)}\"") %>
 
 <%= javascript_include_tag "actions"  %>
 
@@ -45,9 +46,9 @@
 	        select = $(select);
 	        dd = select.closest("dd").next("dd");
 	        if(select.val() == "range")
-		     dd.slideDown("fast");
+		     dd.removeClass("hidden");
 	        else
-		      dd.slideUp("fast");
+		      dd.addClass("hidden");
           }
         <% end %>
         

@@ -173,6 +173,8 @@ en:
     other: "actions"
     add: "Add new action manually"
     find_actions: "Find this device's actions"
+    hints:
+      find_actions: "Here you can add/edit your device's actions. You can add new actions manually or just click over the {{find_button}} button that your device will be asked for every action it can perform."
     name:
       label: "Name"
       hint: "Choose a name for the action"

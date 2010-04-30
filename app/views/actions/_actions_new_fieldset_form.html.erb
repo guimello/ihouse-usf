@@ -17,7 +17,7 @@
       <dt><%= form.label :action_type, t(:label, :scope => [:action, :action_type]), :class => "required" %></dt>
       <dd class="hint"><%= t :hint, :scope => [:action, :action_type] %></dd>
       <dd><%= form.select :action_type, Action.ACTION_TYPES,{},:onChange => "showRange(this);return false;" %></dd>
-      <dd class="range_values" style="display: <%=(form.object.validates_range?) ? "block" : "none" %>">
+      <dd class="range_values <%=(form.object.validates_range?) ? "" : "hidden" %>">
         <div>
           <div class="float-left center indented-10" style="margin-right: 10px">
 	<%= form.label :range_min, t(:label, :scope => [:action, :range_min]), :class => "bold required" %>

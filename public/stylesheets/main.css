@@ -456,3 +456,13 @@ img.picture-frame
 {
 	color: #269254;
 }
+
+.visible
+{
+          visibility: visible;
+}
+
+.hidden
+{
+          visibility: hidden;
+}
