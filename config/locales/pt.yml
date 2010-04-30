@@ -173,6 +173,7 @@ pt:
     one: "ação"
     other: "ações"
     add: "Adicione uma nova ação manualmente"
+    find_actions: "Procure pelas ações deste dispositivo"
     name:
       label: "Nome"
       hint: "Escolha um nome para a ação"

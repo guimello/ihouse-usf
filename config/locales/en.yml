@@ -172,6 +172,7 @@ en:
     one: "action"
     other: "actions"
     add: "Add new action manually"
+    find_actions: "Find this device's actions"
     name:
       label: "Name"
       hint: "Choose a name for the action"

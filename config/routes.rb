@@ -10,7 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users do |user|
     user.resources :houses do |house|
 			house.resources :devices, :collection => {:discover => :get} do |device|
-				device.resources :actions, :collection => {:query => :get} do |action|
+				device.resources :actions, :collection => {:find => :get} do |action|
 					action.resources :schedules
 				end
 			end

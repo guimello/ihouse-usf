@@ -19,4 +19,10 @@ class ActionsController < ApplicationController
 			render :action => :new
 		end
 	end
+
+	def find
+		respond_to do |format|
+			format.js
+		end
+	end
 end

@@ -8,6 +8,8 @@
 
 <%= content_tag :h1, t(:manage_current_device_actions, :scope => :device, :device => @device) %>
 
+<%= javascript_include_tag "actions"  %>
+
 <% form_for @device, :url => user_house_device_actions_url(@user, @house, @device),
         :html => {:method => :post, :class => "basic-form rounded large" } do |device_form| %>
 
@@ -58,5 +60,6 @@
 <% end %>
 
 <% content_for :sidebar do %>
-          <%= required_fields_help %>
+  <%= render :partial => "find_actions_sidebar", :locals =>{:user => @user, :house => @house, :device => @device} %>
+  <%= required_fields_help %>
 <% end %>
