@@ -36,6 +36,11 @@ jQuery.fn.zebraTable = function() {
 	return this;
 };
 
+jQuery.fn.highlightMe = function(){
+  $(this).effect("highlight", {}, 3000);
+  return $(this);
+};
+
 jQuery.fn.confirmPlz = function() {
 	return ($(this).attr("confirm_message")) ? $(this).attr("confirm_message") : "Are you sure you want to delete this record?\nNote: there is no undo.";
 };

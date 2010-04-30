@@ -2,6 +2,6 @@
   <%  fields_for :house do |house_form|%>
     var device = "<%= generate_template(house_form, :devices, :partial => "devices/devices_rows_form", :object => device.clone) %>";
     var new_id = new Date().getTime();
-    $("#devices_table > tbody").append(device.replace(/NEW_RECORD/g, new_id));
+    $("#devices_table > tbody").append(device.replace(/NEW_RECORD/g, new_id)).children("tr").last().highlightMe();
   <%  end %>
 <% end %>
