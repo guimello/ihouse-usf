@@ -145,7 +145,7 @@ en:
     one: "Device"
     other: "Devices"
     add: "Add new device manually"
-    manage_actions: "Manage this device actions"
+    manage_actions: "Manage this device's actions"
     manage_current_device_actions: "Manage the {{device}}'s actions"
     identification:
       label: "Identification"
@@ -173,11 +173,18 @@ en:
       label: "Name"
       hint: "Choose a name for the action"
     command:
-      label: "Comando"
+      label: "Command"
       hint: "This is the command that will be sent to the device controller, maybe you don't need to change it"
     action_type:
       label: "Type"
       hint: "Choose the action type, maybe you don't need to change it"
+      types:
+        turn_on_off: "Turn on/off"
+        range: "Range"
+    range_min:
+      label: "min"
+    range_max:
+      label: "max"
   
   form:
     login: "Login"

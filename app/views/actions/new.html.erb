@@ -8,7 +8,6 @@
 
 <%= content_tag :h1, t(:manage_current_device_actions, :scope => :device, :device => @device) %>
 
-
 <% form_for @device, :url => user_house_device_actions_url(@user, @house, @device),
         :html => {:method => :post, :class => "basic-form rounded large" } do |device_form| %>
 
@@ -39,6 +38,15 @@
 
 	  return false;
           });
+
+          function showRange(select){
+	        select = $(select);
+	        dd = select.closest("dd").next("dd");
+	        if(select.val() == "range")
+		     dd.slideDown("fast");
+	        else
+		      dd.slideUp("fast");
+          }
         <% end %>
         
         <%= render :partial => "actions/actions_form", :locals => {:device_form => device_form,

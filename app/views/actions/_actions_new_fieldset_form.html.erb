@@ -13,10 +13,23 @@
       <dt><%= form.label :command, t(:label, :scope => [:action, :command]) %></dt>
       <dd class="hint"><%= t :hint, :scope => [:action, :command] %></dd>
       <dd><%= form.text_field :command%></dd>
-
+      
       <dt><%= form.label :action_type, t(:label, :scope => [:action, :action_type]) %></dt>
       <dd class="hint"><%= t :hint, :scope => [:action, :action_type] %></dd>
-      <dd><%= form.text_field :action_type %></dd>
+      <dd><%= form.select :action_type, Action.ACTION_TYPES,{},:onChange => "showRange(this);return false;" %></dd>
+      <dd class="range_values" style="display:none">
+        <div>
+          <div class="float-left center indented-10" style="margin-right: 10px">
+	<%= form.label :range_min, t(:label, :scope => [:action, :range_min]), :class => "bold" %>
+	<%= form.text_field :range_min, :class => "small" %>
+          </div>
+          <div class="float-left center">
+	<%= form.label :range_max, t(:label, :scope => [:action, :range_max]), :class => "bold" %>
+	<%= form.text_field :range_max, :class => "small" %>
+          </div>
+        </div>
+        
+      </dd>
     </dl>
 
   </fieldset>

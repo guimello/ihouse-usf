@@ -179,6 +179,13 @@ pt:
     action_type:
       label: "Tipo"
       hint: "Selecione o tipo de ação do comando, talvez você não precise mudá-lo"
+      types:
+        turn_on_off: "Ligar/Desligar"
+        range: "Faixa de valores"
+    range_min:
+      label: "min"
+    range_max:
+      label: "max"
   
   form:
     login: "Entrar"
