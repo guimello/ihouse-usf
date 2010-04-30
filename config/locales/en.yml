@@ -57,6 +57,9 @@ en:
     action_not_allowed: "You can not perform that action!"
     start_up: "Start now"
     you_mistyped_the_house_url: "Maybe you mistyped the url?"
+    required_fields_help:
+      label: "Required fields"
+      hint: "Fields marked with {{icon}} are required to successfully submit the form"
     
   user:
     new: "Create your account"

@@ -21,3 +21,7 @@
     <li class="selected tab-separator" ><%= link_to @user.username, edit_user_url(@user) %></li>
   <% end %>
 <% end %>
+    
+<% content_for :sidebar do %>
+      <%= required_fields_help %>
+<% end %>

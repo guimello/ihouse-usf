@@ -56,3 +56,7 @@
 
         <%= awesome_submit_button t(:submit, :scope => :form), :tick %>
 <% end %>
+
+<% content_for :sidebar do %>
+          <%= required_fields_help %>
+<% end %>

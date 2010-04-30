@@ -170,4 +170,16 @@ module ApplicationHelper
 
 		content_tag tag, nil, options
 	end
+
+	def required_fields_help
+		html = Builder::XmlMarkup.new
+
+		html.p :class => "title lightest rounded-4" do
+			html << I18n.t(:label, :scope => [:application, :required_fields_help])
+		end
+
+		html.p do
+			html << I18n.t(:hint, :scope => [:application, :required_fields_help], :icon => "<span class='icon required'></span>")
+		end
+	end
 end

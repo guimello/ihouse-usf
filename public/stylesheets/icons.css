@@ -457,3 +457,8 @@
 {
 	background-image: url(../images/icons/silk/house.png);
 }
+
+.icon.required
+{
+          background-image: url(../images/icons/silk/bullet_error.png);
+}

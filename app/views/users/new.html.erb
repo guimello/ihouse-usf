@@ -8,10 +8,14 @@
 
   <%= error_messages_for :user, :class =>"alert red error rounded-8" %>
 
-<div class="rounded-8">
-  <%= render :partial => "user_form", :locals => {:f => f} %>
+  <div class="rounded-8">
+    <%= render :partial => "user_form", :locals => {:f => f} %>
 
-  <%= awesome_submit_button t(:save, :scope => :form), :edit %>
-</div>
+    <%= awesome_submit_button t(:save, :scope => :form), :edit %>
+  </div>
 
+<% end %>
+
+<% content_for :sidebar do %>
+      <%= required_fields_help %>
 <% end %>

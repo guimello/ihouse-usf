@@ -57,6 +57,9 @@ pt:
     action_not_allowed: "Você não pode tomar está ação!"
     start_up: "Comece agora"
     you_mistyped_the_house_url: "Talvez você tenha digitado a url errada?"
+    required_fields_help:
+      label: "Campos requeridos"
+      hint: "Os campos marcados por {{icon}} são requiridos para que se envie com sucesso o formulário"
 
   user:
     new: "Cria sua conta"

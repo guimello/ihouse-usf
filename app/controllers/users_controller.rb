@@ -53,7 +53,7 @@ class UsersController < ApplicationController
     @user = current_user
 
     respond_to do |format|
-      format.html {render :layout => "one_column"}
+      format.html
     end
   end
 
