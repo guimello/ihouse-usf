@@ -186,6 +186,19 @@ pt:
       label: "min"
     range_max:
       label: "max"
+    known:
+      a001:
+        name: "Ligar/Desligar"
+      b001:
+        name: "Volume +/-"
+      b002:
+        name: "Velocidade +/-"
+    messages:
+      success:
+        update: "As ações foram atualizadas com sucesso!"
+      error:
+        range_min_must_be_less_than_range_max: "deve ser menor que max"
+        range_max_must_be_greater_than_range_min: "deve ser maior que min"
   
   form:
     login: "Entrar"

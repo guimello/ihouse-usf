@@ -185,6 +185,19 @@ en:
       label: "min"
     range_max:
       label: "max"
+    known:
+      a001:
+        name: "Turn on/off"
+      b001:
+        name: "Volume +/-"
+      b002:
+        name: "Speed +/-"
+    messages:
+      success:
+        update: "The actions were updated successfully!"
+      error:
+        range_min_must_be_less_than_range_max: "must be less than range max"
+        range_max_must_be_greater_than_range_min: "must be grater than range min"
   
   form:
     login: "Login"

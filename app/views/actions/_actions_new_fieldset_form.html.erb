@@ -8,27 +8,26 @@
     <dl>
       <dt><%= form.label :name, t(:label, :scope => [:action, :name]) %></dt>
       <dd class="hint"><%= t :hint, :scope => [:action, :name] %></dd>
-      <dd><%= form.text_field :name %></dd>
+      <dd><%= form.text_field :name, :value => (form.object.name.blank?) ? form.object.default_name : form.object.name %></dd>
 
-      <dt><%= form.label :command, t(:label, :scope => [:action, :command]) %></dt>
+      <dt><%= form.label :command, t(:label, :scope => [:action, :command]), :class => "required" %></dt>
       <dd class="hint"><%= t :hint, :scope => [:action, :command] %></dd>
       <dd><%= form.text_field :command%></dd>
       
-      <dt><%= form.label :action_type, t(:label, :scope => [:action, :action_type]) %></dt>
+      <dt><%= form.label :action_type, t(:label, :scope => [:action, :action_type]), :class => "required" %></dt>
       <dd class="hint"><%= t :hint, :scope => [:action, :action_type] %></dd>
       <dd><%= form.select :action_type, Action.ACTION_TYPES,{},:onChange => "showRange(this);return false;" %></dd>
-      <dd class="range_values" style="display:none">
+      <dd class="range_values" style="display: <%=(form.object.validates_range?) ? "block" : "none" %>">
         <div>
           <div class="float-left center indented-10" style="margin-right: 10px">
-	<%= form.label :range_min, t(:label, :scope => [:action, :range_min]), :class => "bold" %>
+	<%= form.label :range_min, t(:label, :scope => [:action, :range_min]), :class => "bold required" %>
 	<%= form.text_field :range_min, :class => "small" %>
           </div>
           <div class="float-left center">
-	<%= form.label :range_max, t(:label, :scope => [:action, :range_max]), :class => "bold" %>
+	<%= form.label :range_max, t(:label, :scope => [:action, :range_max]), :class => "bold required" %>
 	<%= form.text_field :range_max, :class => "small" %>
           </div>
-        </div>
-        
+        </div>        
       </dd>
     </dl>
 
