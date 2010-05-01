@@ -1,3 +1,6 @@
 <p class="center">
-  <%= awesome_button t(:discover, :scope => :form), "search-small", :href => discover_user_house_devices_url(user, house), :class => "green large discover-devices"%>
+  <%= awesome_button t(:label, :scope => [:device, :discover]), "search-small",
+	        :href => discover_user_house_devices_url(current_user, house),
+	        :class => "green large small discover-devices title-me",
+	        :title => t(:title, :scope => [:device, :discover]) %>
 </p>

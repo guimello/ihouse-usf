@@ -1,10 +1,10 @@
 <tr id="device_<%= form.object.id %>">  
   <td class="left">
       <%= icon_for_device form.object %>
-      <%= form.text_field :name, :class => "small", :value => (form.object.name.blank?) ? form.object.default_name : form.object.name %>
+      <%= text_field_for_device form, :name, :class => "small", :value => (form.object.name.blank?) ? form.object.default_name : form.object.name %>
   </td>
   <td>
-    <%= form.text_field :room, :class => "small" %>
+    <%= text_field_for_device form, :room, :class => "small" %>
   </td>
   <td>
     <%= text_field_for_device form, :identification, :class => "small enable-disable-advanced" %>
@@ -13,7 +13,7 @@
     <%= text_field_for_device form, :query_state, :class => "small enable-disable-advanced" %>
   </td>
   <td>
-    <%= awesome_button t(:advanced), "edit", :class => "blue smallest edit-special-fields-on-device" %>
+    <%= awesome_button t(:advanced), "edit", :class => "blue smallest edit-special-fields-on-device title-me", :title => t(:enable_advanced, :scope => [:device, :hints]) %>
   </td>
   <td>
     <%= form.hidden_field :_delete, :class => "remove-device-hidden" %>

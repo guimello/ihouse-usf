@@ -15,7 +15,10 @@
         <%= awesome_button t(:add, :scope => :device), :add, :class => "gray silver small add-house-device"%>
       </td>
       <td class="right" style="padding-top: 5px; padding-bottom: 5px" colspan="10">
-        <%= awesome_button t(:discover, :scope => :form), "search-small", :href => discover_user_house_devices_url(current_user, house), :class => "gray silver small discover-devices" %>
+        <%= awesome_button t(:label, :scope => [:device, :discover]), "search-small",
+	        :href => discover_user_house_devices_url(current_user, house),
+	        :class => "gray silver small discover-devices title-me",
+	        :title => t(:title, :scope => [:device, :discover]) %>
       </td>
     </tr>
   </tfoot>

@@ -9,7 +9,7 @@
 
 
 <%= content_tag :h1, t(:add_edit_discover, :scope => [:house, :devices]) %>
-<%= content_tag :p, t(:add_edit_discover, :scope => [:house, :devices, :hints], :discover_button => "\"#{t(:discover, :scope => :form)}\"") %>
+<%= content_tag :p, t(:add_edit_discover, :scope => [:house, :devices, :hints], :discover_button => "\"#{t(:label, :scope => [:device, :discover])}\"") %>
 
 <% form_for @house, :url => user_house_devices_url(@user, @house),
     :html => {:method => :post, :class => "basic-form rounded large"} do |house_form| %>
@@ -21,6 +21,7 @@
 	      var new_id = new Date().getTime();
 	      $("#devices_table > tbody").append(device.replace(/NEW_RECORD/g, new_id)).children("tr").last().highlightMe();
 
+	      $(".title-me").tipTip();
 	      return false;
       });
 

@@ -7,6 +7,7 @@ jQuery.ajaxSetup({
 	},
         complete: function(event, XMLHttpRequest, ajaxOptions) {
                 $("submit").show();
+	    $(".title-me").tipTip();
         },
 	error: function(XMLHttpRequest, textStatus, errorThrown){		
 		alert("Ops...Error");
@@ -46,6 +47,8 @@ jQuery.fn.confirmPlz = function() {
 };
 
 $(document).ready(function(){
+        $(".title-me").tipTip();
+        
         $(".hide-after-click").live("click", function(event)
         {
             $(this).hide();

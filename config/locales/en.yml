@@ -150,20 +150,28 @@ en:
     add: "Add new device manually"
     manage_actions: "Manage this device's actions"
     manage_current_device_actions: "Manage the {{device}}'s actions"
+    discover:
+      label: "Discover devices"
+      title: "Discover devices in your house automatically"
     identification:
       label: "Identification"
+      title: "Identification is a advanced field, if it's already filled out by the discover button you don't need to change it"
     room:
       label: "Room"
+      title: "Name the room in which this device is present (optional)"
     name:
       label: "Name"
+      title: "Give your device a name that best describes it"
     query_state:
       label: "Query state code"
+      title: "Query state code is a advanced field, if it's already filled out by the discover button you don't need to change it"
     known:
       lamp_01:
         name: "Lights"
     advanced_fields_info: "Advanced Fields Information"
     hints:
       advanced_fields: "Most of the time advanced fields don't need any changes. So when you try to discover devices in your house, only change the advanced options if you find an unkown device. Therefore it will be required for you to fill out these options. Anyway, if you know what your are doing, just hit the button with the pencil icon (advanced) and change these settings."
+      enable_advanced: "Enable advanced"
     messages:
       success:
         update: "Devices in your house has been successfully saved!"
@@ -227,8 +235,7 @@ en:
     import: "Import"
     show_more: "show more"
     with_selected: "With selected"
-    all_selected: "All selected"
-    discover: "Discover devices"
+    all_selected: "All selected"    
     hints:
       remove: "Are you sure you want to delete this record?\nNote: there is no undo."
       search: "type here your search"
