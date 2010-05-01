@@ -89,14 +89,17 @@ pt:
     joined_on: "Integrou-se em"
     this_is_you: "este é você"
     edit_profile: "editar perfil"
-    add_members: "Adicionar membros"
     my_profile: "Meu perfil"
     messages:
       success:
         update: "Seu perfil foi atualizado com sucesso!"
         create: "Você foi cadastrado com successo!"
+        username_available: "usuário disponível!"
+        email_available: "disponível!"
       error:
         cant_create_new_user: "Você não pode cadastrar-se novamente, você está logado"
+        username_taken: "este usuário já está cadastrado"
+        email_taken: "este e-mail já está cadastrado"
     timezone:
       legend: "Escolha seu fuso horário"
       label: "Fuso horário"

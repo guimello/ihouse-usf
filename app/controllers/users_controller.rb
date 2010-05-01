@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-  skip_before_filter :get_user, :check_user_logged, :check_user_is_correct, :only => [:new, :create, :exists_username]
+  skip_before_filter :get_user, :check_user_logged, :check_user_is_correct, :only => [
+																																																															:new,
+																																																															:create,
+																																																															:exists_username,
+																																																															:exists_email
+																																																														]
   before_filter :can_sign_in, :only => [:new, :create]
 
 	def check_user_is_correct
@@ -70,7 +75,7 @@ class UsersController < ApplicationController
   end
 
 	def exists_username		
-		@result = {}
+		@result = {:input_id => params[:input_id]}
 		if current_user and params[:username] == current_user.username
 			@result[:icon] = "user"
 			@result[:message] = I18n.t(:this_is_you, :scope => :user)
@@ -80,6 +85,27 @@ class UsersController < ApplicationController
 		else
 			@result[:icon] = "tick"
 			@result[:message] = I18n.t(:username_available, :scope => [:user, :messages, :success])
+		end
+
+		respond_to do |format|
+			format.js
+		end
+	end
+
+	def exists_email
+		@result = {:input_id => params[:input_id]}
+		if (params[:email] =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i) == nil
+			@result[:icon] = " "
+			@result[:message] = " "
+		elsif current_user and params[:email] == current_user.email
+			@result[:icon] = "user"
+			@result[:message] = I18n.t(:this_is_you, :scope => :user)
+		elsif User.exists? :email => params[:email]
+			@result[:icon] = "cross"
+			@result[:message] = I18n.t(:email_taken, :scope => [:user, :messages, :error])
+		else
+			@result[:icon] = "tick"
+			@result[:message] = I18n.t(:email_available, :scope => [:user, :messages, :success])
 		end
 
 		respond_to do |format|

@@ -1,12 +1,5 @@
 <% content_for :javascript do %>
   $(document).ready(function(){
-   $(".check-username-exists").typeWatch({
-	 wait: 1000,
-	 callback: function(){
-		$(".check-username-exists").displayLoadingByMySide("span", "check-username-message");
-		$.getScript("<%= exists_username_users_url %>?username=" + $(".check-username-exists").val());
-		return false;
-	 }
-   })
-});
+    $(".check-exists").watchMeAjax();
+  });
 <% end %>

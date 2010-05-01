@@ -46,9 +46,52 @@ jQuery.fn.confirmPlz = function() {
 	return ($(this).attr("confirm_message")) ? $(this).attr("confirm_message") : "Are you sure you want to delete this record?\nNote: there is no undo.";
 };
 
-jQuery.fn.displayLoadingByMySide = function(tag, klass){
-  $(this).parent().find(tag + "." + klass).remove();
-  $(this).parent().append("<" + tag + " class='indented-10 icon round-loading " + klass +" '></" + tag + ">");
+jQuery.fn.watchMeAjax = function(o){
+  $(this).each(function(){
+          var options = jQuery.extend({
+	          tag: "span",
+	          klass: "",
+	          parent: true,
+	          wait: 1000,
+	          element: $(this),
+	          default_class: "i-am-a-message",
+	          url: $(this).attr("url")
+	}, o);
+
+	if(!options.klass)
+	          options.klass = " round-loading ";
+	options.klass += options.default_class;
+
+	if(!options.callback)
+	{
+	          options.callback = function(text){
+		var object = options.element;
+		if(options.parent)
+		      object = object.parent();
+
+		object.find(options.tag + "." + options.default_class).remove();
+		object.append("<" + options.tag + " class='indented-10 icon " + options.klass +" '></" + options.tag + ">");
+		$.getScript(options.url + text + "&input_id=" + options.element.attr("id"));
+		return false;
+	          };
+	}
+
+	$(this).typeWatch(options);
+  });
+
+  return $(this);
+};
+
+jQuery.fn.appendMessage = function(o){
+  var options = jQuery.extend({
+          tag: "span",
+          klass: "i-am-a-message",
+          message: "",
+          icon: ""
+  }, o);
+
+  $(this).parent().find(options.tag + "." + options.klass).remove();
+  $(this).parent().append("<" + options.tag + " class='indented-10 icon " + options.klass + " " + options.icon + " ' >" + options.message + "</" + options.tag + ">");
   return $(this);
 };
 

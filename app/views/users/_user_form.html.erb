@@ -3,8 +3,8 @@
 
   <dl class="rounded-4">
 
-    <%= text_field_for f, :username, :show_hint => true, :required => true, :field =>{:class => "check-username-exists"} %>
-    <%= text_field_for f, :email, :show_hint => true, :required => true %>
+    <%= text_field_for f, :username, :show_hint => true, :required => true, :field =>{:class => "check-exists", :url => "#{exists_username_users_url}?username="} %>
+    <%= text_field_for f, :email, :show_hint => true, :required => true, :field => {:class => "check-exists", :url => "#{exists_email_users_url}?email="} %>
     <%= password_field_for f, :password, :show_hint => true, :required => true %>
     <%= password_field_for f, :password_confirmation %>
     
