@@ -12,11 +12,11 @@
 
       <dt><%= form.label :command, t(:label, :scope => [:action, :command]), :class => "required" %></dt>
       <dd class="hint"><%= t :hint, :scope => [:action, :command] %></dd>
-      <dd><%= form.text_field :command%></dd>
+      <dd><%= form.text_field :command, :class => "title-me", :title => t(:title, :scope => [:action, :command]) %></dd>
       
       <dt><%= form.label :action_type, t(:label, :scope => [:action, :action_type]), :class => "required" %></dt>
       <dd class="hint"><%= t :hint, :scope => [:action, :action_type] %></dd>
-      <dd><%= form.select :action_type, Action.ACTION_TYPES,{},:onChange => "showRange(this);return false;" %></dd>
+      <dd><%= form.select :action_type, Action.ACTION_TYPES,{},:onChange => "showRange(this);return false;", :class => "title-me", :title => t(:title, :scope => [:action, :action_type]) %></dd>
       <dd class="range_values <%=(form.object.validates_range?) ? "" : "hidden" %>">
         <div>
           <div class="float-left center indented-10" style="margin-right: 10px">

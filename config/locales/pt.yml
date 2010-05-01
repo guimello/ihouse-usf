@@ -70,6 +70,7 @@ pt:
       profile_information: "Informação do seu perfil"
     name:
       label: "Seu nome"
+      title: "Seu nome aqui é opcional"
     username:      
       label: "Username"
       hint: "escolha seu nome de usuário"
@@ -147,6 +148,7 @@ pt:
     hints:
       no_house: "Você não tem nenhuma casa cadastrada em sua conta. Adicione uma agora!"
       destroy: "Você têm certeza que quer apagar esta casa da sua conta? Não será possível desfazer esta ação."
+      return_to_your_house_page: "Volte para página principal da casa '{{house}}'"
 
   device:
     one: "Dispositivo"
@@ -176,6 +178,7 @@ pt:
     hints:
       advanced_fields: "Na maioria das vezes, os campos avançados não precisaram ser editados. Quando você procurar por dispositivos em sua casa, somente mude os campos avançados se encontrar um dispositivo desconhecido. Assim, será obrigatório o preenchimento destes campos. De qualquer forma, se você sabe o que está fazendo, clique sobre o botão com o lápis (avançado) e edite esses campos."
       enable_advanced: "Habilita os campos avançados"
+      add_device_manually_button: "Somente adicione dispositivos manualmente se você tem certeza do que está fazendo. Talvez você deva clicar sobre {{discover_button}} primeiro"
     messages:
       success:
         update: "Os dispositivos de sua casa foram salvos com sucesso!"
@@ -187,15 +190,19 @@ pt:
     find_actions: "Procure pelas ações deste dispositivo"
     hints:
       find_actions: "Aqui você pode adicionar/alterar ações do seu dispositivo. Você pode adicionar novas ações manualmente ou simplesmente clicar sobre o botão {{find_button}} que o dispositivo será questionado sobre suas possíveis ações."
+      add_action_manually_button: "Somente adicione ações manualmente se você tem certeza do que está fazendo. Talvez você deva clicar sobre {{find_button}} primeiro"
+      find_actions_button: "Clique aqui para procurar as ações do seu dispositivo automaticmente"
     name:
       label: "Nome"
       hint: "Escolha um nome para a ação"
     command:
       label: "Comando"
       hint: "Este é o comando que será enviado para o controlador do disposito, talvez você não precise mudá-lo"
+      title: "Só mude este campo caso tenha certeza do que está fazendo..."
     action_type:
       label: "Tipo"
       hint: "Selecione o tipo de ação do comando, talvez você não precise mudá-lo"
+      title: "Só mude este campo caso tenha certeza do que está fazendo..."
       types:
         turn_on_off: "Ligar/Desligar"
         range: "Faixa de valores"

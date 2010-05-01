@@ -21,6 +21,7 @@
 	      <%= "var action='#{generate_template(device_form, :actions, :partial => "actions/actions_new_fieldset_form")}'" %>
 	      
 	      $("#div_clear_actions").before(action.replace(/NEW_RECORD/g, new Date().getTime())).prev("div").highlightMe();
+	      $(".title-me").tipTip();
 
 	      return false;
           });

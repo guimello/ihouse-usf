@@ -21,7 +21,9 @@
 							<% end %>
 						</ul>
 					<% elsif defined? @house and @house.id %>
-						<%= link_to h(@house.name), user_house_url(@house.user, @house), :id => "project_selection", :class => "icon house" %>
+						<%= link_to h(@house), user_house_url(@house.user, @house), :id => "project_selection",
+							:class => "icon house title-me",
+							:title => t(:return_to_your_house_page, :scope => [:house, :hints], :house => @house) %>
 					<% else %>
 					  <%= link_to t(:my_houses, :scope =>:house), user_houses_url(current_user), :id => "project_selection"  %>
 					<% end  %>

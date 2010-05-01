@@ -70,6 +70,7 @@ en:
       profile_information: "Profile information"
     name:
       label: "Your name"
+      title: "Your name here is optional"
     username:      
       label: "Username"
       hint: "choose your username"
@@ -147,6 +148,7 @@ en:
     hints:
       no_house: "You don't have any house in your account. Add one now!"
       destroy: "Are you sure you want to remove this house from your account? There is no undo."
+      return_to_your_house_page: "Return to {{house}}'s main page"
 
   device:
     one: "Device"
@@ -176,6 +178,7 @@ en:
     hints:
       advanced_fields: "Most of the time advanced fields don't need any changes. So when you try to discover devices in your house, only change the advanced options if you find an unkown device. Therefore it will be required for you to fill out these options. Anyway, if you know what your are doing, just hit the button with the pencil icon (advanced) and change these settings."
       enable_advanced: "Enable advanced"
+      add_device_manually_button: "Only manually add devices if you're sure of what you're doing. Perhaps you should click on {{discover_button}} first"
     messages:
       success:
         update: "Devices in your house has been successfully saved!"
@@ -187,15 +190,19 @@ en:
     find_actions: "Find this device's actions"
     hints:
       find_actions: "Here you can add/edit your device's actions. You can add new actions manually or just click over the {{find_button}} button that your device will be asked for every action it can perform."
+      add_action_manually_button: "Only manually add actions if you're sure of what you're doing. Perhaps you should click on {{find_button}} first"
+      find_actions_button: "Click here to find your device's actions automatically"
     name:
       label: "Name"
       hint: "Choose a name for the action"
     command:
       label: "Command"
       hint: "This is the command that will be sent to the device controller, maybe you don't need to change it"
+      title: "Only change this if you know what you're doing..."
     action_type:
       label: "Type"
       hint: "Choose the action type, maybe you don't need to change it"
+      title: "Only change this if you know what you're doing..."
       types:
         turn_on_off: "Turn on/off"
         range: "Range"

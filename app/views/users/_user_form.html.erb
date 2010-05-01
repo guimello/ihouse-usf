@@ -14,9 +14,9 @@
 <fieldset>
   <legend class="icon text-name"><%= t :profile_information, :scope => [:user, :legends] %></legend>
 
-  <dl class="rounded-4">
+  <dl>
 
-    <%= text_field_for f, :name %>
+    <%= text_field_for f, :name, :field => {:title => t(:title, :scope => [:user, :name]), :class => "title-me"} %>
 
     <dt><%= f.label :locale, t(:label, :scope => [:user, :locale]) %></dt>
     <dd class="hint"><%= t :hint, :scope => [:user, :locale] %></dd>
