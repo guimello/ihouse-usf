@@ -1,0 +1,2 @@
+$(".check-username-exists").parent().find("span.check-username-message").remove();
+$(".check-username-exists").parent().append("<%= escape_javascript("<span class='indented-10 check-username-message icon #{@result[:icon]}'>#{@result[:message]}</span>") %>");

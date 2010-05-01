@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_filter :get_user, :check_user_logged, :check_user_is_correct, :only => [:new, :create]
-  before_filter :can_sign_in, :only => [:new, :create]	
+  skip_before_filter :get_user, :check_user_logged, :check_user_is_correct, :only => [:new, :create, :exists_username]
+  before_filter :can_sign_in, :only => [:new, :create]
 
 	def check_user_is_correct
 		return true unless params[:id]
@@ -68,5 +68,23 @@ class UsersController < ApplicationController
       render :action => "edit"
     end
   end
+
+	def exists_username		
+		@result = {}
+		if current_user and params[:username] == current_user.username
+			@result[:icon] = "user"
+			@result[:message] = I18n.t(:this_is_you, :scope => :user)
+		elsif User.exists? :username => params[:username]
+			@result[:icon] = "cross"
+			@result[:message] = I18n.t(:username_taken, :scope => [:user, :messages, :error])
+		else
+			@result[:icon] = "tick"
+			@result[:message] = I18n.t(:username_available, :scope => [:user, :messages, :success])
+		end
+
+		respond_to do |format|
+			format.js
+		end
+	end
 end
 

@@ -46,6 +46,12 @@ jQuery.fn.confirmPlz = function() {
 	return ($(this).attr("confirm_message")) ? $(this).attr("confirm_message") : "Are you sure you want to delete this record?\nNote: there is no undo.";
 };
 
+jQuery.fn.displayLoadingByMySide = function(tag, klass){
+  $(this).parent().find(tag + "." + klass).remove();
+  $(this).parent().append("<" + tag + " class='indented-10 icon round-loading " + klass +" '></" + tag + ">");
+  return $(this);
+};
+
 $(document).ready(function(){
         $(".title-me").tipTip();
         

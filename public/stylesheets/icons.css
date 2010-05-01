@@ -462,3 +462,8 @@
 {
           background-image: url(../images/icons/silk/bullet_error.png);
 }
+
+.icon.round-loading
+{
+          background-image: url(../images/ajax-loader-round.gif);
+}

@@ -1,8 +1,10 @@
 <h1><%= t :new, :scope => :user %></h1>
 
-<%= javascript_include_tag "themes" %>
+<%= javascript_include_tag "themes", "jquery.typeWatch" %>
 
 <%= title t(:new, :scope => [:user]) %>
+
+<%= render :partial => "user_exists_js" %>
 
 <% form_for @user, :html => {:class => "basic-form rounded large"} do |f| %>
 

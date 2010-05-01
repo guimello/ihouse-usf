@@ -94,8 +94,10 @@ en:
       success:
         update: "Your profile has been updated!"
         create: "You've successfully created your account!"
+        username_available: "username available!"
       error:
         cant_create_new_user: "You can't sign-in again, you are logged in"
+        username_taken: "this username has already been taken"
     timezone:
       legend: "Choose your current timezone"
       label: "Timezone"
