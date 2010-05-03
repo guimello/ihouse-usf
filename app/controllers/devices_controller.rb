@@ -3,7 +3,10 @@ class DevicesController < ApplicationController
 	before_filter :get_output_format, :only => :discover
 
 	def index
-		@devices = @house.devices
+		@devices_by_room = {}
+		@house.devices.group_by_room.map {|d| d.room}.each do |room|
+			@devices_by_room[(room.blank?) ? I18n.t(:no_room, :scope => :device) : room] = @house.devices.by_room room
+		end
 	end
 
 	def new

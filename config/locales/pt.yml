@@ -156,6 +156,7 @@ pt:
     add: "Adicionar um novo dispositivo manualmente"
     manage_actions: "Gerencie as ações deste dispositivo"
     manage_current_device_actions: "Gerencie as ações do dispositivo {{device}}"
+    no_room: "Sem classificação"
     discover:
       label: "Procurar dispositivos"
       title: "Procure por dispositovos em sua casa automaticamente"

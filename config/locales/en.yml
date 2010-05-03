@@ -156,6 +156,7 @@ en:
     add: "Add new device manually"
     manage_actions: "Manage this device's actions"
     manage_current_device_actions: "Manage the {{device}}'s actions"
+    no_room: "No classification"
     discover:
       label: "Discover devices"
       title: "Discover devices in your house automatically"

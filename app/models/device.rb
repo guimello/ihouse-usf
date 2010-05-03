@@ -21,4 +21,8 @@ class Device < ActiveRecord::Base
 	def to_s
 		name || default_name
 	end
+
+	named_scope :order_by_room, :order => :room
+	named_scope :group_by_room, :group => :room
+	named_scope :by_room, Proc.new {|room| {:conditions => {:room => room}}}
 end
