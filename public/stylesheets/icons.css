@@ -467,3 +467,13 @@
 {
           background-image: url(../images/ajax-loader-round.gif);
 }
+
+.icon.television
+{
+          background-image: url(../images/icons/silk/television.png);
+}
+
+.icon.fan
+{
+          background-image: url(../images/icons/Fan_16x16.png);
+}
