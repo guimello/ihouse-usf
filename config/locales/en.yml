@@ -160,6 +160,9 @@ en:
     discover:
       label: "Discover devices"
       title: "Discover devices in your house automatically"
+    device_class:
+      label: "Class"
+      title: "Class is a advanced field, if it's already filled out by the discover button you don't need to change it"
     identification:
       label: "Identification"
       title: "Identification is a advanced field, if it's already filled out by the discover button you don't need to change it"

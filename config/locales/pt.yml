@@ -160,6 +160,9 @@ pt:
     discover:
       label: "Procurar dispositivos"
       title: "Procure por dispositovos em sua casa automaticamente"
+    device_class:
+      label: "Classe"
+      title: "Classe é um campo avançado, se já estiver preenchido, porque você clicou em 'Procurar dispositivos', você não precisa modificá-lo"
     identification:
       label: "Identificação"
       title: "Identificação é um campo avançado, se já estiver preenchido, porque você clicou em 'Procurar dispositivos', você não precisa modificá-lo"
