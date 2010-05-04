@@ -10,7 +10,8 @@ class DevicesController < ApplicationController
 	end
 
 	def new
-		@devices = @house.devices		
+		@devices = @house.devices
+		render :layout => "two_columns_tiny_right"
 	end
 
 	def create
@@ -18,7 +19,7 @@ class DevicesController < ApplicationController
 			flash[:success] = I18n.t :update, :scope => [:device, :messages, :success]
 			redirect_to user_house_devices_url(current_user, @house)
 		else
-			render :action => :new
+			render :action => :new, :layout => "two_columns_tiny_right"
 		end
 	end
 

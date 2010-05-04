@@ -1,24 +1,24 @@
 module KnownDevices
 	KNOWN_DEVICES = {
-																	:lamp_01 =>
+																	:lamp =>
 																		{
-																			:device_class => "lamp_01",
-																			:query_state => "state_lamp_01",
-																			:name => I18n.t(:name, :scope => [:device, :known, :lamp_01]),
+																			:device_class => "lamp",
+																			:query_state => "state_lamp",
+																			:name => I18n.t(:name, :scope => [:device, :known, :lamp]),
 																			:display_icon => "lights"
 																		},
-																	:fan_01 =>
+																	:fan =>
 																		{
-																			:device_class => "fan_01",
-																			:query_state => "state_fan_01",
-																			:name => I18n.t(:name, :scope => [:device, :known, :fan_01]),
+																			:device_class => "fan",
+																			:query_state => "state_fan",
+																			:name => I18n.t(:name, :scope => [:device, :known, :fan]),
 																			:display_icon => "fan"
 																		},
-																	:tv_01 =>
+																	:tv =>
 																		{
-																			:device_class => "tv_01",
-																			:query_state => "state_tv_01",
-																			:name => I18n.t(:name, :scope => [:device, :known, :tv_01]),
+																			:device_class => "tv",
+																			:query_state => "state_tv",
+																			:name => I18n.t(:name, :scope => [:device, :known, :tv]),
 																			:display_icon => "television"
 																		}
 																			}

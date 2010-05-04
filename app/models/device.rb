@@ -11,6 +11,7 @@ class Device < ActiveRecord::Base
 
 	validates_presence_of :identification, :query_state, :device_class
 	validates_presence_of :name, :unless => Proc.new {|device| !device.default_name.blank?}
+	validates_uniqueness_of :identification, :scope => [:house_id]
 
 	before_save :reset_name, :if => Proc.new {|device| device.name == device.default_name}
 
@@ -27,9 +28,11 @@ class Device < ActiveRecord::Base
 	named_scope :by_room, Proc.new {|room| {:conditions => {:room => room}}}
 
 	def enable_advanced?(field)
-		return false if ["name", "room"].include? field.to_s
+		return false if ["name", "room"].include? field.to_s or
 		device_class.blank? or identification.blank? or query_state.blank? or
 		device_class != device_class_was or identification != identification_was or
 		query_state != query_state_was
+
+		true
 	end
 end

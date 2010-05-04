@@ -1,13 +1,14 @@
 <tr id="device_<%= form.object.id %>">  
   <td class="left">
-      <%= icon_for_device form.object %>
-      <%= text_field_for_device form, :name, :class => "small", :value => (form.object.name.blank?) ? form.object.default_name : form.object.name %>
+      <div class="icon <%= form.object.display_icon %>"
+        <%= text_field_for_device form, :name, :class => "small", :value => (form.object.name.blank?) ? form.object.default_name : form.object.name %>
+      </div>
   </td>
   <td>
     <%= text_field_for_device form, :room, :class => "small" %>
   </td>
   <td>
-    <%= text_field_for_device form, :device_class, :class => "small enable-disable-advanced" %>
+    <%= text_field_for_device form, :device_class, :class => "smallest enable-disable-advanced" %>
   </td>
   <td>
     <%= text_field_for_device form, :identification, :class => "small enable-disable-advanced" %>

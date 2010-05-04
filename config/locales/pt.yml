@@ -176,11 +176,11 @@ pt:
       label: "Código de estado"
       title: "Código de estado é um campo avançado, se já estiver preenchido, porque você clicou em 'Procurar dispositivos', você não precisa modificá-lo"
     known:
-      lamp_01:
+      lamp:
         name: "Lâmpada"
-      fan_01:
+      fan:
         name: "Ventilador"
-      tv_01:
+      tv:
         name: "Televisão"
     advanced_fields_info: "Campos Avançados"
     hints:

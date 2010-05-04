@@ -173,14 +173,14 @@ en:
       label: "Name"
       title: "Give your device a name that best describes it"
     query_state:
-      label: "Query state code"
-      title: "Query state code is a advanced field, if it's already filled out by the discover button you don't need to change it"
+      label: "State code"
+      title: "State code is a advanced field, if it's already filled out by the discover button you don't need to change it"
     known:
-      lamp_01:
+      lamp:
         name: "Lights"
-      fan_01:
+      fan:
         name: "Fan"
-      tv_01:
+      tv:
         name: "Television"
     advanced_fields_info: "Advanced Fields Information"
     hints:

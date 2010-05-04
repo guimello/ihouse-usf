@@ -12,7 +12,7 @@
 <%= content_tag :p, t(:add_edit_discover, :scope => [:house, :devices, :hints], :discover_button => "\"#{t(:label, :scope => [:device, :discover])}\"") %>
 
 <% form_for @house, :url => user_house_devices_url(@user, @house),
-    :html => {:method => :post, :class => "basic-form rounded large"} do |house_form| %>
+    :html => {:method => :post, :class => "basic-form rounded"} do |house_form| %>
 
     <% content_for :javascript do %>
       $(".add-house-device").live("click",function(){
