@@ -4,7 +4,7 @@
   <%= content_tag :div, {}, :class => "clear" %>
 
   <% Action.all_action_types.each do |type| %>
-    <%= action_control device.actions.send(type.to_sym).all, type %>
+    <%= action_control device.actions.send(type.to_sym).all %>
   <% end %>
 
  

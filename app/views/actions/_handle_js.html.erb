@@ -1,0 +1,24 @@
+<% content_for :javascript do %>
+  $(document).ready(function(){
+    <% case handle_class
+        when "slide-me-vertical" %>
+          $("#<%= id %>").slider({
+			orientation: "vertical",
+			range: "min",
+			value: 0,// todo get current value
+			min: <%= action.range_min %> ,
+			max: <%= action.range_max %>,
+			slide: function(event, ui) {
+				$(this).parent().find("span.amount").html(ui.value);
+
+			},
+			change: function(event, ui){
+			  $(this).parent().find("span.amount").html(ui.value);
+			}});
+       <% when "slide-me" %>
+          $("#<%= id %>").slider();
+       <% else %>
+
+       <% end %>
+  });
+<% end %>

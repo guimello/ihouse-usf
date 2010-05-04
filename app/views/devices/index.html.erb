@@ -3,29 +3,6 @@
 
 <%= content_tag :h1, t(:device, :count => 2) %>
 
-<% content_for :javascript do %>
-  $(document).ready(function(){
-  
-    //$(".slide-me").slider();
-    $(".slide-me").slider({
-			orientation: "vertical",
-			range: "min",
-			value: 37,
-			min: 1,
-			max: 700,
-			slide: function(event, ui) {
-				$(this).parent().find(".amount").val('$' + ui.value + " " + $(this).attr("href"));
-
-			},
-			change: function(event, ui){
-			  $(this).parent().append(ui.value);
-			}
-		});
-		//$(this).parent().find(".amount").val('$' + $("#slider-range-min").slider("value"));
-
-  });
-<% end %>
-
 <div class="hastabs basic-form">
   <% @devices_by_room.each_pair do |room, devices| %>
     <%= render "devices_panel", :room => room, :devices => devices, :house => @house, :user => @user %>

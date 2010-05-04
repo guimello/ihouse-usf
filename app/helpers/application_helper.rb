@@ -183,24 +183,44 @@ module ApplicationHelper
 		end
 	end
 
-	def action_control(actions, type)
-		case type
-			when Action::ActionTypes::TURN_ON_OFF
-				html_class = "toggle-me"
-			when Action::ActionTypes::RANGE
-				html_class = "slide-me"
-		end
+	def action_control(actions)		
+		actions = [actions] if actions.is_a?(Action)
+		return nil if actions.empty?
+		handle_class = get_action_handle_class(actions.first)
+
+		options = {}
+		options[:class] = "float-left #{handle_class}"
+		options[:style] =  "height: 200px; margin: 0 20px 0 20px;"
 
 		html = Builder::XmlMarkup.new
 		
-		actions.each do |action|			
-			html.div :class => "float-left #{html_class}", :style => "height: 200px" do
-				html << ((html_class == "toggle-me") ? action.action_type : "")
+		actions.each_with_index do |action, index|
+			id = "#{action.action_type}_#{index}"
+			html.div do
+				html.span :class => "amount" do
+					html << ""
+				end
+				html.div options.merge(:id => id) do
+					html << ""
+				end
 			end
-		end
+
+			html << render(:partial => "actions/handle_js", :locals => {:handle_class => handle_class, :action => action, :id => id})
+		end		
+
 		html.div :class => "clear" do
 			html << ""
-		end
-		html
+		end		
+	end
+
+	def get_action_handle_class(action)
+		handle_class = (action.know?) ? action.known_action[:handle_class] : nil
+		case action.action_type
+			when Action::ActionTypes::TURN_ON_OFF
+				handle_class = "toggle-me"
+			when Action::ActionTypes::RANGE
+				handle_class = "slide-me"
+		end if handle_class.blank?
+		handle_class
 	end
 end
