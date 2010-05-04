@@ -182,4 +182,25 @@ module ApplicationHelper
 			html << I18n.t(:hint, :scope => [:application, :required_fields_help], :icon => "<span class='icon required'></span>")
 		end
 	end
+
+	def action_control(actions, type)
+		case type
+			when Action::ActionTypes::TURN_ON_OFF
+				html_class = "toggle-me"
+			when Action::ActionTypes::RANGE
+				html_class = "slide-me"
+		end
+
+		html = Builder::XmlMarkup.new
+		
+		actions.each do |action|			
+			html.div :class => "float-left #{html_class}", :style => "height: 200px" do
+				html << ((html_class == "toggle-me") ? action.action_type : "")
+			end
+		end
+		html.div :class => "clear" do
+			html << ""
+		end
+		html
+	end
 end

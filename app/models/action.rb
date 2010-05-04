@@ -1,5 +1,4 @@
 class Action < ActiveRecord::Base
-	include ActionTypes
 	include KnownActions
 	
   belongs_to  :device
@@ -15,6 +14,9 @@ class Action < ActiveRecord::Base
 
 	before_save :reset_ranges, :unless => Proc.new {|action| action.validates_range?}
 	before_save :reset_name, :if => Proc.new {|action| action.name == action.default_name}
+
+	named_scope :turn_on_off, :conditions => {:action_type => ActionTypes::TURN_ON_OFF}
+	named_scope :range, :conditions => {:action_type => ActionTypes::RANGE}
 
 	def range_min_less_then_range_max
 		return true if range_min.nil? and range_max.nil?

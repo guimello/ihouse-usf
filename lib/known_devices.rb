@@ -23,17 +23,21 @@ module KnownDevices
 																		}
 																			}
 
-	def know_this?
-		!device_class.blank? and KNOWN_DEVICES.key? device_class.to_sym
-	end
-	
-	def default_name		
-		return KNOWN_DEVICES[device_class.to_sym][:name] if know_this?
-		nil
-	end
+	def self.included(klass)
+		klass.class_eval do
+			def know_this?
+				!device_class.blank? and KNOWN_DEVICES.key? device_class.to_sym
+			end
 
-	def display_icon
-		return KNOWN_DEVICES[device_class.to_sym][:display_icon] if know_this?
-		"unkown-device"
+			def default_name
+				return KNOWN_DEVICES[device_class.to_sym][:name] if know_this?
+				nil
+			end
+
+			def display_icon
+				return KNOWN_DEVICES[device_class.to_sym][:display_icon] if know_this?
+				"unkown-device"
+			end
+		end
 	end
 end

@@ -20,16 +20,21 @@ module KnownActions
 																		}
 																	}
 
-	def know_this?
-		!command.blank? and KNOWN_ACTIONS.key? command.to_sym
-	end
+	def self.included(klass)
+    klass.class_eval do
+			include ActionTypes
+			def know_this?
+				!command.blank? and KNOWN_ACTIONS.key? command.to_sym
+			end
 
-	def default_name
-		return KNOWN_ACTIONS[command.to_sym][:name] if know_this?
-		nil
-	end
+			def default_name
+				return KNOWN_ACTIONS[command.to_sym][:name] if know_this?
+				nil
+			end
 
-	def self.all_action_types
-		[Action::ActionTypes::TURN_ON_OFF, Action::ActionTypes::RANGE]
+			def self.all_action_types
+				[ActionTypes::TURN_ON_OFF, ActionTypes::RANGE]
+			end
+		end
 	end
 end
