@@ -1,5 +1,5 @@
 <div class="tabmeplz basic-tab-container">
-  <h1 class="tab-title"><%= room %></h1>
+  <h1 class="tab-title"><%= room.humanize %></h1>
   <% devices.each do |device| %>
     <%= render "device", :device => device, :house => @house, :user => @user %>
   <% end %>
