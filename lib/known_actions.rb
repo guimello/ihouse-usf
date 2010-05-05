@@ -5,21 +5,21 @@ module KnownActions
 																			:command => "a001",
 																			:type => Action::ActionTypes::TURN_ON_OFF,
 																			:name => I18n.t(:name, :scope => [:action, :known, :a001]),
-																			:handle_class => "toggle-me-fancy"
+																			:handle => {:class => "toggle-me-fancy margin-auto"}
 																		},
 																	:b001 =>
 																		{
 																			:command => "b001",
 																			:type => Action::ActionTypes::RANGE,
 																			:name => I18n.t(:name, :scope => [:action, :known, :b001]),
-																			:handle_class => "slide-me-vertical"
+																			:handle => {:class => "slide-me-vertical margin-auto", :style => "height: 200px"}
 																		},
 																	:b002 =>
 																		{
 																			:command => "b002",
 																			:type => Action::ActionTypes::RANGE,
 																			:name => I18n.t(:name, :scope => [:action, :known, :b002]),
-																			:handle_class => "slide-me-fancy"
+																			:handle => {:class => "slide-me-vertical margin-auto", :style => "height: 200px"}
 																		}
 																	}
 

@@ -466,3 +466,19 @@ img.picture-frame
 {
           visibility: hidden;
 }
+
+.space-my-side-20
+{
+          margin: 20px 20px 20px 20px;
+}
+
+.tall-medium
+{
+          height: 200px;
+}
+
+.margin-auto
+{
+          margin-left: auto;
+          margin-right: auto;
+}

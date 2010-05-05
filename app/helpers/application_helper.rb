@@ -186,41 +186,97 @@ module ApplicationHelper
 	def action_control(actions)		
 		actions = [actions] if actions.is_a?(Action)
 		return nil if actions.empty?
-		handle_class = get_action_handle_class(actions.first)
 
-		options = {}
-		options[:class] = "float-left #{handle_class}"
-		options[:style] =  "height: 200px; margin: 0 20px 0 20px;"
+		handle_options = get_action_handle_options(actions.first)
+		options = handle_options.merge({:class => "center", :style => ";text-align: center"}) {|key, old, new| old + " " + new}
 
 		html = Builder::XmlMarkup.new
-		
-		actions.each_with_index do |action, index|
-			id = "#{action.action_type}_#{index}"
-			html.div do
-				html.span :class => "amount" do
-					html << ""
-				end
-				html.div options.merge(:id => id) do
-					html << ""
+
+		all_actions = []
+		separation = 6
+		(0..actions.size).step(separation) do |i|
+			all_actions.push actions[i...i+separation]
+		end
+
+		all_actions.each do |loop_actions|
+			html.div :style => "text-align: center" do
+				html.table :class => "actions-table" do
+					html.thead do
+						html.tr do
+							loop_actions.each do |action|
+								html.th :id => "amount_#{action.id}" do
+									html << "0"
+								end
+							end
+						end
+					end
+
+					html.tfoot do
+						html.tr do
+							loop_actions.each do |action|
+								html.td do
+									html << action.to_s.humanize
+								end
+							end
+						end
+					end
+
+					html.tbody do
+						html.tr do
+							loop_actions.each do |action|
+								id = "handle_#{action.id}"
+								html.td :class => "center" do
+									html.div options.merge(:id => id) do
+										html << ""
+									end
+								end
+
+								html << render(:partial => "actions/handle_js", :locals => {:handle_class => handle_options[:class],
+																																:action => action, :id => id, :amount => "amount_#{action.id}"})
+							end
+						end
+					end
 				end
 			end
-
-			html << render(:partial => "actions/handle_js", :locals => {:handle_class => handle_class, :action => action, :id => id})
-		end		
+		end
 
 		html.div :class => "clear" do
 			html << ""
-		end		
+		end
+		
+		
+#		actions.each_with_index do |action, index|
+#			id = "#{action.action_type}_#{index}"
+#			html.div :class => "float-left" do
+#				html.div :class => "amount", :id =>"#{id}_amount" do
+#					html << "0"
+#				end
+#				#html << text_field_tag("", {}, :id => "#{id}_amount", :class => "amount", :style => "background-image: url(); border: 0px")
+#				html.div options.merge(:id => id) do
+#					html << ""
+#				end
+#
+#				html.div do
+#					html << action.to_s.humanize
+#				end
+#			end
+#
+#			html << render(:partial => "actions/handle_js", :locals => {:handle_class => handle_options[:class], :action => action, :id => id})
+#		end
+#
+#		html.div :class => "clear" do
+#			html << ""
+#		end
 	end
 
-	def get_action_handle_class(action)
-		handle_class = (action.know?) ? action.known_action[:handle_class] : nil
+	def get_action_handle_options(action)
+		handle_options = (action.know?) ? action.known_action[:handle] : {}
 		case action.action_type
 			when Action::ActionTypes::TURN_ON_OFF
-				handle_class = "toggle-me"
+				handle_options[:class] = "toggle-me space-my-side-20"
 			when Action::ActionTypes::RANGE
-				handle_class = "slide-me"
-		end if handle_class.blank?
-		handle_class
+				handle_options[:class] = "slide-me space-my-side-20"
+		end if handle_options.empty?
+		handle_options
 	end
 end

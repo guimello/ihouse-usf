@@ -7,7 +7,7 @@ class Action < ActiveRecord::Base
 
 	validates_presence_of :command, :action_type
 	validates_inclusion_of :action_type, :in => [Action::ActionTypes::TURN_ON_OFF, Action::ActionTypes::RANGE]
-	validates_presence_of :name, :if => Proc.new {|action| action.default_name.blank?}
+	validates_presence_of :name, :unless => Proc.new {|action| action.know?}
 	validates_presence_of :range_min, :range_max, :if => Proc.new {|action| action.validates_range?}
 	validates_numericality_of :range_min, :range_max, :only_integer => true, :if => Proc.new {|action| action.validates_range?}
 	validate :range_min_less_then_range_max, :if => Proc.new {|action| action.validates_range?}

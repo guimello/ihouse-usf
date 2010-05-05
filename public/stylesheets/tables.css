@@ -89,3 +89,44 @@ table.gray-line .odd
 {
 	border-right: 1px solid #e1e1e1;
 }
+
+
+
+/*ACTIONS-TABLE*/
+.actions-table
+{
+	border-collapse: inherit;
+	margin-bottom: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.actions-table.gray-line .odd
+{
+	background-color: #f7f7f7;
+}
+
+.actions-table td
+{
+	padding: 25px;
+	text-align: center;
+	font-size: 11px;
+}
+
+.actions-table th
+{
+	padding: 10px;
+}
+
+.actions-table caption
+{
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.actions-table tfoot td
+{
+	font-weight: bold;
+	padding-top: 6px
+}

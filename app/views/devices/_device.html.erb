@@ -5,8 +5,6 @@
 
   <% Action.all_action_types.each do |type| %>
     <%= action_control device.actions.send(type.to_sym).all %>
-  <% end %>
-
- 
+  <% end %> 
   
 </fieldset>
