@@ -1,0 +1,21 @@
+<% content_for :javascript do %>
+    $(document).ready(function(){
+	$("#handle_<%= action.id %>").button({ icons: { primary: "icon lights-on"},
+	      label: "ON"})
+	    .click(function(){
+	        $("#handle_head_<%= action.id %>").html('' + $(this).is(":checked"));
+	        var icons = "icon lights-on";
+	        var label = "ON";
+	        if(!$(this).is(":checked"))
+	        {
+	          icons = "icon lights-off";
+	          label = "OFF";
+	        }
+
+	        $(this).button("option", "icons", {primary: icons}).button("option", "label", label);
+	    });
+
+	$("#handle_head_<%= action.id %>").html("<%= action.id %>");//add the real state here
+	$("#handle_foot_<%= action.id %>").html("<%= action.to_s.humanize %>");
+    });
+<% end %>

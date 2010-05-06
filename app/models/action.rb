@@ -3,8 +3,7 @@ class Action < ActiveRecord::Base
 	
   belongs_to  :device
   #belongs_to  :voice_command
-  has_many    :schedules
-	belongs_to :known_action
+  has_many    :schedules	
 
 	validates_presence_of :command, :action_type
 	validates_uniqueness_of :command, :scope => [:device_id]
@@ -15,22 +14,11 @@ class Action < ActiveRecord::Base
 	validate :range_min_less_then_range_max, :if => Proc.new {|action| action.validates_range?}
 
 	before_save :reset_ranges, :unless => Proc.new {|action| action.validates_range?}
-	before_save :reset_name, :if => Proc.new {|action| action.name == action.default_name}
-
-	before_save :bind_known_action, :if => Proc.new {|action| action.know?}
-	before_save :unbind_known_action, :unless => Proc.new {|action| action.know?}
+	before_save :reset_name, :if => Proc.new {|action| action.name == action.default_name or action.name.blank?}
 
 	named_scope :turn_on_off, :conditions => {:action_type => ActionTypes::TURN_ON_OFF}
 	named_scope :range, :conditions => {:action_type => ActionTypes::RANGE}
-
-	def bind_known_action
-		self.known_action = KnownAction.find_by_command(command)
-	end
-
-	def unbind_known_action
-		self.known_action = nil
-	end	
-
+	
 	def range_min_less_then_range_max
 		return true if range_min.nil? and range_max.nil?
 		if range_min >= range_max

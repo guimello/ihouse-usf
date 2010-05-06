@@ -3,18 +3,23 @@ class InsertKnownActions < ActiveRecord::Migration
 		KnownAction.transaction do
 			KnownAction.create	:command => "a001",
 																		:action_type => Action::ActionTypes::TURN_ON_OFF,
-																		:handle => {:html_options_for_object => {:class => "toggle-me-fancy margin-auto"},
-																												:jquery_method => "jquery_button"}
+																		:handle => { :jquery_method => "jquery_checkbox_button",
+																												:js_partial => "toggle_me_light"
+																												}
 
 			KnownAction.create	:command => "b001",
 																		:action_type => Action::ActionTypes::RANGE,																		
-																		:handle => {:html_options_for_object => {:class => "slide-me-vertical margin-auto", :style => "height: 200px"},
-																											:jquery_method => "jquery_div"}
+																		:handle => {:html_options_for_jquery_div => {:style => "height: 200px;"},
+																											:jquery_method => "jquery_div",
+																											:js_partial => "slide_me_vertical"
+																											}
 
 			KnownAction.create	:command => "b002",
 																		:action_type => Action::ActionTypes::RANGE,
-																		:handle => {:html_options_for_object => {:class => "slide-me-vertical margin-auto", :style => "height: 200px"},
-																											:jquery_method => "jquery_div"}
+																		:handle => {:html_options_for_jquery_div => {:style => "height: 200px;"},
+																											:jquery_method => "jquery_div",
+																											:js_partial => "slide_me_vertical"
+																											}
 																	
 		end
   end

@@ -32,19 +32,23 @@ module KnownDevices
 
 			def default_name
 				#return KNOWN_DEVICES[device_class.to_sym][:name] if know?
-				return KnownDevice.find_by_device_class(device_class).name if know?
+				return known_device.name if know?
 				nil
 			end
 
 			def display_icon
 				#return KNOWN_DEVICES[device_class.to_sym][:display_icon] if know?
-				return KnownDevice.find_by_device_class(device_class).display_icon if know?
+				return known_device.display_icon if know?
 				"unkown-device"
 			end
 
 			def self.known_devices
 				#KNOWN_DEVICES
 				KnownDevice.all
+			end
+
+			def known_device
+				KnownDevice.find_by_device_class(device_class)
 			end
 		end
 	end

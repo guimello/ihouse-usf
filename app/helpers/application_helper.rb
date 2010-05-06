@@ -185,10 +185,7 @@ module ApplicationHelper
 
 	def action_control(actions)		
 		actions = [actions] if actions.is_a?(Action)
-		return nil if actions.empty?
-
-		handle_options = get_action_handle_options(actions.first)
-		options = handle_options.merge({:class => "center", :style => ";text-align: center"}) {|key, old, new| old + " " + new}
+		return nil if actions.empty?	
 
 		html = Builder::XmlMarkup.new
 
@@ -204,8 +201,8 @@ module ApplicationHelper
 					html.thead do
 						html.tr do
 							loop_actions.each do |action|
-								html.th :id => "amount_#{action.id}" do
-									html << "0"
+								html.th :id => "handle_head_#{action.id}" do
+									html << ""
 								end
 							end
 						end
@@ -214,8 +211,8 @@ module ApplicationHelper
 					html.tfoot do
 						html.tr do
 							loop_actions.each do |action|
-								html.td do
-									html << action.to_s.humanize
+								html.td :id => "handle_foot_#{action.id}" do
+									html << ""
 								end
 							end
 						end
@@ -227,14 +224,13 @@ module ApplicationHelper
 								id = "handle_#{action.id}"
 								html.td :class => "center" do
 									if action.know?
-										html << self.send(action.my_known_action.handle[:jquery_method], action, options)
+										html << self.send(action.known_action.handle[:jquery_method], action)
+										html << render(:partial => "actions/handle/#{action.known_action.handle[:js_partial]}",
+																											:locals => {:action => action})
 									else
 										html << "unknown todo"
 									end
-								end
-
-								html << render(:partial => "actions/handle_js", :locals => {:handle_class => handle_options[:class],
-																																:action => action, :id => id, :amount => "amount_#{action.id}"})
+								end								
 							end
 						end
 					end
@@ -248,28 +244,30 @@ module ApplicationHelper
 
 	end
 
-	def jquery_div(action, options)
+	def jquery_div(action)
 		html = Builder::XmlMarkup.new
-		html.div options.merge(:id => "handle_#{action.id}") do
+		options = {:class => "center margin-auto", :style => "text-align: center"}
+		if action.known_action.handle.key? :html_options_for_jquery_div
+			options = action.known_action.handle[:html_options_for_jquery_div].merge(options) {|key, old, new| old + " " + new}
+		end
+		options = options.merge(:id => "handle_#{action.id}")
+
+		html.div options do
 			html << ""
 		end
 	end
 
-	def jquery_button(id, options)
+	def jquery_checkbox_button(action)
 		html = Builder::XmlMarkup.new
-		html.div options do
-			html << "<button class='#{options[:class]}' >fuck</button>"
+		options = {:class => "center margin-auto", :style => "text-align: center"}
+		if action.known_action.handle.key? :html_options_for_div_checkbox_button
+			options = action.known_action.handle[:html_options_for_div_checkbox_button].merge(options) {|key, old, new| old + " " + new}
 		end
-	end
-
-	def get_action_handle_options(action)
-		handle_options = (action.know?) ? action.my_known_action.handle[:html_options_for_object] : {}
-		case action.action_type
-			when Action::ActionTypes::TURN_ON_OFF
-				handle_options[:class] = "toggle-me space-my-side-20"
-			when Action::ActionTypes::RANGE
-				handle_options[:class] = "slide-me space-my-side-20"
-		end if handle_options.empty?
-		handle_options
-	end
+		
+		id = "handle_#{action.id}"
+		html.div options do
+			html << label_tag(id, action.to_s)
+			html << check_box_tag("", 1, nil, :id => id)# change nil by the real state on/off
+		end
+	end	
 end

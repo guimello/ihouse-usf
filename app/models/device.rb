@@ -1,8 +1,7 @@
 class Device < ActiveRecord::Base
 	include KnownDevices
 	
-  belongs_to :house
-	belongs_to :known_device
+  belongs_to :house	
   has_one :user, :through => :house
   has_many :actions
 	accepts_nested_attributes_for :actions, :allow_destroy => true
@@ -14,18 +13,8 @@ class Device < ActiveRecord::Base
 	validates_presence_of :name, :unless => Proc.new {|device| device.know?}
 	validates_uniqueness_of :identification, :scope => [:house_id]
 
-	before_save :reset_name, :if => Proc.new {|device| device.name == device.default_name}
-	before_save :bind_known_device, :if => Proc.new {|device| device.know?}
-	before_save :unbind_known_device, :unless => Proc.new {|device| device.know?}
-
-	def bind_known_device
-		self.known_device = KnownDevice.find_by_device_class(device_class)
-	end
-
-	def unbind_known_device
-		self.known_device = nil
-	end
-
+	before_save :reset_name, :if => Proc.new {|device| device.name == device.default_name or device.name.blank?}
+	
 	def reset_name
 		self.name = nil
 	end

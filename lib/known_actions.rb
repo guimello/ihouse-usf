@@ -45,9 +45,8 @@ module KnownActions
 				KnownAction.all
 			end
 
-			def my_known_action
-				#return KNOWN_ACTIONS[command.to_sym] if know?
-				known_action || KnownAction.find_by_command(command)
+			def known_action				
+				KnownAction.find_by_command(command)
 			end
 		end
 	end

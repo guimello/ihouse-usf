@@ -1,5 +1,8 @@
 <%= javascript_include_tag "tabs" %>
-<%= stylesheet_link_tag "ui-lightness/jquery-ui-1.8.1.custom" %>
+
+<% content_for :head do %>
+  <%= stylesheet_link_tag "ui-lightness/jquery-ui-1.8.1.custom" %>
+<% end %>
 
 <%= content_tag :h1, t(:device, :count => 2) %>
 

@@ -448,6 +448,16 @@
 	background-image: url(../images/icons/silk/lightbulb.png);
 }
 
+.icon.lights-on
+{
+	background-image: url(../images/icons/silk/lightbulb.png);
+}
+
+.icon.lights-off
+{
+	background-image: url(../images/icons/silk/lightbulb_off.png);
+}
+
 .icon.unkown-device
 {
 	background-image: url(../images/icons/silk/building_error.png);

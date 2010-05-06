@@ -13,6 +13,8 @@
 
 	<%= stylesheet_link_tag "reset.css" -%>
 
+	<%=  yield :head if yield :head %>
+
 	<%= stylesheet_link_tag "#{style}/alerts.css", :class => "change_style" -%>
 
 	<%= stylesheet_link_tag "main", "content", "tabs", "alerts", "tables", "forms", "lists", "icons", "pagination", :cache => "basic" -%>
