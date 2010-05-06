@@ -40,7 +40,12 @@ class ApplicationController < ActionController::Base
   end
 
   def get_house
-    @house = current_user.houses.find(params[:house_id])
+		begin
+			@house = current_user.houses.find(params[:house_id])
+		rescue ActiveRecord::RecordNotFound
+			flash[:error] = I18n.t :you_mistyped_the_house_url, :scope => :application
+			redirect_to my_panel_url and return
+		end
   end
 
   def current_path

@@ -15,9 +15,7 @@ class DevicesController < ApplicationController
 		render :layout => "two_columns_tiny_right"
 	end
 
-	def create
-		puts "lolololollolololol"
-		puts params[:house].inspect
+	def create		
 		if @house.update_attributes params[:house]
 			flash[:success] = I18n.t :update, :scope => [:device, :messages, :success]
 			redirect_to user_house_devices_url(current_user, @house)
