@@ -1,9 +1,13 @@
 <% content_for :javascript do %>
-  $(document).ready(function(){    
+  <% state_code = action.state_code %>
+  $(document).ready(function(){
+        $("#handle_head_<%= action.id %>").html("<%= state_code %>");//add the real state here
+        $("#handle_foot_<%= action.id %>").html("<%= action.to_s.humanize %>");
+
         $("#handle_<%= action.id %>").slider({
 		          orientation: "vertical",
 		          range: "min",
-		          value: 0,// todo get current value
+		          value: <%= state_code %>,// todo get current value
 		          min: <%= action.range_min %> ,
 		          max: <%= action.range_max %>,
 		          slide: function(event, ui) {
@@ -12,8 +16,6 @@
 		          },
 		          change: function(event, ui){
 			$("#handle_head_<%= action.id %>").html(ui.value);
-		          }});
-        $("#handle_head_<%= action.id %>").html("<%= action.id %>");//add the real state here
-        $("#handle_foot_<%= action.id %>").html("<%= action.to_s.humanize %>");
+		          }});        
   });
 <% end %>

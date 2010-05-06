@@ -196,6 +196,11 @@ pt:
     other: "ações"
     add: "Adicione uma nova ação manualmente"
     find_actions: "Procure pelas ações deste dispositivo"
+    device:
+      turn_on_off:
+        state:
+          state_on: "Ligado"
+          state_off: "Desligado"
     hints:
       find_actions: "Aqui você pode adicionar/alterar ações do seu dispositivo. Você pode adicionar novas ações manualmente ou simplesmente clicar sobre o botão {{find_button}} que o dispositivo será questionado sobre suas possíveis ações."
       add_action_manually_button: "Somente adicione ações manualmente se você tem certeza do que está fazendo. Talvez você deva clicar sobre {{find_button}} primeiro"

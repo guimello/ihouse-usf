@@ -1,5 +1,6 @@
 class Action < ActiveRecord::Base
 	include KnownActions
+	include SerialActions
 	
   belongs_to  :device
   #belongs_to  :voice_command

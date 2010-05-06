@@ -266,7 +266,7 @@ module ApplicationHelper
 		
 		id = "handle_#{action.id}"
 		html.div options do
-			html << label_tag(id, action.to_s)
+			html << label_tag(id,"")
 			html << check_box_tag("", 1, nil, :id => id)# change nil by the real state on/off
 		end
 	end	
