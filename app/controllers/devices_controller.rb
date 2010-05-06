@@ -3,6 +3,7 @@ class DevicesController < ApplicationController
 	before_filter :get_output_format, :only => :discover
 
 	def index
+		@devices = @house.devices
 		@devices_by_room = {}
 		@house.devices.group_by_room.map {|d| d.room}.each do |room|
 			@devices_by_room[(room.blank?) ? I18n.t(:no_room, :scope => :device) : room] = @house.devices.by_room room
@@ -15,6 +16,8 @@ class DevicesController < ApplicationController
 	end
 
 	def create
+		puts "lolololollolololol"
+		puts params[:house].inspect
 		if @house.update_attributes params[:house]
 			flash[:success] = I18n.t :update, :scope => [:device, :messages, :success]
 			redirect_to user_house_devices_url(current_user, @house)

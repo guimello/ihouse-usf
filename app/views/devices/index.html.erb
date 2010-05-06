@@ -3,11 +3,13 @@
 
 <%= content_tag :h1, t(:device, :count => 2) %>
 
-<div class="hastabs basic-form">
-  <% @devices_by_room.each_pair do |room, devices| %>
-    <%= render "devices_panel", :room => room, :devices => devices, :house => @house, :user => @user %>
-  <% end %>
-</div>
+<% if @devices.size > 0 %>
+  <div class="hastabs basic-form">
+    <% @devices_by_room.each_pair do |room, devices| %>
+      <%= render "devices_panel", :room => room, :devices => devices, :house => @house, :user => @user %>
+    <% end %>
+  </div>
+<% end %>
 
 <% content_for :navigation do %>
   <% render :layout => "layouts/main_navigation" do %>

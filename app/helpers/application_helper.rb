@@ -226,8 +226,10 @@ module ApplicationHelper
 							loop_actions.each do |action|
 								id = "handle_#{action.id}"
 								html.td :class => "center" do
-									html.div options.merge(:id => id) do
-										html << ""
+									if action.know?
+										html << self.send(action.my_known_action.handle[:jquery_method], action, options)
+									else
+										html << "unknown todo"
 									end
 								end
 
@@ -242,35 +244,26 @@ module ApplicationHelper
 
 		html.div :class => "clear" do
 			html << ""
+		end		
+
+	end
+
+	def jquery_div(action, options)
+		html = Builder::XmlMarkup.new
+		html.div options.merge(:id => "handle_#{action.id}") do
+			html << ""
 		end
-		
-		
-#		actions.each_with_index do |action, index|
-#			id = "#{action.action_type}_#{index}"
-#			html.div :class => "float-left" do
-#				html.div :class => "amount", :id =>"#{id}_amount" do
-#					html << "0"
-#				end
-#				#html << text_field_tag("", {}, :id => "#{id}_amount", :class => "amount", :style => "background-image: url(); border: 0px")
-#				html.div options.merge(:id => id) do
-#					html << ""
-#				end
-#
-#				html.div do
-#					html << action.to_s.humanize
-#				end
-#			end
-#
-#			html << render(:partial => "actions/handle_js", :locals => {:handle_class => handle_options[:class], :action => action, :id => id})
-#		end
-#
-#		html.div :class => "clear" do
-#			html << ""
-#		end
+	end
+
+	def jquery_button(id, options)
+		html = Builder::XmlMarkup.new
+		html.div options do
+			html << "<button class='#{options[:class]}' >fuck</button>"
+		end
 	end
 
 	def get_action_handle_options(action)
-		handle_options = (action.know?) ? action.known_action[:handle] : {}
+		handle_options = (action.know?) ? action.my_known_action.handle[:html_options_for_object] : {}
 		case action.action_type
 			when Action::ActionTypes::TURN_ON_OFF
 				handle_options[:class] = "toggle-me space-my-side-20"
