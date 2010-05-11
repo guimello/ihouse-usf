@@ -32,6 +32,16 @@ class DevicesController < ApplicationController
 		end
 	end
 
+	def know
+		puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+		@known_device = KnownDevice.find_by_device_class params[:device_class]
+		@input_id = params[:input_id]
+
+		respond_to do |format|
+			format.js
+		end
+	end
+
 	def get_output_format
 		@options = {}
 		case params[:output_format]

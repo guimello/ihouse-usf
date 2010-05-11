@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, :collection => {	:exists_username => :get,
 																														:exists_email => :get} do |user|
     user.resources :houses do |house|
-			house.resources :devices, :collection => {:discover => :get} do |device|
+			house.resources :devices, :collection => {:discover => :get, :know => :get} do |device|
 				device.resources :actions, :collection => {:find => :get} do |action|
 					action.resources :schedules
 				end

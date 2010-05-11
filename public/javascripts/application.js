@@ -55,22 +55,30 @@ jQuery.fn.watchMeAjax = function(o){
 	          wait: 1000,
 	          element: $(this),
 	          default_class: "i-am-a-message",
-	          url: $(this).attr("url")
+	          url: $(this).attr("url"),
+	          ajax_only: false
 	}, o);
 
-	if(!options.klass)
-	          options.klass = " round-loading ";
-	options.klass += options.default_class;
+	if(!options.ajax_only)
+	{
+	          if(!options.klass)
+		        options.klass = " round-loading ";
+	          options.klass += options.default_class;
+	 }
 
 	if(!options.callback)
 	{
-	          options.callback = function(text){
+	          options.callback = function(text){		        
 		var object = options.element;
 		if(options.parent)
 		      object = object.parent();
-
-		object.find(options.tag + "." + options.default_class).remove();
-		object.append("<" + options.tag + " class='indented-10 icon " + options.klass +" '></" + options.tag + ">");
+		
+		if(!options.ajax_only)
+		{
+		      object.find(options.tag + "." + options.default_class).remove();
+		      object.append("<" + options.tag + " class='indented-10 icon " + options.klass +" '></" + options.tag + ">");
+		}
+		
 		$.getScript(options.url + text + "&input_id=" + options.element.attr("id"));
 		return false;
 	          };
@@ -81,6 +89,25 @@ jQuery.fn.watchMeAjax = function(o){
 
   return $(this);
 };
+
+jQuery.fn.iconsChoice = function(options){
+          var div = $("<div style='position: absolute;left: " + $(this).position().left + ";top: " + $(this).position().top +
+		      ";' class='rounded-20 shadow-normal pading-medium' >");
+
+           var icons = allAvailableIcons();
+           for(var i in icons)
+           {
+	        $(div).append($("<span></span>").addClass("icon " + icons[i]));
+           }
+
+           $(this).append(div);
+	        
+};
+
+function allAvailableIcons()
+{
+          return ["lights", "television", "fan"];
+}
 
 jQuery.fn.appendMessage = function(o){
   var options = jQuery.extend({

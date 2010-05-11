@@ -482,3 +482,8 @@ img.picture-frame
           margin-left: auto;
           margin-right: auto;
 }
+
+.padding-medium
+{
+          padding: 10px 10px 10px 10px;
+}

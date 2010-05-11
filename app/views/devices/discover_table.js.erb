@@ -2,6 +2,9 @@
   <%  fields_for @house do |house_form|%>
     var device = "<%= generate_template(house_form, :devices, :partial => "devices/devices_rows_form", :object => device.clone) %>";
     
-    $("#devices_table > tbody").append(device.replace(/NEW_RECORD/g, new Date().getTime())).children("tr").last().highlightMe();
+    $("#devices_table > tbody").append(device.replace(/NEW_RECORD/g, new Date().getTime())).children("tr").last().highlightMe().
+          find("input[type=text]").first().watchMeAjax({
+		  parent: false, url: "<%= know_user_house_devices_url %>?device_class=", ajax_only: true,
+		  captureLength : 1});
   <%  end %>
 <% end %>

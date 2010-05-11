@@ -1,20 +1,22 @@
 <tr id="device_<%= form.object.id %>">  
   <td class="left">
-      <div class="icon <%= form.object.display_icon %>"
-        <%= text_field_for_device form, :name, :class => "small", :value => (form.object.name.blank?) ? form.object.default_name : form.object.name %>
-      </div>
+    <div>
+      <div class="float-left device-icon icon <%= form.object.display_icon %>">&nbsp;</div>
+        <%= text_field_for_device form, :device_class, :class => "smallest enable-disable-advanced search-for-known-device" %>
+      <div class="clear"></div>
+    </div>
   </td>
   <td>
-    <%= text_field_for_device form, :room, :class => "small" %>
+    <%= text_field_for_device form, :identification, :class => "small enable-disable-advanced identification-field" %>
   </td>
   <td>
-    <%= text_field_for_device form, :device_class, :class => "smallest enable-disable-advanced" %>
+    <%= text_field_for_device form, :query_state, :class => "small enable-disable-advanced query-state-field" %>
   </td>
   <td>
-    <%= text_field_for_device form, :identification, :class => "small enable-disable-advanced" %>
+    <%= text_field_for_device form, :name, :class => "small name-field", :value => (form.object.name.blank?) ? form.object.default_name : form.object.name %>
   </td>  
   <td>
-    <%= text_field_for_device form, :query_state, :class => "small enable-disable-advanced" %>
+    <%= text_field_for_device form, :room, :class => "small room-field" %>
   </td>
   <td>
     <%= awesome_button t(:advanced), "edit", :class => "blue smallest edit-special-fields-on-device title-me", :title => t(:enable_advanced, :scope => [:device, :hints]) %>

@@ -13,4 +13,8 @@ $(document).ready(function(){
    $(".device-form").submit(function(){
           $(this).find(".enable-disable-advanced").attr("disabled", "");          
    });
+
+   $(".device-icon").live("click", function(){
+          $(this).iconsChoice();
+   });
 });

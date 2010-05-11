@@ -1,0 +1,13 @@
+<% icon = "unkown-device" %>
+
+ var tr = $("#<%= @input_id %>").closest("tr");
+<% unless @known_device.nil? %>
+  tr.find(".query-state-field").val("<%= @known_device.query_state %>");
+  tr.find(".name-field").val("<%= @known_device.name %>");
+  <% icon = @known_device.display_icon %>
+<% end %>
+
+  var classes = tr.find(".device-icon").attr("class");
+  var array_class = classes.split(" ");
+  array_class[array_class.length - 1] = "<%= icon %>";
+  tr.find(".device-icon").attr("class", array_class.join(" "));
