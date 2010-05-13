@@ -11,3 +11,4 @@
   var array_class = classes.split(" ");
   array_class[array_class.length - 1] = "<%= icon %>";
   tr.find(".device-icon").attr("class", array_class.join(" "));
+  tr.find(".hidden-device-icon").val("<%= icon %>");
