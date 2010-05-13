@@ -6,9 +6,10 @@ jQuery.fn.deviceIconBox = function(options){
 		      addClass('rounded-4 shadow-normal pading-medium').attr("id", "device_icon_box");
 
            var title = $("<div>").html("Choose a custom icon"). addClass("title lightest rounded-4");
-           var close = $("<div>").addClass('icon cross close-icons-choice pointer-me').html("&nbsp;").
-	         css({position: "relative", left: 50, display: "inline"});
+           var close = $("<div>").addClass('icon cross close-icons-choice pointer-me float-right').html("&nbsp;");
+	         //css({position: "relative", left: 50, display: "inline"});
            title.append(close);
+           title.append("<div class='clear'></div>")
            boxIcon.append(title);
            var inner = $("<div>").css({margin: "10px 10px 10px 10px"});
 
