@@ -59,7 +59,7 @@ class Device < ActiveRecord::Base
 	before_save :reset_display_icon
 
 	def reset_display_icon
-		self.custom.display_icon = nil if custom.display_icon == default_display_icon
+		custom.delete_field(:display_icon) if custom.display_icon == default_display_icon
 	end
 
 	#def after_initialize
