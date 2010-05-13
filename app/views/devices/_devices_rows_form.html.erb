@@ -1,8 +1,11 @@
 <tr id="device_<%= form.object.id %>">  
   <td class="left">
     <div>
-      <div class="float-left device-icon icon <%= form.object.display_icon %>">&nbsp;</div>
-        <%= text_field_for_device form, :device_class, :class => "smallest enable-disable-advanced search-for-known-device" %>
+      <div class="float-left pointer-me device-icon icon <%= form.object.display_icon %>">&nbsp;</div>        
+      <% form.fields_for :custom, form.object.custom do |custom_form| %>
+        <%= custom_form.hidden_field :display_icon, :class => "hidden-device-icon" %>
+      <% end %>
+      <%= text_field_for_device form, :device_class, :class => "smallest enable-disable-advanced search-for-known-device" %>
       <div class="clear"></div>
     </div>
   </td>

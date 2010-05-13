@@ -1,3 +1,5 @@
+require "ostruct"
+
 class Device < ActiveRecord::Base
 	include KnownDevices
 	
@@ -35,4 +37,57 @@ class Device < ActiveRecord::Base
 
 		true
 	end
+
+	serialize :custom	
+
+	def after_initialize
+    self.custom = OpenStruct.new((custom.kind_of?(OpenStruct)) ? custom.marshal_dump : custom)
+  end
+
+  before_validation :convert_custom_attributes_to_hash
+  after_validation :convert_custom_attributes_to_ostruct
+
+	
+  def convert_custom_attributes_to_hash
+    self.custom = custom.marshal_dump if custom.kind_of? OpenStruct
+  end
+
+  def convert_custom_attributes_to_ostruct
+    self.custom = OpenStruct.new(custom) if custom.kind_of? Hash
+  end
+
+	before_save :reset_display_icon
+
+	def reset_display_icon
+		self.custom.display_icon = nil if custom.display_icon == default_display_icon
+	end
+
+	#def after_initialize
+    #self.custom = OpenStruct.new(custom)
+		
+  #end
+
+#	serialize :custom
+#	#after_initialize serialized_attr_accessor(:icon)
+#	#after_initialize custom = Hash.new if custom.nil?
+#	def after_initialize
+#		puts "fwefwfwe"
+#		self.custom = {}
+#	end
+#
+#  def self.serialized_attr_accessor(*args)
+#    args.each do |method_name|
+#      method_declarations = <<STRING
+#        def #{method_name}
+#          custom[:#{method_name}]
+#        end
+#        def #{method_name}=(value)
+#          self.custom[:#{method_name}] = value
+#        end
+#STRING
+#      eval method_declarations
+#    end
+#  end
+#
+#	serialized_attr_accessor :icon
 end

@@ -15,6 +15,6 @@ $(document).ready(function(){
    });
 
    $(".device-icon").live("click", function(){
-          $(this).iconsChoice();
+          $(this).deviceIconBox();
    });
 });
