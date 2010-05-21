@@ -13,8 +13,8 @@ class ApplicationController < ActionController::Base
 
   filter_parameter_logging :password
 
-  WillPaginate::ViewHelpers.pagination_options[:next_label]     = I18n.t :next, :scope => :pagination
-  WillPaginate::ViewHelpers.pagination_options[:previous_label] = I18n.t :previous, :scope => :pagination
+  #WillPaginate::ViewHelpers.pagination_options[:next_label]     = I18n.t :next, :scope => :pagination
+  #WillPaginate::ViewHelpers.pagination_options[:previous_label] = I18n.t :previous, :scope => :pagination
 
   #around_filter :ops
 
