@@ -1,42 +1,42 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-	
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-	
-		<title>inHouseTools | Login</title>
-		
-		<% style = ["red","blue","green"].fetch rand(3) %>
-		
-		<%= stylesheet_link_tag "reset.css" %>
-		
-		<%= stylesheet_link_tag "#{style}/alerts.css", :class => "change_style" %>
-	
-		<%= stylesheet_link_tag "main", "content", "tabs", "alerts", "tables", "forms", "lists", "icons", "pagination", :cache => "basic" %>
-		
-		<%= stylesheet_link_tag "login" %>
-		
-		<%= stylesheet_link_tag "#{style}/main.css", "#{style}/content", "#{style}/tabs", "#{style}/tables", "#{style}/form", "#{style}/lists", "#{style}/pagination", :cache => "#{style}/colors", :class => "change_style" %>
-		
-		<!--[if lt IE 8]>
-			<%= stylesheet_link_tag "forms-ie7.css" %>
-			<%= stylesheet_link_tag "#{style}/content-ie.css", :class => "change_style" %>
-		<![endif]-->
-		
-		<!--[if lt IE 7]>
-			<%= stylesheet_link_tag "#{style}/main-ie.css", :class => "change_style" %>
-			<%= stylesheet_link_tag "#{style}/tabs-ie.css", :class => "change_style" %>
-			<%= stylesheet_link_tag "#{style}/tables-ie.css", :class => "change_style" %>
-			<%= stylesheet_link_tag "forms-ie.css" %>
-			<%= stylesheet_link_tag "login-ie.css" %>
-		<![endif]-->
-		
-		<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? -%>
-	
-	</head>
+  
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  
+    <title>inHouseTools | Login</title>
+    
+    <% style = ["red","blue","green"].fetch rand(3) %>
+    
+    <%= stylesheet_link_tag "reset.css" %>
+    
+    <%= stylesheet_link_tag "#{style}/alerts.css", :class => "change_style" %>
+  
+    <%= stylesheet_link_tag "main", "content", "tabs", "alerts", "tables", "forms", "lists", "icons", "pagination", :cache => "basic" %>
+    
+    <%= stylesheet_link_tag "login" %>
+    
+    <%= stylesheet_link_tag "#{style}/main.css", "#{style}/content", "#{style}/tabs", "#{style}/tables", "#{style}/form", "#{style}/lists", "#{style}/pagination", :cache => "#{style}/colors", :class => "change_style" %>
+    
+    <!--[if lt IE 8]>
+      <%= stylesheet_link_tag "forms-ie7.css" %>
+      <%= stylesheet_link_tag "#{style}/content-ie.css", :class => "change_style" %>
+    <![endif]-->
+    
+    <!--[if lt IE 7]>
+      <%= stylesheet_link_tag "#{style}/main-ie.css", :class => "change_style" %>
+      <%= stylesheet_link_tag "#{style}/tabs-ie.css", :class => "change_style" %>
+      <%= stylesheet_link_tag "#{style}/tables-ie.css", :class => "change_style" %>
+      <%= stylesheet_link_tag "forms-ie.css" %>
+      <%= stylesheet_link_tag "login-ie.css" %>
+    <![endif]-->
+    
+    <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? -%>
+  
+  </head>
 
-	<body>
-		<%= yield %>
-	</body>
+  <body>
+    <%= yield %>
+  </body>
 </html>

@@ -1,10 +1,10 @@
 .tabs li a
 {
-	color: #ffffff !important;
-	background-image: url() !important;
+  color: #ffffff !important;
+  background-image: url() !important;
 }
 
 .tab-selected a
 {
-	background-image: url() !important;
+  background-image: url() !important;
 }

@@ -1,20 +1,20 @@
 <table id="projects_table" style="margin-top: 15px; margin-bottom: 40px" class="basic-table fluid clear">
-	<thead>
-		<tr>
-			<th class="left"><%= t :house, :count => 1 %></th>
-			<th style="width: 150px"><%= t :last_activity %></th>
-			<th style="width: 50px"></th>
-		</tr>
-	</thead>
-	<tbody>
-	<% for house in houses %>
-		<tr>
-			<td class="left"><%= link_to h(house.name), user_house_url(current_user, house) %></td>
-			<td><%= distance_of_time_in_words_to_now house.created_at %>&nbsp;<%= t :ago %></td>
-			<td class="center">
-			  <%= link_to t(:destroy, :scope => :house), user_house_url(current_user, house), :class => "icon cross", :confirm => t(:destroy, :scope => [:house, :hints]), :method => :delete %>
-			</td>
-		</tr>
-	<% end %>
-	</tbody>
+  <thead>
+    <tr>
+      <th class="left"><%= t :house, :count => 1 %></th>
+      <th style="width: 150px"><%= t :last_activity %></th>
+      <th style="width: 50px"></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% for house in houses %>
+    <tr>
+      <td class="left"><%= link_to h(house.name), user_house_url(current_user, house) %></td>
+      <td><%= distance_of_time_in_words_to_now house.created_at %>&nbsp;<%= t :ago %></td>
+      <td class="center">
+        <%= link_to t(:destroy, :scope => :house), user_house_url(current_user, house), :class => "icon cross", :confirm => t(:destroy, :scope => [:house, :hints]), :method => :delete %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
 </table>

@@ -1,26 +1,26 @@
 .pagination a:link, .pagination a:visited
 {
-	border: 1px solid #EBEBEB;
-	background-color: #F5F5F5;
-	color: #00BC91;
+  border: 1px solid #EBEBEB;
+  background-color: #F5F5F5;
+  color: #00BC91;
 }
 
 .pagination a:hover 
 {
-	background-color: #DDFFE9;
-	border: 1px solid #4DCA74;
-	color: #00BC91;	
+  background-color: #DDFFE9;
+  border: 1px solid #4DCA74;
+  color: #00BC91;  
 }
 
 .pagination .current 
 {
-	border: 1px solid #4DCA74;
-	background-color: #DDFFE9;
-	color: #00BC91;
+  border: 1px solid #4DCA74;
+  background-color: #DDFFE9;
+  color: #00BC91;
 }
 
 .pagination .disabled {
-	border: 1px solid #EBEBEB;
-	background-color: #F5F5F5;
-	color: #D7D7D7;
+  border: 1px solid #EBEBEB;
+  background-color: #F5F5F5;
+  color: #D7D7D7;
 }

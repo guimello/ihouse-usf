@@ -1,15 +1,15 @@
 .pagination
 {
-	font-size: 11px;
-	margin-bottom: 10px;
+  font-size: 11px;
+  margin-bottom: 10px;
 }
 
 .pagination a, .pagination .current, .pagination .disabled
 {
-	padding: 4px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	margin-left: 2px;
-	text-decoration: none;
-	width: 22px;
+  padding: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-left: 2px;
+  text-decoration: none;
+  width: 22px;
 }

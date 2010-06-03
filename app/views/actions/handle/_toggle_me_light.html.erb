@@ -1,25 +1,25 @@
 <% content_for :javascript do %>
     <% current_state_and_code = action.state_and_code %>
     $(document).ready(function(){
-	$("#handle_<%= action.id %>").attr("checked", <%= (current_state_and_code[:code] == "state_on") ? true : false %>);
+  $("#handle_<%= action.id %>").attr("checked", <%= (current_state_and_code[:code] == "state_on") ? true : false %>);
 
-	$("#handle_<%= action.id %>").button({ icons: { primary: "<%= (current_state_and_code[:code] == "state_on") ? "icon lights-on" : "icon lights-off" %>"},
-	      label: "<%= current_state_and_code[:state] %>"})
-	    .click(function(){
-	        $("#handle_head_<%= action.id %>").html('' + $(this).is(":checked"));
-	        var icons = "icon lights-on";
-	        var label = "<%= t(action.known_action.handle[:translation_keys][:on].to_sym, :scope => [:action, :device, :turn_on_off, :state]) %>";
-	        if(!$(this).is(":checked"))
-	        {
-	          icons = "icon lights-off";
-	          label = "<%= t(action.known_action.handle[:translation_keys][:off].to_sym, :scope => [:action, :device, :turn_on_off, :state]) %>";
-	        }
+  $("#handle_<%= action.id %>").button({ icons: { primary: "<%= (current_state_and_code[:code] == "state_on") ? "icon lights-on" : "icon lights-off" %>"},
+        label: "<%= current_state_and_code[:state] %>"})
+      .click(function(){
+          $("#handle_head_<%= action.id %>").html('' + $(this).is(":checked"));
+          var icons = "icon lights-on";
+          var label = "<%= t(action.known_action.handle[:translation_keys][:on].to_sym, :scope => [:action, :device, :turn_on_off, :state]) %>";
+          if(!$(this).is(":checked"))
+          {
+            icons = "icon lights-off";
+            label = "<%= t(action.known_action.handle[:translation_keys][:off].to_sym, :scope => [:action, :device, :turn_on_off, :state]) %>";
+          }
 
-	        $(this).button("option", "icons", {primary: icons}).button("option", "label", label);
-	    });
-	
+          $(this).button("option", "icons", {primary: icons}).button("option", "label", label);
+      });
+  
 
-	$("#handle_head_<%= action.id %>").html("<%= current_state_and_code[:state] %>");//add the real state here
-	$("#handle_foot_<%= action.id %>").html("<%= action.to_s.humanize %>");
+  $("#handle_head_<%= action.id %>").html("<%= current_state_and_code[:state] %>");//add the real state here
+  $("#handle_foot_<%= action.id %>").html("<%= action.to_s.humanize %>");
     });
 <% end %>

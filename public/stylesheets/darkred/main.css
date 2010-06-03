@@ -1,131 +1,131 @@
 body
 {
-	background-color: #303030;
-	background-image: url("../background-gradient-70.png");
-	background-repeat: repeat-x;
+  background-color: #303030;
+  background-image: url("../background-gradient-70.png");
+  background-repeat: repeat-x;
 }
 
 small
 {
-	color: #a4a4a4;
+  color: #a4a4a4;
 }
 
 a, a:visited
 {
-	color: #F72020;
+  color: #F72020;
 }
 
 a:hover, a:active
 {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 #content-container
 {
-	background-color: #ffffff;
+  background-color: #ffffff;
 }
 
 #title a
 {
-	text-decoration: none;
-	color: #ffffff;
+  text-decoration: none;
+  color: #ffffff;
 }
 
 #title a:hover
 {
-	color: #FFE5E5;
+  color: #FFE5E5;
 }
 
 #title h1
 {
-	text-shadow: 1px 1px 1px #000000;
+  text-shadow: 1px 1px 1px #000000;
 }
 
 #header
 {
-	color: #ffffff;
-	
-	background-color: #423B3B;
-	background-image: url('../tab-overlay.png');
-	background-repeat: repeat-x;
-	background-position: left bottom;
+  color: #ffffff;
+  
+  background-color: #423B3B;
+  background-image: url('../tab-overlay.png');
+  background-repeat: repeat-x;
+  background-position: left bottom;
 }
 
 #project_selection
 {
-	color: #FF5B5B !important;
+  color: #FF5B5B !important;
 }
 
 #project_selection:hover
 {
-	color: #FFFFFF !important;
+  color: #FFFFFF !important;
 }
 
 #current_user_header
 {
-	text-shadow: 1px 1px 1px #000000;
+  text-shadow: 1px 1px 1px #000000;
 }
 
 #current_user_header a
 {
-	color: #ffffff;
-	text-decoration: none;
-	font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 #current_user_header a:hover
 {
-	color: #FF6363;
+  color: #FF6363;
 }
 
 .title.darkest, .bg-darkest
 {
-	color: #ffffff;
-	background-color: #515555; 
+  color: #ffffff;
+  background-color: #515555; 
 }
 
 .title.dark, .bg-dark
 {
-	color: #ffffff;
-	background-color: #6b7f87; 
+  color: #ffffff;
+  background-color: #6b7f87; 
 }
 
 .title.light, .bg-light
 {
-	color: #000000;
-	background-color: #95d4f0; 
+  color: #000000;
+  background-color: #95d4f0; 
 }
 
 .title.lightest, .bg-lightest
 {
-	color: #555555;
-	background-color: #FFE5E5; 
+  color: #555555;
+  background-color: #FFE5E5; 
 }
 
 .font.light-gray
 {
-	color: #a4a4a4;
+  color: #a4a4a4;
 }
 
 .background.light-gray
 {
-	background-color: #a4a4a4;
+  background-color: #a4a4a4;
 }
 
 .tooltip
 {
-	color: #555555;
-	background-color: #FFE5E5;
-	
-	padding: 10px;
+  color: #555555;
+  background-color: #FFE5E5;
+  
+  padding: 10px;
 }
 
 .fieldWithErrors
 {
-	color: #E63333 !important
+  color: #E63333 !important
 }
 
 .bg-normal
 {
-	background-color: #3B3636;
+  background-color: #3B3636;
 }

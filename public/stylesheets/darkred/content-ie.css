@@ -1,22 +1,22 @@
 #left-column-content.gradient-division
 {
-	background-image: url("");
-	background-position: right top;
-	background-repeat: no-repeat;
-	padding-right: 50px;
+  background-image: url("");
+  background-position: right top;
+  background-repeat: no-repeat;
+  padding-right: 50px;
 }
 
 #left-column.gradient-division
 {
-	background-image: url("");
-	background-position: right top;
-	background-repeat: repeat-y;
+  background-image: url("");
+  background-position: right top;
+  background-repeat: repeat-y;
 }
 
 #left-column-content-bottom.gradient-division
 {
-	background-image: url("");
-	background-position: right top;
-	background-repeat: repeat-y;
-	height: 88px;
+  background-image: url("");
+  background-position: right top;
+  background-repeat: repeat-y;
+  height: 88px;
 }

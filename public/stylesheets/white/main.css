@@ -1,129 +1,129 @@
 body
 {
-	background-color: #E1E1E1;
+  background-color: #E1E1E1;
 }
 
 small
 {
-	color: #a4a4a4;
+  color: #a4a4a4;
 }
 
 a, a:visited
 {
-	color: #6E6E6E;
+  color: #6E6E6E;
 }
 
 a:hover, a:active
 {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 #content-container
 {
-	background-color: #ffffff;
+  background-color: #ffffff;
 }
 
 #title a
 {
-	text-decoration: none;
-	color: #555555;
+  text-decoration: none;
+  color: #555555;
 }
 
 #title a:hover
 {
-	color: #747474;
+  color: #747474;
 }
 
 #title h1
 {
-	text-shadow: 1px 1px 1px #000000;
+  text-shadow: 1px 1px 1px #000000;
 }
 
 #header
 {
-	color: #000000;
+  color: #000000;
 
-	background-color: #ffffff;
-	background-image: url('gradient-black-tiny-updown.png');
-	background-repeat: repeat-x;
-	background-position: left bottom;
+  background-color: #ffffff;
+  background-image: url('gradient-black-tiny-updown.png');
+  background-repeat: repeat-x;
+  background-position: left bottom;
 }
 
 #project_selection
 {
-	color: #C6C6C6 !important;
+  color: #C6C6C6 !important;
 }
 
 #project_selection:hover
 {
-	color: #D8D5D5 !important;
+  color: #D8D5D5 !important;
 }
 
 #current_user_header
 {
-	text-shadow: 1px 1px 1px #ffffff;
+  text-shadow: 1px 1px 1px #ffffff;
 }
 
 #current_user_header a
 {
-	color: #8C8C8C;
-	text-decoration: none;
-	font-weight: bold;
+  color: #8C8C8C;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 #current_user_header a:hover
 {
-	color: #BCBCBC;
+  color: #BCBCBC;
 }
 
 .title.darkest, .bg-darkest
 {
-	color: #ffffff;
-	background-color: #515555;
+  color: #ffffff;
+  background-color: #515555;
 }
 
 .title.dark, .bg-dark
 {
-	color: #ffffff;
-	background-color: #6b7f87;
+  color: #ffffff;
+  background-color: #6b7f87;
 }
 
 .title.light, .bg-light
 {
-	color: #000000;
-	background-color: #95d4f0;
+  color: #000000;
+  background-color: #95d4f0;
 }
 
 .title.lightest, .bg-lightest
 {
-	color: #555555;
-	background-color: #E4E4E4;
+  color: #555555;
+  background-color: #E4E4E4;
 }
 
 .font.light-gray
 {
-	color: #a4a4a4;
+  color: #a4a4a4;
 }
 
 .background.light-gray
 {
-	background-color: #a4a4a4;
+  background-color: #a4a4a4;
 }
 
 .tooltip
 {
-	color: #555555;
-	background-color: #DEDEDE;
+  color: #555555;
+  background-color: #DEDEDE;
 
-	padding: 10px;
+  padding: 10px;
 }
 
 .fieldWithErrors
 {
-	color: #E63333 !important
+  color: #E63333 !important
 }
 
 .bg-normal
 {
-	background-color: #EEEEEE;
+  background-color: #EEEEEE;
 }

@@ -4,7 +4,7 @@
     
     $("#devices_table > tbody").append(device.replace(/NEW_RECORD/g, new Date().getTime())).children("tr").last().highlightMe().
           find("input[type=text]").first().watchMeAjax({
-		  parent: false, url: "<%= know_user_house_devices_url %>?device_class=", ajax_only: true,
-		  captureLength : 1});
+      parent: false, url: "<%= know_user_house_devices_url %>?device_class=", ajax_only: true,
+      captureLength : 1});
   <%  end %>
 <% end %>

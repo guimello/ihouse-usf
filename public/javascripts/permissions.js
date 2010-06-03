@@ -1,3 +1,3 @@
 $(".remove-permission").live("click",function(){
-	$(this).closest("tr").remove();
+  $(this).closest("tr").remove();
 });

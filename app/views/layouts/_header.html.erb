@@ -1,60 +1,60 @@
 <div id="header">
-	<div id="title">
-		<h1>
-			<div id="application_title" >
-				<%= link_to t(:title, :scope => :application), (user_logged?)? my_panel_url : root_url %>
-			</div>
-			<% if user_logged? and !current_user.houses.nil? %>
+  <div id="title">
+    <h1>
+      <div id="application_title" >
+        <%= link_to t(:title, :scope => :application), (user_logged?)? my_panel_url : root_url %>
+      </div>
+      <% if user_logged? and !current_user.houses.nil? %>
 
-				<div id="project_title">
-					<% if current_user.houses.size > 1 or (current_user.houses.size > 0 and !defined? @house) %>
-						<a class="icon selection" href="#" id="project_selection">
-							<span><%= (defined? @house) ? @house.name : t(:my_houses, :scope => :house) %></span>
-						</a>
+        <div id="project_title">
+          <% if current_user.houses.size > 1 or (current_user.houses.size > 0 and !defined? @house) %>
+            <a class="icon selection" href="#" id="project_selection">
+              <span><%= (defined? @house) ? @house.name : t(:my_houses, :scope => :house) %></span>
+            </a>
 
 
-						<ul class="basic-list" style="margin-left:10px;display:none" >
-							<hr style="width:150px"></hr>
-							<% current_user.houses.each_with_index do |house, index| %>
-								<% next if defined? @house and house == @house %>
-								<li class="icon house"><%= link_to h(house.name), user_house_url(house.user, house) %></li>
-							<% end %>
-						</ul>
-					<% elsif defined? @house and @house.id %>
-						<%= link_to h(@house), user_house_url(@house.user, @house), :id => "project_selection",
-							:class => "icon house title-me",
-							:title => t(:return_to_your_house_page, :scope => [:house, :hints], :house => @house) %>
-					<% else %>
-					  <%= link_to t(:my_houses, :scope =>:house), user_houses_url(current_user), :id => "project_selection"  %>
-					<% end  %>
-				</div>
+            <ul class="basic-list" style="margin-left:10px;display:none" >
+              <hr style="width:150px"></hr>
+              <% current_user.houses.each_with_index do |house, index| %>
+                <% next if defined? @house and house == @house %>
+                <li class="icon house"><%= link_to h(house.name), user_house_url(house.user, house) %></li>
+              <% end %>
+            </ul>
+          <% elsif defined? @house and @house.id %>
+            <%= link_to h(@house), user_house_url(@house.user, @house), :id => "project_selection",
+              :class => "icon house title-me",
+              :title => t(:return_to_your_house_page, :scope => [:house, :hints], :house => @house) %>
+          <% else %>
+            <%= link_to t(:my_houses, :scope =>:house), user_houses_url(current_user), :id => "project_selection"  %>
+          <% end  %>
+        </div>
 
-				<div class="clear"></div>
-			<% else %>
-				<div class="clear"></div>
-			<% end %>
-		</h1>
-	</div>
+        <div class="clear"></div>
+      <% else %>
+        <div class="clear"></div>
+      <% end %>
+    </h1>
+  </div>
 
-	
+  
 
-	<% if yield :navigation %>
-		<%= yield :navigation %>
-	<% elsif user_logged? %>
+  <% if yield :navigation %>
+    <%= yield :navigation %>
+  <% elsif user_logged? %>
           <%= render :layout => "layouts/main_navigation" %>
-	<% else %>
+  <% else %>
           <%= render :layout => "layouts/site_navigation" %>
         <% end %>
 
-	<% if user_logged? %>
-		<div id="current_user_header">
-			<p><small><%= t :logged_as, :scope => :authentication, :user => link_to(current_user.username, current_user) %></small></p>
-			<p>
-				<%= link_to t(:edit_profile, :scope => :user), edit_user_url(current_user), :class => "icon user-edit" %>
-				<%= link_to t(:logout), logout_url, :class => "indented-10 icon logout" %>
-			</p>
-		</div>
-	<% end %>
+  <% if user_logged? %>
+    <div id="current_user_header">
+      <p><small><%= t :logged_as, :scope => :authentication, :user => link_to(current_user.username, current_user) %></small></p>
+      <p>
+        <%= link_to t(:edit_profile, :scope => :user), edit_user_url(current_user), :class => "icon user-edit" %>
+        <%= link_to t(:logout), logout_url, :class => "indented-10 icon logout" %>
+      </p>
+    </div>
+  <% end %>
 </div>
 
 <%= yield :sub_navigation || "" %>

@@ -40,16 +40,16 @@ module ApplicationHelper
     end
   end
 
-	def awesome_button(label, icon, html_options = {})
-		html_options[:class] ||= "green"
-		html_options[:class] = "awesome #{html_options[:class]}"
-		html_options[:href] ||= "#"
-		icon = (icon.blank?) ? :tick : icon
+  def awesome_button(label, icon, html_options = {})
+    html_options[:class] ||= "green"
+    html_options[:class] = "awesome #{html_options[:class]}"
+    html_options[:href] ||= "#"
+    icon = (icon.blank?) ? :tick : icon
 
-		content_tag(:a, html_options) do
-			content_tag(:span, :class => "icon #{icon}") { label }
-		end
-	end
+    content_tag(:a, html_options) do
+      content_tag(:span, :class => "icon #{icon}") { label }
+    end
+  end
 
   def permitted_to?(action, controller)
     return current_user.permissions.first(:conditions => {:project_id => @project.id}).role.rights.first(:conditions => {:action => action, :controller => controller})
@@ -140,7 +140,7 @@ module ApplicationHelper
     basic_form_text_field(model, field, {:field_type => :select}.merge(options))
   end
 
-	def text_field_for(object, field, options = {})
+  def text_field_for(object, field, options = {})
     if object.kind_of? ActionView::Helpers::FormBuilder
       basic_form_text_field(object.object, field, {:translation_scope => [object.object.class.to_s.downcase, field.to_sym], :form => object}.merge(options))
     else
@@ -164,110 +164,110 @@ module ApplicationHelper
     text_field_for(object, category, field, {:field_type => :date_select, :options_for_select => select_options}.merge(options))
   end
 
-	def icon_for_device(device, tag = :span, options = {})
-		options[:class] ||= ""
-		options[:class] = "icon #{device.display_icon} #{options[:class]}"
+  def icon_for_device(device, tag = :span, options = {})
+    options[:class] ||= ""
+    options[:class] = "icon #{device.display_icon} #{options[:class]}"
 
-		content_tag tag, nil, options
-	end
+    content_tag tag, nil, options
+  end
 
-	def required_fields_help
-		html = Builder::XmlMarkup.new
+  def required_fields_help
+    html = Builder::XmlMarkup.new
 
-		html.p :class => "title lightest rounded-4" do
-			html << I18n.t(:label, :scope => [:application, :required_fields_help])
-		end
+    html.p :class => "title lightest rounded-4" do
+      html << I18n.t(:label, :scope => [:application, :required_fields_help])
+    end
 
-		html.p do
-			html << I18n.t(:hint, :scope => [:application, :required_fields_help], :icon => "<span class='icon required'></span>")
-		end
-	end
+    html.p do
+      html << I18n.t(:hint, :scope => [:application, :required_fields_help], :icon => "<span class='icon required'></span>")
+    end
+  end
 
-	def action_control(actions)		
-		actions = [actions] if actions.is_a?(Action)
-		return nil if actions.empty?	
+  def action_control(actions)    
+    actions = [actions] if actions.is_a?(Action)
+    return nil if actions.empty?  
 
-		html = Builder::XmlMarkup.new
+    html = Builder::XmlMarkup.new
 
-		all_actions = []
-		separation = 6
-		(0..actions.size).step(separation) do |i|
-			all_actions.push actions[i...i+separation]
-		end
+    all_actions = []
+    separation = 6
+    (0..actions.size).step(separation) do |i|
+      all_actions.push actions[i...i+separation]
+    end
 
-		all_actions.each do |loop_actions|
-			html.div :style => "text-align: center" do
-				html.table :class => "actions-table" do
-					html.thead do
-						html.tr do
-							loop_actions.each do |action|
-								html.th :id => "handle_head_#{action.id}" do
-									html << ""
-								end
-							end
-						end
-					end
+    all_actions.each do |loop_actions|
+      html.div :style => "text-align: center" do
+        html.table :class => "actions-table" do
+          html.thead do
+            html.tr do
+              loop_actions.each do |action|
+                html.th :id => "handle_head_#{action.id}" do
+                  html << ""
+                end
+              end
+            end
+          end
 
-					html.tfoot do
-						html.tr do
-							loop_actions.each do |action|
-								html.td :id => "handle_foot_#{action.id}" do
-									html << ""
-								end
-							end
-						end
-					end
+          html.tfoot do
+            html.tr do
+              loop_actions.each do |action|
+                html.td :id => "handle_foot_#{action.id}" do
+                  html << ""
+                end
+              end
+            end
+          end
 
-					html.tbody do
-						html.tr do
-							loop_actions.each do |action|
-								id = "handle_#{action.id}"
-								html.td :class => "center" do
-									if action.know?
-										html << self.send(action.known_action.handle[:jquery_method], action)
-										html << render(:partial => "actions/handle/#{action.known_action.handle[:js_partial]}",
-																											:locals => {:action => action})
-									else
-										html << "unknown todo"
-									end
-								end								
-							end
-						end
-					end
-				end
-			end
-		end
+          html.tbody do
+            html.tr do
+              loop_actions.each do |action|
+                id = "handle_#{action.id}"
+                html.td :class => "center" do
+                  if action.know?
+                    html << self.send(action.known_action.handle[:jquery_method], action)
+                    html << render(:partial => "actions/handle/#{action.known_action.handle[:js_partial]}",
+                                                      :locals => {:action => action})
+                  else
+                    html << "unknown todo"
+                  end
+                end                
+              end
+            end
+          end
+        end
+      end
+    end
 
-		html.div :class => "clear" do
-			html << ""
-		end		
+    html.div :class => "clear" do
+      html << ""
+    end    
 
-	end
+  end
 
-	def jquery_div(action)
-		html = Builder::XmlMarkup.new
-		options = {:class => "center margin-auto", :style => "text-align: center"}
-		if action.known_action.handle.key? :html_options_for_jquery_div
-			options = action.known_action.handle[:html_options_for_jquery_div].merge(options) {|key, old, new| old + " " + new}
-		end
-		options = options.merge(:id => "handle_#{action.id}")
+  def jquery_div(action)
+    html = Builder::XmlMarkup.new
+    options = {:class => "center margin-auto", :style => "text-align: center"}
+    if action.known_action.handle.key? :html_options_for_jquery_div
+      options = action.known_action.handle[:html_options_for_jquery_div].merge(options) {|key, old, new| old + " " + new}
+    end
+    options = options.merge(:id => "handle_#{action.id}")
 
-		html.div options do
-			html << ""
-		end
-	end
+    html.div options do
+      html << ""
+    end
+  end
 
-	def jquery_checkbox_button(action)
-		html = Builder::XmlMarkup.new
-		options = {:class => "center margin-auto", :style => "text-align: center"}
-		if action.known_action.handle.key? :html_options_for_div_checkbox_button
-			options = action.known_action.handle[:html_options_for_div_checkbox_button].merge(options) {|key, old, new| old + " " + new}
-		end
-		
-		id = "handle_#{action.id}"
-		html.div options do
-			html << label_tag(id,"")
-			html << check_box_tag("", 1, nil, :id => id)# change nil by the real state on/off
-		end
-	end	
+  def jquery_checkbox_button(action)
+    html = Builder::XmlMarkup.new
+    options = {:class => "center margin-auto", :style => "text-align: center"}
+    if action.known_action.handle.key? :html_options_for_div_checkbox_button
+      options = action.known_action.handle[:html_options_for_div_checkbox_button].merge(options) {|key, old, new| old + " " + new}
+    end
+    
+    id = "handle_#{action.id}"
+    html.div options do
+      html << label_tag(id,"")
+      html << check_box_tag("", 1, nil, :id => id)# change nil by the real state on/off
+    end
+  end  
 end

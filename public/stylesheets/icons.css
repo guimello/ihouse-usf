@@ -1,471 +1,471 @@
 .icon
 {
-	background-repeat: no-repeat;
-	background-position: left center;
-	
-	padding-left: 20px;
-	line-height: 20px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  
+  padding-left: 20px;
+  line-height: 20px;
 }
 
 .icon64
 {
-	background-repeat: no-repeat;
-	background-position: left center;
-	
-	line-height: 60px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  
+  line-height: 60px;
 }
 
 .icon64.excel
 {
-	background-image: url(../images/icons/quartz/File_Excel.png);
+  background-image: url(../images/icons/quartz/File_Excel.png);
 }
 
 .icon.image-right
-{	
-	background-position: right center;	
-	padding-right: 20px;	
+{  
+  background-position: right center;  
+  padding-right: 20px;  
 }
 
 .icon.accept
 {
-	background-image: url(../images/icons/silk/accept.png);
+  background-image: url(../images/icons/silk/accept.png);
 }
 
 .big-icon.report
 {
-	background-image: url(../images/icons/Service.png);
+  background-image: url(../images/icons/Service.png);
 }
 
 .icon.add
 {
-	background-image: url(../images/icons/silk/add.png);
+  background-image: url(../images/icons/silk/add.png);
 }
 
 .icon.attach
 {
-	background-image: url(../images/icons/silk/attach.png);
+  background-image: url(../images/icons/silk/attach.png);
 }
 
 .icon.attention
 {
-	background-image: url(../images/icons/silk/attention.png);
+  background-image: url(../images/icons/silk/attention.png);
 }
 
 .icon.bin
 {
-	background-image: url(../images/icons/silk/bin.png);
+  background-image: url(../images/icons/silk/bin.png);
 }
 
 .icon.bullet-delete
 {
-	background-image: url(../images/icons/silk/bullet_delete.png);
+  background-image: url(../images/icons/silk/bullet_delete.png);
 }
 
 .icon.clock
 {
-	background-image: url(../images/icons/silk/clock.png);
+  background-image: url(../images/icons/silk/clock.png);
 }
 
 
 .icon.comments
 {
-	background-image: url(../images/icons/silk/comments.png);
+  background-image: url(../images/icons/silk/comments.png);
 }
 
 .icon.copy
 {
-	background-image: url(../images/icons/silk/page_white_paste.png);
+  background-image: url(../images/icons/silk/page_white_paste.png);
 }
 
 .icon.cross
 {
-	background-image: url(../images/icons/silk/cross.png);
+  background-image: url(../images/icons/silk/cross.png);
 }
 
 .icon.door-open
 {
-	background-image: url(../images/icons/silk/door_open.png);
+  background-image: url(../images/icons/silk/door_open.png);
 }
 
 .icon.door-out
 {
-	background-image: url(../images/icons/silk/door_out.png);
+  background-image: url(../images/icons/silk/door_out.png);
 }
 
 .icon.edit
 {
-	background-image: url(../images/icons/silk/pencil.gif);
+  background-image: url(../images/icons/silk/pencil.gif);
 }
 
 .icon.group
 {
-	background-image: url(../images/icons/silk/group.png);
+  background-image: url(../images/icons/silk/group.png);
 }
 
 .icon.locale
 {
-	background-image: url(../images/icons/silk/world.png);
+  background-image: url(../images/icons/silk/world.png);
 }
 
 .icon.key
 {
-	background-image: url(../images/icons/silk/key.png);
+  background-image: url(../images/icons/silk/key.png);
 }
 
 .icon.lock
 {
-	background-image: url(../images/icons/silk/lock.png);
+  background-image: url(../images/icons/silk/lock.png);
 }
 
 .icon.logout
 {
-	background-image: url(../images/icons/silk/bullet_cross.png);
+  background-image: url(../images/icons/silk/bullet_cross.png);
 }
 .icon.magnifier
 {
-	background-image: url(../images/icons/silk/magnifier.png);
+  background-image: url(../images/icons/silk/magnifier.png);
 }
 
 .icon.sadface
 {
-	background-image: url(../images/icons/silk/emoticon_unhappy.png);
+  background-image: url(../images/icons/silk/emoticon_unhappy.png);
 }
 
 .icon.page-white-stack
 {
-	background-image: url(../images/icons/silk/page_white_stack.png);
+  background-image: url(../images/icons/silk/page_white_stack.png);
 }
 
 .icon.page-white-edit
 {
-	background-image: url(../images/icons/silk/page_white_edit.png);
+  background-image: url(../images/icons/silk/page_white_edit.png);
 }
 
 
 .icon.blue-gold-medal
 {
-	background-image: url(../images/icons/silk/medal_gold_3.png);
+  background-image: url(../images/icons/silk/medal_gold_3.png);
 }
 
 
 .icon.green-gold-medal
 {
-	background-image: url(../images/icons/silk/medal_gold_2.png);
+  background-image: url(../images/icons/silk/medal_gold_2.png);
 }
 
 .icon.blue-silver-medal
 {
-	background-image: url(../images/icons/silk/medal_silver_3.png);
+  background-image: url(../images/icons/silk/medal_silver_3.png);
 }
 
 .icon.blue-bronze-medal
 {
-	background-image: url(../images/icons/silk/medal_bronze_3.png);
+  background-image: url(../images/icons/silk/medal_bronze_3.png);
 }
 
 .icon.red-bronze-medal
 {
-	background-image: url(../images/icons/silk/medal_bronze_1.png);
+  background-image: url(../images/icons/silk/medal_bronze_1.png);
 }
 
 .icon.search-big
 {
-	background-image: url(../images/icons/big02/001_38.png);
-	padding-left: 30px;
-	line-height: 24px;
+  background-image: url(../images/icons/big02/001_38.png);
+  padding-left: 30px;
+  line-height: 24px;
 }
 
 .icon.search-small
 {
-	background-image: url(../images/icons/search_16x16.png);
+  background-image: url(../images/icons/search_16x16.png);
 }
 
 .icon.star
 {
-	background-image: url(../images/icons/silk/star.png);
+  background-image: url(../images/icons/silk/star.png);
 }
 
 .icon.star-gray
 {
-	background-image: url(../images/icons/silk/star_grey.png);
+  background-image: url(../images/icons/silk/star_grey.png);
 }
 
 
 .icon.star-silver
 {
-	background-image: url(../images/icons/silk/star_silver.png);
+  background-image: url(../images/icons/silk/star_silver.png);
 }
 
 .icon.tag
 {
-	background-image: url(../images/icons/silk/tag_blue.png);
+  background-image: url(../images/icons/silk/tag_blue.png);
 }
 
 .icon.tick
 {
-	background-image: url(../images/icons/silk/tick.png);
+  background-image: url(../images/icons/silk/tick.png);
 }
 
 .icon.thumb-up
 {
-	background-image: url(../images/icons/silk/thumb_up.png);
+  background-image: url(../images/icons/silk/thumb_up.png);
 }
 .icon.thumb-up-gray
 {
-	background-image: url(../images/icons/silk/thumb_up_gray.png);
+  background-image: url(../images/icons/silk/thumb_up_gray.png);
 }
 .icon.thumb-down
 {
-	background-image: url(../images/icons/silk/thumb_down.png);
+  background-image: url(../images/icons/silk/thumb_down.png);
 }
 
 .icon.user
 {
-	background-image: url(../images/icons/silk/user.png);
+  background-image: url(../images/icons/silk/user.png);
 }
 
 .icon.user-add
 {
-	background-image: url(../images/icons/silk/user_add.png);
+  background-image: url(../images/icons/silk/user_add.png);
 }
 .icon.user-edit
 {
-	background-image: url(../images/icons/silk/user_edit.png);
+  background-image: url(../images/icons/silk/user_edit.png);
 }
 
 .icon.user-admin
 {
-	background-image: url(../images/icons/silk/user_gray_cool.png);
+  background-image: url(../images/icons/silk/user_gray_cool.png);
 }
 
 .icon.user-advanced
 {
-	background-image: url(../images/icons/silk/user_brown.png);
+  background-image: url(../images/icons/silk/user_brown.png);
 }
 
 .icon.palette
 {
-	background-image: url(../images/icons/silk/palette.png);
+  background-image: url(../images/icons/silk/palette.png);
 }
 
 .icon.application-generic
 {
-	background-image: url(../images/icons/silk/page_attach.png);
+  background-image: url(../images/icons/silk/page_attach.png);
 }
 
 .icon.application-octet-stream
 {
-	background-image: url(../images/icons/silk/page_code.png);
+  background-image: url(../images/icons/silk/page_code.png);
 }
 
 .icon.application-vnd-ms-excel
 {
-	background-image: url(../images/icons/silk/page_excel.png);
+  background-image: url(../images/icons/silk/page_excel.png);
 }
 
 .icon.application-vnd-ms-powerpoint
 {
-	background-image: url(../images/icons/silk/page_white_powerpoint.png);
+  background-image: url(../images/icons/silk/page_white_powerpoint.png);
 }
 
 .icon.application-msword
 {
-	background-image: url(../images/icons/silk/page_word.png);
+  background-image: url(../images/icons/silk/page_word.png);
 }
 
 .icon.image-jpeg
 {
-	background-image: url(../images/icons/silk/page_white_camera.png);
+  background-image: url(../images/icons/silk/page_white_camera.png);
 }
 
 .icon.image-gif
 {
-	background-image: url(../images/icons/silk/page_portrait_shot.png);
+  background-image: url(../images/icons/silk/page_portrait_shot.png);
 }
 
 .icon.image-png
 {
-	background-image: url(../images/icons/silk/page_landscape_shot.png);
+  background-image: url(../images/icons/silk/page_landscape_shot.png);
 }
 
 .icon.application-pdf
 {
-	background-image: url(../images/icons/silk/page_white_acrobat.png);
+  background-image: url(../images/icons/silk/page_white_acrobat.png);
 }
 
 .icon.text-x-sql
 {
-	background-image: url(../images/icons/silk/page_white_database_yellow.png);
+  background-image: url(../images/icons/silk/page_white_database_yellow.png);
 }
 
 .icon.application-x-zip
 {
-	background-image: url(../images/icons/silk/page_white_compressed.png);
+  background-image: url(../images/icons/silk/page_white_compressed.png);
 }
 
 .icon.text-plain
 {
-	background-image: url(../images/icons/silk/page_white_text.png);
+  background-image: url(../images/icons/silk/page_white_text.png);
 }
 
 .icon.text-html
 {
-	background-image: url(../images/icons/silk/page_world.png);
+  background-image: url(../images/icons/silk/page_world.png);
 }
 
 .icon.text-xml
 {
-	background-image: url(../images/icons/silk/script.png);
+  background-image: url(../images/icons/silk/script.png);
 }
 
 .icon.time
 {
-	background-image: url(../images/icons/silk/time.png);
+  background-image: url(../images/icons/silk/time.png);
 }
 
 .icon.status-production
 {
-	background-image: url(../images/icons/silk/shield_rainbow.png);
+  background-image: url(../images/icons/silk/shield_rainbow.png);
 }
 
 .icon.status-pending-approval
 {
-	background-image: url(../images/icons/silk/hourglass.png);
+  background-image: url(../images/icons/silk/hourglass.png);
 }
 
 .icon.status-draft
 {
-	background-image: url(../images/icons/silk/page_white_edit.png);
+  background-image: url(../images/icons/silk/page_white_edit.png);
 }
 
 .icon.status-deleted
 {
-	background-image: url(../images/icons/silk/bin.png);
+  background-image: url(../images/icons/silk/bin.png);
 }
 
 .icon.status-suspended
 {
-	background-image: url(../images/icons/silk/error.png);
+  background-image: url(../images/icons/silk/error.png);
 }
 
 .icon.status-refused
 {
-	background-image: url(../images/icons/silk/exclamation.png);
+  background-image: url(../images/icons/silk/exclamation.png);
 }
 
 .icon.version-control
 {
-	background-image: url(../images/icons/silk/chart_organisation.png);
+  background-image: url(../images/icons/silk/chart_organisation.png);
 }
 
 .icon.selection, #project_selection.selection
 {
-	background-image: url(../images/icons/silk/section_collapsed.png);
+  background-image: url(../images/icons/silk/section_collapsed.png);
 }
 
 .icon.job
 {
-	background-image: url(../images/icons/silk/page_white_code.png);
+  background-image: url(../images/icons/silk/page_white_code.png);
 }
 
 .icon.other-information
 {
-	background-image: url(../images/icons/silk/brick.png);
+  background-image: url(../images/icons/silk/brick.png);
 }
 
 .icon.bell
 {
-	background-image: url(../images/icons/silk/bell.png);
+  background-image: url(../images/icons/silk/bell.png);
 }
 
 .icon.in-file
 {
-	background-image: url(../images/icons/silk/application_get.png);
+  background-image: url(../images/icons/silk/application_get.png);
 }
 
 .icon.out-file
 {
-	background-image: url(../images/icons/silk/application_put.png);
+  background-image: url(../images/icons/silk/application_put.png);
 }
 
 .icon.printer
 {
-	background-image: url(../images/icons/silk/printer.png);
+  background-image: url(../images/icons/silk/printer.png);
 }
 
 .icon.hierarchy
 {
-	background-image: url(../images/icons/silk/chart_organisation.png);
+  background-image: url(../images/icons/silk/chart_organisation.png);
 }
 
 .icon.environment
 {
-	background-image: url(../images/icons/silk/world.png);
+  background-image: url(../images/icons/silk/world.png);
 }
 
 .icon.truck
 {
-	background-image: url(../images/icons/silk/lorry.png);
+  background-image: url(../images/icons/silk/lorry.png);
 }
 
 .icon.request-type
 {
-	background-image: url(../images/icons/silk/lightning.png);
+  background-image: url(../images/icons/silk/lightning.png);
 }
 
 .icon.schedule-tool
 {
-	background-image: url(../images/icons/silk/application_osx_terminal.png);
+  background-image: url(../images/icons/silk/application_osx_terminal.png);
 }
 
 .icon.expiration-date
 {
-	background-image: url(../images/icons/silk/date.png);
+  background-image: url(../images/icons/silk/date.png);
 }
 
 .icon.text-name
 {
-	background-image: url(../images/icons/silk/text_ab.png);
+  background-image: url(../images/icons/silk/text_ab.png);
 }
 
 .icon.move-ns
 {
-	background-image: url(../images/icons/silk/arrow_ns.png);
+  background-image: url(../images/icons/silk/arrow_ns.png);
 }
 
 .icon.upload-file
 {
-	background-image: url(../images/icons/silk/page_white_get.png);
+  background-image: url(../images/icons/silk/page_white_get.png);
 }
 
 .icon.critical-job
 {
-	background-image: url(../images/icons/silk/clock_red.png);	
+  background-image: url(../images/icons/silk/clock_red.png);  
 }
 
 .icon.lights
 {
-	background-image: url(../images/icons/silk/lightbulb.png);
+  background-image: url(../images/icons/silk/lightbulb.png);
 }
 
 .icon.lights-on
 {
-	background-image: url(../images/icons/silk/lightbulb.png);
+  background-image: url(../images/icons/silk/lightbulb.png);
 }
 
 .icon.lights-off
 {
-	background-image: url(../images/icons/silk/lightbulb_off.png);
+  background-image: url(../images/icons/silk/lightbulb_off.png);
 }
 
 .icon.unkown-device
 {
-	background-image: url(../images/icons/silk/building_error.png);
+  background-image: url(../images/icons/silk/building_error.png);
 }
 
 .icon.house
 {
-	background-image: url(../images/icons/silk/house.png);
+  background-image: url(../images/icons/silk/house.png);
 }
 
 .icon.required

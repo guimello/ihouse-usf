@@ -1,20 +1,20 @@
 #content-container
 {
-	margin-right: -55%;
+  margin-right: -55%;
 }
 
 #left-column
 {
-	margin-right: 55%;
+  margin-right: 55%;
 }
 
 #right-column
 {
-	width: 53%;
+  width: 53%;
 }
 
 #projects_table a
 {
-	font-weight: bold;
-	font-size: 12px;
+  font-weight: bold;
+  font-size: 12px;
 }

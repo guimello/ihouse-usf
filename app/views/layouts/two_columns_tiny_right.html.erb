@@ -2,43 +2,43 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
-	<%= render :partial => "layouts/head" %>
+  <%= render :partial => "layouts/head" %>
 
-	<style>
-		#content-container
-		{
-			margin-right: -50%;
-		}
+  <style>
+    #content-container
+    {
+      margin-right: -50%;
+    }
 
-		#left-column
-		{
-			margin-right: 18%;
-		}
+    #left-column
+    {
+      margin-right: 18%;
+    }
 
-		#right-column
-		{
-			width: 18%;
-		}		
-	</style>
+    #right-column
+    {
+      width: 18%;
+    }    
+  </style>
 
-	<body>
-		<div id="container" class="shadow-low">
-			<%= render :partial => "layouts/header" %>
-			<div id="content-wrapper">
-				<%= render :partial => 'layouts/flash', :locals => {:flash => flash} %>
-				<div id="content-container">
-					<div id="left-column" class="gradient-division">
-						<div id="left-column-content" class="gradient-division">
-							<%= yield %>
-						</div>
-						<div id="left-column-content-bottom" class="gradient-division"></div>
-					</div>
-				</div>
-				<div id="right-column">
-					<%= yield :sidebar %>
-				</div>
-				<div style="clear: both"></div>
-			</div>
-		</div>
-	</body>
+  <body>
+    <div id="container" class="shadow-low">
+      <%= render :partial => "layouts/header" %>
+      <div id="content-wrapper">
+        <%= render :partial => 'layouts/flash', :locals => {:flash => flash} %>
+        <div id="content-container">
+          <div id="left-column" class="gradient-division">
+            <div id="left-column-content" class="gradient-division">
+              <%= yield %>
+            </div>
+            <div id="left-column-content-bottom" class="gradient-division"></div>
+          </div>
+        </div>
+        <div id="right-column">
+          <%= yield :sidebar %>
+        </div>
+        <div style="clear: both"></div>
+      </div>
+    </div>
+  </body>
 </html>

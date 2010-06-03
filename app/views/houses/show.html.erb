@@ -1,7 +1,7 @@
 <% content_for :navigation do %>
   <% render :layout => "layouts/main_navigation" do %>
     <%= render :partial => "layouts/navigation/current_house_item", :locals => {:classes => "selected tab-separator",
-									          :house => @house, :user => @user} %>
+                            :house => @house, :user => @user} %>
     <%= render :partial => "layouts/navigation/devices_item", :locals => {:classes => "tab-separator", :house => @house, :user => @user} %>
   <% end %>
 <% end %>

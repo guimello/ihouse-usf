@@ -1,131 +1,131 @@
 body
 {
-	background-color: #B9B4B4;
-	background-image: url("../background-gradient.png"); 
-	background-repeat: repeat-x;
+  background-color: #B9B4B4;
+  background-image: url("../background-gradient.png"); 
+  background-repeat: repeat-x;
 }
 
 small
 {
-	color: #a4a4a4;
+  color: #a4a4a4;
 }
 
 a, a:visited
 {
-	color: #868383;
+  color: #868383;
 }
 
 a:hover, a:active
 {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 #content-container
 {
-	background-color: #ffffff;
+  background-color: #ffffff;
 }
 
 #title a
 {
-	text-decoration: none;
-	color: #ffffff;
+  text-decoration: none;
+  color: #ffffff;
 }
 
 #title a:hover
 {
-	color: #696969;
+  color: #696969;
 }
 
 #title h1
 {
-	text-shadow: 1px 1px 1px #000000;
+  text-shadow: 1px 1px 1px #000000;
 }
 
 #header
 {
-	color: #ffffff;
-	
-	background-color: #404142; 
-	background-image: url('../tab-overlay.png');
-	background-repeat: repeat-x;
-	background-position: left bottom;
+  color: #ffffff;
+  
+  background-color: #404142; 
+  background-image: url('../tab-overlay.png');
+  background-repeat: repeat-x;
+  background-position: left bottom;
 }
 
 #project_selection
 {
-	color: #D8D8DA !important;
+  color: #D8D8DA !important;
 }
 
 #project_selection:hover
 {
-	color: #FFFFFF !important;
+  color: #FFFFFF !important;
 }
 
 #current_user_header
 {
-	text-shadow: 1px 1px 1px #000000;
+  text-shadow: 1px 1px 1px #000000;
 }
 
 #current_user_header a
 {
-	color: #D8D8DA;
-	text-decoration: none;
-	font-weight: bold;
+  color: #D8D8DA;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 #current_user_header a:hover
 {
-	color: #ffffff;
+  color: #ffffff;
 }
 
 .title.darkest, .bg-darkest
 {
-	color: #ffffff;
-	background-color: #515555; 
+  color: #ffffff;
+  background-color: #515555; 
 }
 
 .title.dark, .bg-dark
 {
-	color: #ffffff;
-	background-color: #6b7f87; 
+  color: #ffffff;
+  background-color: #6b7f87; 
 }
 
 .title.light, .bg-light
 {
-	color: #000000;
-	background-color: #CDCECF; 
+  color: #000000;
+  background-color: #CDCECF; 
 }
 
 .title.lightest, .bg-lightest
 {
-	color: #555555;
-	background-color: #E9E9E9; 
+  color: #555555;
+  background-color: #E9E9E9; 
 }
 
 .font.light-gray
 {
-	color: #a4a4a4;
+  color: #a4a4a4;
 }
 
 .background.light-gray
 {
-	background-color: #a4a4a4;
+  background-color: #a4a4a4;
 }
 
 .tooltip
 {
-	color: #555555;
-	background-color: #DBDCDC; 
-	
-	padding: 10px;
+  color: #555555;
+  background-color: #DBDCDC; 
+  
+  padding: 10px;
 }
 
 .fieldWithErrors
 {
-	color: #E63333 !important
+  color: #E63333 !important
 }
 
 .bg-normal
 {
-	background-color: #7A7A7A;
+  background-color: #7A7A7A;
 }

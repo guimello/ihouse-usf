@@ -5,18 +5,18 @@ ActionController::Routing::Routes.draw do |map|
   map.login     "/login",   :controller => "sessions", :action => "new"
   map.logout    "/logout",  :controller => "sessions", :action => "destroy"
 
-  map.resources :users, :collection => {	:exists_username => :get,
-																														:exists_email => :get} do |user|
+  map.resources :users, :collection => {  :exists_username => :get,
+                                                            :exists_email => :get} do |user|
     user.resources :houses do |house|
-			house.resources :devices, :collection => {:discover => :get, :know => :get} do |device|
-				device.resources :actions, :collection => {:find => :get} do |action|
-					action.resources :schedules
-				end
-			end
-		end
+      house.resources :devices, :collection => {:discover => :get, :know => :get} do |device|
+        device.resources :actions, :collection => {:find => :get} do |action|
+          action.resources :schedules
+        end
+      end
+    end
   end
 
-	map.my_panel "/my_panel", :controller => "users", :action => "my_panel", :conditions => {:method => :get}
+  map.my_panel "/my_panel", :controller => "users", :action => "my_panel", :conditions => {:method => :get}
 
   map.root :controller => :site
   # The priority is based upon order of creation: first created -> highest priority.

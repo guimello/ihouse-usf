@@ -1,11 +1,11 @@
 #login-form fieldset
 {
-	background-image: url();
+  background-image: url();
 }
 
 #login-form fieldset fieldset
 {
-	background-image: url();
-	background-color: #ffffff; 
-	filter: alpha(opacity = 80);
+  background-image: url();
+  background-color: #ffffff; 
+  filter: alpha(opacity = 80);
 }

@@ -1,33 +1,33 @@
 <% form_tag sessions_path, :id => "login-form", :class => "basic-form rounded" do %>
-	<fieldset class="rounded-12">
-		<legend><%= t :title, :scope => :application %></legend>
+  <fieldset class="rounded-12">
+    <legend><%= t :title, :scope => :application %></legend>
 
-		<% if flash[:notice] %>
-			<%= render :partial => "layouts/flash_alert", :locals => {:title => t(:notice, :scope => :alerts),
-																	 :div_class => "alert yellow rounded-8 shadow-low transparent-70",
-																	 :message => flash[:notice]} %>
-		<% end %>
+    <% if flash[:notice] %>
+      <%= render :partial => "layouts/flash_alert", :locals => {:title => t(:notice, :scope => :alerts),
+                                   :div_class => "alert yellow rounded-8 shadow-low transparent-70",
+                                   :message => flash[:notice]} %>
+    <% end %>
 
-		<fieldset>
-			<dl>
-				<dt><%= label_tag :username, t(:username, :scope => :authentication) %></dt>
-				<dd><%= text_field_tag :username, nil, :style => "width: 95%" %></dd>
+    <fieldset>
+      <dl>
+        <dt><%= label_tag :username, t(:username, :scope => :authentication) %></dt>
+        <dd><%= text_field_tag :username, nil, :style => "width: 95%" %></dd>
 
-				<dt><%= label_tag :password, t(:password, :scope => :authentication) %></dt>
-				<dd>
-					<%= password_field_tag :password, nil, :style => "width: 60%" %>
-					<%= link_to t(:forgot_password, :scope => :authentication), "lolwut", :class => "bold indented-10" %>
-				</dd>
-			</dl>
-		</fieldset>
+        <dt><%= label_tag :password, t(:password, :scope => :authentication) %></dt>
+        <dd>
+          <%= password_field_tag :password, nil, :style => "width: 60%" %>
+          <%= link_to t(:forgot_password, :scope => :authentication), "lolwut", :class => "bold indented-10" %>
+        </dd>
+      </dl>
+    </fieldset>
 
-		<p class="right">
-			<%= awesome_submit_button t(:login, :scope => :form), :key, :class => "blue silver rounded-10 large" %>
-		</p>
+    <p class="right">
+      <%= awesome_submit_button t(:login, :scope => :form), :key, :class => "blue silver rounded-10 large" %>
+    </p>
 
-	</fieldset>
+  </fieldset>
 
-	<%= render :partial => 'layouts/login_footer' %>
+  <%= render :partial => 'layouts/login_footer' %>
 
 <% end %>
 

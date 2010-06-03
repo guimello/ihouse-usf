@@ -1,6 +1,6 @@
 <fieldset id="actions_fieldset">
   <legend><%= awesome_button t(:add, :scope => :action), :add, :class => "yellow small add-device-action title-me",
-			  :title => t(:add_action_manually_button, :scope => [:action, :hints], :find_button => "\"#{t(:find_actions, :scope => :action)}\"") %></legend>
+        :title => t(:add_action_manually_button, :scope => [:action, :hints], :find_button => "\"#{t(:find_actions, :scope => :action)}\"") %></legend>
   
   <% device_form.fields_for :actions do |actions_form| %>
       <%= render :partial => "actions_new_fieldset_form", :locals =>{:form => actions_form} if device_form.object.actions.size > 0 %>

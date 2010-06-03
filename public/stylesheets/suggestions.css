@@ -1,17 +1,17 @@
 #right-column a
 {
-	font-size: 11px;
+  font-size: 11px;
 }
 
 .vote-button
 {
-	line-height: 21px;
-	width: 40px;
+  line-height: 21px;
+  width: 40px;
 }
 
 #available_votes h2
 {
-	font-size: 26px;
+  font-size: 26px;
 }
 
 /* --------------------------
@@ -26,31 +26,31 @@
 
 .tag-cloud
 {
-	text-align: center;
-	word-spacing: 10px;
-	line-height: 20px;
+  text-align: center;
+  word-spacing: 10px;
+  line-height: 20px;
 }
 
 .tag-cloud a
 {
-	text-decoration: none;
-	color: #a5a5a5;
-	font-weight: bold;
+  text-decoration: none;
+  color: #a5a5a5;
+  font-weight: bold;
 }
 
 .tag-cloud a:hover
 {
-	color: #d0d0d0 !important;
+  color: #d0d0d0 !important;
 }
 
 a.vote-quantity-link
 {
-	color: #ffffff;
+  color: #ffffff;
 }
 
 a.vote-quantity-link:hover
 {
-	background-color: #d0d0d0;
+  background-color: #d0d0d0;
 }
 
 
@@ -61,43 +61,43 @@ a.vote-quantity-link:hover
 
 #suggestions hr
 {
-	margin-top: 20px;
-	margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 div.suggestion
 {
-	clear: left;
-	color: #333333;
-	padding: 15px 0;
-	margin-bottom: 10px;
+  clear: left;
+  color: #333333;
+  padding: 15px 0;
+  margin-bottom: 10px;
 }
 
 div.vote-div
 {
-	float: left;
-	margin: 0 0 5px;
-	width: 80px;
+  float: left;
+  margin: 0 0 5px;
+  width: 80px;
 }
 
 div.suggestion div.indented
 {
-	margin-left: 100px;
+  margin-left: 100px;
 }
 
 .suggestion .suggestion-title
 {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .suggestion h2
 {
-	font-size: 18px;
+  font-size: 18px;
 }
 
 .suggestion h3
 {
-	font-size: 26px;
+  font-size: 26px;
 }
 
 /* --------------------------
@@ -106,29 +106,29 @@ div.suggestion div.indented
 
 .votes-box a
 {
-	padding: 6px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	margin-left: 0px;
-	text-decoration: none;
-	width: 22px;
-	
-	font-size: 16px;
-	font-weight: bold;
-	
-	color: #0072bc;
+  padding: 6px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-left: 0px;
+  text-decoration: none;
+  width: 22px;
+  
+  font-size: 16px;
+  font-weight: bold;
+  
+  color: #0072bc;
 }
 
 .votes-box a:hover
 {
-	background-color: #079CFF;
-	color: #ffffff;	
+  background-color: #079CFF;
+  color: #ffffff;  
 }
 
 .votes-box .current_vote
 {
-	color: #ffffff;	
-	background-color: #FF5C00;	
+  color: #ffffff;  
+  background-color: #FF5C00;  
 }
 
 /* --------------------------
@@ -137,48 +137,48 @@ div.suggestion div.indented
 
 div.comment
 {
-	/*border-bottom: 1px solid #DDDDDD;*/
-	clear: left;
-	color: #333333;
-	padding: 15px 0;
-	margin-bottom: 10px;
+  /*border-bottom: 1px solid #DDDDDD;*/
+  clear: left;
+  color: #333333;
+  padding: 15px 0;
+  margin-bottom: 10px;
 }
 
 img.avatar
 {
-	float: left;
-	margin: 0 0 5px;
-	width: 48px;
+  float: left;
+  margin: 0 0 5px;
+  width: 48px;
 }
 
 div.comment div.indented
 {
-	margin-left: 60px;
+  margin-left: 60px;
 }
 
 div.comments div.comment_header h3 
 {
-	margin: 0 0 5px;
+  margin: 0 0 5px;
 }
 
 div.comments div.comment_header h3 a.delete
 {
-	float: right;
-	text-align: center;
-	width: 40px;
+  float: right;
+  text-align: center;
+  width: 40px;
 }
 
 div.comments div.comment_header h3 a.permalink
 {
-	margin-right:2px;
+  margin-right:2px;
 }
 
 div.comments div.comment_header h3 a.permalink:hover
 {
-	color:#333333;
+  color:#333333;
 }
 
 .comment.admin
 {
-	background-color: #EDF9FC;
+  background-color: #EDF9FC;
 }

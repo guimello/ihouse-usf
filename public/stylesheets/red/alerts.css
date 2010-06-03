@@ -1,16 +1,16 @@
 .alert
 {
-	color: #6C828C;
-	background-color: #D9F2FE;
-	border: 1px solid #ACEAF8;
+  color: #6C828C;
+  background-color: #D9F2FE;
+  border: 1px solid #ACEAF8;
 }
 
 .alert h1
 {
-	color: #2D93BA;
+  color: #2D93BA;
 }
 
 .alert a
 {
-	color: #2D93BA;
+  color: #2D93BA;
 }

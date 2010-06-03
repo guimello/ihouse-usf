@@ -1,51 +1,51 @@
 .tabs li a
 {
-	background-image: url(../tab-overlay.png);
-	background-color: #8E939B;
-	color: #ffffff;
-	text-shadow: 1px 1px 1px #000000;
+  background-image: url(../tab-overlay.png);
+  background-color: #8E939B;
+  color: #ffffff;
+  text-shadow: 1px 1px 1px #000000;
 }
 
 .tabs li a:hover
 {
-	background-color: #DADDE1;
-	color: #ffffff;
+  background-color: #DADDE1;
+  color: #ffffff;
 }
 
 .tabs .selected a
 {
-	background-image: url(../tab-overlay-white.png) !important;
-	background-color: #C8C8C8 !important;
-	color: #414447 !important;
-	text-shadow: 0px 0px 0px !important;
+  background-image: url(../tab-overlay-white.png) !important;
+  background-color: #C8C8C8 !important;
+  color: #414447 !important;
+  text-shadow: 0px 0px 0px !important;
 }
 
 .tabs .selected.has-sub-tabs a
 {
-	background-image: url() !important;
-	background-color: #F3F3F3 !important;
-	color: #414447 !important;
-	text-shadow: 0px 0px 0px !important;
+  background-image: url() !important;
+  background-color: #F3F3F3 !important;
+  color: #414447 !important;
+  text-shadow: 0px 0px 0px !important;
 }
 
 #sub-tabs
 {
-	background-color: #F3F3F3;
-	
-	border-bottom: 1px solid #F3F3F3;	
+  background-color: #F3F3F3;
+  
+  border-bottom: 1px solid #F3F3F3;  
 }
 
 #sub-tabs a
 {
-	color: #8F979E;
+  color: #8F979E;
 }
 
 #sub-tabs a:hover
 {
-	color: #4B5053;
+  color: #4B5053;
 }
 
 #sub-tabs.selected li
 {
-	color: #4B5053;
+  color: #4B5053;
 }

@@ -1,36 +1,36 @@
 .basic-table .odd {
-	background-color: #f8fcff;
+  background-color: #f8fcff;
 }
 
 .basic-table th {
-	background-image: url(../table-header-overlay.png);
-	background-repeat: repeat-x;
-	background-color: #e5f3ff;
-	border-top: 1px solid #d2e7f8;
-	color: #3b3b3b;
-	text-shadow: 2px 2px 1px #ffffff;
+  background-image: url(../table-header-overlay.png);
+  background-repeat: repeat-x;
+  background-color: #e5f3ff;
+  border-top: 1px solid #d2e7f8;
+  color: #3b3b3b;
+  text-shadow: 2px 2px 1px #ffffff;
 }
 
 .basic-table td {
-	border-top: 1px solid #eaeaea;
+  border-top: 1px solid #eaeaea;
 }
 
 .basic-table tr:hover {
-	background-color: #FEFFF0 !important;
+  background-color: #FEFFF0 !important;
 }
 
 .basic-table thead th:first-child {
-	border-left: 1px solid #d2e7f8;
+  border-left: 1px solid #d2e7f8;
 }
 
 .basic-table thead th:last-child {
-	border-right: 1px solid #d2e7f8;
+  border-right: 1px solid #d2e7f8;
 }
 
 .basic-table tfoot td:first-child {
-	border-left: 1px solid #d2e7f8;
+  border-left: 1px solid #d2e7f8;
 }
 
 .basic-table tfoot td:last-child {
-	border-right: 1px solid #d2e7f8;
+  border-right: 1px solid #d2e7f8;
 }

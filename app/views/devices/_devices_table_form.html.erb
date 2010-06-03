@@ -14,13 +14,13 @@
     <tr class="gray-footer">
       <td class="left" style="padding-top: 5px; padding-bottom: 5px" colspan="3">
         <%= awesome_button t(:add, :scope => :device), :add, :class => "gray silver small add-house-device title-me",
-	        :title => t(:add_device_manually_button, :scope => [:device, :hints], :discover_button => "\"#{t(:label, :scope => [:device, :discover])}\"")%>
+          :title => t(:add_device_manually_button, :scope => [:device, :hints], :discover_button => "\"#{t(:label, :scope => [:device, :discover])}\"")%>
       </td>
       <td class="right" style="padding-top: 5px; padding-bottom: 5px" colspan="10">
         <%= awesome_button t(:label, :scope => [:device, :discover]), "search-small",
-	        :href => discover_user_house_devices_url(current_user, house),
-	        :class => "gray silver small discover-devices title-me",
-	        :title => t(:title, :scope => [:device, :discover]) %>
+          :href => discover_user_house_devices_url(current_user, house),
+          :class => "gray silver small discover-devices title-me",
+          :title => t(:title, :scope => [:device, :discover]) %>
       </td>
     </tr>
   </tfoot>

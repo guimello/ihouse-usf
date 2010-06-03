@@ -1,25 +1,25 @@
 .basic-form legend
 {
-	color: #9A147F;
+  color: #9A147F;
 }
 
 .green.awesome, .green.awesome:visited
 { 
-	background-color: #9B049D; 
+  background-color: #9B049D; 
 }
 .green.awesome:hover
 { 
-	background-color: #830684;
+  background-color: #830684;
 }
 
 .silver.awesome, .silver.awesome:visited
 {
-	color: #939393;
-	background-color: #f5f5f5;
-	text-shadow: 0 -1px 1px rgba(0,0,0,0.0);
+  color: #939393;
+  background-color: #f5f5f5;
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.0);
 }
 .silver.awesome:hover
 {
-	color: #ffffff;
-	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+  color: #ffffff;
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
 }
