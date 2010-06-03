@@ -32,8 +32,7 @@ class DevicesController < ApplicationController
 		end
 	end
 
-	def know
-		puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+	def know		
 		@known_device = KnownDevice.find_by_device_class params[:device_class]
 		@input_id = params[:input_id]
 
