@@ -1,0 +1,17 @@
+*~
+*.cache
+*.sql
+.DS_Store
+tmp/*
+log/*
+doc/api
+doc/app
+doc/plugins
+doc/*.dot
+.*
+!.gitignore
+!.gitmodules
+vendor/rails
+nbproject/*
+rerun.txt
+db/schema.rb
