@@ -1,7 +1,7 @@
 require "ostruct"
 
 class Device < ActiveRecord::Base
-  include KnownDevices
+  include Known::Devices
   
   belongs_to :house  
   has_one :user, :through => :house

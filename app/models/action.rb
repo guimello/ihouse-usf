@@ -1,5 +1,5 @@
 class Action < ActiveRecord::Base
-  include KnownActions
+  include Known::Actions
   include SerialActions
   
   belongs_to  :device
