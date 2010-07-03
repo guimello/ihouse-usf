@@ -196,6 +196,9 @@ en:
     other: "actions"
     add: "Add new action manually"
     find_actions: "Find this device's actions"
+    customize_controls: 
+      label: customize controls
+      hint: You can customize the way this action will be presented to you
     device:
       turn_on_off:
         state:

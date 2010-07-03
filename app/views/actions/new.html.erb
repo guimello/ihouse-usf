@@ -18,39 +18,59 @@
 
         <% content_for :javascript do %>
           $(".add-device-action").live("click", function(){
-        <%= "var action='#{generate_template(device_form, :actions, :partial => "actions/actions_new_fieldset_form")}'" %>
+            <%= "var action='#{generate_template(device_form, :actions, :partial => "actions/actions_new_fieldset_form")}'" %>
         
-        $("#div_clear_actions").before(action.replace(/NEW_RECORD/g, new Date().getTime())).prev("div").highlightMe();
-        $(".title-me").tipTip();
+            $("#div_clear_actions").before(action.replace(/NEW_RECORD/g, new Date().getTime())).prev("div").highlightMe();
+            $(".title-me").tipTip();
 
-        return false;
+            return false;
           });
 
           $(".remove-new-action").live("click", function(){
-    if(confirm($(this).confirmPlz()))
-      $(this).closest("div").remove();
+            if(confirm($(this).confirmPlz()))
+              $(this).closest("div").remove();
 
-    return false;
-          });
+              return false;
+            });
 
           $(".remove-existing-action").live("click", function(){
-    if(confirm($(this).confirmPlz()))
-    {
-      $(this).closest("div").find(".remove-action-hidden").val(1);
-      $(this).closest("div").hide();
-    }
+            if(confirm($(this).confirmPlz()))
+            {
+              $(this).closest("div").find(".remove-action-hidden").val(1);
+              $(this).closest("div").hide();
+            }
 
-    return false;
+            return false;
+          });          
+                    
+          $('.customize-controls').live('click', function(e){
+            
+            e.preventDefault();
+            $.nyroModalManual({
+              url: '#' + $(this).closest('fieldset').find('div.action-control-preview').attr('id'),
+              endFillContent: function(modal, settings){
+                //$('#nyroModalContent').append("<p id='guigoguigo'>fwefwefef</p>");
+                
+              },              
+              endRemove : function(modal, settings){
+              
+                
+              }
+            });
+            
+            return false;
           });
 
-          function showRange(select){
-          select = $(select);
-          dd = select.closest("dd").next("dd");
-          if(select.val() == "range")
-         dd.removeClass("hidden");
-          else
-          dd.addClass("hidden");
+          function showRange(select)
+          {
+            select = $(select);
+            dd = select.closest("dd").next("dd");
+            if(select.val() == "range")
+              dd.removeClass("hidden");
+            else
+              dd.addClass("hidden");
           }
+          
         <% end %>
         
         <%= render :partial => "actions/actions_form", :locals => {:device_form => device_form,
@@ -64,4 +84,10 @@
 <% content_for :sidebar do %>
   <%= render :partial => "find_actions_sidebar", :locals =>{:user => @user, :house => @house, :device => @device} %>
   <%= required_fields_help %>
+<% end %>
+
+<%= javascript_include_tag 'jquery.nyroModal-1.6.2' %>
+
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'ui-lightness/jquery-ui-1.8.1.custom', 'nyromodal/nyroModal.full' %>
 <% end %>

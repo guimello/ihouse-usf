@@ -4,6 +4,13 @@
     <legend>
       <%= awesome_button t(:remove, :scope => :form), :cross, :confirm_message => t(:remove, :scope => [:form, :hints]), :class => "red smallest #{(form.object.new_record?) ? 'remove-new-action' : 'remove-existing-action'}" %>
     </legend>
+    
+    <div class ='float-right'>
+      <%= link_to t(:label, :scope => [:action, :customize_controls]), '#',
+            :class => 'icon customize-action customize-controls title-me',
+            :title => t(:hint, :scope => [:action, :customize_controls]) %>
+    </div>
+    <div class='clear'></div>
 
     <dl>
       <dt><%= form.label :name, t(:label, :scope => [:action, :name]) %></dt>
@@ -20,15 +27,22 @@
       <dd class="range_values <%=(form.object.validates_range?) ? "" : "hidden" %>">
         <div>
           <div class="float-left center indented-10" style="margin-right: 10px">
-  <%= form.label :range_min, t(:label, :scope => [:action, :range_min]), :class => "bold required" %>
-  <%= form.text_field :range_min, :class => "small" %>
+            <%= form.label :range_min, t(:label, :scope => [:action, :range_min]), :class => "bold required" %>
+            <%= form.text_field :range_min, :class => "small" %>
           </div>
           <div class="float-left center">
-  <%= form.label :range_max, t(:label, :scope => [:action, :range_max]), :class => "bold required" %>
-  <%= form.text_field :range_max, :class => "small" %>
+            <%= form.label :range_max, t(:label, :scope => [:action, :range_max]), :class => "bold required" %>
+            <%= form.text_field :range_max, :class => "small" %>
           </div>
         </div>        
       </dd>
+      
+      <dd>
+        <div class='action-control-preview display-none' id='preview_<%= rand.to_s.gsub '.', '_' %>'>
+          <div class='clear'></div>
+          <%= action_control form.object %>          
+        </div>
+      </dd>      
     </dl>
 
   </fieldset>

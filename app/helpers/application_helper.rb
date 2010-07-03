@@ -183,7 +183,7 @@ module ApplicationHelper
     end
   end
 
-  def action_control(actions)    
+  def action_control(actions, options = {})    
     actions = [actions] if actions.is_a?(Action)
     return nil if actions.empty?  
 
