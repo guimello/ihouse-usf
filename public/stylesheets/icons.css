@@ -487,3 +487,8 @@
 {
           background-image: url(../images/icons/Fan_16x16.png);
 }
+
+.icon.customize-action
+{
+  background-image: url(../images/icons/silk/application_go.png);
+}
