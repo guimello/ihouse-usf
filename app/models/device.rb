@@ -1,7 +1,5 @@
-require "ostruct"
-
 class Device < ActiveRecord::Base
-  include Known::Devices
+  include Known::Devices 
   
   belongs_to :house  
   has_one :user, :through => :house
@@ -38,23 +36,24 @@ class Device < ActiveRecord::Base
     true
   end
 
-  serialize :custom  
+  act_as_virtual :custom
+#  serialize :custom  
 
-  def after_initialize
-    self.custom = OpenStruct.new((custom.kind_of?(OpenStruct)) ? custom.marshal_dump : custom)
-  end
+#  def after_initialize
+#    self.custom = OpenStruct.new((custom.kind_of?(OpenStruct)) ? custom.marshal_dump : custom)
+#  end
 
-  before_validation :convert_custom_attributes_to_hash
-  after_validation :convert_custom_attributes_to_ostruct
+#  before_validation :convert_custom_attributes_to_hash
+#  after_validation :convert_custom_attributes_to_ostruct
 
-  
-  def convert_custom_attributes_to_hash
-    self.custom = custom.marshal_dump if custom.kind_of? OpenStruct
-  end
+#  
+#  def convert_custom_attributes_to_hash
+#    self.custom = custom.marshal_dump if custom.kind_of? OpenStruct
+#  end
 
-  def convert_custom_attributes_to_ostruct
-    self.custom = OpenStruct.new(custom) if custom.kind_of? Hash
-  end
+#  def convert_custom_attributes_to_ostruct
+#    self.custom = OpenStruct.new(custom) if custom.kind_of? Hash
+#  end
 
   before_save :reset_display_icon
 
