@@ -52,4 +52,10 @@ class Action < ActiveRecord::Base
   def validates_range?
     [ActionTypes::RANGE].include? action_type
   end
+  
+  attr_writer :temp_id
+  
+  def temp_id
+    (@temp = rand.to_s.gsub('.','_') if @temp.nil?) && @temp
+  end
 end

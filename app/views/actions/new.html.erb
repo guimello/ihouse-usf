@@ -66,9 +66,9 @@
             select = $(select);
             dd = select.closest("dd").next("dd");
             if(select.val() == "range")
-              dd.removeClass("hidden");
+              dd.slideDown();
             else
-              dd.addClass("hidden");
+              dd.slideUp();
           }
           
         <% end %>
@@ -89,5 +89,5 @@
 <%= javascript_include_tag 'jquery.nyroModal-1.6.2' %>
 
 <% content_for :head do %>
-  <%= stylesheet_link_tag 'ui-lightness/jquery-ui-1.8.1.custom', 'nyromodal/nyroModal.full' %>
+  <%= stylesheet_link_tag 'ui-lightness/jquery-ui-1.8.1.custom', 'nyromodal/nyroModal' %>
 <% end %>

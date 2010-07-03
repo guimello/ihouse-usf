@@ -196,13 +196,13 @@ module ApplicationHelper
     end
 
     all_actions.each do |loop_actions|
-      html.div :style => "text-align: center" do
-        html.table :class => "actions-table" do
+      html.div :style => 'text-align: center' do
+        html.table :class => 'actions-table' do
           html.thead do
             html.tr do
               loop_actions.each do |action|
-                html.th :id => "handle_head_#{action.id}" do
-                  html << ""
+                html.th :id => "handle_head_#{(action.id) ? action.id : action.temp_id}" do
+                  html << ''
                 end
               end
             end
@@ -211,8 +211,8 @@ module ApplicationHelper
           html.tfoot do
             html.tr do
               loop_actions.each do |action|
-                html.td :id => "handle_foot_#{action.id}" do
-                  html << ""
+                html.td :id => "handle_foot_#{(action.id) ? action.id : action.temp_id}" do
+                  html << ''
                 end
               end
             end
@@ -221,14 +221,14 @@ module ApplicationHelper
           html.tbody do
             html.tr do
               loop_actions.each do |action|
-                id = "handle_#{action.id}"
-                html.td :class => "center" do
+                id = "handle_#{(action.id) ? action.id : action.temp_id}"
+                html.td :class => 'center' do
                   if action.know?
                     html << self.send(action.known_action.handle[:jquery_method], action)
                     html << render(:partial => "actions/handle/#{action.known_action.handle[:js_partial]}",
                                                       :locals => {:action => action})
                   else
-                    html << "unknown todo"
+                    html << 'unknown todo'
                   end
                 end                
               end
@@ -238,36 +238,36 @@ module ApplicationHelper
       end
     end
 
-    html.div :class => "clear" do
-      html << ""
+    html.div :class => 'clear' do
+      html << ''
     end    
 
   end
 
   def jquery_div(action)
     html = Builder::XmlMarkup.new
-    options = {:class => "center margin-auto", :style => "text-align: center"}
+    options = {:class => 'center margin-auto', :style => 'text-align: center'}
     if action.known_action.handle.key? :html_options_for_jquery_div
-      options = action.known_action.handle[:html_options_for_jquery_div].merge(options) {|key, old, new| old + " " + new}
+      options = action.known_action.handle[:html_options_for_jquery_div].merge(options) {|key, old, new| old + ' ' + new}
     end
-    options = options.merge(:id => "handle_#{action.id}")
+    options = options.merge(:id => "handle_#{(action.id) ? action.id : action.temp_id}")
 
     html.div options do
-      html << ""
+      html << ''
     end
   end
 
   def jquery_checkbox_button(action)
     html = Builder::XmlMarkup.new
-    options = {:class => "center margin-auto", :style => "text-align: center"}
+    options = {:class => 'center margin-auto', :style => 'text-align: center'}
     if action.known_action.handle.key? :html_options_for_div_checkbox_button
       options = action.known_action.handle[:html_options_for_div_checkbox_button].merge(options) {|key, old, new| old + " " + new}
     end
     
-    id = "handle_#{action.id}"
+    id = "handle_#{(action.id) ? action.id : action.temp_id}"
     html.div options do
-      html << label_tag(id,"")
-      html << check_box_tag("", 1, nil, :id => id)# change nil by the real state on/off
+      html << label_tag(id,'')
+      html << check_box_tag('', 1, nil, :id => id)# change nil by the real state on/off
     end
   end  
 end
