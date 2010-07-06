@@ -5,11 +5,7 @@ class ActionsController < ApplicationController
     @device = @house.devices.find params[:device_id]
   end
 
-  def new
-    @device.actions.each do |a|
-      puts a.action_type
-    end
-  end
+  def new;end;
 
   def create
     if @device.update_attributes params[:device]

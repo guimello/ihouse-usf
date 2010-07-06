@@ -2,6 +2,7 @@ class CreateSchedules < ActiveRecord::Migration
   def self.up
     create_table :schedules do |t|
       t.references :action,   :null => false, :foreign_key => {:dependent => :delete}
+      t.text :timing, :null => false
       t.timestamps
     end
   end

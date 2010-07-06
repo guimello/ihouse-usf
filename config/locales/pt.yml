@@ -240,6 +240,11 @@ pt:
         range_min_must_be_less_than_range_max: "deve ser menor que max"
         range_max_must_be_greater_than_range_min: "deve ser maior que min"
   
+  schedule:
+    one: Agendamento
+    other: Agendamentos
+    add_edit_schedule: Gerencie os agendamentos
+  
   form:
     login: "Entrar"
     submit: "Enviar"

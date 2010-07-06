@@ -240,6 +240,11 @@ en:
         range_min_must_be_less_than_range_max: "must be less than range max"
         range_max_must_be_greater_than_range_min: "must be grater than range min"
   
+  schedule:
+    one: Schedule
+    other: Schedules
+    add_edit_schedule: Manage schedules
+  
   form:
     login: "Login"
     submit: "Submit"
