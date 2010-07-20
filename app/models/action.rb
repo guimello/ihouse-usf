@@ -1,6 +1,6 @@
 class Action < ActiveRecord::Base
   include Known::Actions
-  include SerialActions
+  include Serial::Actions
   
   act_as_virtual :handle
   

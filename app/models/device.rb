@@ -61,32 +61,6 @@ class Device < ActiveRecord::Base
     custom.delete_field(:display_icon) if custom.display_icon == default_display_icon
   end
 
-  #def after_initialize
-    #self.custom = OpenStruct.new(custom)
-    
-  #end
-
-#  serialize :custom
-#  #after_initialize serialized_attr_accessor(:icon)
-#  #after_initialize custom = Hash.new if custom.nil?
-#  def after_initialize
-#    puts "fwefwfwe"
-#    self.custom = {}
-#  end
-#
-#  def self.serialized_attr_accessor(*args)
-#    args.each do |method_name|
-#      method_declarations = <<STRING
-#        def #{method_name}
-#          custom[:#{method_name}]
-#        end
-#        def #{method_name}=(value)
-#          self.custom[:#{method_name}] = value
-#        end
-#STRING
-#      eval method_declarations
-#    end
-#  end
-#
-#  serialized_attr_accessor :icon
+  ################################################################################
+  named_scope :query_states, :select => :query_state
 end
