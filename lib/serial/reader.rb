@@ -4,7 +4,7 @@ require 'serialport'
 ################################################################################
 module Serial
   ################################################################################
-  class Simulator   
+  class Reader   
     
     ################################################################################
     attr_accessor :serial
@@ -18,10 +18,12 @@ module Serial
     ################################################################################
     def listen
       loop do
-        parser = Parser.new :query => @serial.gets        
-        simulate :device_identification => parser.device_identification,
-                 :action_command => parser.action_command,
-                 :command_type => parser.command_type
+        Thread.new self, @serial.gets do |reader, message|
+          parser = Parser.new :query => message        
+          reader.simulate :device_identification => parser.device_identification,
+                   :action_command => parser.action_command,
+                   :command_type => parser.command_type
+        end        
       end
     end
     
