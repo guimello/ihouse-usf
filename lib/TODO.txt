@@ -1,0 +1,2 @@
+# TODO: create table where all web actions will be put in a pool that the client will be searching for activities
+# to perform. There will be a workflow, something like 'new', 'waiting response' and 'done'
