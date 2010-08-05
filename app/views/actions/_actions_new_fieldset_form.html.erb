@@ -21,7 +21,11 @@
       <dt><%= form.label :command, t(:label, :scope => [:action, :command]), :class => "required" %></dt>
       <dd class="hint"><%= t :hint, :scope => [:action, :command] %></dd>
       <dd><%= form.text_field :command, :class => "title-me", :title => t(:title, :scope => [:action, :command]) %></dd>
-                  
+      
+	  <dt><%= form.label :label, t(:label, :scope => [:action, :query_state]), :class => 'required' %></dt>
+      <dd class='hint'><%= t :hint, :scope => [:action, :query_state] %></dd>
+      <dd><%= form.text_field :query_state, :class => 'small title-me', :title => t(:title, :scope => [:action, :query_state]) %></dd>
+            
       <dd>
         <div class='action-control-preview display-none' id='preview_<%= form.object.temp_id.to_s %>'>
           <div class='clear'></div>

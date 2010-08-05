@@ -172,9 +172,6 @@ pt:
     name:
       label: "Nome"
       title: "Nomeie o dispositivo para melhor descrevê-lo"
-    query_state:
-      label: "Código de estado"
-      title: "Código de estado é um campo avançado, se já estiver preenchido, porque você clicou em 'Procurar dispositivos', você não precisa modificá-lo"
     known:
       lamp:
         name: "Lâmpada"
@@ -215,6 +212,10 @@ pt:
       label: "Comando"
       hint: "Este é o comando que será enviado para o controlador do disposito, talvez você não precise mudá-lo"
       title: "Só mude este campo caso tenha certeza do que está fazendo..."
+    query_state:
+      label: Código de estado
+      hint: É usado para obter o estado atual do dispositivo em relação a está ação
+      title: Somente mude este campo se você tem certeza do que está fazendo
     action_type:
       label: "Tipo"
       hint: "Selecione o tipo de ação do comando, talvez você não precise mudá-lo"

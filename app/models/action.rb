@@ -8,7 +8,7 @@ class Action < ActiveRecord::Base
   #belongs_to  :voice_command
   has_many    :schedules  
 
-  validates_presence_of :command, :action_type
+  validates_presence_of :command, :action_type, :query_state
   validates_uniqueness_of :command, :scope => [:device_id]
   validates_inclusion_of :action_type, :in => [Action::ActionTypes::TURN_ON_OFF, Action::ActionTypes::RANGE]
   validates_presence_of :name, :unless => Proc.new {|action| action.know?}

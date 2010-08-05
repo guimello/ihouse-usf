@@ -1,5 +1,5 @@
 class Device < ActiveRecord::Base
-  include Known::Devices 
+  include Known::Devices
   
   belongs_to :house  
   has_one :user, :through => :house
@@ -9,7 +9,7 @@ class Device < ActiveRecord::Base
   has_many :schedules, :through => :actions
   #has_many :voice_commands, :through => :actions
 
-  validates_presence_of :identification, :query_state, :device_class
+  validates_presence_of :identification, :device_class
   validates_presence_of :name, :unless => Proc.new {|device| device.know?}
   validates_uniqueness_of :identification, :scope => [:house_id]
 
@@ -29,9 +29,8 @@ class Device < ActiveRecord::Base
 
   def enable_advanced?(field)
     return false if ["name", "room"].include? field.to_s or
-    device_class.blank? or identification.blank? or query_state.blank? or
-    device_class != device_class_was or identification != identification_was or
-    query_state != query_state_was
+    device_class.blank? or identification.blank? or
+    device_class != device_class_was or identification != identification_was
 
     true
   end

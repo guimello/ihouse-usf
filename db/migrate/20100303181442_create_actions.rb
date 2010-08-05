@@ -8,6 +8,7 @@ class CreateActions < ActiveRecord::Migration
       t.integer :range_min,  :null => true #menor valor possível se possuir faixa de valores
       t.integer :range_max,    :null => true #maior valor possível se possuir faixa de valores
       t.string  :name, :null => true #to change default name (turn on, apply, start)
+      t.string :query_state,    :null => false
       t.timestamps
     end
   end
