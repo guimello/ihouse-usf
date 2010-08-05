@@ -12,6 +12,9 @@ module Serial
       
         ################################################################################
         def state
+          communication_key = Serial::Writer.write serial_query_state_string 
+          
+          
           SerialPort.new '/dev/pts/5', 9600, 8, 1, SerialPort::NONE do |serial|
             serial.puts "#{device.query_state}!#{device.identification}!#{command}"
           end

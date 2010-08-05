@@ -7,19 +7,14 @@ module Serial
   class Writer   
     
     ################################################################################
-    attr_accessor :serial, :communication_key
-    
-    ################################################################################
-    def initialize(options = {})      
-      @house = options[:house]
-    end
-    
-    ################################################################################
-    def write(message)
-      SerialPort.new '/dev/pts/4', 9600, 8, 1, SerialPort::NONE do |serial|
-        serial.puts "#{@communication_key = Writer.generate_communication_key}!#{message}"
+    def self.write(message)
+      communication_key = Writer.generate_communication_key
+      
+      SerialPort.new $serial_port_writer, 9600, 8, 1, SerialPort::NONE do |serial|
+        serial.puts "#{communication_key}!#{message}"
       end
-      @communication_key
+      
+      communication_key
     end
     
     ################################################################################
