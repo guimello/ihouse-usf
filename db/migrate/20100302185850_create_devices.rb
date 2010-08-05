@@ -5,8 +5,7 @@ class CreateDevices < ActiveRecord::Migration
       t.string :device_class, :null => false
       t.string  :identification,          :null => false
       t.string  :room,          :null => false
-      t.string  :name,   :null => true
-      t.string :query_state,    :null => false
+      t.string  :name,   :null => true      
       t.timestamps
     end
   end

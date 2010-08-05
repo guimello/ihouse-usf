@@ -3,13 +3,15 @@ class InsertKnownActions < ActiveRecord::Migration
     KnownAction.transaction do
       KnownAction.create  :command => "a001",
                                     :action_type => Action::ActionTypes::TURN_ON_OFF,
+                                    :query_state => 'a001_state',
                                     :handle => { :jquery_method => "jquery_checkbox_button",
                                                         :js_partial => "toggle_me_light",
                                                         :translation_keys => {:on => "state_on", :off => "state_off"}
                                                         }
 
       KnownAction.create  :command => "b001",
-                                    :action_type => Action::ActionTypes::RANGE,                                    
+                                    :action_type => Action::ActionTypes::RANGE,
+                                    :query_state => 'b001_state',                                    
                                     :handle => {:html_options_for_jquery_div => {:style => "height: 200px;"},
                                                       :jquery_method => "jquery_div",
                                                       :js_partial => "slide_me_vertical"
@@ -17,6 +19,7 @@ class InsertKnownActions < ActiveRecord::Migration
 
       KnownAction.create  :command => "b002",
                                     :action_type => Action::ActionTypes::RANGE,
+                                    :query_state => 'b002_state',
                                     :handle => {:html_options_for_jquery_div => {:style => "height: 200px;"},
                                                       :jquery_method => "jquery_div",
                                                       :js_partial => "slide_me_vertical"

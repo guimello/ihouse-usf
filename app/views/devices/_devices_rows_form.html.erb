@@ -13,9 +13,6 @@
     <%= text_field_for_device form, :identification, :class => "small enable-disable-advanced identification-field" %>
   </td>
   <td>
-    <%= text_field_for_device form, :query_state, :class => "small enable-disable-advanced query-state-field" %>
-  </td>
-  <td>
     <%= text_field_for_device form, :name, :class => "small name-field", :value => (form.object.name.blank?) ? form.object.default_name : form.object.name %>
   </td>  
   <td>

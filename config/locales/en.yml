@@ -172,9 +172,6 @@ en:
     name:
       label: "Name"
       title: "Give your device a name that best describes it"
-    query_state:
-      label: "State code"
-      title: "State code is a advanced field, if it's already filled out by the discover button you don't need to change it"
     known:
       lamp:
         name: "Lights"
@@ -212,6 +209,10 @@ en:
       label: "Command"
       hint: "This is the command that will be sent to the device controller, maybe you don't need to change it"
       title: "Only change this if you know what you're doing..."
+    query_state:
+      label: State code
+      hint: It's used to query the device's state according to this action
+      title: Only change this if you know what you're doing...
     action_type:
       label: "Type"
       hint: "Choose the action type, maybe you don't need to change it"

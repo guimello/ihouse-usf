@@ -2,7 +2,6 @@
 
  var tr = $("#<%= @input_id %>").closest("tr");
 <% unless @known_device.nil? %>
-  tr.find(".query-state-field").val("<%= @known_device.query_state %>");
   tr.find(".name-field").val("<%= @known_device.name %>");
   <% icon = @known_device.display_icon %>
 <% end %>
