@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'serialport'
 
-sp = SerialPort.new '/dev/pts/2', 9600, 8, 1, SerialPort::NONE
+sp = SerialPort.new '/dev/ttys003', 9600, 8, 1, SerialPort::NONE
 
 puts 'lets read'
 while true do
