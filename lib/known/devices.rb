@@ -14,7 +14,7 @@ module Known
 
         def default_display_icon
           return known_device.display_icon if know?
-          "unkown-device"
+          "unknown-device"
         end
 
         def display_icon
@@ -23,7 +23,7 @@ module Known
           elsif  know?
             known_device.display_icon
           else
-            "unkown-device"
+            "unknown-device"
           end
         end
 

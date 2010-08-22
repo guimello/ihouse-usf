@@ -14,6 +14,9 @@ en:
   logout: "logout"  
   created_at: "Created on"
   advanced: "advanced"
+  ok: Ok
+  preview: Preview
+  choose_icons: Choose icons
 
   update:
     one: "Update"
@@ -216,6 +219,8 @@ en:
       label: State code
       hint: It's used to query the device's state according to this action
       title: Only change this if you know what you're doing...
+    orientation:
+      label: Orientation
     action_type:
       label: "Type"
       hint: "Choose the action type, maybe you don't need to change it"
@@ -228,11 +233,11 @@ en:
     range_max:
       label: "max"
     known:
-      a001:
+      command_1:
         name: "Turn on/off"
-      b001:
+      command_2:
         name: "Volume +/-"
-      b002:
+      command_3:
         name: "Speed +/-"
     messages:
       success:

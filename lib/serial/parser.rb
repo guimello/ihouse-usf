@@ -7,7 +7,7 @@ module Serial
     attr_accessor :query, :device_identification, :action_command, :command_type
     
     ################################################################################
-    def initialize(options => {})
+    def initialize(options = {})
       @query = options[:query]
       parse
     end  

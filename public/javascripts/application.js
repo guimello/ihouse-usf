@@ -95,6 +95,11 @@ function allAvailableIcons()
           return ["lights", "television", "fan", "star", "lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan"];
 }
 
+function allToggleIcons()
+{
+          return ["lights-on", "lights-off", "fan", "star", "television", "add"];
+}
+
 jQuery.fn.appendMessage = function(o){
   var options = jQuery.extend({
           tag: "span",

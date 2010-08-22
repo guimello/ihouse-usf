@@ -7,9 +7,9 @@ class Device < ActiveRecord::Base
   accepts_nested_attributes_for :actions, :allow_destroy => true
 
   has_many :schedules, :through => :actions
-  #has_many :voice_commands, :through => :actions
 
   validates_presence_of :identification, :device_class
+  validates_numericality_of :identification, :only_integer => true
   validates_presence_of :name, :unless => Proc.new {|device| device.know?}
   validates_uniqueness_of :identification, :scope => [:house_id]
 

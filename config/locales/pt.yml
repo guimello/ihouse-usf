@@ -14,6 +14,9 @@ pt:
   logout: "sair"  
   created_at: "Criado em"
   advanced: "avançado"
+  ok: Ok
+  preview: Pré-visualizar
+  choose_icons: Escolha os ícones
 
   update:
     one: "Atualização"
@@ -216,6 +219,8 @@ pt:
       label: Código de estado
       hint: É usado para obter o estado atual do dispositivo em relação a está ação
       title: Somente mude este campo se você tem certeza do que está fazendo
+    orientation:
+      label: Orientação
     action_type:
       label: "Tipo"
       hint: "Selecione o tipo de ação do comando, talvez você não precise mudá-lo"

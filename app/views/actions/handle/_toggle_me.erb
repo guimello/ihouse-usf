@@ -1,0 +1,27 @@
+<script>
+  <% action_id = (action.id) ? action.id : action.temp_id %>
+  <% current_state_and_code = action.state_and_code %>
+  <% icon_on = (action.handle.display_icon_on.blank?) ? action.known_action.handle[:display_icon_on] : action.handle.display_icon_on %>
+  <% icon_off = (action.handle.display_icon_off.blank?) ? action.known_action.handle[:display_icon_off] : action.handle.display_icon_off %>
+    
+  $("#handle_<%= action_id %>").attr("checked", <%= (current_state_and_code[:code] == "state_on") ? true : false %>);
+
+  $("#handle_<%= action_id %>").button({ icons: { primary: "<%= (current_state_and_code[:code] == "state_on") ? "icon #{icon_on}" : "icon #{icon_off}" %>"},
+        label: "<%= current_state_and_code[:state] %>"})
+      .click(function(){
+          $("#handle_head_<%= action_id %>").html('' + $(this).is(":checked"));
+          var icons = "icon <%= icon_on %>";
+          var label = "<%= action.label_translation :state_on %>";
+          if(!$(this).is(":checked"))
+          {
+            icons = "icon <%= icon_off %>";
+            label = "<%= action.label_translation :state_off %>";
+          }
+
+          $(this).button("option", "icons", {primary: icons}).button("option", "label", label);
+      });
+  
+
+  $("#handle_head_<%= action_id %>").html("<%= current_state_and_code[:state] %>");//add the real state here
+  $("#handle_foot_<%= action_id %>").html("<%= action.to_s.humanize %>");
+</script>

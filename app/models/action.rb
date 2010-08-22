@@ -5,11 +5,12 @@ class Action < ActiveRecord::Base
   act_as_virtual :handle
   
   belongs_to  :device
-  #belongs_to  :voice_command
   has_many    :schedules  
 
   validates_presence_of :command, :action_type, :query_state
   validates_uniqueness_of :command, :scope => [:device_id]
+  validates_numericality_of :command, :only_integer => true
+  validates_numericality_of :query_state, :only_integer => true
   validates_inclusion_of :action_type, :in => [Action::ActionTypes::TURN_ON_OFF, Action::ActionTypes::RANGE]
   validates_presence_of :name, :unless => Proc.new {|action| action.know?}
   validates_presence_of :range_min, :range_max, :if => Proc.new {|action| action.validates_range?}
@@ -52,10 +53,31 @@ class Action < ActiveRecord::Base
   def validates_range?
     [ActionTypes::RANGE].include? action_type
   end
+
+  def range?
+    ActionTypes::RANGE == action_type
+  end
+
+  def turn_on_off?
+    ActionTypes::TURN_ON_OFF == action_type
+  end
+
+  def customizing?
+    known_action.action_type != action_type || (range? && known_action.handle[:orientation] != handle.orientation)
+  end
+
+  def slider_orientation
+    debugger
+    (customizing?) ? handle.orientation : known_action.handle[:orientation]
+  end
+
+  def label_translation(which)
+    I18n.t((!customizing?) ? known_action.handle[:translation_keys][which.to_sym].to_sym : which.to_sym, :scope => [:action, :device, action_type.to_sym, :state])
+  end
   
   attr_writer :temp_id
   
   def temp_id
-    (@temp = rand.to_s.gsub('.','_') if @temp.nil?) && @temp
+    (@temp_id.blank?) ? (@temp_id = rand.to_s.gsub('.','')) : @temp_id
   end
 end

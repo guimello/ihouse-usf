@@ -9,31 +9,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100703180244) do
+ActiveRecord::Schema.define(:version => 20100821141732) do
 
   create_table "actions", :force => true do |t|
-    t.integer  "device_id",        :null => false
-    t.integer  "voice_command_id"
-    t.string   "command",          :null => false
-    t.string   "action_type",      :null => false
+    t.integer  "device_id",   :null => false
+    t.integer  "command",     :null => false
+    t.string   "action_type", :null => false
     t.integer  "range_min"
     t.integer  "range_max"
     t.string   "name"
+    t.integer  "query_state", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "handle"
   end
 
   add_index "actions", ["device_id"], :name => "device_id"
-  add_index "actions", ["voice_command_id"], :name => "voice_command_id"
 
   create_table "devices", :force => true do |t|
     t.integer  "house_id",       :null => false
     t.string   "device_class",   :null => false
-    t.string   "identification", :null => false
+    t.integer  "identification", :null => false
     t.string   "room",           :null => false
     t.string   "name"
-    t.string   "query_state",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "custom"
@@ -52,14 +50,14 @@ ActiveRecord::Schema.define(:version => 20100703180244) do
   add_index "houses", ["user_id"], :name => "user_id"
 
   create_table "known_actions", :force => true do |t|
-    t.string "command",     :null => false
-    t.string "action_type", :null => false
-    t.text   "handle",      :null => false
+    t.integer "command",     :null => false
+    t.string  "action_type", :null => false
+    t.integer "query_state", :null => false
+    t.text    "handle",      :null => false
   end
 
   create_table "known_devices", :force => true do |t|
     t.string "device_class", :null => false
-    t.string "query_state",  :null => false
     t.string "display_icon", :null => false
   end
 
@@ -75,11 +73,20 @@ ActiveRecord::Schema.define(:version => 20100703180244) do
 
   create_table "schedules", :force => true do |t|
     t.integer  "action_id",  :null => false
+    t.text     "timing",     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "schedules", ["action_id"], :name => "action_id"
+
+  create_table "tasks", :force => true do |t|
+    t.integer "key",       :null => false
+    t.integer "house_id",  :null => false
+    t.text    "operation", :null => false
+  end
+
+  add_index "tasks", ["house_id"], :name => "house_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                              :null => false
@@ -94,14 +101,7 @@ ActiveRecord::Schema.define(:version => 20100703180244) do
     t.datetime "updated_at"
   end
 
-  create_table "voice_commands", :force => true do |t|
-    t.string   "speak",      :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   add_foreign_key "actions", "devices", :name => "actions_ibfk_1", :dependent => :delete
-  add_foreign_key "actions", "voice_commands", :name => "actions_ibfk_2", :dependent => :nullify
 
   add_foreign_key "devices", "houses", :name => "devices_ibfk_1", :dependent => :delete
 
@@ -110,5 +110,7 @@ ActiveRecord::Schema.define(:version => 20100703180244) do
   add_foreign_key "logs", "houses", :name => "logs_ibfk_1", :dependent => :delete
 
   add_foreign_key "schedules", "actions", :name => "schedules_ibfk_1", :dependent => :delete
+
+  add_foreign_key "tasks", "houses", :name => "tasks_ibfk_1", :dependent => :delete
 
 end

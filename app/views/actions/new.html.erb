@@ -46,6 +46,43 @@
           $('.customize-controls').live('click', function(e){
             
             e.preventDefault();
+
+            fieldset = $(this).closest('fieldset');
+
+            $.ajax({  async: false,
+                      cache: false,
+                      data: 'command=' + $('.action-command', fieldset).val(),
+                      dataType: 'json',
+                      url: '<%= find_known_actions_url :format => :json%>',
+                      success: function(response){
+                        if(response == null)
+                          return;
+                          
+                        var known_action = response.known_action;
+
+                        if(known_action.action_type == 'turn_on_off')
+                        {
+                          $('.hidden-action-icon-on',fieldset).val(known_action.handle.display_icon_on);
+                          $('.hidden-action-icon-off',fieldset).val(known_action.handle.display_icon_off);
+
+                          var action_on = $('.action-icon-on',fieldset);
+                          var classes = action_on.attr('class').split(' ');
+                          action_on.removeClass(classes[classes.length - 1]).addClass(known_action.handle.display_icon_on);
+
+                          var action_off = $('.action-icon-off',fieldset);
+                          var classes = action_off.attr('class').split(' ');
+                          action_off.removeClass(classes[classes.length - 1]).addClass(known_action.handle.display_icon_off);
+                        }
+                        else
+                        {
+                          $('.action-range-min',fieldset).val(known_action.handle.range_min);
+                          $('.action-range-max',fieldset).val(known_action.handle.range_max);
+                        }
+
+                        $('.action-type', fieldset).val(known_action.action_type).trigger('change');
+                        $('.preview-action-control', fieldset).trigger('click');
+                      }});
+
             $.nyroModalManual({
               url: '#' + $(this).closest('fieldset').find('div.action-control-preview').attr('id'),
               endFillContent: function(modal, settings){
@@ -61,14 +98,45 @@
             return false;
           });
 
-          function showRange(select)
+          $('.preview-action-control').live('click', function(){
+            fieldset = $('#fieldset_' + $(this).attr('id').split('_')[1])
+            action_url = '?name=' + $('.action-name', fieldset).val();
+            action_url += '&command=' + $('.action-command', fieldset).val();
+
+            customize_fieldset = $(this).closest('fieldset');
+            action_url += '&action_type=' + $('.action-type', customize_fieldset).val();
+            action_url += '&handle_orientation=' + $('.action-handle-orientation', customize_fieldset).val();
+            action_url += '&handle_display_icon_on=' + $('.hidden-action-icon-on', customize_fieldset).val();
+            action_url += '&handle_display_icon_off=' + $('.hidden-action-icon-off', customize_fieldset).val();
+            action_url += '&range_min=' + $('.action-range-min', customize_fieldset).val();
+            action_url += '&range_max=' + $('.action-range-max', customize_fieldset).val();
+            action_url += '&temp_id=' + $(this).attr('id').split('_')[1];
+            
+            //$.getScript('<%= preview_user_house_device_actions_url(@user, @house, @device)%>' + action_url);
+
+            $.ajax({
+                    url: '<%= preview_user_house_device_actions_url(@user, @house, @device)%>' + action_url,
+                    dataType: 'script',
+                    cache: false
+                  });
+            
+            return false;
+          });
+
+          $('.action-type').live('change',showRange);
+
+          function showRange()
           {
-            select = $(select);
-            dd = select.closest("dd").next("dd");
-            if(select.val() == "range")
-              dd.slideDown();
+            if($(this).val() == "range")
+            {
+              $('.turn_on_off_values', $(this).closest("dl")).hide();
+              $('.range_values', $(this).closest("dl")).slideDown();
+            }
             else
-              dd.slideUp();
+            {
+              $('.range_values', $(this).closest("dl")).hide();
+              $('.turn_on_off_values', $(this).closest("dl")).slideDown();
+            }
           }
           
         <% end %>

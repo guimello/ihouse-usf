@@ -224,8 +224,13 @@ module ApplicationHelper
                 id = "handle_#{(action.id) ? action.id : action.temp_id}"
                 html.td :class => 'center' do
                   if action.know?
-                    html << self.send(action.known_action.handle[:jquery_method], action)
-                    html << render(:partial => "actions/handle/#{action.known_action.handle[:js_partial]}",
+                    #html << self.send(action.known_action.handle[:jquery_method], action)
+                    #html << render(:partial => "actions/handle/#{action.known_action.handle[:js_partial]}",
+                     #                                 :locals => {:action => action})
+
+                    html << self.send((action.range?) ? 'jquery_div' : 'jquery_checkbox_button', action)
+                    
+                    html << render(:partial => "actions/handle/#{(action.range?) ? 'slide_me' : 'toggle_me'}",
                                                       :locals => {:action => action})
                   else
                     html << 'unknown todo'
@@ -246,10 +251,10 @@ module ApplicationHelper
 
   def jquery_div(action)
     html = Builder::XmlMarkup.new
-    options = {:class => 'center margin-auto', :style => 'text-align: center'}
-    if action.known_action.handle.key? :html_options_for_jquery_div
-      options = action.known_action.handle[:html_options_for_jquery_div].merge(options) {|key, old, new| old + ' ' + new}
-    end
+    options = {:class => 'center margin-auto', :style => "text-align: center; #{(action.slider_orientation == 'vertical') ? 'height: 200px' : 'width: 200px'}"}
+    #if action.known_action.handle.key? :html_options_for_jquery_div
+      #options = action.known_action.handle[:html_options_for_jquery_div].merge(options) {|key, old, new| old + ' ' + new}
+    #end
     options = options.merge(:id => "handle_#{(action.id) ? action.id : action.temp_id}")
 
     html.div options do

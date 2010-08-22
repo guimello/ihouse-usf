@@ -1,7 +1,8 @@
 <div  class='indented-30 float-left' style='margin-right: 30px'>
   <%= form.hidden_field :_delete, :class => 'remove-action-hidden' %>
   <%= form.hidden_field :temp_id %>
-  <fieldset>
+  
+  <fieldset id='fieldset_<%= form.object.temp_id %>'>
     <legend>
       <%= awesome_button t(:remove, :scope => :form), :cross, :confirm_message => t(:remove, :scope => [:form, :hints]), :class => "red smallest #{(form.object.new_record?) ? 'remove-new-action' : 'remove-existing-action'}" %>
     </legend>
@@ -16,11 +17,11 @@
     <dl>
       <dt><%= form.label :name, t(:label, :scope => [:action, :name]) %></dt>
       <dd class="hint"><%= t :hint, :scope => [:action, :name] %></dd>
-      <dd><%= form.text_field :name, :value => (form.object.name.blank?) ? form.object.default_name : form.object.name %></dd>
+      <dd><%= form.text_field :name, :value => (form.object.name.blank?) ? form.object.default_name : form.object.name, :class => 'action-name' %></dd>
 
       <dt><%= form.label :command, t(:label, :scope => [:action, :command]), :class => "required" %></dt>
       <dd class="hint"><%= t :hint, :scope => [:action, :command] %></dd>
-      <dd><%= form.text_field :command, :class => "title-me", :title => t(:title, :scope => [:action, :command]) %></dd>
+      <dd><%= form.text_field :command, :class => 'title-me action-command', :title => t(:title, :scope => [:action, :command]) %></dd>
       
 	  <dt><%= form.label :label, t(:label, :scope => [:action, :query_state]), :class => 'required' %></dt>
       <dd class='hint'><%= t :hint, :scope => [:action, :query_state] %></dd>
@@ -32,49 +33,56 @@
           
           <div class='basic-form rounded medium' >
           
-            <fieldset>
-              <legend>Customize me i18n</legend>
+            <fieldset id='<%="customize_fieldset_#{form.object.temp_id}"%>'>
+              <legend><%= t(:label, :scope => [:action, :customize_controls]).humanize %></legend>
               
               <dl>
                 
                 <dt><%= form.label :action_type, t(:label, :scope => [:action, :action_type]), :class => 'required black' %></dt>
                 <dd class='hint'><%= t :hint, :scope => [:action, :action_type] %></dd>
-                <dd><%= form.select :action_type, Action.ACTION_TYPES,{},:onChange => "showRange(this);return false;", :class => "title-me", :title => t(:title, :scope => [:action, :action_type]) %></dd>
-                <dd class="range_values <%=(form.object.validates_range?) ? '' : 'display-none' %>">
+                <dd><%= form.select :action_type, Action.ACTION_TYPES,{}, :class => 'title-me action-type', :title => t(:title, :scope => [:action, :action_type]) %></dd>
+                <dd class="range_values <%=(form.object.range?) ? '' : 'display-none' %>">
                   <div>
                     <div class='float-left center indented-10' style='margin-right: 10px'>
                       <%= form.label :range_min, t(:label, :scope => [:action, :range_min]), :class => "black bold required" %>
-                      <%= form.text_field :range_min, :class => "small" %>
+                      <%= form.text_field :range_min, :class => 'small action-range-min' %>
                     </div>
                     <div class='float-left center'>
                       <%= form.label :range_max, t(:label, :scope => [:action, :range_max]), :class => "black bold required" %>
-                      <%= form.text_field :range_max, :class => 'small' %>
+                      <%= form.text_field :range_max, :class => 'small action-range-max' %>
                     </div>
                   </div>        
                 </dd>
                 
                 <% form.fields_for :handle, form.object.handle do |handle_form| %>               
-                  
-                  <dt class='range-control'><%= handle_form.label :orientation, 'orientation', :class => 'black' %></dt>
-                  <dd class='range-control'><%= handle_form.select :orientation, ['horizontal', 'vertical'] %></dd>
-                  
-                  <dt class='range-control'><%= handle_form.label :footer_label, 'footer label', :class => 'black' %></dt>
-                  <dd class='range-control'><%= handle_form.text_field :footer_label, :class => 'small' %></dd>
+                  <dd class="turn_on_off_values <%=(form.object.turn_on_off?) ? '' : 'display-none' %>">
+                    <div>
+                      <%= handle_form.hidden_field :display_icon_on, :class => "hidden-action-icon-on" %>
+                      <%= handle_form.hidden_field :display_icon_off, :class => "hidden-action-icon-off" %>
+                      <div class="float-left pointer-me action-icon action-icon-on icon <%= form.object.display_icon :on %>">&nbsp;</div>
+                      <div class="float-left pointer-me action-icon action-icon-off icon <%= form.object.display_icon :off %>">&nbsp;</div>
+                      <div class="float-left pointer-me action-icon"><%= t :choose_icons%></div>
+                      <div class="clear"></div>
+                    </div>
+                  </dd>
+
+                  <dt class='range-control'><%= handle_form.label :orientation, t(:label, :scope => [:action, :orientation]), :class => 'black' %></dt>
+                  <dd class='range-control'><%= handle_form.select :orientation, ['horizontal', 'vertical'],{}, :class => 'action-handle-orientation' %></dd>
                   
                 <% end %>
               </dl>
               
               <div class='float-right'>
-                <%= awesome_button 'preview', :star, :class => 'preview-action-control smallest' %>
-                <%= awesome_button 'oks', :tick, :class => 'nyroModalClose smallest' %>
+                <%= awesome_button t(:preview), :star, :class => 'preview-action-control smallest', :id => "preview_#{form.object.temp_id}" %>
+                <%= awesome_button t(:ok), :tick, :class => 'nyroModalClose smallest' %>
               </div>
               
               <div class='clear'></div>
               
               <dl>
                 
-                <dt>Preview</dt>
-                <dd>
+                <dt><%= t :preview %></dt>
+                <dd class='preview-space'>
                   <%= action_control form.object, :form => form %>
                 </dd>
               </dl>             
