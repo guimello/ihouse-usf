@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100821141732) do
+ActiveRecord::Schema.define(:version => 20100821143627) do
 
   create_table "actions", :force => true do |t|
     t.integer  "device_id",   :null => false
@@ -81,12 +81,15 @@ ActiveRecord::Schema.define(:version => 20100821141732) do
   add_index "schedules", ["action_id"], :name => "action_id"
 
   create_table "tasks", :force => true do |t|
-    t.integer "key",       :null => false
-    t.integer "house_id",  :null => false
-    t.text    "operation", :null => false
+    t.integer  "key",        :null => false
+    t.integer  "house_id",   :null => false
+    t.text     "operation",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "tasks", ["house_id"], :name => "house_id"
+  add_index "tasks", ["key"], :name => "index_tasks_on_key", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                              :null => false
