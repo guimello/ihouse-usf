@@ -63,7 +63,14 @@ en:
     required_fields_help:
       label: "Required fields"
       hint: "Fields marked with {{icon}} are required to successfully submit the form"
-    
+
+  task:
+    one: Task
+    other: Tasks
+    message:
+      error:
+        non_unique_key: Non-unique key
+
   user:
     new: "Create your account"
     edit: "Edit your profile"

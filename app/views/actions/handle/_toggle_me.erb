@@ -1,6 +1,6 @@
 <script>
   <% action_id = (action.id) ? action.id : action.temp_id %>
-  <% current_state_and_code = action.state_and_code %>
+  <% current_state_and_code = action.state %>
   <% icon_on = (action.handle.display_icon_on.blank?) ? action.known_action.handle[:display_icon_on] : action.handle.display_icon_on %>
   <% icon_off = (action.handle.display_icon_off.blank?) ? action.known_action.handle[:display_icon_off] : action.handle.display_icon_off %>
     

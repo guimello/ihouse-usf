@@ -1,0 +1,3 @@
+reader:
+  port: '/dev/ttys003'
+  simulate: true

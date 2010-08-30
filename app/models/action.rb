@@ -5,13 +5,14 @@ class Action < ActiveRecord::Base
   act_as_virtual :handle
   
   belongs_to  :device
+  has_one     :house, :through => :device
   has_many    :schedules  
 
   validates_presence_of :command, :action_type, :query_state
   validates_uniqueness_of :command, :scope => [:device_id]
   validates_numericality_of :command, :only_integer => true
   validates_numericality_of :query_state, :only_integer => true
-  validates_inclusion_of :action_type, :in => [Action::ActionTypes::TURN_ON_OFF, Action::ActionTypes::RANGE]
+  validates_inclusion_of :action_type, :in => [ActionTypes::TURN_ON_OFF, ActionTypes::RANGE]
   validates_presence_of :name, :unless => Proc.new {|action| action.know?}
   validates_presence_of :range_min, :range_max, :if => Proc.new {|action| action.validates_range?}
   validates_numericality_of :range_min, :range_max, :only_integer => true, :if => Proc.new {|action| action.validates_range?}
@@ -67,7 +68,6 @@ class Action < ActiveRecord::Base
   end
 
   def slider_orientation
-    debugger
     (customizing?) ? handle.orientation : known_action.handle[:orientation]
   end
 

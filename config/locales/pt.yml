@@ -64,6 +64,13 @@ pt:
       label: "Campos requeridos"
       hint: "Os campos marcados por {{icon}} são requiridos para que se envie com sucesso o formulário"
 
+  task:
+    one: Tarefa
+    other: Tarefas
+    message:
+      error:
+        non_unique_key: Chave não única
+
   user:
     new: "Cria sua conta"
     edit: "Edite seu perfil"

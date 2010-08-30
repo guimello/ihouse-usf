@@ -4,7 +4,7 @@ module Serial
   class Parser
   
     ################################################################################
-    attr_accessor :query, :device_identification, :action_command, :command_type
+    attr_reader :query, :key
     
     ################################################################################
     def initialize(options = {})
@@ -13,8 +13,8 @@ module Serial
     end  
     
     ################################################################################
-    def parse      
-      @command_type, @device_identification, @action_command = @query.split '!'
+    def parse
+      @key = @query.split('!')[0].sub '#', ''
     end
     
     ################################################################################

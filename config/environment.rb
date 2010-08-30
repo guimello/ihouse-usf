@@ -52,6 +52,5 @@ end
 #require "will_paginate"
 require 'extend_string'
 require 'serialport'
-require "#{Rails.root}/lib/serial/writer.rb"
 #
 #ActionMailer::Base.delivery_method = :smtp

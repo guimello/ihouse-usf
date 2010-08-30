@@ -1,25 +1,24 @@
 ################################################################################
-require 'serialport'
-
-################################################################################
 module Serial
   ################################################################################
   class Writer   
+
+    ################################################################################
+    # Attributes.
+    attr_reader :task
     
     ################################################################################
-    def self.write(message)
-      communication_key = Writer.generate_communication_key
-      
-      SerialPort.new $serial_port_writer, 9600, 8, 1, SerialPort::NONE do |serial|
-        serial.puts "#{communication_key}!#{message}"
-      end
-      
-      communication_key
+    def self.write(task)
+      serial_port = SerialPort.new self.port, 9600, 8, 1, SerialPort::NONE
+      puts task.operation.sent[:message]
+      serial_port.puts task.operation.sent[:message]
+      serial_port.close
     end
-    
+
     ################################################################################
-    def self.generate_communication_key
-      (t = Time.now.to_f.to_s.gsub('.','')).length < 15 ? t + ('0' * (15 - t.length)) : t
-    end   
+    def self.port
+      serial = YAML::load(File.read(File.dirname(__FILE__) + '/../../config/serial_writer.yml'))
+      serial['writer']['port']
+    end
   end
 end

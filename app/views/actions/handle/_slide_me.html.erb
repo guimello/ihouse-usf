@@ -1,5 +1,6 @@
 <script>
-  <% state_code = action.state_code %>
+  <% state = action.state %>
+  <% state_code = state[:code] %>
   <% action_id = (action.id) ? action.id : action.temp_id %>
 
   $("#handle_head_<%= action_id %>").html("<%= state_code %>");//add the real state here

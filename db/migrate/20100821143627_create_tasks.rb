@@ -4,6 +4,7 @@ class CreateTasks < ActiveRecord::Migration
       t.integer     :key,       :null => false
       t.references  :house,     :null => false, :foreign_key => {:dependent => :delete}
       t.text        :operation, :null => false
+      t.string      :status,    :null => false, :default => Serial::Status::NEW
       t.timestamps
     end
 
