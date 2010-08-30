@@ -24,11 +24,8 @@ module Serial
       def listen
         loop do
           Thread.new self, @serial.gets do |reader, message|
-            puts 'got sth'
             parser = Parser.new :query => message
             task = Task.find_by_key parser.key
-            puts "parser.key #{parser.key}"
-            puts "simulation mode? #{simulate}"
 
             message = simulate_message task if simulate
             
