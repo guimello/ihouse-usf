@@ -18,22 +18,19 @@ module Serial
                               :device_identification => self.device.identification,
                               :action_command => self.command,
                               :action_query_state => self.query_state
-                            }
+                            }#,
+                            #:retries => 0
                           }
 
           begin
-            # For some reason task.reload won't work...
+            # For some reason task.reload won't work by itself so we touch the object...
             task.reload
+            task.touch
+
             break if task.status == Serial::Status::ANSWERED
 
-            begin
-              sleep 3
-            rescue
-            end
-
-          end while(task.status != Serial::Status::ANSWERED)
-
-          task.reload
+            sleep_for_a_while
+          end while task.status != Serial::Status::ANSWERED
 
           response = {:code => task.answered_status}
 
@@ -45,6 +42,17 @@ module Serial
 
           task.destroy
           response
+        end
+
+        ################################################################################
+        private
+
+        ################################################################################
+        def sleep_for_a_while
+          begin
+            sleep 2
+          rescue
+          end
         end
       end
     end

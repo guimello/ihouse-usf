@@ -10,7 +10,6 @@ module Serial
     ################################################################################
     def self.write(task)
       serial_port = SerialPort.new self.port, 9600, 8, 1, SerialPort::NONE
-      puts task.operation.sent[:message]
       serial_port.puts task.operation.sent[:message]
       serial_port.close
     end
