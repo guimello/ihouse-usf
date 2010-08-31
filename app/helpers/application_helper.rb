@@ -183,7 +183,9 @@ module ApplicationHelper
     end
   end
 
-  def action_control(actions, options = {})    
+  def action_control(actions, options = {})
+    options[:simulate] ||= false
+    
     actions = [actions] if actions.is_a?(Action)
     return nil if actions.empty?  
 
@@ -231,7 +233,7 @@ module ApplicationHelper
                     html << self.send((action.range?) ? 'jquery_div' : 'jquery_checkbox_button', action)
                     
                     html << render(:partial => "actions/handle/#{(action.range?) ? 'slide_me' : 'toggle_me'}",
-                                                      :locals => {:action => action})
+                                                      :locals => {:action => action, :simulate => options[:simulate]})
                   else
                     html << 'unknown todo'
                   end

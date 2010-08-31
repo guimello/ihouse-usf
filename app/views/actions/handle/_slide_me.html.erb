@@ -1,5 +1,5 @@
 <script>
-  <% state = action.state %>
+  <% state = (defined?(simulate) && simulate && {:code => 50, :state => 50}) || action.state %>
   <% state_code = state[:code] %>
   <% action_id = (action.id) ? action.id : action.temp_id %>
 

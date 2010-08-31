@@ -240,11 +240,11 @@ pt:
     range_max:
       label: "max"
     known:
-      a001:
+      command_1:
         name: "Ligar/Desligar"
-      b001:
+      command_2:
         name: "Volume +/-"
-      b002:
+      command_3:
         name: "Velocidade +/-"
     messages:
       success:
