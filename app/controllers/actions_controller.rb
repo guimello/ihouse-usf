@@ -29,6 +29,12 @@ class ActionsController < ApplicationController
     end
   end
 
+  def set
+    respond_to do |format|
+      format.js
+    end
+  end
+
   protected
 
   def parse_preview
@@ -41,6 +47,7 @@ class ActionsController < ApplicationController
                                      },
                           :range_min => params[:range_min],
                           :range_max => params[:range_max],
-                          :temp_id => params[:temp_id]
+                          :temp_id => params[:temp_id],
+                          :device => @device
   end
 end

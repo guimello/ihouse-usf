@@ -1,7 +1,7 @@
 <script>
+  <% simulate ||= simulate || false %>
   <% action_id = (action.id) ? action.id : action.temp_id %>
-  <% current_state_and_code = (defined?(simulate) &&
-        simulate &&
+  <% current_state_and_code = (simulate &&
         {:code => 'state_on', :state => I18n.t(:state_on, :scope => [:action, :device, :turn_on_off, :state]) }) ||
       action.state %>
         
@@ -13,16 +13,25 @@
   $("#handle_<%= action_id %>").button({ icons: { primary: "<%= (current_state_and_code[:code] == "state_on") ? "icon #{icon_on}" : "icon #{icon_off}" %>"},
         label: "<%= current_state_and_code[:state] %>"})
       .click(function(){
-          $("#handle_head_<%= action_id %>").html('' + $(this).is(":checked"));
-          var icons = "icon <%= icon_on %>";
-          var label = "<%= action.label_translation :state_on %>";
-          if(!$(this).is(":checked"))
-          {
-            icons = "icon <%= icon_off %>";
-            label = "<%= action.label_translation :state_off %>";
-          }
+        <% unless simulate %>
+          $.ajax({  async: false,
+                    cache: false,
+                    type: 'PUT',
+                    dataType: 'script',
+                    url: '<%= set_user_house_device_action_url current_user, action.device.house, action.device, action %>'});
+        <% end %>
 
-          $(this).button("option", "icons", {primary: icons}).button("option", "label", label);
+        var handle_head = $("#handle_head_<%= action_id %>");
+        handle_head.html("<span class='icon round-loading'></span>");
+        var icons = "icon <%= icon_on %>";
+        var label = "<%= action.label_translation :state_on %>";
+        if(!$(this).is(":checked"))
+        {
+          icons = "icon <%= icon_off %>";
+          label = "<%= action.label_translation :state_off %>";
+        }
+
+        $(this).button("option", "icons", {primary: icons}).button("option", "label", label);
       });
   
 
