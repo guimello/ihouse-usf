@@ -22,17 +22,25 @@ module Serial
         raise Serial::Error::UnknownSerialError, 'error no action' unless action
 
         unless task.operation.sent[:action_query_state].blank?
-          message = case action.action_type
-            when ActionTypes::RANGE
-              rand(action.range_max)
-            when ActionTypes::TURN_ON_OFF
-              ['state_on', 'state_off'].fetch rand(2)
-            end
+          message = state_message action
         else
           # write code here
         end
 
         message = "##{task.key}!#{message}#"
+      end
+
+      ################################################################################
+      private
+
+      ################################################################################
+      def state_message(action)
+        case action.action_type
+        when ActionTypes::RANGE
+          rand(action.range_max)
+        when ActionTypes::TURN_ON_OFF
+          ['state_on', 'state_off'].fetch rand(2)
+        end
       end
     end
   end
