@@ -223,17 +223,22 @@ module ApplicationHelper
           html.tbody do
             html.tr do
               loop_actions.each do |action|
-                id = "handle_#{(action.id) ? action.id : action.temp_id}"
-                html.td :class => 'center' do
+                td_id = "handle_area_#{(action.id) ? action.id : action.temp_id}"
+                html.td :id => td_id, :class => 'center' do
                   if action.know?
-                    #html << self.send(action.known_action.handle[:jquery_method], action)
-                    #html << render(:partial => "actions/handle/#{action.known_action.handle[:js_partial]}",
-                     #                                 :locals => {:action => action})
 
-                    html << self.send((action.range?) ? 'jquery_div' : 'jquery_checkbox_button', action)
+                    if options[:simulate]
+                      html << self.send((action.range?) ? 'jquery_div' : 'jquery_checkbox_button', action)
                     
-                    html << render(:partial => "actions/handle/#{(action.range?) ? 'slide_me' : 'toggle_me'}",
+                      html << render(:partial => "actions/handle/#{(action.range?) ? 'slide_me' : 'toggle_me'}",
                                                       :locals => {:action => action, :simulate => options[:simulate]})
+                    else
+                      html.span(:class => 'icon round-loading') do
+                        html << ''
+                      end
+                      
+                      html << javascript_tag("$.getScript('#{control_user_house_device_action_url action.device.user, action.house, action.device, action}');")
+                    end
                   else
                     html << 'unknown todo'
                   end
@@ -249,6 +254,15 @@ module ApplicationHelper
       html << ''
     end    
 
+  end
+
+  def action_control_for_one(action)
+    html = Builder::XmlMarkup.new
+
+    html << self.send((action.range?) ? 'jquery_div' : 'jquery_checkbox_button', action)
+
+    html << render(:partial => "actions/handle/#{(action.range?) ? 'slide_me' : 'toggle_me'}",
+                                    :locals => {:action => action, :simulate => false})
   end
 
   def jquery_div(action)

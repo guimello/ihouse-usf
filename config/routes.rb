@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
                                                             :exists_email => :get} do |user|
     user.resources :houses do |house|
       house.resources :devices, :collection => {:discover => :get, :know => :get} do |device|
-        device.resources :actions, :collection => {:find => :get, :preview => :get}, :member => {:set => :put} do |action|
+        device.resources :actions, :collection => {:find => :get, :preview => :get}, :member => {:set => :put, :control => :get} do |action|
           action.resources :schedules
         end
       end

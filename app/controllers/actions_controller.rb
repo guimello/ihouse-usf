@@ -1,6 +1,7 @@
 class ActionsController < ApplicationController
   before_filter :get_house, :get_device
   before_filter :parse_preview, :only => :preview
+  before_filter :get_action, :only => :control
 
   def get_device
     @device = @house.devices.find params[:device_id]
@@ -35,6 +36,12 @@ class ActionsController < ApplicationController
     end
   end
 
+  def control
+    respond_to do |format|
+      format.js
+    end
+  end
+
   protected
 
   def parse_preview
@@ -49,5 +56,9 @@ class ActionsController < ApplicationController
                           :range_max => params[:range_max],
                           :temp_id => params[:temp_id],
                           :device => @device
+  end
+
+  def get_action
+    @action = Action.find params[:id]
   end
 end
