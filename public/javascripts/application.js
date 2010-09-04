@@ -2,7 +2,7 @@
 // This file is automatically included by javascript_include_tag :defaults
 jQuery.ajaxSetup({ 
   beforeSend: function(request) {
-    request.setRequestHeader("Accept", "text/javascript");
+    //request.setRequestHeader("Accept", "text/javascript");
                 $("submit").hide();
   },
         complete: function(event, XMLHttpRequest, ajaxOptions) {
