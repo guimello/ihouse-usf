@@ -252,6 +252,8 @@ en:
       error:
         range_min_must_be_less_than_range_max: "must be less than range max"
         range_max_must_be_greater_than_range_min: "must be grater than range min"
+        invalid_new_value: The provided value was invalid
+        there_was_an_error_while_trying_to_manipulate_the_device: There was an error while trying to manipulate this device
   
   schedule:
     one: Schedule

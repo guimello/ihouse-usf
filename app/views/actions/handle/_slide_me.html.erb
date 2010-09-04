@@ -1,6 +1,7 @@
 <script>
   <% simulate ||= simulate || false %>
-  <% state = (simulate && {:code => 50, :state => 50}) || action.state %>
+  <% code_to_use = (action.range_max.blank?) ? 50 : action.range_max / 2 %>
+  <% state = (simulate && {:code => code_to_use, :state => code_to_use}) || action.state %>
   <% state_code = state[:code] %>
   <% action_id = (action.id) ? action.id : action.temp_id %>
 
@@ -18,6 +19,40 @@
 
         },
         change: function(event, ui){
-          $("#handle_head_<%= action_id %>").html(ui.value);
+          <% unless simulate %>
+            $("#handle_head_<%= action_id %>").html("<span class='icon round-loading'></span>");
+
+            $.ajax({  async: true,
+                      cache: false,
+                      url: '<%= set_user_house_device_action_url current_user, action.device.house, action.device, action %>', //+ '?value=' + (($("#handle_<%= action_id %>").is(':checked')) ? 1 : 0),
+                      type: 'PUT',
+                      dataType: 'script',
+                      data: {value: $("#handle_<%= action_id %>").slider('value')},
+                      complete: function(status, response){
+                        eval(response);
+                      }});
+            $("#handle_<%= action_id %>").slider('disable');
+          <% else %>
+            changeHandleHtml<%= action_id %>();
+          <% end %>
   }});
+
+
+  function changeHandleHtml<%= action_id %>()
+  {
+    var $slider = $("#handle_<%= action_id %>");
+    $("#handle_head_<%= action_id %>").html($slider.slider('value'));
+    $slider.slider('enable');
+  }
+
+
+  function onHandleError<%= action_id %>(message)
+  {
+    $("#handle_head_<%= action_id %>").html($("#handle_<%= action_id %>").slider('value')).closest('div').prepend("<div id='handle_error_<%= action_id %>'>" + message + '</div>');
+    $('#handle_error_<%= action_id %>').fadeOut(6000, function(){
+      $('#handle_error_<%= action_id %>').html('').show();
+
+      $("#handle_<%= action_id %>").slider('enable');
+    });
+  }
 </script>

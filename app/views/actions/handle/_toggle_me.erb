@@ -14,27 +14,49 @@
         label: "<%= current_state_and_code[:state] %>"})
       .click(function(){
         <% unless simulate %>
-          $.ajax({  async: false,
+          $("#handle_head_<%= action_id %>").html("<span class='icon round-loading'></span>");
+
+          $.ajax({  async: true,
                     cache: false,
+                    url: '<%= set_user_house_device_action_url current_user, action.device.house, action.device, action %>', //+ '?value=' + (($("#handle_<%= action_id %>").is(':checked')) ? 1 : 0),
                     type: 'PUT',
                     dataType: 'script',
-                    url: '<%= set_user_house_device_action_url current_user, action.device.house, action.device, action %>'});
+                    data: {value: (($("#handle_<%= action_id %>").is(':checked')) ? 1 : 0)},
+                    complete: function(status, response){
+                      eval(response);
+                    }});
+
+          $("#handle_<%= action_id %>").button('disable');
+        <% else %>
+          changeHandleHtml<%= action_id %>();
         <% end %>
-
-        var handle_head = $("#handle_head_<%= action_id %>");
-        handle_head.html("<span class='icon round-loading'></span>");
-        var icons = "icon <%= icon_on %>";
-        var label = "<%= action.label_translation :state_on %>";
-        if(!$(this).is(":checked"))
-        {
-          icons = "icon <%= icon_off %>";
-          label = "<%= action.label_translation :state_off %>";
-        }
-
-        $(this).button("option", "icons", {primary: icons}).button("option", "label", label);
       });
-  
 
-  $("#handle_head_<%= action_id %>").html("<%= current_state_and_code[:state] %>");//add the real state here
+  function changeHandleHtml<%= action_id %>()
+  {
+    var icons = "icon <%= icon_on %>";
+    var label = "<%= action.label_translation :state_on %>";
+    var $button = $("#handle_<%= action_id %>");
+    if(!$button.is(":checked"))
+    {
+      icons = "icon <%= icon_off %>";
+      label = "<%= action.label_translation :state_off %>";
+    }
+
+    $button.button("option", "icons", {primary: icons}).button("option", "label", label);
+    $("#handle_head_<%= action_id %>").html('');
+    $button.button('enable');
+  }
+
+  function onHandleError<%= action_id %>(message)
+  {
+    $("#handle_head_<%= action_id %>").html('').closest('div').prepend("<div id='handle_error_<%= action_id %>'>" + message + '</div>');
+    $('#handle_error_<%= action_id %>').fadeOut(6000, function(){
+      $('#handle_error_<%= action_id %>').html('').show();
+
+      $("#handle_<%= action_id %>").button('enable');
+    });
+  }
+
   $("#handle_foot_<%= action_id %>").html("<%= action.to_s.humanize %>");
 </script>

@@ -18,19 +18,10 @@ module Serial
                               :device_identification => self.device.identification,
                               :action_command => self.command,
                               :action_query_state => self.query_state
-                            }#,
-                            #:retries => 0
+                            }
                           }
 
-          begin
-            # For some reason task.reload won't work by itself so we touch the object...
-            task.reload
-            task.touch
-
-            break if task.status == Serial::Status::ANSWERED
-
-            sleep_for_a_while
-          end while task.status != Serial::Status::ANSWERED
+          task.wait_for_response
 
           response = {:code => task.answered_status}
 
@@ -41,6 +32,25 @@ module Serial
           end
 
           task.destroy
+          response
+        end
+
+        ################################################################################
+        def send_new_value
+          task = Task.create! :house => self.house,
+                    :operation => {
+                      :sent => {
+                        :device_identification => self.device.identification,
+                        :action_command => self.command,
+                        :value => self.new_value
+                      }
+                    }
+
+          task.wait_for_response
+
+          response = {:success => task.answered_setting_value.to_i, :operation => task.operation}
+          task.destroy
+          
           response
         end
 

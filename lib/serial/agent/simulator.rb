@@ -24,7 +24,7 @@ module Serial
         unless task.operation.sent[:action_query_state].blank?
           message = state_message action
         else
-          # write code here
+          message = set_value_message
         end
 
         message = "##{task.key}!#{message}#"
@@ -41,6 +41,17 @@ module Serial
         when ActionTypes::TURN_ON_OFF
           ['state_on', 'state_off'].fetch rand(2)
         end
+      end
+
+      ################################################################################
+      def set_value_message
+        # 200 OK, 500 Error
+        # Loads configuration file in order to decide which value to return
+        load_configuration_file['simulation']['set_value_message']
+      end
+
+      def load_configuration_file
+        YAML::load(File.read(File.dirname(__FILE__) + '/../../../config/simulation.yml'))
       end
     end
   end

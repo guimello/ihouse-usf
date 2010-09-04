@@ -36,6 +36,22 @@ class Task < ActiveRecord::Base
   end
 
   ################################################################################
+  alias :answered_setting_value :answered_status
+
+  ################################################################################
+  def wait_for_response
+    begin
+      # For some reason task.reload won't work by itself so we touch the object...
+      self.reload
+      self.touch
+
+      break if self.status == Serial::Status::ANSWERED
+
+      sleep_for_a_while
+    end while self.status != Serial::Status::ANSWERED
+  end
+
+  ################################################################################
   private
   
   ################################################################################
@@ -44,5 +60,13 @@ class Task < ActiveRecord::Base
                               operation.sent[:device_identification],
                               operation.sent[:action_command],
                               operation.sent[:action_query_state]].join('!').insert(0, '#').insert(-1, '#')
+  end
+
+  ################################################################################
+  def sleep_for_a_while
+    begin
+      sleep 2
+    rescue
+    end
   end
 end

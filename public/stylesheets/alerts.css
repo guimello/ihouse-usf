@@ -4,8 +4,6 @@
   margin-bottom: 16px;
 }
 
-
-
 .alert h1
 {
   font-size: 24px;
@@ -150,4 +148,41 @@
 .errorExplanation a
 {
   color: #E63333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.alert.small
+{
+  padding: 5px 5px 0px 30px;
+  margin-bottom: 0px;
+  margin-top: 5px;
+  background-position: 5px center;
+}
+
+.alert.small h1
+{
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+
+.alert.small.error
+{
+  background-image: url('../images/icons/silk/cross.png');
 }

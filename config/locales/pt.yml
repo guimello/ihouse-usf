@@ -252,6 +252,8 @@ pt:
       error:
         range_min_must_be_less_than_range_max: "deve ser menor que max"
         range_max_must_be_greater_than_range_min: "deve ser maior que min"
+        invalid_new_value: O valor setado é inválido
+        there_was_an_error_while_trying_to_manipulate_the_device: Houve um erro ao tentar manipular este dispositivo
   
   schedule:
     one: Agendamento

@@ -1,7 +1,7 @@
 class ActionsController < ApplicationController
   before_filter :get_house, :get_device
   before_filter :parse_preview, :only => :preview
-  before_filter :get_action, :only => :control
+  before_filter :get_action, :only => [:set, :control]
 
   def get_device
     @device = @house.devices.find params[:device_id]
@@ -31,6 +31,22 @@ class ActionsController < ApplicationController
   end
 
   def set
+    @action.new_value = params[:value]
+
+    unless @action.valid_new_value?
+      @error_message = I18n.t :invalid_new_value, :scope => [:action, :messages, :error]
+    else
+      @response = @action.send_new_value
+
+      puts "$$$$$$$$$$$$$$$$$$$$$$$"
+      puts @response[:success]
+      puts @response.inspect
+      # 500 Error
+      if @response[:success] == 500
+        @error_message = I18n.t :there_was_an_error_while_trying_to_manipulate_the_device, :scope => [:action, :messages, :error]
+      end
+    end
+    
     respond_to do |format|
       format.js
     end
