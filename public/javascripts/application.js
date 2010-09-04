@@ -92,7 +92,7 @@ jQuery.fn.watchMeAjax = function(o){
 
 function allAvailableIcons()
 {
-          return ["lights", "television", "fan", "star", "lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan"];
+          return ["lights", 'thermometer-red', 'thermometer-blue', "television", "fan", "star", "lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan"];
 }
 
 function allToggleIcons()

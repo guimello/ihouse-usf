@@ -497,3 +497,13 @@
 {
   background-image: url(../images/icons/silk/application_go.png);
 }
+
+.icon.thermometer-red
+{
+  background-image: url(../images/icons/Termometer-16.png);
+}
+
+.icon.thermometer-blue
+{
+  background-image: url(../images/icons/Thermometer-snowflake-16.png);
+}

@@ -9,6 +9,9 @@ class InsertKnownDevices < ActiveRecord::Migration
 
       KnownDevice.create  :device_class => 'tv',
                                       :display_icon => 'television'
+
+      KnownDevice.create  :device_class => 'thermo',
+                                      :display_icon => 'thermometer-red'
     end
   end
 

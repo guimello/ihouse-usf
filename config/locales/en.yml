@@ -139,6 +139,7 @@ en:
     my_houses: "My houses"
     recent_activity: "Recent activities"
     edit: "Change this house's info"
+    destroy: Remove
     devices:
       add_edit_discover: "Add/edit and discover devices"
       hints:
@@ -189,6 +190,8 @@ en:
         name: "Fan"
       tv:
         name: "Television"
+      thermo:
+        name: Temperature
     advanced_fields_info: "Advanced Fields Information"
     hints:
       advanced_fields: "Most of the time advanced fields don't need any changes. So when you try to discover devices in your house, only change the advanced options if you find an unkown device. Therefore it will be required for you to fill out these options. Anyway, if you know what your are doing, just hit the button with the pencil icon (advanced) and change these settings."
@@ -246,6 +249,10 @@ en:
         name: "Volume +/-"
       command_3:
         name: "Speed +/-"
+      command_4:
+        name: Temperature +/-
+      command_5:
+        name: Intensity +/-
     messages:
       success:
         update: "The actions were updated successfully!"

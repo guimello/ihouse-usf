@@ -139,6 +139,7 @@ pt:
     my_houses: "Minhas casas"
     recent_activity: "Atividades recentes"
     edit: "Mude as informações desta casa"
+    destroy: Remover
     devices:
       add_edit_discover: "Adicione/Edite e descubra dispositivos"
       hints:
@@ -189,6 +190,8 @@ pt:
         name: "Ventilador"
       tv:
         name: "Televisão"
+      thermo:
+        name: Temperatura
     advanced_fields_info: "Campos Avançados"
     hints:
       advanced_fields: "Na maioria das vezes, os campos avançados não precisaram ser editados. Quando você procurar por dispositivos em sua casa, somente mude os campos avançados se encontrar um dispositivo desconhecido. Assim, será obrigatório o preenchimento destes campos. De qualquer forma, se você sabe o que está fazendo, clique sobre o botão com o lápis (avançado) e edite esses campos."
@@ -246,6 +249,10 @@ pt:
         name: "Volume +/-"
       command_3:
         name: "Velocidade +/-"
+      command_4:
+        name: Temperatura +/-
+      command_5:
+        name: Intensidade +/-
     messages:
       success:
         update: "As ações foram atualizadas com sucesso!"
