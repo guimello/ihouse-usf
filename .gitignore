@@ -18,3 +18,4 @@ db/schema.rb
 config/database.yml
 config/serial_reader.yml
 config/serial_writer.yml
+config/simulation.yml
