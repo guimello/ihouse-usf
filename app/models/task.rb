@@ -31,6 +31,11 @@ class Task < ActiveRecord::Base
   end
 
   ################################################################################
+  def answered_discover_query
+    operation.answered
+  end
+
+  ################################################################################
   def answered_status
     operation.answered.split('!').last.sub '#', ''
   end
@@ -56,10 +61,21 @@ class Task < ActiveRecord::Base
   
   ################################################################################
   def prepare_message
-    operation.sent[:message] = [key,
-                              operation.sent[:device_identification],
-                              operation.sent[:action_command],
-                              operation.sent[:action_query_state]].join('!').insert(0, '#').insert(-1, '#')
+    if operation.sent.key?(:discover)
+      operation.sent[:message] = [  key, operation.sent[:discover]]
+    elsif operation.sent.key?(:value)
+      operation.sent[:message] = [  key,
+                                    operation.sent[:device_identification],
+                                    operation.sent[:action_command],
+                                    operation.sent[:value]]
+    else
+      operation.sent[:message] = [  key,
+                                    operation.sent[:device_identification],
+                                    operation.sent[:action_command],
+                                    operation.sent[:action_query_state]]
+    end
+
+    operation.sent[:message] = operation.sent[:message].join('!').insert(0, '#').insert(-1, '#')
   end
 
   ################################################################################

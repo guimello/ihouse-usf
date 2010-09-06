@@ -1,14 +1,20 @@
+################################################################################
 class ActionsController < ApplicationController
+
+  ################################################################################
   before_filter :get_house, :get_device
   before_filter :parse_preview, :only => :preview
   before_filter :get_action, :only => [:set, :control]
 
+  ################################################################################
   def get_device
     @device = @house.devices.find params[:device_id]
   end
 
+  ################################################################################
   def new;end;
 
+  ################################################################################
   def create
     if @device.update_attributes params[:device]
       flash[:success] = I18n.t :update, :scope => [:action, :messages, :success]
@@ -18,18 +24,21 @@ class ActionsController < ApplicationController
     end
   end
 
+  ################################################################################
   def find
     respond_to do |format|
       format.js
     end
   end
 
+  ################################################################################
   def preview
     respond_to do |format|
       format.js
     end
   end
 
+  ################################################################################
   def set
     @action.new_value = params[:value]
 
@@ -51,14 +60,17 @@ class ActionsController < ApplicationController
     end
   end
 
+  ################################################################################
   def control
     respond_to do |format|
       format.js
     end
   end
 
+  ################################################################################
   protected
 
+  ################################################################################
   def parse_preview
     @action = Action.new  :name => params[:name],
                           :command => params[:command],
@@ -73,6 +85,7 @@ class ActionsController < ApplicationController
                           :device => @device
   end
 
+  ################################################################################
   def get_action
     @action = Action.find params[:id]
   end

@@ -15,16 +15,21 @@ module Serial
       
       ################################################################################
       def simulate_message
-        device = Device.find_by_house_id_and_identification task.house.id, task.operation.sent[:device_identification]
-        raise Serial::Error::UnknownSerialError, 'error no device' unless device
+        # Says it's a query state or set value message
+        if task.operation.sent.key?(:device_identification)
+          device = Device.find_by_house_id_and_identification task.house.id, task.operation.sent[:device_identification]
+          raise Serial::Error::UnknownSerialError, 'error no device' unless device
 
-        action = device.actions.find_by_command task.operation.sent[:action_command]
-        raise Serial::Error::UnknownSerialError, 'error no action' unless action
+          action = device.actions.find_by_command task.operation.sent[:action_command]
+          raise Serial::Error::UnknownSerialError, 'error no action' unless action
+        end
 
-        unless task.operation.sent[:action_query_state].blank?
+        if task.operation.sent.key?(:action_query_state)
           message = state_message action
-        else
+        elsif task.operation.sent.key?(:value)
           message = set_value_message
+        else
+          message = discover_message
         end
 
         message = "##{task.key}!#{message}#"
@@ -34,11 +39,35 @@ module Serial
       private
 
       ################################################################################
+      def discover_message
+        message = ''
+        # Maybe apply a limit.
+        KnownDevice.all.each do |device|
+          message += '!' unless message.blank?
+          
+          case device.device_class
+          when 'lamp'
+            message += '1'
+          when 'fan'
+            message += '2'
+          when 'tv'
+            message += '3'
+          when 'thermo'
+            message += '4'
+          end
+
+          # Device identification.
+          message += "!#{device.id}"
+        end
+        
+        message
+      end
+
+      ################################################################################
       def state_message(action)
-        case action.action_type
-        when ActionTypes::RANGE
+        if action.range?
           rand(action.range_max)
-        when ActionTypes::TURN_ON_OFF
+        else
           ['state_on', 'state_off'].fetch rand(2)
         end
       end

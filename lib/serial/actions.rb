@@ -25,7 +25,7 @@ module Serial
 
           response = {:code => task.answered_status}
 
-          if action_type == ActionTypes::RANGE
+          if range?
             response[:state] = response[:code]
           else
             response[:state] = I18n.t(response[:code].to_sym, :scope => [:action, :device, :turn_on_off, :state])
