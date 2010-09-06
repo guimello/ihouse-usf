@@ -15,21 +15,25 @@ module Serial
       
       ################################################################################
       def simulate_message
-        # Says it's a query state or set value message
+        # Says it's a query state, set value or find actions message
         if task.operation.sent.key?(:device_identification)
           device = Device.find_by_house_id_and_identification task.house.id, task.operation.sent[:device_identification]
           raise Serial::Error::UnknownSerialError, 'error no device' unless device
 
-          action = device.actions.find_by_command task.operation.sent[:action_command]
-          raise Serial::Error::UnknownSerialError, 'error no action' unless action
+          unless task.operation.sent.key?(:find_actions)
+            action = device.actions.find_by_command task.operation.sent[:action_command]
+            raise Serial::Error::UnknownSerialError, 'error no action' unless action
+          end
         end
 
         if task.operation.sent.key?(:action_query_state)
           message = state_message action
         elsif task.operation.sent.key?(:value)
           message = set_value_message
-        else
+        elsif task.operation.sent.key?(:discover)
           message = discover_message
+        else # Find actions.
+          message = find_actions_message
         end
 
         message = "##{task.key}!#{message}#"
@@ -38,6 +42,21 @@ module Serial
       ################################################################################
       private
 
+      ################################################################################
+      def find_actions_message
+        message = ''
+        KnownAction.find(1,5).each do |action|
+          message += '!' unless message.blank?
+          message += "#{action.command}!#{action.query_state}!#{(action.action_type == ActionTypes::TURN_ON_OFF) ? 0 : 1}"
+
+          if action.action_type == ActionTypes::RANGE
+            message += "!#{action.handle[:range_min]}!#{action.handle[:range_max]}"
+          end
+        end
+
+        message
+      end
+      
       ################################################################################
       def discover_message
         message = ''

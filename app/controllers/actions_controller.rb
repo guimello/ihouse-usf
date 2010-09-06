@@ -26,6 +26,8 @@ class ActionsController < ApplicationController
 
   ################################################################################
   def find
+    @actions = @device.find_actions
+
     respond_to do |format|
       format.js
     end

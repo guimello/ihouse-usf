@@ -83,7 +83,7 @@
                 
                 <dt><%= t :preview %></dt>
                 <dd class='preview-space'>
-                  <%= action_control form.object, :form => form %>
+                  <%= action_control form.object, :form => form, :simulate => (defined?(simulate)) ? simulate : true %>
                 </dd>
               </dl>             
               

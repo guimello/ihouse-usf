@@ -18,7 +18,7 @@
 
         <% content_for :javascript do %>
           $(".add-device-action").live("click", function(){
-            <%= "var action='#{generate_template(device_form, :actions, :partial => "actions/actions_new_fieldset_form")}'" %>
+            <%= "var action='#{generate_template(device_form, :actions, :partial => "actions/actions_new_fieldset_form", :simulate => true)}'" %>
         
             $("#div_clear_actions").before(action.replace(/NEW_RECORD/g, new Date().getTime())).prev("div").highlightMe();
             $(".title-me").tipTip();
@@ -144,7 +144,8 @@
         <%= render :partial => "actions/actions_form", :locals => {:device_form => device_form,
                         :user => @user,
                         :house => @house,
-                        :device => @device} %>
+                        :device => @device,
+                        :simulate => true} %>
 
         <%= awesome_submit_button t(:submit, :scope => :form), :tick %>
 <% end %>

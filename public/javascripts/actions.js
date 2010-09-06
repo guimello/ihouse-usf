@@ -1,7 +1,8 @@
 $(document).ready(function(){
    $(".find-device-actions").live("click", function(){
-          $.getScript(this.href);
-          return false;
+      $(this).loadingSubmit();
+      $.getScript(this.href);
+      return false;
    });
 });
 

@@ -17,9 +17,10 @@ module ApplicationHelper
     options[:object] ||= form_builder.object.class.reflect_on_association(method).klass.new
     options[:partial] ||= method.to_s.singularize
     options[:form_builder_local] ||= :form
+    options[:simulate] ||= false
 
     form_builder.fields_for(method, options[:object], :child_index => 'NEW_RECORD') do |f|
-      locals = { options[:form_builder_local] => f }
+      locals = { options[:form_builder_local] => f, :simulate => options[:simulate] }
       render(:partial => options[:partial], :locals => locals)
     end
   end
@@ -225,8 +226,7 @@ module ApplicationHelper
               loop_actions.each do |action|
                 td_id = "handle_area_#{(action.id) ? action.id : action.temp_id}"
                 html.td :id => td_id, :class => 'center' do
-                  if action.know?
-
+                  #if action.know?
                     if options[:simulate]
                       html << self.send((action.range?) ? 'jquery_div' : 'jquery_checkbox_button', action)
                     
@@ -237,11 +237,11 @@ module ApplicationHelper
                         html << ''
                       end
                       
-                      html << javascript_tag("$.getScript('#{control_user_house_device_action_url action.device.user, action.house, action.device, action}');")
+                      html << javascript_tag("$.getScript('#{control_user_house_device_action_url action.device.user, action.device.house, action.device, action}');")
                     end
-                  else
-                    html << 'unknown todo'
-                  end
+                  #else
+                   # html << 'unknown todo'
+                  #end
                 end                
               end
             end
@@ -281,9 +281,9 @@ module ApplicationHelper
   def jquery_checkbox_button(action)
     html = Builder::XmlMarkup.new
     options = {:class => 'center margin-auto', :style => 'text-align: center'}
-    if action.known_action.handle.key? :html_options_for_div_checkbox_button
-      options = action.known_action.handle[:html_options_for_div_checkbox_button].merge(options) {|key, old, new| old + " " + new}
-    end
+    #if action.known_action.handle.key? :html_options_for_div_checkbox_button
+     # options = action.known_action.handle[:html_options_for_div_checkbox_button].merge(options) {|key, old, new| old + " " + new}
+    #end
     
     id = "handle_#{(action.id) ? action.id : action.temp_id}"
     html.div options do

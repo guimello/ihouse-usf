@@ -36,6 +36,9 @@ class Task < ActiveRecord::Base
   end
 
   ################################################################################
+  alias :answered_find_actions :answered_discover_query
+
+  ################################################################################
   def answered_status
     operation.answered.split('!').last.sub '#', ''
   end
@@ -68,6 +71,10 @@ class Task < ActiveRecord::Base
                                     operation.sent[:device_identification],
                                     operation.sent[:action_command],
                                     operation.sent[:value]]
+    elsif operation.sent.key?(:find_actions)
+      operation.sent[:message] = [  key,
+                                    operation.sent[:device_identification],
+                                    operation.sent[:find_actions]]
     else
       operation.sent[:message] = [  key,
                                     operation.sent[:device_identification],

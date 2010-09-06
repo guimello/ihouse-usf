@@ -52,7 +52,7 @@ class Action < ActiveRecord::Base
 
   ################################################################################
   def to_s
-    name || default_name
+    name || default_name || ''
   end
 
   ################################################################################
@@ -90,7 +90,8 @@ class Action < ActiveRecord::Base
 
   ################################################################################
   def customizing?
-    known_action.action_type != action_type || (range? && known_action.handle[:orientation] != handle.orientation)
+    return true if !known_action
+    (known_action.action_type != action_type || (range? && known_action.handle[:orientation] != handle.orientation))
   end
 
   ################################################################################
@@ -100,7 +101,7 @@ class Action < ActiveRecord::Base
 
   ################################################################################
   def label_translation(which)
-    I18n.t((!customizing?) ? known_action.handle[:translation_keys][which.to_sym].to_sym : which.to_sym, :scope => [:action, :device, action_type.to_sym, :state])
+    I18n.t((!customizing?) ? known_action.handle[:translation_keys][which.to_sym].to_sym : which.to_sym, :scope => [:action, :device, ((action_type) ? action_type.to_sym : :turn_on_off), :state])
   end
 
   ################################################################################

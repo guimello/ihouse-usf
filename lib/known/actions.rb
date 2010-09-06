@@ -9,7 +9,7 @@ module Known
 
         def default_name
           return KnownAction.find_by_command(command).name if know?
-          nil
+          ''
         end
 
         def display_icon(key)
