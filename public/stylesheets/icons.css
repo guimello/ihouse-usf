@@ -507,3 +507,9 @@
 {
   background-image: url(../images/icons/Thermometer-snowflake-16.png);
 }
+
+.icon.loading
+{
+    background-image: url(../images/ajax-loader.gif);
+    background-position: center center;
+}

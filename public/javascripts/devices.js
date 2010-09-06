@@ -56,6 +56,7 @@ $(document).ready(function(){
      });
      
    $(".discover-devices").live("click", function(){
+          $(this).loadingSubmit();
           $.getScript(this.href);
           return false;
    });
