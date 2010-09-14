@@ -20,7 +20,7 @@ module Serial
 
           task.wait_for_response
 
-          response = normalize_response task.answered_find_actions
+          response = self.class.normalize_response task.answered_find_actions
 
           index = 0
           actions = []
@@ -93,7 +93,7 @@ module Serial
         private
 
         ################################################################################
-        def normalize_response(response)
+        def self.normalize_response(response)
           response = response.split '!'
           response[0] = ''
           response[response.size() -1] = response.last.sub '#', ''
