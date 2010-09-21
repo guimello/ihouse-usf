@@ -25,13 +25,16 @@ module Serial
         loop do
           Thread.new self, @serial.gets do |reader, message|
             parser = Parser.new :query => message
-            task = Task.find_by_key parser.key
 
-            message = simulate_message task if simulate
-            
-            task.operation.answered = message
-            task.status = Serial::Status::ANSWERED
-            task.save!
+            if parser.pic_answered?
+              task = Task.find_by_key parser.key
+
+              task.operation.answered = parser.message
+              task.status = Serial::Status::ANSWERED
+              task.save!
+            elsif simulate
+              Serial::Writer.write simulate_message(Task.find_by_key(parser.key))
+            end
           end
         end
       end

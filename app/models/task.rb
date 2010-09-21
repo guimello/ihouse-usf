@@ -32,7 +32,7 @@ class Task < ActiveRecord::Base
 
   ################################################################################
   def answered_discover_query
-    operation.answered
+    operation.answered.gsub(/\n/, '')
   end
 
   ################################################################################
@@ -40,7 +40,7 @@ class Task < ActiveRecord::Base
 
   ################################################################################
   def answered_status
-    operation.answered.split('!').last.sub '#', ''
+    operation.answered.split('!').last.sub('#', '').gsub(/\n/, '')
   end
 
   ################################################################################

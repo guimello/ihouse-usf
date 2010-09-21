@@ -23,8 +23,12 @@ module Serial
       ################################################################################
       def listen
         loop do
-          tasks = Task.find_all_by_house_id_and_status house.id, Serial::Status::NEW
-
+          if @house
+            tasks = Task.find_all_by_house_id_and_status house.id, Serial::Status::NEW
+          else
+            tasks = Task.all :conditions => {:status => Serial::Status::NEW}
+          end
+          
           if tasks.empty?
             sleep_for_a_while
           else
@@ -50,9 +54,12 @@ module Serial
 end
 
 ################################################################################
-house_id  = ARGV[0] || raise('House id is required!')
+options = {}
 
-house = House.find house_id
-agent = Serial::Agent::NewTasker.new :house => house
+unless ARGV[0].blank?
+  options.merge! :house => House.find(ARGV[0])
+end
+
+agent = Serial::Agent::NewTasker.new options
 
 agent.listen

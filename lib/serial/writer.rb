@@ -8,9 +8,10 @@ module Serial
     attr_reader :task
     
     ################################################################################
-    def self.write(task)
+    def self.write(task_or_message)
+      message = (task_or_message.is_a? Task) ? task_or_message.operation.sent[:message] : task_or_message
       serial_port = SerialPort.new self.port, 9600, 8, 1, SerialPort::NONE
-      serial_port.puts task.operation.sent[:message]
+      serial_port.puts message
       serial_port.close
     end
 

@@ -4,7 +4,8 @@ module Serial
   class Parser
   
     ################################################################################
-    attr_reader :query, :key
+    attr_reader   :query, :key
+    attr_accessor :message
     
     ################################################################################
     def initialize(options = {})
@@ -14,9 +15,16 @@ module Serial
     
     ################################################################################
     def parse
-      @key = @query.split('!')[0].sub '#', ''
+      @message  = @query.sub('P', '')
+      @key      = @message.split('!')[0].sub('#', '')
     end
-    
+
+    ################################################################################
+    # Pic will answer prepending 'P' to the key.
+    def pic_answered?
+      !!(@query.split('!')[0] =~ /P/)
+    end
+
     ################################################################################
     private :parse
   end

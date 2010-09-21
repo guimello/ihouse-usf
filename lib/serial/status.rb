@@ -2,8 +2,8 @@
 module Serial
   ################################################################################
   module Status
-    NEW = 'N'
-    WORKING = 'W'
-    ANSWERED = 'A'
+    NEW       = 'N'
+    WORKING   = 'W'
+    ANSWERED  = 'A'
   end
 end

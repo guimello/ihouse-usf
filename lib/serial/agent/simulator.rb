@@ -36,7 +36,8 @@ module Serial
           message = find_actions_message
         end
 
-        message = "##{task.key}!#{message}#"
+        # Prepends 'P' to the message, in order to say that it's been answered by the PIC.
+        message = "#P#{task.key}!#{message}#"
       end
 
       ################################################################################
