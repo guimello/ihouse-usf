@@ -28,3 +28,8 @@
     </ul>
   </div>
 <% end %>
+
+<% content_for :sidebar do %>
+  <p class="title darkest rounded-4"><%= t :header, :scope => [:device, :device_controls] %> </p>
+  <small><%= t :message, :scope => [:device, :device_controls] %></small>
+<% end %>

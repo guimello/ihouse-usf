@@ -50,6 +50,7 @@ end
 
 
 #require "will_paginate"
-require "extend_string"
+require 'extend_string'
+require 'serialport'
 #
 #ActionMailer::Base.delivery_method = :smtp

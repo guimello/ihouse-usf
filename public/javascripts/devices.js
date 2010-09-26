@@ -5,7 +5,7 @@ jQuery.fn.deviceIconBox = function(options){
         backgroundColor: "white", zIndex: 9999999}).
           addClass('rounded-4 shadow-normal pading-medium').attr("id", "device_icon_box");
 
-           var title = $("<div>").html("Choose a custom icon"). addClass("title lightest rounded-4");
+           var title = $("<div>").html("").addClass("title lightest rounded-4");
            var close = $("<div>").addClass('icon cross close-icons-choice pointer-me float-right').html("&nbsp;");
            //css({position: "relative", left: 50, display: "inline"});
            title.append(close);
@@ -56,6 +56,7 @@ $(document).ready(function(){
      });
      
    $(".discover-devices").live("click", function(){
+          $(this).loadingSubmit();
           $.getScript(this.href);
           return false;
    });

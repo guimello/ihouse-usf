@@ -14,6 +14,9 @@ en:
   logout: "logout"  
   created_at: "Created on"
   advanced: "advanced"
+  ok: Ok
+  preview: Preview
+  choose_icons: Choose icons
 
   update:
     one: "Update"
@@ -60,7 +63,14 @@ en:
     required_fields_help:
       label: "Required fields"
       hint: "Fields marked with {{icon}} are required to successfully submit the form"
-    
+
+  task:
+    one: Task
+    other: Tasks
+    message:
+      error:
+        non_unique_key: Non-unique key
+
   user:
     new: "Create your account"
     edit: "Edit your profile"
@@ -129,6 +139,7 @@ en:
     my_houses: "My houses"
     recent_activity: "Recent activities"
     edit: "Change this house's info"
+    destroy: Remove
     devices:
       add_edit_discover: "Add/edit and discover devices"
       hints:
@@ -157,6 +168,9 @@ en:
     manage_actions: "Manage this device's actions"
     manage_current_device_actions: "Manage the {{device}}'s actions"
     no_room: "No classification"
+    device_controls:
+      header: Control the devices
+      message: Here you can control all devices that you have in your house. Use the handles on this page the manage them.
     discover:
       label: "Discover devices"
       title: "Discover devices in your house automatically"
@@ -179,6 +193,8 @@ en:
         name: "Fan"
       tv:
         name: "Television"
+      thermo:
+        name: Temperature
     advanced_fields_info: "Advanced Fields Information"
     hints:
       advanced_fields: "Most of the time advanced fields don't need any changes. So when you try to discover devices in your house, only change the advanced options if you find an unkown device. Therefore it will be required for you to fill out these options. Anyway, if you know what your are doing, just hit the button with the pencil icon (advanced) and change these settings."
@@ -193,6 +209,9 @@ en:
     other: "actions"
     add: "Add new action manually"
     find_actions: "Find this device's actions"
+    customize_controls: 
+      label: customize controls
+      hint: You can customize the way this action will be presented to you
     device:
       turn_on_off:
         state:
@@ -213,6 +232,8 @@ en:
       label: State code
       hint: It's used to query the device's state according to this action
       title: Only change this if you know what you're doing...
+    orientation:
+      label: Orientation
     action_type:
       label: "Type"
       hint: "Choose the action type, maybe you don't need to change it"
@@ -225,18 +246,29 @@ en:
     range_max:
       label: "max"
     known:
-      a001:
+      command_1:
         name: "Turn on/off"
-      b001:
+      command_2:
         name: "Volume +/-"
-      b002:
+      command_3:
         name: "Speed +/-"
+      command_4:
+        name: Temperature +/-
+      command_5:
+        name: Intensity +/-
     messages:
       success:
         update: "The actions were updated successfully!"
       error:
         range_min_must_be_less_than_range_max: "must be less than range max"
         range_max_must_be_greater_than_range_min: "must be grater than range min"
+        invalid_new_value: The provided value was invalid
+        there_was_an_error_while_trying_to_manipulate_the_device: There was an error while trying to manipulate this device
+  
+  schedule:
+    one: Schedule
+    other: Schedules
+    add_edit_schedule: Manage schedules
   
   form:
     login: "Login"

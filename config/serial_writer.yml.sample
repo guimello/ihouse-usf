@@ -1,0 +1,2 @@
+writer:
+  port: '/dev/ttys004'

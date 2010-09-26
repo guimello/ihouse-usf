@@ -467,6 +467,11 @@ img.picture-frame
           visibility: hidden;
 }
 
+.display-none
+{
+  display: none;
+}
+
 .space-my-side-20
 {
           margin: 20px 20px 20px 20px;
@@ -486,4 +491,9 @@ img.picture-frame
 .padding-medium
 {
           padding: 10px 10px 10px 10px;
+}
+
+.black
+{
+  color: black;
 }

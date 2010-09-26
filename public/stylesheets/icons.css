@@ -458,7 +458,12 @@
   background-image: url(../images/icons/silk/lightbulb_off.png);
 }
 
-.icon.unkown-device
+.icon.unknown-device
+{
+  background-image: url(../images/icons/silk/building_error.png);
+}
+
+.icon.unknown-action
 {
   background-image: url(../images/icons/silk/building_error.png);
 }
@@ -486,4 +491,25 @@
 .icon.fan
 {
           background-image: url(../images/icons/Fan_16x16.png);
+}
+
+.icon.customize-action
+{
+  background-image: url(../images/icons/silk/application_go.png);
+}
+
+.icon.thermometer-red
+{
+  background-image: url(../images/icons/Termometer-16.png);
+}
+
+.icon.thermometer-blue
+{
+  background-image: url(../images/icons/Thermometer-snowflake-16.png);
+}
+
+.icon.loading
+{
+    background-image: url(../images/ajax-loader.gif);
+    background-position: center center;
 }

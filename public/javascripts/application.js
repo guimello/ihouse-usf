@@ -2,12 +2,13 @@
 // This file is automatically included by javascript_include_tag :defaults
 jQuery.ajaxSetup({ 
   beforeSend: function(request) {
-    request.setRequestHeader("Accept", "text/javascript");
+    //request.setRequestHeader("Accept", "text/javascript");
                 $("submit").hide();
   },
         complete: function(event, XMLHttpRequest, ajaxOptions) {
                 $("submit").show();
-      $(".title-me").tipTip();
+                $(".title-me").tipTip();
+                $(".loading-button").stopLoadingSubmit();
         },
   error: function(XMLHttpRequest, textStatus, errorThrown){    
     alert("Ops...Error");
@@ -92,7 +93,12 @@ jQuery.fn.watchMeAjax = function(o){
 
 function allAvailableIcons()
 {
-          return ["lights", "television", "fan", "star", "lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan"];
+          return ["lights", 'thermometer-red', 'thermometer-blue', "television", "fan", "star", "lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan"];
+}
+
+function allToggleIcons()
+{
+          return ["lights-on", "lights-off", "fan", "star", "television", "add"];
 }
 
 jQuery.fn.appendMessage = function(o){
@@ -108,25 +114,79 @@ jQuery.fn.appendMessage = function(o){
   return $(this);
 };
 
+jQuery.fn.loadingSubmit = function() {
+        clone = $("<button type='button'></button>");
+        clone.addClass($(this).attr("class") + " loading-button");
+        clone.append($(this).children("span:first").clone().addClass("loading").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"));
+
+        $(this).parent().append(clone);
+        $(this).hideSubmitButton();
+        $(this).parents("form:first").addClass("sending");
+
+	return this;
+};
+
+jQuery.fn.stopLoadingSubmit = function() {
+	$(this).parents("form:first").removeClass("sending");
+        $(".hidden-submit").removeClass("hidden-submit").show();
+        $(this).remove();
+
+	return this;
+};
+
+jQuery.fn.canSubmit = function() {
+	 if($(this).hasClass("sending"))
+               return false;
+
+	return true;
+};
+
+jQuery.fn.hideSubmitButton = function() {
+	$(this).addClass("hidden-submit").hide();
+	return this;
+};
+
 $(document).ready(function(){        
-        $(".title-me").tipTip();
-        
-        $(".hide-after-click").live("click", function(event)
-        {
-            $(this).hide();
-        });
+  $(".title-me").tipTip();
+
+  $(".hide-after-click").live("click", function(event)
+  {
+      $(this).hide();
+  });
+
+
+  $('form').submit(function(){
+      if(!$(this).canSubmit() || $(this).hasClass("custom-submit"))
+          return false;
+
+
+      $('button[type=submit]', this).each(function(index){
+          if(index == 0)
+              $(this).loadingSubmit();
+          else
+              $(this).hideSubmitButton();
+      });
+
+      if($(this).hasClass("ajax-submit"))
+      {
+          $.get(this.action, $(this).serialize(), null, "script");
+          return false;
+      }
+
+      return true;
+  });
 
   $(".delete-link").live("click", function(event){
-    
+
     confirm_message = $(this).attr("confirm_message") ? $(this).attr("confirm_message") : "Are you sure you want to delete this record?\nNote: there is no undo.";
-    
+
     if (confirm(confirm_message))
-    { 
-      $.ajax({url: this.href, 
-          type: "DELETE", 
+    {
+      $.ajax({url: this.href,
+          type: "DELETE",
           dataType: "script"});
-    }; 
-    return false;  
+    };
+    return false;
   });
   
   $(".mass-selector-checkbox").live("click", function(event){

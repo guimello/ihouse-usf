@@ -10,7 +10,7 @@
   <% for house in houses %>
     <tr>
       <td class="left"><%= link_to h(house.name), user_house_url(current_user, house) %></td>
-      <td><%= distance_of_time_in_words_to_now house.created_at %>&nbsp;<%= t :ago %></td>
+      <td><%= distance_of_time_in_words_to_now house.updated_at %>&nbsp;<%= t :ago %></td>
       <td class="center">
         <%= link_to t(:destroy, :scope => :house), user_house_url(current_user, house), :class => "icon cross", :confirm => t(:destroy, :scope => [:house, :hints]), :method => :delete %>
       </td>

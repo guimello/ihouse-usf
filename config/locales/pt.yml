@@ -14,6 +14,9 @@ pt:
   logout: "sair"  
   created_at: "Criado em"
   advanced: "avançado"
+  ok: Ok
+  preview: Pré-visualizar
+  choose_icons: Escolha os ícones
 
   update:
     one: "Atualização"
@@ -60,6 +63,13 @@ pt:
     required_fields_help:
       label: "Campos requeridos"
       hint: "Os campos marcados por {{icon}} são requiridos para que se envie com sucesso o formulário"
+
+  task:
+    one: Tarefa
+    other: Tarefas
+    message:
+      error:
+        non_unique_key: Chave não única
 
   user:
     new: "Cria sua conta"
@@ -129,6 +139,7 @@ pt:
     my_houses: "Minhas casas"
     recent_activity: "Atividades recentes"
     edit: "Mude as informações desta casa"
+    destroy: Remover
     devices:
       add_edit_discover: "Adicione/Edite e descubra dispositivos"
       hints:
@@ -157,6 +168,9 @@ pt:
     manage_actions: "Gerencie as ações deste dispositivo"
     manage_current_device_actions: "Gerencie as ações do dispositivo {{device}}"
     no_room: "Sem classificação"
+    device_controls:
+      header: Controle os Dispositivos
+      message: Aqui você tem total controle sobre os dispositivos de sua casa. Utilize os controles ao lado para atuar sobre eles.
     discover:
       label: "Procurar dispositivos"
       title: "Procure por dispositovos em sua casa automaticamente"
@@ -179,6 +193,8 @@ pt:
         name: "Ventilador"
       tv:
         name: "Televisão"
+      thermo:
+        name: Temperatura
     advanced_fields_info: "Campos Avançados"
     hints:
       advanced_fields: "Na maioria das vezes, os campos avançados não precisaram ser editados. Quando você procurar por dispositivos em sua casa, somente mude os campos avançados se encontrar um dispositivo desconhecido. Assim, será obrigatório o preenchimento destes campos. De qualquer forma, se você sabe o que está fazendo, clique sobre o botão com o lápis (avançado) e edite esses campos."
@@ -193,6 +209,9 @@ pt:
     other: "ações"
     add: "Adicione uma nova ação manualmente"
     find_actions: "Procure pelas ações deste dispositivo"
+    customize_controls: 
+      label: customize os controles
+      hint: Você pode customizar o modo que está ação lhe seŕa apresentada
     device:
       turn_on_off:
         state:
@@ -213,6 +232,8 @@ pt:
       label: Código de estado
       hint: É usado para obter o estado atual do dispositivo em relação a está ação
       title: Somente mude este campo se você tem certeza do que está fazendo
+    orientation:
+      label: Orientação
     action_type:
       label: "Tipo"
       hint: "Selecione o tipo de ação do comando, talvez você não precise mudá-lo"
@@ -225,18 +246,29 @@ pt:
     range_max:
       label: "max"
     known:
-      a001:
+      command_1:
         name: "Ligar/Desligar"
-      b001:
+      command_2:
         name: "Volume +/-"
-      b002:
+      command_3:
         name: "Velocidade +/-"
+      command_4:
+        name: Temperatura +/-
+      command_5:
+        name: Intensidade +/-
     messages:
       success:
         update: "As ações foram atualizadas com sucesso!"
       error:
         range_min_must_be_less_than_range_max: "deve ser menor que max"
         range_max_must_be_greater_than_range_min: "deve ser maior que min"
+        invalid_new_value: O valor setado é inválido
+        there_was_an_error_while_trying_to_manipulate_the_device: Houve um erro ao tentar manipular este dispositivo
+  
+  schedule:
+    one: Agendamento
+    other: Agendamentos
+    add_edit_schedule: Gerencie os agendamentos
   
   form:
     login: "Entrar"

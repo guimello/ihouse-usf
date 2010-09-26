@@ -1,6 +1,7 @@
 class House < ActiveRecord::Base
   belongs_to :user
   has_many :devices
+  has_many :taks
   accepts_nested_attributes_for :devices, :allow_destroy => true
   
   has_many :logs, :conditions => {:loggable_type => "Action"}, :order => "created_at DESC"

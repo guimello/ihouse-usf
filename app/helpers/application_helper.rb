@@ -17,9 +17,10 @@ module ApplicationHelper
     options[:object] ||= form_builder.object.class.reflect_on_association(method).klass.new
     options[:partial] ||= method.to_s.singularize
     options[:form_builder_local] ||= :form
+    options[:simulate] ||= false
 
     form_builder.fields_for(method, options[:object], :child_index => 'NEW_RECORD') do |f|
-      locals = { options[:form_builder_local] => f }
+      locals = { options[:form_builder_local] => f, :simulate => options[:simulate] }
       render(:partial => options[:partial], :locals => locals)
     end
   end
@@ -183,7 +184,9 @@ module ApplicationHelper
     end
   end
 
-  def action_control(actions)    
+  def action_control(actions, options = {})
+    options[:simulate] ||= false
+    
     actions = [actions] if actions.is_a?(Action)
     return nil if actions.empty?  
 
@@ -196,13 +199,13 @@ module ApplicationHelper
     end
 
     all_actions.each do |loop_actions|
-      html.div :style => "text-align: center" do
-        html.table :class => "actions-table" do
+      html.div :style => 'text-align: center' do
+        html.table :class => 'actions-table' do
           html.thead do
             html.tr do
               loop_actions.each do |action|
-                html.th :id => "handle_head_#{action.id}" do
-                  html << ""
+                html.th :id => "handle_head_#{(action.id) ? action.id : action.temp_id}" do
+                  html << ''
                 end
               end
             end
@@ -211,8 +214,8 @@ module ApplicationHelper
           html.tfoot do
             html.tr do
               loop_actions.each do |action|
-                html.td :id => "handle_foot_#{action.id}" do
-                  html << ""
+                html.td :id => "handle_foot_#{(action.id) ? action.id : action.temp_id}" do
+                  html << ''
                 end
               end
             end
@@ -221,15 +224,24 @@ module ApplicationHelper
           html.tbody do
             html.tr do
               loop_actions.each do |action|
-                id = "handle_#{action.id}"
-                html.td :class => "center" do
-                  if action.know?
-                    html << self.send(action.known_action.handle[:jquery_method], action)
-                    html << render(:partial => "actions/handle/#{action.known_action.handle[:js_partial]}",
-                                                      :locals => {:action => action})
-                  else
-                    html << "unknown todo"
-                  end
+                td_id = "handle_area_#{(action.id) ? action.id : action.temp_id}"
+                html.td :id => td_id, :class => 'center' do
+                  #if action.know?
+                    if options[:simulate]
+                      html << self.send((action.range?) ? 'jquery_div' : 'jquery_checkbox_button', action)
+                    
+                      html << render(:partial => "actions/handle/#{(action.range?) ? 'slide_me' : 'toggle_me'}",
+                                                      :locals => {:action => action, :simulate => options[:simulate]})
+                    else
+                      html.span(:class => 'icon round-loading') do
+                        html << ''
+                      end
+                      
+                      html << javascript_tag("$.getScript('#{control_user_house_device_action_url action.device.user, action.device.house, action.device, action}');")
+                    end
+                  #else
+                   # html << 'unknown todo'
+                  #end
                 end                
               end
             end
@@ -238,36 +250,45 @@ module ApplicationHelper
       end
     end
 
-    html.div :class => "clear" do
-      html << ""
+    html.div :class => 'clear' do
+      html << ''
     end    
 
   end
 
+  def action_control_for_one(action)
+    html = Builder::XmlMarkup.new
+
+    html << self.send((action.range?) ? 'jquery_div' : 'jquery_checkbox_button', action)
+
+    html << render(:partial => "actions/handle/#{(action.range?) ? 'slide_me' : 'toggle_me'}",
+                                    :locals => {:action => action, :simulate => false})
+  end
+
   def jquery_div(action)
     html = Builder::XmlMarkup.new
-    options = {:class => "center margin-auto", :style => "text-align: center"}
-    if action.known_action.handle.key? :html_options_for_jquery_div
-      options = action.known_action.handle[:html_options_for_jquery_div].merge(options) {|key, old, new| old + " " + new}
-    end
-    options = options.merge(:id => "handle_#{action.id}")
+    options = {:class => 'center margin-auto', :style => "text-align: center; #{(action.slider_orientation == 'vertical') ? 'height: 200px' : 'width: 200px'}"}
+    #if action.known_action.handle.key? :html_options_for_jquery_div
+      #options = action.known_action.handle[:html_options_for_jquery_div].merge(options) {|key, old, new| old + ' ' + new}
+    #end
+    options = options.merge(:id => "handle_#{(action.id) ? action.id : action.temp_id}")
 
     html.div options do
-      html << ""
+      html << ''
     end
   end
 
   def jquery_checkbox_button(action)
     html = Builder::XmlMarkup.new
-    options = {:class => "center margin-auto", :style => "text-align: center"}
-    if action.known_action.handle.key? :html_options_for_div_checkbox_button
-      options = action.known_action.handle[:html_options_for_div_checkbox_button].merge(options) {|key, old, new| old + " " + new}
-    end
+    options = {:class => 'center margin-auto', :style => 'text-align: center'}
+    #if action.known_action.handle.key? :html_options_for_div_checkbox_button
+     # options = action.known_action.handle[:html_options_for_div_checkbox_button].merge(options) {|key, old, new| old + " " + new}
+    #end
     
-    id = "handle_#{action.id}"
+    id = "handle_#{(action.id) ? action.id : action.temp_id}"
     html.div options do
-      html << label_tag(id,"")
-      html << check_box_tag("", 1, nil, :id => id)# change nil by the real state on/off
+      html << label_tag(id,'')
+      html << check_box_tag('', 1, nil, :id => id)# change nil by the real state on/off
     end
   end  
 end
