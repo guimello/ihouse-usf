@@ -168,6 +168,9 @@ pt:
     manage_actions: "Gerencie as ações deste dispositivo"
     manage_current_device_actions: "Gerencie as ações do dispositivo {{device}}"
     no_room: "Sem classificação"
+    device_controls:
+      header: Controle os Dispositivos
+      message: Aqui você tem total controle sobre os dispositivos de sua casa. Utilize os controles ao lado para atuar sobre eles.
     discover:
       label: "Procurar dispositivos"
       title: "Procure por dispositovos em sua casa automaticamente"
