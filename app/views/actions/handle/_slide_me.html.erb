@@ -41,7 +41,7 @@
   function changeHandleHtml<%= action_id %>()
   {
     var $slider = $("#handle_<%= action_id %>");
-    $("#handle_head_<%= action_id %>").html($slider.slider('value'));
+    $("#handle_head_<%= action_id %>").html($slider.slider('value')).closest('table.actions-table').highlightMe();
     $slider.slider('enable');
   }
 

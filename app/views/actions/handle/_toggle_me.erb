@@ -44,7 +44,7 @@
     }
 
     $button.button("option", "icons", {primary: icons}).button("option", "label", label);
-    $("#handle_head_<%= action_id %>").html('');
+    $("#handle_head_<%= action_id %>").html('').closest('table.actions-table').highlightMe();
     $button.button('enable');
   }
 
