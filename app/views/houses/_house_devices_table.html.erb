@@ -1,0 +1,20 @@
+<% unless devices.empty? %>
+  <table style="margin-top: 15px; margin-bottom: 40px" class="basic-table fluid clear">
+    <thead>
+      <tr>
+        <th class="left" style="width: 50px"><%=t :label, :scope =>[:device, :name] %></th>
+        <th><%=t :label, :scope =>[:device, :room] %></th>
+        <th style="width:200px"><%= t :last_activity %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% devices.each do |device| %>
+        <tr>
+          <td class="left"><%= h device %></td>
+          <td><%= h device.room.blank? ? t(:no_room, :scope => :device) : device.room  %></td>
+          <td><%= distance_of_time_in_words_to_now device.updated_at %>&nbsp;<%= t :ago %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

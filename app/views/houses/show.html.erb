@@ -1,3 +1,25 @@
+<% title h(@house) %>
+<h1><%= h @house %></h1>
+
+<div class='basic-form'>
+  <dl>
+    <dt><%= t :label, :scope => [:house, :name] %></dt>
+    <dd class="hint"><%= h @house.name %></dd>
+
+    <% unless @house.description.blank? %>
+      <dt><%= t :label, :scope => [:house, :description] %></dt>
+      <dd class="hint"><%= h @house.description %></dd>
+    <% end %>
+  </dl>
+</div>
+
+<% unless @house.devices.empty? %>
+  <% content_for :sidebar do %>
+    <%= content_tag :h1, t(:device, :count => 2) %>
+    <%= render :partial => 'houses/house_devices_table', :locals => {:devices => @house.devices} %>
+  <% end %>
+<% end %>
+
 <% content_for :navigation do %>
   <% render :layout => "layouts/main_navigation" do %>
     <%= render :partial => "layouts/navigation/current_house_item", :locals => {:classes => "selected tab-separator",

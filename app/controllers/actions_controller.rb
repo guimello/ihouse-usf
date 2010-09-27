@@ -54,6 +54,8 @@ class ActionsController < ApplicationController
         @error_message = I18n.t :there_was_an_error_while_trying_to_manipulate_the_device, :scope => [:action, :messages, :error]
       else
         @action.device.house.touch
+        @action.device.touch
+        @action.touch
       end
     end
     

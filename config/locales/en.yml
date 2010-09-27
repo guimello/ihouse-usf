@@ -160,6 +160,9 @@ en:
       no_house: "You don't have any house in your account. Add one now!"
       destroy: "Are you sure you want to remove this house from your account? There is no undo."
       return_to_your_house_page: "Return to {{house}}'s main page"
+      my_houses:
+        header: Yes, your houses...
+        message: Here you have a complete list of your houses. There shouldn't be many though...
 
   device:
     one: "Device"

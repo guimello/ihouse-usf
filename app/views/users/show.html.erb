@@ -1,1 +1,20 @@
-show
+<% title t(:show, :scope => [:user, :title], :name => h(@user.username)) %>
+<h1><%= t :show, :scope => [:user, :title], :name => h(@user.username) %></h1>
+
+<div class='basic-form'>
+  <dl>
+    <% unless @user.name.blank? %>
+      <dt><%= t :label, :scope => [:user, :name] %></dt>
+      <dd class="hint"><%= h @user.name %></dd>
+    <% end %>
+
+    <dt><%= t :label, :scope => [:user, :email] %></dt>
+    <dd class="hint"><%= h @user.email %></dd>
+
+    <dt><%= t :label, :scope => [:user, :timezone] %></dt>
+    <dd class="hint"><%= h @user.time_zone %></dd>
+
+    <dt><%= t :label, :scope => [:user, :locale] %></dt>
+    <dd class="hint"><%= h @user.locale %></dd>
+  </dl>
+</div>

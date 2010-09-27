@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   skip_before_filter :get_user, :check_user_logged, :check_user_is_correct, :only => [
-                                                                                                                              :new,
-                                                                                                                              :create,
-                                                                                                                              :exists_username,
-                                                                                                                              :exists_email
-                                                                                                                            ]
+                                                                                        :new,
+                                                                                        :create,
+                                                                                        :exists_username,
+                                                                                        :exists_email
+                                                                                      ]
   before_filter :can_sign_in, :only => [:new, :create]
 
   def check_user_is_correct
@@ -50,7 +50,9 @@ class UsersController < ApplicationController
 
   def show
     respond_to do |format|
-      format.html
+      format.html do
+        render :layout => 'one_column'
+      end
     end
   end
 

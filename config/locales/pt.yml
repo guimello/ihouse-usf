@@ -160,6 +160,9 @@ pt:
       no_house: "Você não tem nenhuma casa cadastrada em sua conta. Adicione uma agora!"
       destroy: "Você têm certeza que quer apagar esta casa da sua conta? Não será possível desfazer esta ação."
       return_to_your_house_page: "Volte para página principal da casa '{{house}}'"
+      my_houses:
+        header: Sim, suas casas...
+        message: Aqui você tem uma lista completa de todas suas casas, embora não deva ser muitas..
 
   device:
     one: "Dispositivo"

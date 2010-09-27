@@ -1,3 +1,9 @@
-<% @houses.each do |house| %>
-  <%= link_to house.name, user_house_url(house.user, house) %>
-<% end  %>
+<% title t :my_houses, :scope => :house %>
+<h1><%= t :my_houses, :scope => :house %></h1>
+
+<%= render :partial => "users/user_houses", :locals => {:houses => @houses, :description => true} %>
+
+<% content_for :sidebar do %>
+  <p class="title darkest rounded-4"><%= t :header, :scope => [:house, :hints, :my_houses] %></p>
+  <small><%= t :message, :scope => [:house, :hints, :my_houses] %></small>
+<% end %>

@@ -25,7 +25,7 @@ class HousesController < ApplicationController
   end
 
   def show
-
+    render :layout => @house.devices.empty? ? 'one_column' : 'two_columns_tiny_left'
   end
 
   def index

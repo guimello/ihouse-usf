@@ -1,11 +1,11 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
-  <title>USF |
+  <title><%= t :title, :scope => :application %> |
     <% if yield :title %>
       <%= yield :title %>
     <% else %>
-      lol
+      USF
     <% end %>
   </title>
 
