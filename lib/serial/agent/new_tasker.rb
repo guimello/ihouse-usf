@@ -32,7 +32,7 @@ module Serial
           if tasks.empty?
             sleep_for_a_while
           else
-            tasks.each {|task| task.update_attribute('status', Serial::Status::WORKING) and Serial::Writer.write(task)}
+            tasks.each {|task| task.update_attribute('status', Serial::Status::WORKING) and Serial::Agent::Writer.write(task)}
 
             sleep_for_a_while
           end

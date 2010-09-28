@@ -33,7 +33,7 @@ module Serial
               task.status = Serial::Status::ANSWERED
               task.save!
             elsif simulate
-              Serial::Writer.write simulate_message(Task.find_by_key(parser.key))
+              Serial::Agent::Writer.write simulate_message(Task.find_by_key(parser.key))
             end
           end
         end

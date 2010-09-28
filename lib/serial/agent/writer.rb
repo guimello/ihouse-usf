@@ -17,7 +17,7 @@ module Serial
 
     ################################################################################
     def self.port
-      serial = YAML::load(File.read(File.dirname(__FILE__) + '/../../config/serial_writer.yml'))
+      serial = YAML::load(File.read(File.dirname(__FILE__) + '/../../../config/serial_writer.yml'))
       serial['writer']['port']
     end
   end
