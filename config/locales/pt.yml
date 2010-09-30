@@ -17,6 +17,9 @@ pt:
   ok: Ok
   preview: Pré-visualizar
   choose_icons: Escolha os ícones
+  success: Sucesso
+  ihouse_success: iHouse - Sucesso
+  ihouse_error: iHouse - Erro
 
   update:
     one: "Atualização"
@@ -206,6 +209,7 @@ pt:
     messages:
       success:
         update: "Os dispositivos de sua casa foram salvos com sucesso!"
+        devices_found: "{{amount}} dispositivos encontrados!"
 
   action:
     one: "ação"
@@ -262,6 +266,8 @@ pt:
     messages:
       success:
         update: "As ações foram atualizadas com sucesso!"
+        action_successfully_performed: Ação tomada com sucesso!
+        actions_found: "{{amount}} ações encontradas!"
       error:
         range_min_must_be_less_than_range_max: "deve ser menor que max"
         range_max_must_be_greater_than_range_min: "deve ser maior que min"

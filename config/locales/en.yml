@@ -17,6 +17,9 @@ en:
   ok: Ok
   preview: Preview
   choose_icons: Choose icons
+  success: Success
+  ihouse_success: iHouse - Success
+  ihouse_error: iHouse - Error
 
   update:
     one: "Update"
@@ -206,6 +209,7 @@ en:
     messages:
       success:
         update: "Devices in your house has been successfully saved!"
+        devices_found: "{{amount}} devices found!"
 
   action:
     one: "action"
@@ -262,6 +266,8 @@ en:
     messages:
       success:
         update: "The actions were updated successfully!"
+        action_successfully_performed: Action successfully performed!
+        actions_found: "{{amount}} actions found!"
       error:
         range_min_must_be_less_than_range_max: "must be less than range max"
         range_max_must_be_greater_than_range_min: "must be grater than range min"

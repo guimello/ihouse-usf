@@ -8,3 +8,10 @@
       captureLength : 1});
   <%  end %>
 <% end %>
+
+$.Growl.show({
+  'title'  : '<%= t :ihouse_success %>',
+  'message': '<%= t :devices_found, :scope => [:device, :messages, :success], :amount => @devices.size %>',
+  'icon'   : 'success',
+  'timeout': 3000
+});

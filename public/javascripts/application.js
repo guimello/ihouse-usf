@@ -11,7 +11,13 @@ jQuery.ajaxSetup({
                 $(".loading-button").stopLoadingSubmit();
         },
   error: function(XMLHttpRequest, textStatus, errorThrown){    
-    alert("Ops...Error");
+    //alert("Ops...Error");
+    $.Growl.show({
+      'title'  : 'Ops...',
+      'message': 'The server made a boo boo...',
+      'icon'   : 'error',
+      'timeout': 2000
+    });
   }
 });
 
@@ -93,12 +99,12 @@ jQuery.fn.watchMeAjax = function(o){
 
 function allAvailableIcons()
 {
-          return ["lights", 'thermometer-red', 'thermometer-blue', "television", "fan", "star", "lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan"];
+  return ["lights", 'thermometer-red', 'thermometer-blue', "television", "fan", "star", "lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan","lights", "television", "fan"];
 }
 
 function allToggleIcons()
 {
-          return ["lights-on", "lights-off", "fan", "star", "television", "add"];
+  return ["lights-on", "lights-off", "fan", "star", "television", "add"];
 }
 
 jQuery.fn.appendMessage = function(o){

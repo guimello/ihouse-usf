@@ -5,3 +5,10 @@
     $("#div_clear_actions").before(action.replace(/NEW_RECORD/g, new Date().getTime())).prev("div").highlightMe();    
   <%  end %>
 <% end %>
+
+$.Growl.show({
+  'title'  : '<%= t :ihouse_success %>',
+  'message': '<%= t :actions_found, :scope => [:action, :messages, :success], :amount => @actions.size %>',
+  'icon'   : 'success',
+  'timeout': 3000
+});

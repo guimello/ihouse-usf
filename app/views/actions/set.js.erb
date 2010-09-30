@@ -1,8 +1,5 @@
 <% if defined? @error_message %>
-  onHandleError<%= @action.id %>("<%= escape_javascript render(:partial => 'layouts/flash_alert',
-                                    :locals => {:title => t(:error, :scope => :alerts),
-                                    :div_class => "alert small error red rounded-8",
-                                    :message => @error_message}) %>");
+  onHandleError<%= @action.id %>("<%= escape_javascript @error_message %>");
 <% else %>
   changeHandleHtml<%= @action.id %>();
 <% end %>

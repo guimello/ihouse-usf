@@ -31,10 +31,10 @@
     <%= stylesheet_link_tag "forms-ie.css", "main-ie.css" %>
   <![endif]-->
 
-  <%= stylesheet_link_tag "tipTip.css" %>
+  <%= stylesheet_link_tag 'tipTip.css', 'growl/growl' %>
 
   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
-  <%= javascript_include_tag "jquery-1.4.2.min", "jquery-ui-1.8.1.custom.min", "application", "jquery.tipTip" %>
+  <%= javascript_include_tag "jquery-1.4.2.min", "jquery-ui-1.8.1.custom.min", "application", "jquery.tipTip", 'jquery.growl' %>
 
 
   <% javascript_tag do -%>

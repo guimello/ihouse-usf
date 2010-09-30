@@ -1,6 +1,6 @@
 <fieldset class="">
   <legend class="icon <%= device.display_icon %>"><%= device %></legend>
-  <%= link_to t(:manage_actions, :scope => :device), new_user_house_device_action_url(user, house, device), :class=> "float-right" %>
+  <%= link_to t(:manage_actions, :scope => :device), new_user_house_device_action_url(user, house, device), :class=> "float-right title-me", :title => t(:manage_actions, :scope => :device) %>
   <%= content_tag :div, {}, :class => "clear" %>
 
   <% Action.all_action_types.each do |type| %>

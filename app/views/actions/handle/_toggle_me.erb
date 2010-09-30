@@ -46,16 +46,33 @@
     $button.button("option", "icons", {primary: icons}).button("option", "label", label);
     $("#handle_head_<%= action_id %>").html('').closest('table.actions-table').highlightMe();
     $button.button('enable');
+
+    $.Growl.show({
+      'title'  : '<%= t :ihouse_success %>',
+      'message': '<%= t :action_successfully_performed, :scope => [:action, :messages, :success] %>',
+      'icon'   : 'success',
+      'timeout': 3000
+    });
   }
 
   function onHandleError<%= action_id %>(message)
   {
-    $("#handle_head_<%= action_id %>").html('').closest('div').prepend("<div id='handle_error_<%= action_id %>'>" + message + '</div>');
-    $('#handle_error_<%= action_id %>').fadeOut(6000, function(){
-      $('#handle_error_<%= action_id %>').html('').show();
-
-      $("#handle_<%= action_id %>").button('enable');
+    $.Growl.show({
+      'title'  : '<%= t :ihouse_error %>',
+      'message': message,
+      'icon'   : 'error',
+      'timeout': 3000
     });
+
+    $("#handle_head_<%= action_id %>").html('');
+    $("#handle_<%= action_id %>").button('enable');
+    
+    //$("#handle_head_<%= action_id %>").html('').closest('div').prepend("<div id='handle_error_<%= action_id %>'>" + message + '</div>');
+    //$('#handle_error_<%= action_id %>').fadeOut(6000, function(){
+      //$('#handle_error_<%= action_id %>').html('').show();
+
+      //$("#handle_<%= action_id %>").button('enable');
+    //});
   }
 
   $("#handle_foot_<%= action_id %>").html("<%= action.to_s.humanize %>");

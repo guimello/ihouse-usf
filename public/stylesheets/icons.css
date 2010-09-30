@@ -513,3 +513,13 @@
     background-image: url(../images/ajax-loader.gif);
     background-position: center center;
 }
+
+.growlicon_success
+{
+  background-image: url(../images/icons/Tick_32.png);
+}
+
+.growlicon_error
+{
+  background-image: url(../images/icons/ErrorCircle-32.png);
+}
