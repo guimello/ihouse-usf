@@ -3,7 +3,7 @@
 ################################################################################
 ENV["RAILS_ENV"] ||= 'development'
 require File.dirname(__FILE__) + '/../../../config/environment'
-require File.dirname(__FILE__) + '/../writer.rb'
+require File.dirname(__FILE__) + '/writer.rb'
 
 ################################################################################
 module Serial
