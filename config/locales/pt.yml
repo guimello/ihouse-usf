@@ -20,6 +20,7 @@ pt:
   success: Sucesso
   ihouse_success: iHouse - Sucesso
   ihouse_error: iHouse - Erro
+  message: Mensagem
 
   update:
     one: "Atualização"
@@ -219,6 +220,10 @@ pt:
     customize_controls: 
       label: customize os controles
       hint: Você pode customizar o modo que está ação lhe seŕa apresentada
+    log:
+      value_changed_to: "Novo valor => {{value}}"
+      turned_on: Ligado(a)
+      turned_off: Apagado(a)/Desligado(a)
     device:
       turn_on_off:
         state:

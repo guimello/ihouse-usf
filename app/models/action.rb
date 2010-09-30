@@ -12,6 +12,7 @@ class Action < ActiveRecord::Base
   belongs_to  :device
   has_one     :house, :through => :device
   has_many    :schedules
+  has_many    :logs, :conditions => {:loggable_type => 'Action'}, :order => 'created_at DESC'
   
   ################################################################################
   validates_presence_of :command, :action_type, :query_state
@@ -115,6 +116,19 @@ class Action < ActiveRecord::Base
       new_value >= range_min && new_value <= range_max
     else
       [0,1].include? new_value
+    end
+  end
+
+  ################################################################################
+  def write_log(options = {})
+    if options[:action] == :set
+      if range?
+        message = I18n.t(:value_changed_to, :scope => [:action, :log], :value => new_value)
+      else
+        message = I18n.t("turned_#{new_value == 1 ? 'on' : 'off'}".to_sym, :scope => [:action, :log])
+      end
+
+      Log.create!(:loggable => self, :user => house.user, :custom => {:message => message}).save!
     end
   end
 end

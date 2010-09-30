@@ -12,8 +12,8 @@
     </tr>
   </thead>
   <tbody>
-  <% for house in houses %>
-    <tr>
+  <% houses.each do |house| %>
+    <tr class="<%= cycle("even", "odd") %>">
       <td class="left"><%= link_to h(house.name), user_house_url(current_user, house), :class => 'title-me', :title => h(house.name) %></td>
       <% if description %>
       <td><%= h house.description %></td>

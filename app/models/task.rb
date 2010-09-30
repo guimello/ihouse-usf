@@ -2,7 +2,8 @@
 class Task < ActiveRecord::Base
 
   ################################################################################
-  belongs_to :house
+  belongs_to  :house
+  has_many    :logs, :conditions => {:loggable_type => 'Task'}, :order => 'created_at DESC'
 
   ################################################################################
   act_as_virtual :operation

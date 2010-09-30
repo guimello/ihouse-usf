@@ -11,14 +11,16 @@
       <dd class="hint"><%= h @house.description %></dd>
     <% end %>
   </dl>
-</div>
 
-<% unless @house.devices.empty? %>
-  <% content_for :sidebar do %>
-    <%= content_tag :h1, t(:device, :count => 2) %>
-    <%= render :partial => 'houses/house_devices_table', :locals => {:devices => @house.devices} %>
+
+  <% unless @house.devices.empty? %>
+    <div style='margin-top: 30px'>
+      <%= content_tag :h1, t(:device, :count => 2) %>
+      <%= render :partial => 'houses/house_devices_table', :locals => {:devices => @house.devices} %>
+    </div>
   <% end %>
-<% end %>
+
+</div>
 
 <% content_for :navigation do %>
   <% render :layout => "layouts/main_navigation" do %>
@@ -35,4 +37,9 @@
         <%= render :partial => "layouts/navigation/edit_user_house_item", :locals => {:house => @house, :user => @user} %>
     </ul>
   </div>
+<% end %>
+
+<% content_for :sidebar do %>
+  <%= content_tag :h1, t(:recent_activity, :scope => :house) %>
+  <%= render :partial => 'action_logs', :locals => {:action_logs => @action_logs} %>
 <% end %>

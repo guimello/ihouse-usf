@@ -20,6 +20,7 @@ en:
   success: Success
   ihouse_success: iHouse - Success
   ihouse_error: iHouse - Error
+  message: Message
 
   update:
     one: "Update"
@@ -216,6 +217,10 @@ en:
     other: "actions"
     add: "Add new action manually"
     find_actions: "Find this device's actions"
+    log:
+      value_changed_to: "Value changed to => {{value}}"
+      turned_on: Turned on
+      turned_off: Turned off
     customize_controls: 
       label: customize controls
       hint: You can customize the way this action will be presented to you

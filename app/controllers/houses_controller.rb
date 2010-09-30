@@ -25,7 +25,13 @@ class HousesController < ApplicationController
   end
 
   def show
-    render :layout => @house.devices.empty? ? 'one_column' : 'two_columns_tiny_left'
+    @action_logs = Log.all  :order => 'created_at DESC',
+                            :include => [:loggable],
+                            :limit    => 15,
+                            :conditions => {  :loggable_type  => 'Action',
+                                              :user_id        => current_user.id
+                                            }
+    render :layout => 'two_columns_tiny_left'
   end
 
   def index

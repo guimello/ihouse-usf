@@ -56,6 +56,7 @@ class ActionsController < ApplicationController
         @action.device.house.touch
         @action.device.touch
         @action.touch
+        @action.write_log :action => :set
       end
     end
     

@@ -6,10 +6,11 @@ class Device < ActiveRecord::Base
   include Serial::Devices
 
   ################################################################################
-  belongs_to :house  
-  has_one :user, :through => :house
-  has_many :actions
-  has_many :schedules, :through => :actions
+  belongs_to  :house
+  has_one     :user,      :through    => :house
+  has_many    :actions
+  has_many    :schedules, :through    => :actions
+  has_many    :logs,      :conditions => {:loggable_type => 'Device'}, :order => 'created_at DESC'
 
   ################################################################################
   accepts_nested_attributes_for :actions, :allow_destroy => true
