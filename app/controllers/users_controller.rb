@@ -23,11 +23,12 @@ class UsersController < ApplicationController
   end
 
   def my_panel
-    @logs = Log.all(:order => "created_at DESC",
-                    :include => [:loggable, :house],
-                    :limit => 15,
-                    :conditions => {:house_id => @user.houses.map { |house| house.id },
-                                    :loggable_type => "Action"})
+    @logs = []
+#    @logs = Log.all(:order => "created_at DESC",
+#                    :include => [:loggable, :house],
+#                    :limit => 15,
+#                    :conditions => {:house_id => @user.houses.map { |house| house.id },
+#                                    :loggable_type => "Action"})
 
     render :layout => "two_columns_tiny_left" and return unless current_user.houses.empty?
   end
