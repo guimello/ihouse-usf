@@ -55,12 +55,14 @@
 
   function onHandleError<%= action_id %>(message)
   {
-    $.Growl.show({
-      'title'  : '<%= t :ihouse_error %>',
-      'message': message,
-      'icon'   : 'error',
-      'timeout': 3000
-    });
+    <% unless simulate %>
+      $.Growl.show({
+        'title'  : '<%= t :ihouse_error %>',
+        'message': message,
+        'icon'   : 'error',
+        'timeout': 3000
+      });
+    <% end %>
 
     $("#handle_head_<%= action_id %>").html($("#handle_<%= action_id %>").slider('value'));
     $("#handle_<%= action_id %>").slider('enable');

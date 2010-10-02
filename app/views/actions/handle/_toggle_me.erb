@@ -47,12 +47,14 @@
     $("#handle_head_<%= action_id %>").html('').closest('table.actions-table').highlightMe();
     $button.button('enable');
 
-    $.Growl.show({
-      'title'  : '<%= t :ihouse_success %>',
-      'message': '<%= t :action_successfully_performed, :scope => [:action, :messages, :success] %>',
-      'icon'   : 'success',
-      'timeout': 3000
-    });
+    <% unless simulate %>
+      $.Growl.show({
+        'title'  : '<%= t :ihouse_success %>',
+        'message': '<%= t :action_successfully_performed, :scope => [:action, :messages, :success] %>',
+        'icon'   : 'success',
+        'timeout': 3000
+      });
+    <% end %>
   }
 
   function onHandleError<%= action_id %>(message)
