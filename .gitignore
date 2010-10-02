@@ -19,3 +19,11 @@ config/database.yml
 config/serial_reader.yml
 config/serial_writer.yml
 config/simulation.yml
+public/stylesheets/basic.css
+public/stylesheets/blue/colors-ie.css
+public/stylesheets/blue/colors.css
+public/stylesheets/green/colors-ie.css
+public/stylesheets/green/colors.css
+public/stylesheets/red/colors-ie.css
+public/stylesheets/red/colors.css
+
