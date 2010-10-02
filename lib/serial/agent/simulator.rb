@@ -15,17 +15,24 @@ module Serial
       
       ################################################################################
       def simulate_message
-        # Says it's a query state, set value or find actions message
+        # Says it's a query state, set value find actions, or discover message.
+        # Diz se é uma mensagem do tipo 'query state', 'set value', 'find actions' ou 'discover'
         if task.operation.sent.key?(:device_identification)
+          # Gets the device.
+          # Localiza o dispositivo.
           device = Device.find_by_house_id_and_identification task.house.id, task.operation.sent[:device_identification]
           raise Serial::Error::UnknownSerialError, 'error no device' unless device
 
+          # Gets the action.
+          # Localiza a ação.
           unless task.operation.sent.key?(:find_actions)
             action = device.actions.find_by_command task.operation.sent[:action_command]
             raise Serial::Error::UnknownSerialError, 'error no action' unless action
           end
         end
 
+        # Responds with a message accordingly.
+        # Responde a mensagem apropriadamente.
         if task.operation.sent.key?(:action_query_state)
           message = state_message action
         elsif task.operation.sent.key?(:value)
@@ -37,6 +44,7 @@ module Serial
         end
 
         # Prepends 'P' to the message, in order to say that it's been answered by the PIC.
+        # Concatena no início da mensagem um 'P' para identificar uma mensagem enviada pelo PIC.
         message = "#P#{task.key}!#{message}#"
       end
 

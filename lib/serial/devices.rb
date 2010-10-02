@@ -41,7 +41,10 @@ module Serial
 
               index += 2
             else
-              # TODO: get the device class (device_class) when choose icons accordingly
+              # TODO: get the device class (device_class) in order to choose the icons accordingly.
+              # For now, only emulating the lights' icons.
+              # TODO: obter o device class para escolher os ícones apropriadamente.
+              # Por enquanto, somente emulando os ícones das lâmpadas.
               action.handle.display_icon_on = 'lights-on'
               action.handle.display_icon_off = 'lights-off'
             end
