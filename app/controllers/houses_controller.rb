@@ -25,12 +25,8 @@ class HousesController < ApplicationController
   end
 
   def show
-    @action_logs = Log.all  :order => 'created_at DESC',
-                            :include => [:loggable],
-                            :limit    => 15,
-                            :conditions => {  :loggable_type  => 'Action',
-                                              :user_id        => current_user.id
-                                            }
+    @action_logs = Log.action_logs current_user, @house
+
     render :layout => 'two_columns_tiny_left'
   end
 

@@ -5,7 +5,7 @@
 config.cache_classes = true
 
 # Full error reports are disabled and caching is turned on
-config.action_controller.consider_all_requests_local = false
+config.action_controller.consider_all_requests_local = true
 config.action_controller.perform_caching             = true
 config.action_view.cache_template_loading            = true
 
@@ -29,7 +29,7 @@ config.action_controller.use_accept_header = false
 # Enable threaded mode
 # config.threadsafe!
 
-config.action_controller.relative_url_root = "/ihouse"
+#config.action_controller.relative_url_root = "/ihouse"
 
 #config.action_mailer.smtp_settings = {
 #   :enable_starttls_auto => true,
@@ -37,6 +37,6 @@ config.action_controller.relative_url_root = "/ihouse"
 #   :port => 587,
 #   :domain => "productionbkp",
 #   :authentication => :plain,
-#   :user_name => "inhousetools",
-#   :password => "lolwutwtf"
+#   :user_name => "***",
+#   :password => "***"
 #}

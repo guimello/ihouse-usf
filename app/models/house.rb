@@ -4,6 +4,7 @@ class House < ActiveRecord::Base
   ################################################################################
   belongs_to  :user
   has_many    :devices
+  has_many    :actions, :through => :devices
   has_many    :taks
   has_many    :logs, :conditions => {:loggable_type => 'House'}, :order => 'created_at DESC'
 
