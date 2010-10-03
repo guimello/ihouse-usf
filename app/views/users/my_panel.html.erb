@@ -7,11 +7,8 @@
   <%= render :partial => "user_houses", :locals => {:houses => @user.houses} %>
 
   <% content_for :sidebar do %>
-
-    <h2><%= t :recent_activity, :scope => :house %></h2>
-
-    <%= render :partial => "houses/houses_updates", :locals => {:logs => @logs} %>
-
+    <%= content_tag :h2, t(:recent_activity, :scope => :house) %>
+    <%= render :partial => 'houses/action_logs', :locals => {:action_logs => @action_logs, :show_house => true} %>
   <% end %>
 
 <% else %>

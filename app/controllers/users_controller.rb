@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def my_panel
-    @logs = []
+    @action_logs = Log.action_logs current_user, 'all'
 #    @logs = Log.all(:order => "created_at DESC",
 #                    :include => [:loggable, :house],
 #                    :limit => 15,

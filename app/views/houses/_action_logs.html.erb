@@ -1,7 +1,11 @@
+<% show_house ||= false %>
 <table style="margin-top: 15px; margin-bottom: 40px" class="basic-table fluid clear">
   <thead>
     <tr>
-      <th class="left" style="width: 80px"><%= t(:device, :count => 1).humanize %></th>
+      <% if show_house %>
+        <th class="left"><%= t :house, :count => 1 %></th>
+      <% end %>
+      <th <%= "class='left' style='width: 80px'" unless show_house %> > <%= t(:device, :count => 1).humanize %></th>
       <th class=""><%= t(:action, :count => 1).humanize %></th>
       <th class=""><%= t :message %></th>
       <th class="" style=""></th>
@@ -10,7 +14,10 @@
   <tbody>
   <% action_logs.each do |log| %>
     <tr class="<%= cycle("even", "odd") %>">
-      <td class="left"><%= h(log.loggable.device.to_s) %></td>
+      <% if show_house %>
+        <td class="left"><%= h log.loggable.device.house.to_s.humanize %></td>
+      <% end %>
+      <td <%= "class='left'" unless show_house %> ><%= h(log.loggable.device.to_s) %></td>
       <td class=""><%= h(log.loggable.to_s) %></td>
       <td class=""><%= h(log.custom.message) %></td>
       <td class="right"><%= distance_of_time_in_words_to_now log.created_at %>&nbsp;<%= t(:ago).downcase %></td>
