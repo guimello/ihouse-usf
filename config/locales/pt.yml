@@ -137,7 +137,7 @@ pt:
         black: "Preto"
 
   house:
-    new: "Adicione outra casa"
+    new: "Adicione uma nova casa"
     one: "Casa"
     other: "Casas"
     my_houses: "Minhas casas"
