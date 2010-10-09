@@ -9,7 +9,6 @@ class Device < ActiveRecord::Base
   belongs_to  :house
   has_one     :user,      :through    => :house
   has_many    :actions
-  has_many    :schedules, :through    => :actions
   has_many    :logs,      :conditions => {:loggable_type => 'Device'}, :order => 'created_at DESC'
 
   ################################################################################

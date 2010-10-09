@@ -72,15 +72,6 @@ ActiveRecord::Schema.define(:version => 20100821143627) do
 
   add_index "logs", ["user_id"], :name => "user_id"
 
-  create_table "schedules", :force => true do |t|
-    t.integer  "action_id",  :null => false
-    t.text     "timing",     :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "schedules", ["action_id"], :name => "action_id"
-
   create_table "tasks", :force => true do |t|
     t.integer  "key",                         :null => false
     t.integer  "house_id",                    :null => false
@@ -113,8 +104,6 @@ ActiveRecord::Schema.define(:version => 20100821143627) do
   add_foreign_key "houses", "users", :name => "houses_ibfk_1", :dependent => :delete
 
   add_foreign_key "logs", "users", :name => "logs_ibfk_1", :dependent => :delete
-
-  add_foreign_key "schedules", "actions", :name => "schedules_ibfk_1", :dependent => :delete
 
   add_foreign_key "tasks", "houses", :name => "tasks_ibfk_1", :dependent => :delete
 

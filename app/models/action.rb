@@ -11,7 +11,6 @@ class Action < ActiveRecord::Base
   ################################################################################
   belongs_to  :device
   has_one     :house, :through => :device
-  has_many    :schedules
   has_many    :logs, :conditions => {:loggable_type => 'Action'}, :order => 'created_at DESC'
   
   ################################################################################
