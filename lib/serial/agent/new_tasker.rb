@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 ################################################################################
-ENV["RAILS_ENV"] ||= 'development'
+ENV["RAILS_ENV"] = ARGV[1] || 'development'
 require File.dirname(__FILE__) + '/../../../config/environment'
 require File.dirname(__FILE__) + '/writer.rb'
 
@@ -64,10 +64,9 @@ end
 ################################################################################
 options = {}
 
-unless ARGV[0].blank?
+unless ARGV[0] == 'all'
   options.merge! :house => House.find(ARGV[0])
 end
 
 agent = Serial::Agent::NewTasker.new options
-
 agent.listen
