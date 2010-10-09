@@ -1,18 +1,21 @@
-# Methods added to this helper will be available to all templates in the application.
+################################################################################
 module ApplicationHelper
 
+  ################################################################################
   def title(description)
     content_for :title do
       description
     end
   end
 
+  ################################################################################
   def project_title
     if @project and !@project.name.nil?
       return @project.name
     end
   end
 
+  ################################################################################
   def generate_html(form_builder, method, options = {})
     options[:object] ||= form_builder.object.class.reflect_on_association(method).klass.new
     options[:partial] ||= method.to_s.singularize
@@ -25,10 +28,12 @@ module ApplicationHelper
     end
   end
 
+  ################################################################################
   def generate_template(form_builder, method, options = {})
     escape_javascript generate_html(form_builder, method, options)
   end
 
+  ################################################################################
   def awesome_submit_button(label, icon = "", html_options = {})
     if html_options[:class].nil?
       html_options[:class] = "awesome silver green"
@@ -41,6 +46,7 @@ module ApplicationHelper
     end
   end
 
+  ################################################################################
   def awesome_button(label, icon, html_options = {})
     html_options[:class] ||= "green"
     html_options[:class] = "awesome #{html_options[:class]}"
@@ -52,10 +58,7 @@ module ApplicationHelper
     end
   end
 
-  def permitted_to?(action, controller)
-    return current_user.permissions.first(:conditions => {:project_id => @project.id}).role.rights.first(:conditions => {:action => action, :controller => controller})
-  end
-
+  ################################################################################
   def basic_form_text_field(model, field, options = {})
     translation_scope = options[:translation_scope] || [model.class.name.downcase.to_sym, field.to_sym]
     form              = options[:form] || nil
@@ -133,14 +136,17 @@ module ApplicationHelper
     end
   end
 
+  ################################################################################
   def basic_form_text_area(model, field, options = {})
     basic_form_text_field(model, field, {:field_type => :text_area}.merge(options))
   end
 
+  ################################################################################
   def basic_form_select(model, field, options = {})
     basic_form_text_field(model, field, {:field_type => :select}.merge(options))
   end
 
+  ################################################################################
   def text_field_for(object, field, options = {})
     if object.kind_of? ActionView::Helpers::FormBuilder
       basic_form_text_field(object.object, field, {:translation_scope => [object.object.class.to_s.downcase, field.to_sym], :form => object}.merge(options))
@@ -149,22 +155,27 @@ module ApplicationHelper
     end
   end
 
+  ################################################################################
   def password_field_for(object, field, options = {})
     text_field_for(object, field,{:field_type => :password}.merge(options))
   end
 
+  ################################################################################
   def text_area_for(object, field, options = {})
     text_field_for(object, field, {:field_type => :text_area}.merge(options))
   end
 
+  ################################################################################
   def select_for(object, category, field, select_options, options = {})
     text_field_for(object, category, field, {:field_type => :select, :options_for_select => select_options}.merge(options))
   end
 
+  ################################################################################
   def date_select_for(object, category, field, select_options = {}, options = {})
     text_field_for(object, category, field, {:field_type => :date_select, :options_for_select => select_options}.merge(options))
   end
 
+  ################################################################################
   def icon_for_device(device, tag = :span, options = {})
     options[:class] ||= ""
     options[:class] = "icon #{device.display_icon} #{options[:class]}"
@@ -172,6 +183,7 @@ module ApplicationHelper
     content_tag tag, nil, options
   end
 
+  ################################################################################
   def required_fields_help
     html = Builder::XmlMarkup.new
 
@@ -184,6 +196,7 @@ module ApplicationHelper
     end
   end
 
+  ################################################################################
   def action_control(actions, options = {})
     options[:simulate] ||= false
     
@@ -256,6 +269,7 @@ module ApplicationHelper
 
   end
 
+  ################################################################################
   def action_control_for_one(action)
     html = Builder::XmlMarkup.new
 
@@ -265,12 +279,10 @@ module ApplicationHelper
                                     :locals => {:action => action, :simulate => false})
   end
 
+  ################################################################################
   def jquery_div(action)
-    html = Builder::XmlMarkup.new
+    html    = Builder::XmlMarkup.new
     options = {:class => 'center margin-auto', :style => "text-align: center; #{(action.slider_orientation == 'vertical') ? 'height: 200px' : 'width: 200px'}"}
-    #if action.known_action.handle.key? :html_options_for_jquery_div
-      #options = action.known_action.handle[:html_options_for_jquery_div].merge(options) {|key, old, new| old + ' ' + new}
-    #end
     options = options.merge(:id => "handle_#{(action.id) ? action.id : action.temp_id}")
 
     html.div options do
@@ -278,12 +290,10 @@ module ApplicationHelper
     end
   end
 
+  ################################################################################
   def jquery_checkbox_button(action)
-    html = Builder::XmlMarkup.new
+    html    = Builder::XmlMarkup.new
     options = {:class => 'center margin-auto', :style => 'text-align: center'}
-    #if action.known_action.handle.key? :html_options_for_div_checkbox_button
-     # options = action.known_action.handle[:html_options_for_div_checkbox_button].merge(options) {|key, old, new| old + " " + new}
-    #end
     
     id = "handle_#{(action.id) ? action.id : action.temp_id}"
     html.div options do

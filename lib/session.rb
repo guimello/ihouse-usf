@@ -1,11 +1,7 @@
+################################################################################
 module Session
 
-#  def authenticate(username, password)
-#    user = User.find_by_username_and_password username, password
-
-#    return (user.nil?) ? false : user
-#  end
-
+  ################################################################################
   def self.included(klass)
     klass.class_eval do
       include AuthorizationHelpers
@@ -15,7 +11,10 @@ module Session
     end
   end
 
+  ################################################################################
   module AuthorizationHelpers
+
+    ################################################################################
     def current_user
       begin
         @current_user ||= User.find(session[:user_id])
@@ -26,10 +25,12 @@ module Session
       end
     end
 
+    ################################################################################
     def user_logged?
-      return session[:user_id] && current_user
+      session[:user_id] && current_user
     end
 
+    ################################################################################
     def check_user_logged
       respond_to do |format|
         format.html do
@@ -51,4 +52,3 @@ module Session
     end
   end
 end
-

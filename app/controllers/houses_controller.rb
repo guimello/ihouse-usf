@@ -1,6 +1,10 @@
+################################################################################
 class HousesController < ApplicationController
+
+  ################################################################################
   before_filter :get_house, :only => [:show, :edit, :update]
 
+  ################################################################################
   def get_house
     begin
       @house = @user.houses.find params[:id]
@@ -10,10 +14,12 @@ class HousesController < ApplicationController
     end
   end
 
+  ################################################################################
   def new
     @house = @user.houses.new
   end
 
+  ################################################################################
   def create
     @house = @user.houses.new params[:house]
 
@@ -24,20 +30,22 @@ class HousesController < ApplicationController
     render :new and return
   end
 
+  ################################################################################
   def show
     @action_logs = Log.action_logs current_user, @house
 
     render :layout => 'two_columns_tiny_left'
   end
 
+  ################################################################################
   def index
     @houses = @user.houses
   end
 
-  def edit
+  ################################################################################
+  def edit;end
 
-  end
-
+  ################################################################################
   def update
     if @house.update_attributes params[:house]
       flash[:success] = I18n.t :update, :scope => [:house, :messages, :success]

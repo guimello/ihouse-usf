@@ -1,4 +1,7 @@
+################################################################################
 class InsertKnownActions < ActiveRecord::Migration
+  
+  ################################################################################
   def self.up
     KnownAction.transaction do
       KnownAction.create  :command => 1,
@@ -48,6 +51,7 @@ class InsertKnownActions < ActiveRecord::Migration
     end
   end
 
+  ################################################################################
   def self.down
     KnownAction.delete_all
   end

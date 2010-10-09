@@ -1,12 +1,17 @@
+################################################################################
 class UsersController < ApplicationController
+
+  ################################################################################
   skip_before_filter :get_user, :check_user_logged, :check_user_is_correct, :only => [
                                                                                         :new,
                                                                                         :create,
                                                                                         :exists_username,
                                                                                         :exists_email
                                                                                       ]
+  ################################################################################
   before_filter :can_sign_in, :only => [:new, :create]
 
+  ################################################################################
   def check_user_is_correct
     return true unless params[:id]
     unless @user == User.find(params[:id])
@@ -15,6 +20,7 @@ class UsersController < ApplicationController
     end
   end
 
+  ################################################################################
   def can_sign_in
     if user_logged?
       flash[:error] = I18n.t :cant_create_new_user, :scope => [:user, :messages, :error]
@@ -22,21 +28,19 @@ class UsersController < ApplicationController
     end
   end
 
+  ################################################################################
   def my_panel
     @action_logs = Log.action_logs current_user, 'all'
-#    @logs = Log.all(:order => "created_at DESC",
-#                    :include => [:loggable, :house],
-#                    :limit => 15,
-#                    :conditions => {:house_id => @user.houses.map { |house| house.id },
-#                                    :loggable_type => "Action"})
 
     render :layout => "two_columns_tiny_left" and return unless current_user.houses.empty?
   end
 
+  ################################################################################
   def new
     @user = User.new
   end
 
+  ################################################################################
   def create
     @user = User.new params[:user]
     begin
@@ -49,6 +53,7 @@ class UsersController < ApplicationController
     end
   end
 
+  ################################################################################
   def show
     respond_to do |format|
       format.html do
@@ -57,6 +62,7 @@ class UsersController < ApplicationController
     end
   end
 
+  ################################################################################
   def edit
     @user = current_user
 
@@ -65,6 +71,7 @@ class UsersController < ApplicationController
     end
   end
 
+  ################################################################################
   def update
     @user = current_user
 
@@ -77,6 +84,7 @@ class UsersController < ApplicationController
     end
   end
 
+  ################################################################################
   def exists_username    
     @result = {:input_id => params[:input_id]}
     if current_user and params[:username] == current_user.username
@@ -95,6 +103,7 @@ class UsersController < ApplicationController
     end
   end
 
+  ################################################################################
   def exists_email
     @result = {:input_id => params[:input_id]}
     if (params[:email] =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i) == nil
@@ -116,4 +125,3 @@ class UsersController < ApplicationController
     end
   end
 end
-

@@ -1,9 +1,13 @@
+################################################################################
 class SessionsController < ApplicationController
 
-  layout "login"
+  ################################################################################
+  layout 'login'
 
+  ################################################################################
   skip_before_filter :check_user_logged, :get_user, :check_user_is_correct
 
+  ################################################################################
   def new
     redirect_to my_panel_url and return if user_logged?
 
@@ -12,6 +16,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  ################################################################################
   def create
     user =  User.authenticate params[:username], params[:password]
 
@@ -29,9 +34,9 @@ class SessionsController < ApplicationController
     redirect_to :action => "new"
   end
 
+  ################################################################################
   def destroy
     reset_session
     redirect_to root_url
   end
 end
-

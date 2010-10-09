@@ -1,4 +1,7 @@
+################################################################################
 class InsertKnownDevices < ActiveRecord::Migration
+
+  ################################################################################
   def self.up
     KnownDevice.transaction do
       KnownDevice.create  :device_class => 'lamp',
@@ -15,6 +18,7 @@ class InsertKnownDevices < ActiveRecord::Migration
     end
   end
 
+  ################################################################################
   def self.down
     KnownDevice.delete_all
   end
