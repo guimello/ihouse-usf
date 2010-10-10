@@ -87,14 +87,12 @@
 
             $.nyroModalManual({
               url: '#' + $(this).closest('fieldset').find('div.action-control-preview').attr('id'),
+              minHeight: 600,
+              minWidth: 400,
               endFillContent: function(modal, settings){
-                //$('#nyroModalContent').append("<p id='guigoguigo'>fwefwefef</p>");
-                
+                //$('#nyroModalContent').append('');
               },              
-              endRemove : function(modal, settings){
-              
-                
-              }
+              endRemove : function(modal, settings){}
             });
             
             return false;
