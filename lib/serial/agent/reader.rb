@@ -24,7 +24,7 @@ module Serial
       def listen
         loop do
           Thread.new self, @serial.gets do |reader, message|
-            parser = Parser.new :query => message
+            parser = Parser.new :query => message.strip
 
             if parser.pic_answered?
               task = Task.find_by_key parser.key
