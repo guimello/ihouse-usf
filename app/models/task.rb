@@ -65,22 +65,31 @@ class Task < ActiveRecord::Base
   
   ################################################################################
   def prepare_message
-    if operation.sent.key?(:discover)
-      operation.sent[:message] = [  key, operation.sent[:discover]]
-    elsif operation.sent.key?(:value)
-      operation.sent[:message] = [  key,
+    if operation.sent.key? :discover
+      operation.sent[:message] = [  key, Serial::Interation::DEVICE_DISCOVERY , operation.sent[:discover] ]
+    elsif operation.sent.key? :value
+      operation.sent[:message] = [
+                                    key,
+                                    Serial::Interation::SET_VALUE,
                                     operation.sent[:device_identification],
                                     operation.sent[:action_command],
-                                    operation.sent[:value]]
-    elsif operation.sent.key?(:find_actions)
-      operation.sent[:message] = [  key,
+                                    operation.sent[:value]
+                                 ]
+    elsif operation.sent.key? :find_actions
+      operation.sent[:message] = [  
+                                    key,
+                                    Serial::Interation::ACTION_DISCOVERY,
                                     operation.sent[:device_identification],
-                                    operation.sent[:find_actions]]
+                                    operation.sent[:find_actions]
+                                 ]
     else
-      operation.sent[:message] = [  key,
+      operation.sent[:message] = [  
+                                    key,
+                                    Serial::Interation::CURRENT_STATUS,
                                     operation.sent[:device_identification],
                                     operation.sent[:action_command],
-                                    operation.sent[:action_query_state]]
+                                    operation.sent[:action_query_state]
+                                 ]
     end
 
     operation.sent[:message] = operation.sent[:message].join('!').insert(0, '#').insert(-1, '#')
