@@ -9,7 +9,7 @@ module Serial
     
     ################################################################################
     def initialize(options = {})
-      @query = options[:query]
+      @query = options[:query].match(/#(\w)+(!|\w)*#/).try(:to_s) || ''
       parse
     end  
     
