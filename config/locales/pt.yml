@@ -18,6 +18,7 @@ pt:
   ihouse_success: iHouse - Sucesso
   ihouse_error: iHouse - Erro
   message: Mensagem
+  try_again: Tente novamente
 
   update:
     one: "Atualização"
@@ -141,6 +142,8 @@ pt:
       success:
         create: "A casa foi adicionada com successo!"
         update: "A casa foi atualizada com successo!"
+      error:
+        error_finding_the_devices: Houve um erro ao descobrir os dispositivos na casa
     hints:
       no_house: "Você não tem nenhuma casa cadastrada em sua conta. Adicione uma agora!"
       destroy: "Você têm certeza que quer apagar esta casa da sua conta? Não será possível desfazer esta ação."
@@ -192,6 +195,8 @@ pt:
       success:
         update: "Os dispositivos de sua casa foram salvos com sucesso!"
         devices_found: "{{amount}} dispositivos encontrados!"
+      error:
+        error_finding_the_actions: Houve um erro ao tentar obter as ações do dispositivo
 
   action:
     one: "ação"
@@ -258,6 +263,7 @@ pt:
         range_min_must_be_less_than_range_max: "deve ser menor que max"
         range_max_must_be_greater_than_range_min: "deve ser maior que min"
         invalid_new_value: O valor setado é inválido
+        error_obtaining_the_action_status: Houve um erro ao tentar obter o estado da ação de um dispositivo
         there_was_an_error_while_trying_to_manipulate_the_device: Houve um erro ao tentar manipular este dispositivo
   
   form:

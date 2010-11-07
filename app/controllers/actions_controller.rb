@@ -26,7 +26,12 @@ class ActionsController < ApplicationController
 
   ################################################################################
   def find
-    @actions = @device.find_actions
+    @actions = []
+    begin
+      @actions = @device.find_actions
+    rescue Serial::Error::UnknownSerialError
+      @error_message = I18n.t(:error_finding_the_actions, :scope => [:device, :messages, :error])
+    end
 
     respond_to do |format|
       format.js

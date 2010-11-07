@@ -18,6 +18,7 @@ en:
   ihouse_success: iHouse - Success
   ihouse_error: iHouse - Error
   message: Message
+  try_again: Try again
 
   update:
     one: Update
@@ -141,6 +142,8 @@ en:
       success:
         create: "The house's been added successfully!"
         update: "The house's been successfully updated!"
+      error:
+        error_finding_the_devices: There was an error while discovering the devices
     hints:
       no_house: "You don't have any house in your account. Add one now!"
       destroy: "Are you sure you want to remove this house from your account? There is no undo."
@@ -192,6 +195,8 @@ en:
       success:
         update: "Devices in your house has been successfully saved!"
         devices_found: "{{amount}} devices found!"
+      error:
+        error_finding_the_actions: There was an error while finding the device's actions
 
   action:
     one: "action"
@@ -258,6 +263,7 @@ en:
         range_min_must_be_less_than_range_max: "must be less than range max"
         range_max_must_be_greater_than_range_min: "must be grater than range min"
         invalid_new_value: The provided value was invalid
+        error_obtaining_the_action_status: There was an error while obtaining the action's status
         there_was_an_error_while_trying_to_manipulate_the_device: There was an error while trying to manipulate this device
   
   form:

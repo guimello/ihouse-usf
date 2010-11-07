@@ -497,3 +497,8 @@ img.picture-frame
 {
   color: black;
 }
+
+a.no-underline
+{
+  text-decoration: none;
+}

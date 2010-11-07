@@ -13,8 +13,8 @@ module Serial
           task = Task.create! :house => self.house,
                               :operation => {
                                 :sent => {
-                                  :device_identification => self.identification,
-                                  :find_actions => 912
+                                  :device_identification  => self.identification,
+                                  :find_actions           => 912
                                 }
                               }
 
@@ -32,9 +32,9 @@ module Serial
                             ActionTypes::RANGE
                           end
             action = Action.new(  :device => self,
-                                    :action_type => action_type,
-                                    :command => response[index],
-                                    :query_state => response[index + 1])
+                                    :action_type  => action_type,
+                                    :command      => response[index],
+                                    :query_state  => response[index + 1])
             if action.range?
               action.range_min = response[index + 3]
               action.range_max = response[index + 4]

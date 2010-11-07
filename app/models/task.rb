@@ -49,7 +49,7 @@ class Task < ActiveRecord::Base
 
   ################################################################################
   def wait_for_response
-    begin
+    10.times do
       # For some reason task.reload won't work by itself so we touch the object...
       self.reload
       self.touch
@@ -57,7 +57,9 @@ class Task < ActiveRecord::Base
       break if self.status == Serial::Status::ANSWERED
 
       sleep_for_a_while
-    end while self.status != Serial::Status::ANSWERED
+    end
+
+    raise Serial::Error::UnknownSerialError if self.status != Serial::Status::ANSWERED
   end
 
   ################################################################################

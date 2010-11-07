@@ -6,9 +6,19 @@
   <%  end %>
 <% end %>
 
+<% if @error_message.blank? %>
+  <% title    = t :ihouse_success %>
+  <% message  = t :actions_found, :scope => [:action, :messages, :success], :amount => @actions.size %>
+  <% icon     = 'success' %>
+<% else %>
+  <% title    = t :ihouse_error %>
+  <% message  = @error_message %>
+  <% icon     = 'error' %>
+<% end %>
+
 $.Growl.show({
-  'title'  : '<%= t :ihouse_success %>',
-  'message': '<%= t :actions_found, :scope => [:action, :messages, :success], :amount => @actions.size %>',
-  'icon'   : 'success',
+  'title'  : '<%= title %>',
+  'message': '<%= message %>',
+  'icon'   : '<%= icon %>',
   'timeout': 3000
 });

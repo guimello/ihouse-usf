@@ -18,7 +18,7 @@
 
           $.ajax({  async: true,
                     cache: false,
-                    url: '<%= set_user_house_device_action_url current_user, action.device.house, action.device, action %>', //+ '?value=' + (($("#handle_<%= action_id %>").is(':checked')) ? 1 : 0),
+                    url: '<%= set_user_house_device_action_url current_user, action.device.house, action.device, action %>',
                     type: 'PUT',
                     dataType: 'script',
                     data: {value: (($("#handle_<%= action_id %>").is(':checked')) ? 1 : 0)},
@@ -68,14 +68,29 @@
 
     $("#handle_head_<%= action_id %>").html('');
     $("#handle_<%= action_id %>").button('enable');
-    
-    //$("#handle_head_<%= action_id %>").html('').closest('div').prepend("<div id='handle_error_<%= action_id %>'>" + message + '</div>');
-    //$('#handle_error_<%= action_id %>').fadeOut(6000, function(){
-      //$('#handle_error_<%= action_id %>').html('').show();
 
-      //$("#handle_<%= action_id %>").button('enable');
-    //});
+    $("#handle_head_<%= action_id %>").closest('table.actions-table').highlightMe();
   }
 
   $("#handle_foot_<%= action_id %>").html("<%= action.to_s.humanize %>");
+
+  <% if current_state_and_code.key? :error_message %>
+    onHandleError<%= action_id %>("<%= current_state_and_code[:error_message] %>");
+
+    $("#handle_head_<%= action_id %>").
+      html("<a href='#' id='reload_action_status_<%= action_id %>' class='no-underline' ><span class='icon refresh-action-status'><%= t(:try_again).downcase %></span></a>");
+
+    $("#handle_<%= action_id %>").button('disable');
+    
+    $('#reload_action_status_<%= action_id %>').click(function(){
+      $("#handle_head_<%= action_id %>").html("<span class='icon round-loading'></span>");
+      $("#handle_<%= action_id %>").button('disable');
+
+      $.getScript('<%= control_user_house_device_action_url action.device.user, action.device.house, action.device, action %>');
+      
+      return false
+    });
+  <% else %>
+    $("#handle_head_<%= action_id %>").html('').closest('table.actions-table').highlightMe();
+  <% end %>
 </script>

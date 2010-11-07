@@ -5,13 +5,13 @@
   <% state_code = state[:code] %>
   <% action_id = (action.id) ? action.id : action.temp_id %>
 
-  $("#handle_head_<%= action_id %>").html("<%= state_code %>");//add the real state here
+  $("#handle_head_<%= action_id %>").html("<%= state_code %>");
   $("#handle_foot_<%= action_id %>").html("<%= action.to_s.humanize %>");
 
   $("#handle_<%= action_id %>").slider({
         orientation: "<%= action.slider_orientation %>",
         range: 'min',
-        value: <%= state_code %>,// todo get current value
+        value: <%= state_code %>,
         min: <%= action.range_min %> ,
         max: <%= action.range_max %>,
         slide: function(event, ui) {
@@ -66,12 +66,28 @@
 
     $("#handle_head_<%= action_id %>").html($("#handle_<%= action_id %>").slider('value'));
     $("#handle_<%= action_id %>").slider('enable');
-    
-    //$("#handle_head_<%= action_id %>").html($("#handle_<%= action_id %>").slider('value')).closest('div').prepend("<div id='handle_error_<%= action_id %>'>" + message + '</div>');
-    //$('#handle_error_<%= action_id %>').fadeOut(6000, function(){
-      //$('#handle_error_<%= action_id %>').html('').show();
 
-      //$("#handle_<%= action_id %>").slider('enable');
-    //});
+    $("#handle_head_<%= action_id %>").closest('table.actions-table').highlightMe();
   }
+
+  <% if state.key? :error_message %>
+    onHandleError<%= action_id %>("<%= state[:error_message] %>");
+
+    $("#handle_head_<%= action_id %>").
+      html("<a href='#' id='reload_action_status_<%= action_id %>' class='no-underline' ><span class='icon refresh-action-status'><%= t(:try_again).downcase %></span></a>");
+
+    $("#handle_<%= action_id %>").slider('disable');
+
+    $('#reload_action_status_<%= action_id %>').click(function(){
+      $("#handle_head_<%= action_id %>").html("<span class='icon round-loading'></span>");
+      $("#handle_<%= action_id %>").slider('disable');
+
+      $.getScript('<%= control_user_house_device_action_url action.device.user, action.device.house, action.device, action %>');
+
+      return false
+    });
+  <% else %>
+    $("#handle_head_<%= action_id %>").html("<%= state_code %>").
+      closest('table.actions-table').highlightMe();
+  <% end %>
 </script>

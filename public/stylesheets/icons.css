@@ -523,3 +523,14 @@
 {
   background-image: url(../images/icons/ErrorCircle-32.png);
 }
+
+.icon.refresh-action-status
+{
+  background-image: url(../images/icons/silk/arrow_refresh_small.png);
+}
+
+.icon.manage-device-actions
+{
+  background-image: url(../images/icons/silk/application_go.png);
+}
+

@@ -31,8 +31,13 @@ class DevicesController < ApplicationController
   end
 
   ################################################################################
-  def discover    
-    @devices = Device.discover @house
+  def discover
+    @devices = []
+    begin
+      @devices = Device.discover @house
+    rescue Serial::Error::UnknownSerialError
+      @error_message = I18n.t(:error_finding_the_devices, :scope => [:house, :messages, :error])
+    end
 
     respond_to do |format|
       format.js {render @options[:output_format]}
