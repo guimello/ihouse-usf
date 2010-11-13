@@ -45,8 +45,8 @@ class InsertKnownActions < ActiveRecord::Migration
                                     :query_state => 5,
                                     :handle => {  :html_options_for_jquery_div => {:style => 'height: 200px;'},
                                                   :orientation => 'vertical',
-                                                  :range_min => 10,
-                                                  :range_max => 100
+                                                  :range_min => 0,
+                                                  :range_max => 255
                                                }
     end
   end
