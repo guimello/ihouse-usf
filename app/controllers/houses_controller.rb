@@ -2,7 +2,7 @@
 class HousesController < ApplicationController
 
   ################################################################################
-  before_filter :get_house, :only => [:show, :edit, :update]
+  before_filter :get_house, :only => [:show, :edit, :update, :destroy]
 
   ################################################################################
   def get_house
@@ -52,5 +52,12 @@ class HousesController < ApplicationController
       redirect_to user_house_url(@user, @house) and return
     end
     render :edit and return
+  end
+
+  ################################################################################
+  def destroy
+    @house.destroy
+    flash[:success] = I18n.t :destroy, :scope => [:house, :messages, :success]
+    redirect_to user_houses_url(@user)
   end
 end

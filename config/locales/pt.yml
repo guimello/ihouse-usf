@@ -140,8 +140,9 @@ pt:
       hint: "Qualquer coisa adicional que você queira acrescentar..."
     messages:
       success:
-        create: "A casa foi adicionada com successo!"
-        update: "A casa foi atualizada com successo!"
+        create: "A casa foi adicionada com sucesso!"
+        update: "A casa foi atualizada com sucesso!"
+        destroy: A casa foi removida com sucesso!
       error:
         error_finding_the_devices: Houve um erro ao descobrir os dispositivos na casa
     hints:
@@ -423,6 +424,8 @@ pt:
     attributes:
       user:
         logon: "Usuário"
+      device:
+        identification: Identificação
     errors:
       template:
         header:

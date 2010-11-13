@@ -142,6 +142,7 @@ en:
       success:
         create: "The house's been added successfully!"
         update: "The house's been successfully updated!"
+        destroy: "The house's been successfully removed!"
       error:
         error_finding_the_devices: There was an error while discovering the devices
     hints:
@@ -309,6 +310,8 @@ en:
     attributes:      
       user:
         logon: "User"
+      device:
+        identification: Identification
 
   time:
     formats:      
