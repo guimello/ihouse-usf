@@ -28,7 +28,10 @@ class ActionsController < ApplicationController
   def find
     @actions = []
     begin
-      @actions = @device.find_actions
+      @actions          = @device.find_actions
+      actions_commands  = @device.actions.map(&:command)
+
+      @actions.delete_if {|action| actions_commands.include? action.command}
     rescue Serial::Error::UnknownSerialError
       @error_message = I18n.t(:error_finding_the_actions, :scope => [:device, :messages, :error])
     end

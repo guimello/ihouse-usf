@@ -34,7 +34,10 @@ class DevicesController < ApplicationController
   def discover
     @devices = []
     begin
-      @devices = Device.discover @house
+      @devices                        = Device.discover @house
+      houses_devices_identifications  = @house.devices.map(&:identification)
+      
+      @devices.delete_if {|device| houses_devices_identifications.include? device.identification}
     rescue Serial::Error::UnknownSerialError
       @error_message = I18n.t(:error_finding_the_devices, :scope => [:house, :messages, :error])
     end
