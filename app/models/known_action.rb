@@ -2,7 +2,7 @@
 class KnownAction < ActiveRecord::Base
 
   ################################################################################
-  validates_uniqueness_of :command
+  validates_uniqueness_of   :command
   validates_numericality_of :command, :only_integer => true
 
   ################################################################################

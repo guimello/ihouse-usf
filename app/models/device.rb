@@ -1,6 +1,6 @@
 ################################################################################
 class Device < ActiveRecord::Base
-  
+
   ################################################################################
   include Known::Devices
   include Serial::Devices
@@ -12,16 +12,20 @@ class Device < ActiveRecord::Base
   has_many    :logs,      :conditions => {:loggable_type => 'Device'}, :order => 'created_at DESC'
 
   ################################################################################
-  accepts_nested_attributes_for :actions, :allow_destroy => true
+  accepts_nested_attributes_for :actions, :allow_destroy => true, :reject_if => proc {|attributes|
+    attributes['name'].blank?     &&
+    attributes['command'].blank?  &&
+    attributes['query_state'].blank?
+  }
 
   ################################################################################
   act_as_virtual :custom
 
   ################################################################################
-  validates_presence_of :identification, :device_class
-  validates_numericality_of :identification, :only_integer => true
-  validates_presence_of :name, :unless => Proc.new {|device| device.know?}
-  validates_uniqueness_of :identification, :scope => [:house_id]
+  validates_presence_of     :identification,  :device_class, :house
+  validates_numericality_of :identification,  :only_integer => true, :allow_blank => true
+  validates_presence_of     :name,            :unless       => Proc.new {|device| device.know?}
+  validates_uniqueness_of   :identification,  :scope        => [:house_id]
 
   ################################################################################
   before_save :reset_name, :if => Proc.new {|device| device.name == device.default_name or device.name.blank?}
@@ -45,9 +49,14 @@ class Device < ActiveRecord::Base
 
   ################################################################################
   def enable_advanced?(field)
-    return false if ["name", "room"].include? field.to_s or
-    device_class.blank? or identification.blank? or
-    device_class != device_class_was or identification != identification_was
+    if ["name", "room"].include?(field.to_s)    ||
+      device_class.blank?                       ||
+      identification.blank?                     ||
+      device_class    != device_class_was       ||
+      identification  != identification_was
+
+      return false
+    end
 
     true
   end

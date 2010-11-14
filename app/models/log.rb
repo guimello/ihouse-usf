@@ -15,7 +15,7 @@ class Log < ActiveRecord::Base
               conditions = ["logs.user_id = ? #{house != 'all' ? 'AND d.house_id = ?' : ''}", current_user.id]
               conditions << house.id if house != 'all'
                 { :order => 'logs.created_at DESC',
-                  :limit    => 15,
+                  :limit => 15,
                   :joins => [ %{
                               JOIN actions as a on a.id = logs.loggable_id AND logs.loggable_type = 'Action'
                               JOIN users as u on u.id = logs.user_id

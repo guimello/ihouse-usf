@@ -9,15 +9,14 @@ class Task < ActiveRecord::Base
   act_as_virtual :operation
 
   ################################################################################
-  before_validation :create_key, :if => Proc.new {|task| task.key.blank? && task.house && !task.status.blank?}
-  before_create :prepare_message, :if => Proc.new {|task| task.operation.sent[:message].blank?}
+  before_validation :create_key,      :if => Proc.new {|task| task.key.blank? && task.house && !task.status.blank?}
+  before_create     :prepare_message, :if => Proc.new {|task| task.operation.sent[:message].blank?}
 
   ################################################################################
-  validates_presence_of :house, :operation
-  validates_presence_of :key, :status
+  validates_presence_of     :house, :operation
+  validates_presence_of     :key,   :status
   validates_numericality_of :key
-
-  validates_uniqueness_of :key, :if => Proc.new {|task| !task.key.blank? && task.house || !task.status.blank?}
+  validates_uniqueness_of   :key, :if => Proc.new {|task| !task.key.blank? && task.house || !task.status.blank?}
 
   ################################################################################
   def unique_key?

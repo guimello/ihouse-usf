@@ -3,18 +3,18 @@ class User < ActiveRecord::Base
 
   ################################################################################
   has_many :houses
-  has_many :devices, :through => :houses
-  has_many :logs, :conditions => {:loggable_type => 'User'}, :order => 'created_at DESC'
-  has_many :user_logs, :class_name => 'Log', :order => "created_at DESC"
+  has_many :devices,    :through    => :houses
+  has_many :logs,       :conditions => {:loggable_type => 'User'},  :order => 'created_at DESC'
+  has_many :user_logs,  :class_name => 'Log',                       :order => "created_at DESC"
 
   ################################################################################
-  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
-  validates_length_of :password, :minimum => 6, :if => :password_changed?
-  validates_presence_of :password_confirmation, :if => :password_changed?
-  validates_confirmation_of :password, :if => :password_changed?
-  validates_uniqueness_of :username, :if => :username_changed?
-  validates_uniqueness_of :email, :if => :email_changed?
-  validates_presence_of :username
+  validates_format_of       :email,     :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  validates_length_of       :password,  :minimum => 6,  :if => :password_changed?
+  validates_presence_of     :password_confirmation,     :if => :password_changed?
+  validates_confirmation_of :password,                  :if => :password_changed?
+  validates_uniqueness_of   :username,                  :if => :username_changed?
+  validates_uniqueness_of   :email,                     :if => :email_changed?
+  validates_presence_of     :username
 
   ################################################################################
   def to_s
