@@ -3,7 +3,6 @@ namespace :agents do
   ################################################################################
   desc 'Run all agents'
   task :up do
-    puts ENV['RAILS_ENV']
     environment = ENV['RAILS_ENV'] || 'development'
 
     if (running = %x[ps ax | grep new_tasker.rb | grep -vc grep]) && (running.to_i == 1)
