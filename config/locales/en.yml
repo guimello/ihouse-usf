@@ -306,12 +306,36 @@ en:
   # Active Record
   activerecord:
     models:      
-      user: "User"
+      user:  user
+      house: house
+      device: device
+      action: action
     attributes:      
       user:
-        logon: "User"
+        logon: User
+        email: Email
+        password: Password
+        password_confirmation: Password confirmation
+        username: Username
+      house:
+        name: Name
+        description: Description
+        user: User
       device:
         identification: Identification
+        device_class: Device class
+        house: House
+        name: Name
+        room: Room
+      action:
+        command: Command
+        name: Name
+        action_type: Type
+        query_state: State code
+        range_min: Min
+        range_max: Max
+        device: Device
+
 
   time:
     formats:      

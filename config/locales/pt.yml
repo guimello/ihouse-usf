@@ -420,12 +420,36 @@ pt:
   # Active Record
   activerecord:
     models: 
-      user: "Usuário"
+      user: o usuário
+      house:  a casa
+      device: o dispositivo
+      action: a ação
     attributes:
       user:
-        logon: "Usuário"
+        logon: Usuário
+        email: Email
+        password: Senha
+        password_confirmation: Confirmação de senha
+        username: Username
+      house:
+        name: Nome
+        description: Descrição
+        user: Usuário
       device:
         identification: Identificação
+        device_class: Classe do dispositivo
+        house: Casa
+        name: Nome
+        room: Cômodo
+      action:
+        command: Comando
+        name: Nome
+        action_type: Tipo
+        query_state: Código de estado
+        range_min: Min
+        range_max: Max
+        device: Dispositivo
+
     errors:
       template:
         header:
