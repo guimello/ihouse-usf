@@ -9,7 +9,7 @@
         <div id="project_title">
           <% if current_user.houses.size > 1 or (current_user.houses.size > 0 and !defined? @house) %>
             <a class="icon selection" href="#" id="project_selection">
-              <span><%= (defined? @house) ? @house.name : t(:my_houses, :scope => :house) %></span>
+              <span><%= (defined? @house) ? @house.reload.name: t(:my_houses, :scope => :house) %></span>
             </a>
 
 
@@ -21,7 +21,7 @@
               <% end %>
             </ul>
           <% elsif defined? @house and @house.id %>
-            <%= link_to h(@house), user_house_url(@house.user, @house), :id => "project_selection",
+            <%= link_to h(@house.reload), user_house_url(@house.user, @house), :id => "project_selection",
               :class => "icon house title-me",
               :title => t(:return_to_your_house_page, :scope => [:house, :hints], :house => @house) %>
           <% else %>

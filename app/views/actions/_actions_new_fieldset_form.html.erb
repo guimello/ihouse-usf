@@ -1,5 +1,5 @@
-<div  class='indented-30 float-left' style='margin-right: 30px'>
-  <%= form.hidden_field :_delete, :class => 'remove-action-hidden' %>
+<div  class='indented-30 float-left' style='margin-right: 30px; display: <%= form.object._destroy ? 'none' : ''%>'>
+  <%= form.hidden_field :_destroy, :class => 'remove-action-hidden' %>
   <%= form.hidden_field :temp_id %>
   
   <fieldset id='fieldset_<%= form.object.temp_id %>'>
