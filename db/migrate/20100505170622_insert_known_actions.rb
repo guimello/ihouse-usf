@@ -10,7 +10,7 @@ class InsertKnownActions < ActiveRecord::Migration
                                     :handle => {  :jquery_method => 'jquery_checkbox_button',
                                                   :translation_keys => {:state_on => 'state_on', :state_off => 'state_off'},
                                                   :display_icon_on => 'lights-on',
-                                                  :display_icon_off => 'ligths-off'
+                                                  :display_icon_off => 'lights-off'
                                                }
 
       KnownAction.create  :command => 2,

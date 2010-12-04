@@ -5,12 +5,12 @@
         {:code => 'state_on', :state => I18n.t(:state_on, :scope => [:action, :device, :turn_on_off, :state]) }) ||
       action.state %>
         
-  <% icon_on = (!action.handle.display_icon_on.blank?) ? action.handle.display_icon_on : (action.known_action) ? action.known_action.handle[:display_icon_on] : 'lights_on' %>
-  <% icon_off = (!action.handle.display_icon_off.blank?) ? action.handle.display_icon_off : (action.known_action) ? action.known_action.handle[:display_icon_off] : 'lights_off' %>
-    
+  <% icon_on = (!action.handle.display_icon_on.blank?) ? action.handle.display_icon_on : (action.known_action) ? action.known_action.handle[:display_icon_on] : 'lights-on' %>
+  <% icon_off = (!action.handle.display_icon_off.blank?) ? action.handle.display_icon_off : (action.known_action) ? action.known_action.handle[:display_icon_off] : 'lights-off' %>
+
   $("#handle_<%= action_id %>").attr("checked", <%= (current_state_and_code[:code] == "state_on") ? true : false %>);
 
-  $("#handle_<%= action_id %>").button({ icons: { primary: "<%= (current_state_and_code[:code] == "state_on") ? "icon #{icon_on}" : "icon #{icon_off}" %>"},
+  $("#handle_<%= action_id %>").button({ icons: { primary: "<%= (current_state_and_code[:code] == "state_on") ? "icon #{icon_on}" : "icon #{icon_off}"%>"},
         label: "<%= current_state_and_code[:state] %>"})
       .click(function(){
         <% unless simulate %>

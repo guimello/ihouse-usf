@@ -50,15 +50,19 @@ ActiveRecord::Schema.define(:version => 20100821143627) do
   add_index "houses", ["user_id"], :name => "user_id"
 
   create_table "known_actions", :force => true do |t|
-    t.integer "command",     :null => false
-    t.string  "action_type", :null => false
-    t.integer "query_state", :null => false
-    t.text    "handle",      :null => false
+    t.integer  "command",     :null => false
+    t.string   "action_type", :null => false
+    t.integer  "query_state", :null => false
+    t.text     "handle",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "known_devices", :force => true do |t|
-    t.string "device_class", :null => false
-    t.string "display_icon", :null => false
+    t.string   "device_class", :null => false
+    t.string   "display_icon", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "logs", :force => true do |t|
@@ -82,7 +86,7 @@ ActiveRecord::Schema.define(:version => 20100821143627) do
   end
 
   add_index "tasks", ["house_id"], :name => "house_id"
-  add_index "tasks", ["key", "house_id", "status"], :name => "index_tasks_on_key_and_house_id_and_status", :unique => true
+  add_index "tasks", ["key"], :name => "index_tasks_on_key", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                              :null => false
@@ -92,7 +96,7 @@ ActiveRecord::Schema.define(:version => 20100821143627) do
     t.boolean  "active",     :default => true,       :null => false
     t.string   "locale",     :default => "en",       :null => false
     t.string   "time_zone",  :default => "Brasilia", :null => false
-    t.string   "style",      :default => "blue",     :null => false
+    t.string   "style",      :default => "green",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
