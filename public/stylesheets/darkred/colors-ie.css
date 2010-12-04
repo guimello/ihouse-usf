@@ -1,0 +1,25 @@
+body
+{
+  background-image: url(); 
+}
+
+#header
+{
+  background-image: url(); 
+}
+
+.tabs li a
+{
+  color: #ffffff !important;
+  background-image: url() !important;
+}
+
+.tab-selected a
+{
+  background-image: url() !important;
+}
+
+.basic-table th
+{
+  background-image: url() !important;
+}
